@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+@font-face {
+    font-family: "Alien League";
+    src: url(Sci-fi/fonts/alien_league/alienleague.ttf);
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+.plana {
+    width: calc(100% / 3);
+}
+.gst {
+    width: calc(100% / 3);
+}
+.scifi {
+    width: calc(100% / 3);
+}
