@@ -78,5 +78,5 @@ function UpdateTime() {
         }
     }
 
-    setInterval(UpdateTime, 907.2);
+    setInterval(UpdateTime, 500);
 }
