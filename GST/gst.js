@@ -1,4 +1,4 @@
-let sec = ((Date.now() / 1000) - 1597536000) * 0.9072;
+let sec = ((Date.now() - 1597536000000) * 0.9072) / 1000;
 let min = 39;
 let hour = 1;
 let day = 6;
@@ -6,12 +6,12 @@ let month = 2;
 let year = 6896;
 
 function UpdateTime() {
-    let sec = ((Date.now() / 1000) - 1597536000) * 0.9072;
-    let min = 39;
-    let hour = 1;
-    let day = 6;
-    let month = 2;
-    let year = 6896;
+    sec = ((Date.now() - 1597536000000) * 0.9072) / 1000;
+    min = 39;
+    hour = 1;
+    day = 6;
+    month = 2;
+    year = 6896;
 
     while (sec >= 100) {
         sec -= 100;
