@@ -179,7 +179,7 @@ function Menu() {
 }
 function Quit() {
     if (confirm("Are you sure you want to quit?")) {
-        window.location.href = 'https://kkitaanik.github.io/WebProjects/';
+        window.location.href = 'https://kkitaanik.github.io/WebProjects/'; 
     }
 }
 function Settings() {
