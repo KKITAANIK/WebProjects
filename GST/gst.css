@@ -96,3 +96,6 @@ html, body {
 .back:hover .tooltip {
     opacity: 1;
 }
+a {
+    color: inherit;
+}
