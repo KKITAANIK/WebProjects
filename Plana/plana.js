@@ -84,7 +84,7 @@ function UpdateMeters() {
 }
 
 function Output(source) {
-    source = "https://raw.githubusercontent.com/KKITAANIK/Plana/master/txts/".concat(source, ".txt");
+    source = "https://raw.githubusercontent.com/KKITAANIK/WebProjects/master/Plana/txts/".concat(source, ".txt");
     jQuery.get(source, function(data) {
         document.getElementById("output").innerHTML = data;
     });
