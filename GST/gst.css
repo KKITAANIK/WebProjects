@@ -1,0 +1,30 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    background-color: #293542;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@font-face {
+    font-family: "Alien League";
+    src: url(alien_league/alienleague.ttf);
+}
+.display {
+    font-family: "Alien League";
+    font-size: 7vw;
+    color: #33b5e5;
+}
+.toptext {
+    font-family: "Alien League";
+    font-size: 3vw;
+    color: #33b5e5;
+}
+.bottomtext {
+    font-family: "Alien League";
+    font-size: 1.5vw;
+    color: #33b5e5;
+    bottom: 3vh;
+    position: absolute;
+}
