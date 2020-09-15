@@ -41,22 +41,42 @@ function UpdateTime() {
         }
     }
 
-    if (sec < 10) {
-        if (min < 10) {
-            document.getElementById("display").innerHTML = hour.toString().concat(":0", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+    if (hour < 10) {
+        if (sec < 10) {
+            if (min < 10) {
+                document.getElementById("display").innerHTML = "0".concat(hour.toString(), ":0", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
+            else {
+                document.getElementById("display").innerHTML = "0".concat(hour.toString(), ":", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
         }
         else {
-            document.getElementById("display").innerHTML = hour.toString().concat(":", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            if (min < 10) {
+                document.getElementById("display").innerHTML = "0".concat(hour.toString(), ":0", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
+            else {
+                document.getElementById("display").innerHTML = "0".concat(hour.toString(), ":", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
         }
     }
     else {
-        if (min < 10) {
-            document.getElementById("display").innerHTML = hour.toString().concat(":0", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+        if (sec < 10) {
+            if (min < 10) {
+                document.getElementById("display").innerHTML = hour.toString().concat(":0", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
+            else {
+                document.getElementById("display").innerHTML = hour.toString().concat(":", min.toString(), ":0", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
         }
         else {
-            document.getElementById("display").innerHTML = hour.toString().concat(":", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            if (min < 10) {
+                document.getElementById("display").innerHTML = hour.toString().concat(":0", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
+            else {
+                document.getElementById("display").innerHTML = hour.toString().concat(":", min.toString(), ":", sec.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " AA GST");
+            }
         }
     }
 
-    setInterval(UpdateTime, 0);
+    setInterval(UpdateTime, 907.2);
 }
