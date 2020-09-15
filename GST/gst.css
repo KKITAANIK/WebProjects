@@ -64,10 +64,9 @@ html, body {
 .help:hover .tooltip {
     opacity: 1;
 }
-
 .back {
     position: absolute;
-    top: 2vh;
+    top: 3vh;
     left: 3vh;
     height: 5vh;
     width: 5vh;
