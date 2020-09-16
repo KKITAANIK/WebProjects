@@ -49,11 +49,21 @@ function UpdateMeters() {
         }
     }
 
-    if (min < 10) {
-        document.getElementById("time").innerHTML = hour.toString().concat(":0", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+    if (hour < 10) {
+        if (min < 10) {
+            document.getElementById("time").innerHTML = "0".concat(hour.toString(), ":0", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+        }
+        else {
+            document.getElementById("time").innerHTML = "0".concat(hour.toString(), ":", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+        }
     }
     else {
-        document.getElementById("time").innerHTML = hour.toString().concat(":", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+        if (min < 10) {
+            document.getElementById("time").innerHTML = hour.toString().concat(":0", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+        }
+        else {
+            document.getElementById("time").innerHTML = hour.toString().concat(":", min.toString(), " ", day.toString(), "/", month.toString(), "/", year.toString(), " GST");
+        }
     }
 
     document.getElementById("credits").innerHTML = "◱".concat(credits.toString());
