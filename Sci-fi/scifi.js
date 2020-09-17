@@ -34,12 +34,12 @@ function UpdateMeters() {
         day++;
     }
     while ((day > 35) || (day > 34 && ((month % 2 == 0) || (month == 1 && (year % 4 == 0))))) {
-        if ((month % 2 == 1) && (year % 4 != 0)) {
-            day -= 35;
+        if ((month % 2 == 0) || ((year % 4 == 0) && month == 1)) {
+            day -= 34;
             month++;
         }
         else {
-            day -= 34;
+            day -= 35;
             month++;
         }
         
