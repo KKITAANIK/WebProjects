@@ -6,10 +6,20 @@
         <link rel="stylesheet" href="calc.css">
     </head>
     <body>
-        <div>Please enter a date and time using your time zone.<br />Note: Large deviations from August 16 2020 may take some time to calculate.</div>
-        <input type="datetime-local" id="dateInput">
-        <button id="button">Submit</button>
-        <div id="display"></div>
+        <div class="back" onclick="window.location = 'https://kkitaanik.github.io/WebProjects/'">&lt;-<span class=tooltip>Click here to go back to the hub menu.</span></div>
+        <div class="help" onclick="window.open('https://docs.google.com/document/d/12oDuYMcHC7TVgo5vwI8t1YIGqC7oqFU3cetTiq6D0SA/edit?usp=sharing')">?<span class=tooltip>Click to learn more about Galactic Standard Time.</span></div>
+        <div class="uppertext">
+            <div class="toptext">Please enter a date and time using your time zone.</div>
+            <div class="note">Note: Large deviations from August 16 2020 may take some time to calculate.</div>
+            <div class="inputfield">
+                <input type="datetime-local" id="dateInput" class="button">
+                <button id="button" class="button">Submit</button>
+            </div>
+        </div>
+        <div class="toptext" id="toptext"></div>
+        <div id="display" class="display"></div>
+        <div class="note"><a href="https://kkitaanik.github.io/WebProjects/GST/gst.html">Click here to go to a live feed of the current time in GST</a>.</div>
+        <div class="bottomtext">*Assuming this story begins 00:00:00 16/08/2020 AD GMT. To alter the beginning date, <a>click here</a>. <a href="https://docs.google.com/document/d/1eOMmL1oh7wX1BtbXX5euZjhczD0t88es6xECjaUSBqg/edit?usp=sharing" target="_blank">Click here to find out why</a>.</div>
         <script src="calc.js"></script>
     </body>
 </html>

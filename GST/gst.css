@@ -9,11 +9,11 @@ html, body {
 }
 @font-face {
     font-family: "Alien League";
-    src: url(alien_league/alienleague.ttf);
+    src: url(fonts/alien_league/alienleague.ttf);
 }
 @font-face {
     font-family: "Open Sans";
-    src: url(Open_Sans/OpenSans-Regular.ttf);
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
 }
 .display {
     font-family: "Alien League";
@@ -104,4 +104,9 @@ html, body {
 }
 a {
     color: inherit;
+}
+.note {
+    font-family: "Alien League";
+    font-size: 1.5vw;
+    color: #33b5e5;
 }
