@@ -93,7 +93,7 @@ function ClearButtons() {
 
 function MainMenu() {
     document.getElementById("output").style.textAlign = "center";
-    Output("<br /><span class=\"titlespan\">Welcome to the Milky Way!</span><br /><br /><br />A <span class=\"kkitaanik\">KK̈ITAȺNIK</span> game<br /><br />created by Adrian Clayton<br />");
+    Output("<br /><span class=\"titlespan\">Welcome to the your Exodus!</span><br /><br /><br />A <span class=\"kkitaanik\">KK̈ITAȺNIK</span> game<br /><br />created by Adrian Clayton<br />");
     ClearButtons();
     buttons[0].update(NewGame, "New Game<span class=\"tooltip\">Start a new game.</span>");
     buttons[7].update(Quit, "Quit<span class=\"tooltip\">Exit the game.</span>");
