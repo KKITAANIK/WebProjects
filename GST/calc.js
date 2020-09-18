@@ -18,7 +18,7 @@ document.getElementById("button").onclick = function(){
     date = new Date(document.getElementById("dateInput").value);
 
     if (date == "Invalid Date") {
-        document.getElementById("display").innerHTML = "invalid Date.";
+        document.getElementById("display").innerHTML = "invalid Date";
         document.getElementById("toptext").innerHTML = "";
         document.getElementById("bottomtext").innerHTML = "";
     }
