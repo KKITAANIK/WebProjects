@@ -35,6 +35,9 @@ html, body {
     color: #33b5e5;
     bottom: 3vh;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .help {
     position: absolute;
@@ -135,7 +138,7 @@ a {
 }
 
 .button {
-    height: 2vw;
+    height: 2.5vw;
     width: auto;
     margin: 0.25vw;
     float: left;
@@ -145,7 +148,7 @@ a {
     border-color: #28112c;
     background-color: #301934;
     font-family: "Alien League Bold";
-    font-size: 1.25vw;
+    font-size: 1.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -160,6 +163,34 @@ a {
     background-color: #28112c;
 }
 .button:focus {
+    outline: none;
+    border-width: 5px;
+}
+
+.startDate {
+    height: 2vw;
+    margin: 0.25vw;
+    border-style: solid;
+    border-width: 0px;
+    text-align: center;
+    border-color: #28112c;
+    background-color: #301934;
+    font-family: "Alien League Bold";
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #DA70D6;
+}
+.startDate:hover {
+    background-color: #28112c;
+}
+.startDate:active
+{
+    background-color: #28112c;
+}
+.startDate:focus {
     outline: none;
     border-width: 5px;
 }

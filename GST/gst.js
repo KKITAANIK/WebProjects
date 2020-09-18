@@ -6,7 +6,7 @@ let month = 2;
 let year = 6896;
 
 function UpdateTime() {
-    sec = ((Date.now() - 1597536000000) * 0.9072) / 1000;
+    sec = ((Date.now() - (Date.parse(document.getElementById("startDate").value))) * 0.9072) / 1000;
     min = 39;
     hour = 1;
     day = 6;

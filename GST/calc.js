@@ -8,7 +8,7 @@ let year;
 let date;
 
 document.getElementById("button").onclick = function(){
-    sec = ((Date.parse(document.getElementById("dateInput").value) - 1597536000000) * 0.9072) / 1000;
+    sec = ((Date.parse(document.getElementById("dateInput").value) - (Date.parse(document.getElementById("startDate").value))) * 0.9072) / 1000;
     min = 39;
     hour = 1;
     day = 6;
@@ -121,6 +121,5 @@ document.getElementById("button").onclick = function(){
                 }
             }
         }
-        document.getElementById("bottomtext").innerHTML = "*Assuming this story begins 00:00:00 16/08/2020 AD GMT. <a href=\"https://docs.google.com/document/d/1eOMmL1oh7wX1BtbXX5euZjhczD0t88es6xECjaUSBqg/edit?usp=sharing\" target=\"_blank\">Click here to learn why that specification is neccesary</a>."
     }
 };
