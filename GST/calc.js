@@ -20,6 +20,7 @@ document.getElementById("button").onclick = function(){
     if (date == "Invalid Date") {
         document.getElementById("display").innerHTML = "invalid Date.";
         document.getElementById("toptext").innerHTML = "";
+        document.getElementById("bottomtext").innerHTML = "";
     }
     else {
         if (sec >= 0) {
@@ -120,5 +121,6 @@ document.getElementById("button").onclick = function(){
                 }
             }
         }
+        document.getElementById("bottomtext").innerHTML = "*Assuming this story begins 00:00:00 16/08/2020 AD GMT. <a href=\"https://docs.google.com/document/d/1eOMmL1oh7wX1BtbXX5euZjhczD0t88es6xECjaUSBqg/edit?usp=sharing\" target=\"_blank\">Click here to find out why that specification is neccesary</a>."
     }
 };
