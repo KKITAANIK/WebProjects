@@ -57,7 +57,7 @@ html, body {
     border-style: solid;
     border-width: 1px;
     border-color: #c0c0c0;
-    bottom: calc(20% + 5px);
+    bottom: 20%;
     border-radius: 1px;
     opacity: 0;
     transition: opacity 0.5s;
@@ -106,7 +106,7 @@ html, body {
     border-style: solid;
     border-width: 1px;
     border-color: #091522;
-    bottom: calc(20% + 15px + 0.5vw);
+    bottom: 20%;
     border-radius: 10px;
     opacity: 0;
     transition: opacity 0.5s;
