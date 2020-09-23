@@ -51,28 +51,28 @@ function UpdateText() {
         output = "Alright, you know what, screw this. Clearly nothing is going to happen here. You want something done right, you have to do it yourself.";
     }
     else if (clicks == 310) {
-        output += "What do you say we try and make our own game? Can't be that hard. This isn't exactly a high bar.";
+        output += "<br />What do you say we try and make our own game? Can't be that hard. This isn't exactly a high bar.";
     }
     else if (clicks == 315) {
-        output += "Let's see... what do we have to work with...";
+        output += "<br />Let's see... what do we have to work with...";
     }
     else if (clicks == 320) {
-        output += "We got clicks, that's something. Clicks..";
+        output += "<br />We got clicks, that's something. Clicks..";
     }
     else if (clicks == 325) {
-        output += "How about this?<br /><br /><i>GET TO 350 CLICKS TO WIN</i>";
+        output += "<br />How about this?<br /><br /><i>GET TO 350 CLICKS TO WIN</i>";
     }
     else if (clicks == 350) {
         output = "You win!!";
     }
     else if (clicks == 360) {
-        output += "No, that's no good, is it? Doesn't really feel like you earned anything, does it?";
+        output += "<br />No, that's no good, is it? Doesn't really feel like you earned anything, does it?";
     }
     else if (clicks == 370) {
-        output += "I mean, you just clicked a button. Hardly feels fair to call that a victory.";
+        output += "<br />I mean, you just clicked a button. Hardly feels fair to call that a victory.";
     }
     else if (clicks == 380) {
-        output += "Let's see...";
+        output += "<br />Let's see...";
     }
 
     document.getElementById("text").innerHTML = output;
