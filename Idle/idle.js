@@ -42,7 +42,7 @@ function UpdateText() {
         output += "<br />All that good human stuff.";
     }
     else if (clicks == 280) {
-        output += "<br />Wow, I didn't even notice 250 pass. Now we're almost at 300";
+        output += "<br />Wow, I didn't even notice 250 pass. Now we're almost at 300.";
     }
     else if (clicks == 290) {
         output += "<br />It all just kind of <b>BLENDS TOGETHER</b> when there's <b>NO MEANINGFUL CONSEQUENCE OF PROGRESS</b>."
