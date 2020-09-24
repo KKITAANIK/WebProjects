@@ -5,10 +5,10 @@ let output = "";
 
 function UpdateCounter() {
     if (cps <= 0) {
-        document.getElementById("counter").innerHTML = "You have ".concat(clicks.toString(), " clicks.")
+        document.getElementById("counter").innerHTML = "You have ".concat(clicks.toString(), " clicks.");
     }
     else {
-        document.getElementById("counter").innerHTML = "You have ".concat(clicks.toString(), " clicks. <span class=\"Oswald\">You have ", cps.toString(), " clicks per second.</span>")
+        document.getElementById("counter").innerHTML = "You have ".concat(clicks.toString(), " clicks. <span class=\"Oswald\">You have ", cps.toString(), " clicks per second.</span>");
     }
     if (clicks < 250) {
         document.getElementById("cpsButton").disabled = true;
