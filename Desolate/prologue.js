@@ -6,4 +6,5 @@ document.getElementById("text").innerHTML = "My Dear Thomas,\
 <br />&emsp;&emsp;&emsp;&emsp;Enclosed are directions to the Archives, where I will tell you more.\
 <br /><br />Hopeful,\
 <br /><s>Wuotan, the Archivist</s>\
-<br />Wuotan";
+<br />Wuotan\
+<br /><br/>&emsp;&emsp;&emsp;&emsp;P.S. You will notice your carrier pigeon has been well cared for. I am not cruel, nor am I wont to destroy useful tools for communication&mdash;especially those that do not involve human hands between a letter's origin and destination.";
