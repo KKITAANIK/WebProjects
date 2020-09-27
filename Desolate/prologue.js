@@ -1,0 +1,9 @@
+document.getElementById("text").innerHTML = "My Dear Thomas,\
+<br /><br />&emsp;&emsp;&emsp;&emsp;I have tried many times to start this letter. A few of these beginnings included some form of apology, but it felt dishonest&mdash;trying somehow to make it seem as if I deserve the help I am about to ask for. I want no part in such deception, and while I do find myself feeling regret for the choices I have made, that is only a distraction from the truth: that which has managed to shake me so completely as to cause me to cast off the solitude and seclusion I had previously enveloped myself within.\
+<br />&emsp;&emsp;&emsp;&emsp;You must forgive my divergence into the poetic. I find it difficult to keep myself on a single trail of thought&mdash;although whether that is my old age or simply an unwillingness to face the truth I cannot say.\
+<br />&emsp;&emsp;&emsp;&emsp;No more&mdash;I must force myself to tell you the reason for this letter. As I previously mentioned, I must ask you for help. I do not mean to use this request to trick or trap you, nor any other intentions I'm sure you expect of me. In every way I come to you earnestly, and unmotivated by self-interest.\
+<br />&emsp;&emsp;&emsp;&emsp;In my studies&mdash;a perhaps undeserved way to refer to the common pasttime that is searching the vast library that surrounds me&mdash;I have found something that implies this dreaded cycle could somehow be put to end. Of course you realize the significance of such an option, certainly great enough to cause me to put aside the bitter loneliness I had previously committed myself to. I hope you will feel the same, and forgot any grievances you hold in relation to myself, as just as they must be.\
+<br />&emsp;&emsp;&emsp;&emsp;Enclosed are directions to the Archives, where I will tell you more.\
+<br /><br />Hopeful,\
+<br /><s>Wuotan, the Archivist</s>\
+<br />Wuotan";
