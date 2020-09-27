@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #E5D0B1;
+}
+@font-face {
+    font-family: "Beth Ellen";
+    src: url(fonts/Beth_Ellen/BethEllen-Regular.ttf);
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+.text {
+    height: 80%;
+    font-family: "Open Sans";
+}
+.buttons {
+    height: 20%;
+    font-family: "Beth Ellen";
+    font-size: 4vh;
+}
+.button {
+    float: left;
+}
+.button:hover {
+    cursor: pointer;
+}

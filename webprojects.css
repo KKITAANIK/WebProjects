@@ -11,23 +11,88 @@ html, body {
     font-family: "Open Sans";
     src: url(Sci-fi/fonts/Open_Sans/OpenSans-Regular.ttf);
 }
-.plana {
-    width: 50%;
-    background-color: #fbfcdd;
+@font-face {
+    font-family: "Beth Ellen";
+    src: url(Dolor/fonts/Beth_Ellen/BethEllen-Regular.ttf);
+}
+.scifi {
+    width: 100%;
+    background-color: #293542;
     float: left;
-    height: 100%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.scifi {
+.plana {
     width: 50%;
-    background-color: #293542;
+    background-color: #fbfcdd;
     float: left;
-    height: 100%;
+    height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.dolor {
+    width: 50%;
+    background-color: #E5D0B1;
+    float: left;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scifibutton {
+    height: 20%;
+    width: 16.5%;
+    margin: 0.25vw;
+    float: left;
+    border-style: solid;
+    border-width: 0px;
+    text-align: center;
+    border-color: #28112c;
+    background-color: #301934;
+    font-family: "Alien League Bold";
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #DA70D6;
+}
+.scifibutton .tooltip {
+    width: 15vw;
+    background-color: #192532;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #091522;
+    bottom: 55%;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: #33b5e5;
+}
+.scifibutton:hover .tooltip {
+    opacity: 1;
+}
+.scifibutton:hover {
+    background-color: #28112c;
+    cursor: pointer;
+}
+.scifibutton:active
+{
+    background-color: #28112c;
+}
+.scifibutton:focus {
+    outline: none;
+    border-width: 5px;
 }
 
 .planabutton {
@@ -57,7 +122,7 @@ html, body {
     border-style: solid;
     border-width: 1px;
     border-color: #c0c0c0;
-    bottom: 20%;
+    top: 55%;
     border-radius: 1px;
     opacity: 0;
     transition: opacity 0.5s;
@@ -68,6 +133,7 @@ html, body {
 .planabutton:hover {
     background-color: #a07d47;
     border-color: #906d37;
+    cursor: pointer;
 }
 .planabutton:active
 {
@@ -76,53 +142,13 @@ html, body {
     border-color: #906d37;
 }
 
-.scifibutton {
-    height: 20%;
-    width: 33%;
-    margin: 0.25vw;
-    float: left;
-    border-style: solid;
-    border-width: 0px;
-    text-align: center;
-    border-color: #28112c;
-    background-color: #301934;
-    font-family: "Alien League Bold";
-    font-size: 2vw;
+.dolorbutton {
+    font-family: "Beth Ellen";
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    color: #DA70D6;
+    font-size: 2vw;
 }
-.scifibutton .tooltip {
-    width: 15vw;
-    background-color: #192532;
-    text-align: center;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    font-family: "Open Sans";
-    font-size: 1vw;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #091522;
-    bottom: 20%;
-    border-radius: 10px;
-    opacity: 0;
-    transition: opacity 0.5s;
-    color: #33b5e5;
-}
-.scifibutton:hover .tooltip {
-    opacity: 1;
-}
-.scifibutton:hover {
-    background-color: #28112c;
-}
-.scifibutton:active
-{
-    background-color: #28112c;
-}
-.scifibutton:focus {
-    outline: none;
-    border-width: 5px;
+.dolorbutton:hover {
+    cursor: pointer;
 }
