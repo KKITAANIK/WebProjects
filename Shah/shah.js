@@ -1,3 +1,5 @@
+//https://en.wikipedia.org/wiki/Military_of_the_Sasanian_Empire
+
 class Piece {
     constructor(side, type, xpos, ypos) {
         this.side = side;
@@ -57,6 +59,8 @@ function UpdateBoard() {
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             document.getElementById("t".concat(i.toString(), j.toString())).innerHTML = "";
+            document.getElementById("t".concat(i.toString(), j.toString())).onclick = ShowMoves.bind(null, i, j);
+            document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "white";
         }
     }
     for (i = 0; i < pieces.length; i++) {
@@ -69,5 +73,57 @@ function UpdateBoard() {
                 document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "red";
             }
         }
+    }
+}
+
+function ShowMoves(xpos, ypos) {
+    for (i = 0; i < 7; i++) {
+        for (j = 0; j < 7; j++) {
+            document.getElementById("t".concat(i.toString(), j.toString())).onclick = ShowMoves.bind(null, i, j);
+            document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "white";
+        }
+    }
+    let piece = -1;
+    let altpiece;
+    for (i = 0; i < pieces.length; i++) {
+        if (pieces[i].xpos == xpos && pieces[i].ypos == ypos) {
+            piece = i;
+        }
+    }
+    if (piece != -1) {
+        for (i = 0; i < 7; i++) {
+            for (j = 0; j < 7; j++) {
+                if ((((i - 1) == pieces[piece].xpos && j == pieces[piece].ypos) || ((i + 1) == pieces[piece].xpos && j == pieces[piece].ypos) || (i == pieces[piece].xpos && (j - 1) == pieces[piece].ypos) || (i == pieces[piece].xpos && (j + 1) == pieces[piece].ypos)) && pieces[piece].type == "Paighan") {
+                    altpiece = -1;
+                    for (k = 0; k < pieces.length; k++) {
+                        if (pieces[k].xpos == i && pieces[k].ypos == j) {
+                            altpiece = k;
+                        }
+                    }
+                    if (altpiece == -1) {
+                        document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "purple";
+                        document.getElementById("t".concat(i.toString(), j.toString())).onclick = function() {
+                            pieces[piece].xpos = pieces[altpiece].xpos;
+                            pieces[piece].ypos = pieces[altpiece].ypos;
+                            UpdateBoard();
+                        };
+                    }
+                    else if (pieces[piece].side != pieces[altpiece].side) {
+                        document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "purple";
+                        document.getElementById("t".concat(i.toString(), j.toString())).onclick = function() {
+                            pieces[piece].xpos = pieces[altpiece].xpos;
+                            pieces[piece].ypos = pieces[altpiece].ypos;
+                            UpdateBoard();
+                        };
+                    }
+                }
+            }
+        }
+    }
+}
+
+for (i = 0; i < 7; i++) {
+    for (j = 0; j < 7; j++) {
+        document.getElementById("t".concat(i.toString(), j.toString())).className = "tile";
     }
 }

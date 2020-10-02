@@ -43,4 +43,5 @@ html, body {
     border-style: solid;
     border-color: black;
     float: left;
+    cursor: pointer;
 }
