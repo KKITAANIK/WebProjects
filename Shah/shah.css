@@ -30,6 +30,10 @@ html, body {
     width: 100vw;
     height: 25vh;
     float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
 }
 .tile {
     width: calc(100% / 7 - 0.25vw);

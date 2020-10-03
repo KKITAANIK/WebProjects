@@ -1,5 +1,7 @@
 //https://en.wikipedia.org/wiki/Military_of_the_Sasanian_Empire
 
+let turn = 0;
+
 class Piece {
     constructor(side, type, xpos, ypos) {
         this.side = side;
@@ -56,6 +58,7 @@ new Piece(1, "Paighan", 4, 5)
 ];
 
 function UpdateBoard() {
+    turn++;
     for (let i = 0; i < 7; i++) {
         for (let j = 0; j < 7; j++) {
             document.getElementById("t".concat(i.toString(), j.toString())).innerHTML = "";
@@ -64,14 +67,22 @@ function UpdateBoard() {
         }
     }
     for (let i = 0; i < pieces.length; i++) {
-        if (pieces[i].side != 0 ) {
-            document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).innerHTML = pieces[i].type.charAt(0);
-            if (pieces[i].side == 1) {
-                document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "blue";
-            }
-            else {
-                document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "red";
-            }
+        document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).innerHTML = pieces[i].type.charAt(0);
+        if (pieces[i].side == 1) {
+            document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "blue";
+        }
+        else {
+            document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "red";
+        }
+    }
+    if (pieces[1].type != "Framadar") {
+        if (pieces[0].side == 1) {
+            document.getElementById("bottom").style.color = "blue";
+            document.getElementById("bottom").innerHTML = "Blue team wins! Refresh the page to play again!";
+        }
+        else {
+            document.getElementById("bottom").style.color = "red";
+            document.getElementById("bottom").innerHTML = "Red team wins! Refresh the page to play again!";
         }
     }
 }
@@ -90,6 +101,7 @@ function ShowMoves(xpos, ypos) {
         }
     }
     if (piece != -1) {
+        if (pieces[piece].side != ((turn % 2) + 1))
         for (let i = 0; i < 7; i++) {
             for (let j = 0; j < 7; j++) {
                 if ((((i - 1) == pieces[piece].xpos && j == pieces[piece].ypos) || ((i + 1) == pieces[piece].xpos && j == pieces[piece].ypos) || (i == pieces[piece].xpos && (j - 1) == pieces[piece].ypos) || (i == pieces[piece].xpos && (j + 1) == pieces[piece].ypos)) && pieces[piece].type == "Paighan") {
@@ -113,7 +125,10 @@ function ShowMoves(xpos, ypos) {
                         document.getElementById("t".concat(i.toString(), j.toString())).onclick = function() {
                             pieces[piece].xpos = i;
                             pieces[piece].ypos = j;
-                            targetpiece.side = 0;
+                            const index = pieces.indexOf(targetpiece, 0);
+                            if (index > -1) {
+                                pieces.splice(index, 1);
+                            }
                             UpdateBoard();
                         };
                     }
