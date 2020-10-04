@@ -16,9 +16,9 @@ function Styling() {
     ];
 
     let topbarColors = ["#fadadd", "#b0e2ff", "#726581", "#1f2933"];
-    let textColors = ["#dec2c4", "#9cc9e3", "#8e7ea1", "#2e3d4c"];
+    let textColors   = ["#dec2c4", "#9cc9e3", "#8e7ea1", "#2e3d4c"];
     let buttonColors = ["#c5acae", "#8bb3ca", "#b19dc9", "#394c5f"];
-    let fontColors = ["black", "black", "white", "white"];
+    let fontColors   = ["#000000", "#000000", "#ffffff", "#ffffff"];
         
     while (time > 3) {
         time -=4;
@@ -101,7 +101,7 @@ function PassTime() {
 
 function Start() {
     ClearButtons();
-    button[0].update(Start, "Start")
-    button[1].update(PassTime, "Pass the time")
-    button[2].update(Quit, "Quit")
+    button[0].update(Start, "Start");
+    button[1].update(PassTime, "Pass the time");
+    button[2].update(Quit, "Quit");
 }
