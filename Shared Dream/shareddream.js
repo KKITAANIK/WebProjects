@@ -1,6 +1,6 @@
 let button = [];
 let time = 0;
-let timecodes = ["Morning", "Afternon", "Evening", "Night"]
+let timecodes = ["Morning", "Afternoon", "Evening", "Night"]
 let day = 1;
 
 function Styling() {
