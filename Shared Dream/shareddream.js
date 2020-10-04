@@ -15,9 +15,9 @@ function Styling() {
         document.getElementById("b7")
     ];
 
-    let topbarColors = ["#fadadd", "#ffc972", "#726581", "#1f2933", "#0e1111"];
-    let textColors = ["#dec2c4", "#e5b365", "#8e7ea1", "#2e3d4c", "#151919"];
-    let buttonColors = ["#c5acae", "#cc9f58", "#b19dc9", "#394c5f", "#1f2525"];
+    let topbarColors = ["#fadadd", "#def3fd", "#726581", "#1f2933"];
+    let textColors = ["#dec2c4", "#c5d8e1", "#8e7ea1", "#2e3d4c"];
+    let buttonColors = ["#c5acae", "#afc0c8", "#b19dc9", "#394c5f"];
     let fontColors = ["black", "black", "white", "white"];
         
     while (time > 3) {
