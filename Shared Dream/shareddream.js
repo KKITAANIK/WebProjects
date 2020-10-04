@@ -15,10 +15,10 @@ function Styling() {
         document.getElementById("b7")
     ];
 
-    let topbarColors = ["#d3cec4", "#ffbc8f",  "#1f2933", "#0e1111"];
-    let textColors = ["#b8b2a7", "#cc9672", "#2e3d4c", "#151919"];
-    let buttonColors = ["#a39e93", "#a3785b", "#455b72", "#1f2525"];
-    let fontColors = ["black", "black", "white", "white"];
+    let topbarColors = ["#d3cec4", "#ffbc8f",  "#2e3d4c", "#0e1111"];
+    let textColors = ["#b8b2a7", "#cc9672", "#394c5f", "#151919"];
+    let buttonColors = ["#a39e93", "#a3785b", "#475f76", "#1f2525"];
+    let fontColors = ["black", "black", "black", "white"];
         
     while (time > 3) {
         time -=4;
