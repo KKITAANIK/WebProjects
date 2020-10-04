@@ -1,4 +1,7 @@
-let buttons = [];
+let button = [];
+let time = 0;
+let timecodes = ["Morning", "Afternon", "Evening", "Night"]
+let day = 1;
 
 function Styling() {
     let b = [
@@ -11,24 +14,39 @@ function Styling() {
         document.getElementById("b6"),
         document.getElementById("b7")
     ];
+
+    let topbarColors = ["#d3cec4", "#ffbc8f",  "#1f2933", "#0e1111"];
+    let textColors = ["#b8b2a7", "#cc9672", "#2e3d4c", "#151919"];
+    let buttonColors = ["#a39e93", "#a3785b", "#455b72", "#1f2525"];
+    let fontColors = ["black", "black", "white", "white"];
         
+    while (time > 3) {
+        time -=4;
+        day++;
+    }
+    document.getElementById("topbar").innerHTML = "Day ".concat(day.toString(), ", ", timecodes[time]);
+
+    document.getElementById("topbar").style.backgroundColor = topbarColors[time];
+    document.getElementById("text").style.backgroundColor = textColors[time];
+    document.getElementById("buttons").style.backgroundColor = textColors[time];
+    document.getElementById("topbar").style.color = fontColors[time];
+    document.getElementById("text").style.color = fontColors[time];
+    document.getElementById("buttons").style.color = fontColors[time];
+
     let textheight = 0;
     for (let i = 0; i < 8; i++) {
         if(b[i].disabled !=  true) {
             b[i].style.display = "flex";
+            b[i].style.backgroundColor = buttonColors[time];
+            b[i].style.color = fontColors[time];
             textheight += 8;
         }
         else {
             b[i].style.display = "none";
         }
     }
-    document.getElementById("buttons").style.height = "calc(".concat(textheight.toString().concat("vh"), " - 1vh)");
+    document.getElementById("buttons").style.height = (textheight - 1).toString().concat("vh");
     document.getElementById("text").style.height = "calc(".concat((92 - textheight).toString(), "vh - 2vw)");
-    console.log(textheight);
-    console.log(92 - textheight);
-    console.log(document.getElementById("buttons").style.height);
-    console.log(document.getElementById("text").style.height);
-
 }
 
 class Button {
@@ -56,13 +74,12 @@ class Button {
 
 function FillButtons() {
     for (let i = 0; i < 8; i++)
-        buttons[i] = new Button(i);
-    
+        button[i] = new Button(i);
 }
 
 function ClearButtons() {
-    for (let i = 0; i< buttons.length; i++) {
-        buttons[i].disable();
+    for (let i = 0; i< button.length; i++) {
+        button[i].disable();
     }
     Styling();
 }
@@ -71,9 +88,20 @@ function Output(output) {
     document.getElementById("text").innerHTML = output;
 }
 
+function Quit() {
+    if (confirm("Are you sure you want to quit?")) {
+        window.location.href = 'https://kkitaanik.github.io/WebProjects/';
+    }
+}
+
+function PassTime() {
+    time++;
+    Styling();
+}
+
 function Start() {
     ClearButtons();
-    buttons[0].update(Start, "Start")
-    buttons[1].update(Start, "Start")
-    buttons[2].update(Start, "Start")
+    button[0].update(Start, "Start")
+    button[1].update(PassTime, "Pass the time")
+    button[2].update(Quit, "Quit")
 }

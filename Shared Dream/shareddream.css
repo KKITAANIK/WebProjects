@@ -25,6 +25,8 @@ html, body {
     width: 98vw;
     padding: 1vw;
     overflow: auto;
+    text-align: justify;
+    font-size: x-large;
 }
 .buttons {
     background-color: #151919;
