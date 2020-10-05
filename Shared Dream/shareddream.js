@@ -15,8 +15,8 @@ function Styling() {
         document.getElementById("b7")
     ];
 
-    let topbarColors = ["#fadadd", "#b0e2ff", "#726581", "#1f2933"];
-    let textColors   = ["#dec2c4", "#9cc9e3", "#8e7ea1", "#2e3d4c"];
+    let topbarColors = ["#fadadd", "#b0e2ff", "#726581", "#1f2933"]; //maybe try this later? https://www.color-hex.com/color-palette/14359
+    let textColors   = ["#dec2c4", "#9cc9e3", "#8e7ea1", "#2e3d4c"]; //basically what I'm already using https://www.schemecolor.com/day-night-dark.php
     let buttonColors = ["#c5acae", "#8bb3ca", "#b19dc9", "#394c5f"];
     let fontColors   = ["#000000", "#000000", "#ffffff", "#ffffff"];
         
@@ -101,7 +101,4 @@ function PassTime() {
 
 function Start() {
     ClearButtons();
-    button[0].update(Start, "Start");
-    button[1].update(PassTime, "Pass the time");
-    button[2].update(Quit, "Quit");
 }
