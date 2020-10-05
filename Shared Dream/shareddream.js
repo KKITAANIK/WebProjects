@@ -4,7 +4,8 @@ let time;
 let timecodes = ["Morning", "Afternoon", "Evening", "Night"]
 let day = 1;
 
-let name = "";
+let pcname = "";
+let gender;
 
 function Styling() {
     let b = [
@@ -104,29 +105,86 @@ function Quit() {
 }
 
 function Start() {
-    Output("Please enter your name.<br /><input id=\"nameInput\">");
+    Output("Please enter your name.<br /><input id=\"nameInput\" class=\"input\">");
     let nameInput = document.getElementById("nameInput");
     nameInput.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
     nameInput.style.color = document.getElementById("text").style.color;
-    nameInput.style.borderColor = nameInput.style.color;
-    nameInput.style.borderStyle = "none";
-    nameInput.style.borderBottomStyle = "solid";
-    nameInput.style.fontSize = "x-large";
-    nameInput.style.fontFamily = "Open Sans";
+    nameInput.style.borderColor = nameInput.style.color;    
     nameInput.style.marginTop = "1vw";
-    nameInput.style.paddingLeft = "1vw";
 
     ClearButtons();
-    button[0].update(NameConfirm, "Submit");
+    button[0].update(NameCheck, "Submit");
 }
 
-function NameConfirm() {
-    name = document.getElementById("nameInput").value;
-    if (name.length < 1) {
+function NameCheck() {
+    pcname = document.getElementById("nameInput").value;
+    if (pcname.length < 1) {
         Start();
     }
     else {
-        Output("Your name is ".concat(name, ".<br />Is this correct?"));
+        Gender();
+    }
+}
+
+function Gender() {
+    let output = "Please select a gender and associated pronouns, or fill out the following fields with your own.<br />\
+        <br />Subject: <input id=\"subject\" class=\"input\">\
+        <br />Object: <input id=\"object\" class=\"input\">\
+        <br />Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
+        <br />Predicative Adjective: <input id=\"preadj\" class=\"input\">\
+        <br />Reflexive: <input id=\"reflex\" class=\"input\">\
+        <br />\"Is\" Contraction: <input id=\"contrac\" class=\"input\">";
+    Output(output);
+
+    let subject = document.getElementById("subject");
+    subject.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    subject.style.color = document.getElementById("text").style.color;
+    subject.style.borderColor = subject.style.color;
+    let object = document.getElementById("object");
+    object.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    object.style.color = document.getElementById("text").style.color;
+    object.style.borderColor = object.style.color;
+    let proadj = document.getElementById("proadj");
+    proadj.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    proadj.style.color = document.getElementById("text").style.color;
+    proadj.style.borderColor = proadj.style.color;
+    let preadj = document.getElementById("preadj");
+    preadj.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    preadj.style.color = document.getElementById("text").style.color;
+    preadj.style.borderColor = preadj.style.color;
+    let reflex = document.getElementById("reflex");
+    reflex.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    reflex.style.color = document.getElementById("text").style.color;
+    reflex.style.borderColor = reflex.style.color;
+    let contrac = document.getElementById("contrac");
+    contrac.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    contrac.style.color = document.getElementById("text").style.color;
+    contrac.style.borderColor = contrac.style.color;
+
+    //subject, object, pronominal adjective, predicative adjective, reflexive, contraction
+    ClearButtons();
+    button[0].update(Confirm.bind(null, "custom"), "Submit Custom Pronouns");
+    button[1].update(Confirm.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Male (he/him/his/his/himself/he's)");
+    button[2].update(Confirm.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Female (she/her/her/hers/herself/she's)");
+    button[3].update(Confirm.bind(null, ["they", "them", "their", "theirs", "themself", "they're"]), "Neutral (they/them/their/theirs/themself/they're)");
+}
+
+function Confirm(newgender) {
+    let emptypronoun = 0;
+    if (newgender == "custom") {
+        newgender = [document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("preadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
+        for (let i = 0; i < 6; i++) {
+            if (newgender[i].length < 1) {
+                emptypronoun++;
+            }
+        }
+    }
+    if (emptypronoun > 0) {
+        Gender();
+    }
+    else {
+        gender = newgender;
+        Output("Your name is ".concat(pcname, ". You use the following pronouns: ", gender[0], "/", gender[1], "/", gender[2], "/", gender[3], "/", gender[4], "/", gender[5], ".<br />Is this correct?"));
         ClearButtons();
         button[0].update(Awaken, "Yes");
         button[1].update(Start, "No");

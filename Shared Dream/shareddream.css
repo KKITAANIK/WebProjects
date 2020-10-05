@@ -61,3 +61,10 @@ html, body {
     justify-content: center;
     font-family: "Courgette";
 }
+.input {
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: x-large;
+    font-family: "Open Sans";
+    padding-left: 1vw;
+}
