@@ -94,6 +94,7 @@ function Output(output) {
 
 function PassTime() {
     time++;
+    Styling();
 }
 
 function Quit() {
