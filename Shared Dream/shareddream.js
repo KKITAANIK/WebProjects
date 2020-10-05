@@ -1,21 +1,10 @@
 let button = [];
+
 let time;
 let timecodes = ["Morning", "Afternoon", "Evening", "Night"]
 let day = 1;
 
-let d = new Date();
-if (d.getHours() >= 6 && d.getHours() < 12) {
-    time = 0;
-}
-else if (d.getHours() >= 12 && d.getHours() < 17) {
-    time = 1;
-}
-else if (d.getHours() >= 17 && d.getHours() < 20) {
-    time = 2;
-}
-else {
-    time = 3;
-}
+let name = "";
 
 function Styling() {
     let b = [
@@ -38,6 +27,7 @@ function Styling() {
         time -=4;
         day++;
     }
+
     document.getElementById("topbar").innerHTML = "Day ".concat(day.toString(), ", ", timecodes[time]);
 
     document.getElementById("topbar").style.backgroundColor = topbarColors[time];
@@ -102,17 +92,42 @@ function Output(output) {
     document.getElementById("text").innerHTML = output;
 }
 
+function PassTime() {
+    time++;
+}
+
 function Quit() {
     if (confirm("Are you sure you want to quit?")) {
         window.location.href = 'https://kkitaanik.github.io/WebProjects/';
     }
 }
 
-function PassTime() {
-    time++;
-    Styling();
+function Start() {
+    Output("Please enter your name.<br /><input id=\"nameInput\">");
+    let nameInput = document.getElementById("nameInput");
+    nameInput.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
+    nameInput.style.color = document.getElementById("text").style.color;
+    nameInput.style.borderColor = nameInput.style.color;
+    nameInput.style.borderStyle = "none";
+    nameInput.style.borderBottomStyle = "solid";
+    nameInput.style.fontSize = "x-large";
+    nameInput.style.fontFamily = "Open Sans";
+    nameInput.style.marginTop = "1vw";
+    nameInput.style.paddingLeft = "1vw";
+
+    ClearButtons();
+    button[0].update(NameConfirm, "Submit");
 }
 
-function Start() {
-    ClearButtons();
+function NameConfirm() {
+    name = document.getElementById("nameInput").value;
+    if (name.length < 1) {
+        Start();
+    }
+    else {
+        Output("Your name is ".concat(name, ".<br />Is this correct?"));
+        ClearButtons();
+        button[0].update(Awaken, "Yes");
+        button[1].update(Start, "No");
+    }
 }
