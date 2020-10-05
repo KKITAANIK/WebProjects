@@ -1,7 +1,21 @@
 let button = [];
-let time = 0;
+let time;
 let timecodes = ["Morning", "Afternoon", "Evening", "Night"]
 let day = 1;
+
+let d = new Date();
+if (d.getHours() >= 6 && d.getHours() < 12) {
+    time = 0;
+}
+else if (d.getHours() >= 12 && d.getHours() < 17) {
+    time = 1;
+}
+else if (d.getHours() >= 17 && d.getHours() < 20) {
+    time = 2;
+}
+else {
+    time = 3;
+}
 
 function Styling() {
     let b = [

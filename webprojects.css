@@ -16,6 +16,10 @@ html, body {
     font-family: "Beth Ellen";
     src: url(Dolor/fonts/Beth_Ellen/BethEllen-Regular.ttf);
 }
+@font-face {
+    font-family: "Courgette";
+    src: url(Shared\ Dream/fonts/Courgette/Courgette-Regular.ttf);
+}
 .scifi {
     width: 50%;
     background-color: #293542;
@@ -165,6 +169,10 @@ html, body {
     font-size: 3vh;
     position: absolute;
     bottom: 0.5vh;
+    font-family: "Courgette";
+}
+.shareddreambutton:hover {
+    cursor: pointer;
 }
 
 .dolorbutton {
