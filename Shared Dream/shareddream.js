@@ -164,8 +164,8 @@ function Gender() {
     //subject, object, pronominal adjective, predicative adjective, reflexive, contraction
     ClearButtons();
     button[0].update(Confirm.bind(null, "custom"), "Submit Custom Pronouns");
-    button[1].update(Confirm.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Male (he/him/his/his/himself/he's)");
-    button[2].update(Confirm.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Female (she/her/her/hers/herself/she's)");
+    button[1].update(Confirm.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Masculine (he/him/his/his/himself/he's)");
+    button[2].update(Confirm.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Feminine (she/her/her/hers/herself/she's)");
     button[3].update(Confirm.bind(null, ["they", "them", "their", "theirs", "themself", "they're"]), "Nonbinary (they/them/their/theirs/themself/they're)");
 }
 
