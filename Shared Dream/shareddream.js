@@ -6,6 +6,7 @@ let day = 1;
 
 let pcname = "";
 let gender;
+let isconj;
 
 function Styling() {
     let b = [
@@ -133,7 +134,7 @@ function Gender() {
         <br />Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
         <br />Predicative Adjective: <input id=\"preadj\" class=\"input\">\
         <br />Reflexive: <input id=\"reflex\" class=\"input\">\
-        <br />\"Is\" Contraction: <input id=\"contrac\" class=\"input\">";
+        <br />\"Is\" Contraction (must end in 's or 're): <input id=\"contrac\" class=\"input\">";
     Output(output);
 
     let subject = document.getElementById("subject");
@@ -178,6 +179,17 @@ function Confirm(newgender) {
                 emptypronoun++;
             }
         }
+    }
+    let lastchars = newgender[5].charAt(newgender[5].length - 2).toString().concat(newgender[5].charAt(newgender[5].length - 1).toString());
+    console.log(lastchars);
+    if (lastchars != "'s" && lastchars != "re") {
+        emptypronoun++;
+    }
+    else if (lastchars == "'s") {
+        isconj = "is";
+    }
+    else {
+        isconj = "are";
     }
     if (emptypronoun > 0) {
         Gender();
