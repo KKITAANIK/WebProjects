@@ -1,23 +1,11 @@
 //subject, object, pronominal adjective, predicative adjective, reflexive, contraction
 
 function Awaken() {
-    let output = "&emsp;&emsp;&emsp;&emsp;\"Hey! Cáel! I think.. I think ".concat(gender[0], " ", isconj, " waking up!\"\
+    time = 0;
+    Output("&emsp;&emsp;&emsp;&emsp;\"Ho! Cáel! I think.. I think ".concat(gender[0], " ", isconj, " waking up!\"\
         <br />&emsp;&emsp;&emsp;&emsp;\"If only ", gender[0], " were so lucky...\"\
-        <br /><br />&emsp;&emsp;&emsp;&emsp;You open your eyes slowly. ");
-    if (time == 0) {
-        output = output.concat("The room is filled with the soft glow of morning, streaming in through an as-yet unseen window.")
-    }
-    else if (time == 1) {
-        output = output.concat("The room is well-lit, the afternoon sun streaming in through an as-yet unseen window.")
-    }
-    else if (time == 2) {
-        output = output.concat("The room is filled with the dim light of evening, shadows long from the low angle of the sun.")
-    }
-    else {
-        output = output.concat("The room is evenly lit, the slight yellow tint betraying the lack of natural light.")
-    }
-    output = output.concat("");
-    Output(output);
+        <br /><br />&emsp;&emsp;&emsp;&emsp;You open your eyes slowly. The soft glow of morning fills the room, streaming in through an as-yet unseen window and illuminating two figures. One, crouched over you, is a young boy, seemingly about sixteen years old and with wavy, dark brown hair hanging down to his shoulders. His eyes are wide and earnest, chestnut irises peeking out from under a furrowed, worried brow. Looking down, you can see he's wearing a simple and somewhat faded doublet with similiarly-worn hose. Frankly, he looks like someone out of a Shakespeare play.\
+        <br />&emsp;&emsp;&emsp;&emsp;It takes you a moment to properly understand what you're looking at upon glancing at the second figure. His skin is a grey color, not in an pallid or corpse-like manner, but a true grey, like the maria of the moon. This skin is lightly sprinkled with scale-like freckles, ten or so of which dot his nose and cheeks, with a few more visible on the backs of his hands as well as his shoulders, not covered by his loose-fitting tunic. He seems to be about two meters tall, with pure white, back-length hair tied up in a carefree bun. His features are almost completely androgynous, leaving his lack of breasts as his most distinguishing sexual feature. His face shows a clear calm, with a hint of concern present around his eyes. Although bearing many familiar features, he certainly does not seem human."));
     ClearButtons();
     button[0].update(PassTime, "Pass the time.");
 }
