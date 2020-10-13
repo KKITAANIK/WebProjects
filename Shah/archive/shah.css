@@ -9,18 +9,21 @@ html, body {
     height: 100%;
 }
 .left {
-    width: calc((100vw - 100vh) / 2);
-    height: 100vh;
+    width: calc((100vw - 75vh) / 2);
+    height: 75vh;
     float: left;
 }
-.board {
-    width: calc(100vh + 0.5vh);
-    height: 100vh;
+.grid {
+    width: calc(75vh - 0.25vw);
+    height: calc(75vh - 0.25vw);
     float: left;
+    border-width: 0.125vw;
+    border-style: solid;
+    border-color: black;
 }
 .right {
-    width: calc((100vw - 100vh) / 2);
-    height: 100vh;
+    width: calc((100vw - 75vh) / 2);
+    height: 75vh;
     float: left;
 }
 .bottom {
@@ -33,14 +36,14 @@ html, body {
     font-size: 5vw;
 }
 .tile {
-    width: calc(100vh / 15 - 0.5vh);
-    height: calc(100vh / 15 - 0.5vh);
+    width: calc(100% / 7 - 0.25vw);
+    height: calc(100% / 7 - 0.25vw);
     justify-content: center;
     display: flex;  
     align-items: center;
     justify-content: bottom;
-    font-size: 3vh;
-    border-width: 0.25vh;
+    font-size: 4vw;
+    border-width: 0.125vw;
     border-style: solid;
     border-color: black;
     float: left;

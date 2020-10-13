@@ -1,145 +1,85 @@
-//https://en.wikipedia.org/wiki/Military_of_the_Sasanian_Empire
+let dimensions = [15, 15];
 
-let turn = 0;
-
-class Piece {
-    constructor(side, type, xpos, ypos) {
+class Unit {
+    constructor(side, type, ypos, xpos) {
         this.side = side;
         this.type = type;
-        this.xpos = xpos;
         this.ypos = ypos;
+        this.xpos = xpos;
     }
 }
 
-var pieces = [
-new Piece(2, "Framadar", 0, 3),
-new Piece(1, "Framadar", 6, 3),
-
-new Piece(2, "Zhayedan", 0, 2),
-new Piece(2, "Zhayedan", 0, 4),
-new Piece(1, "Zhayedan", 6, 2),
-new Piece(1, "Zhayedan", 6, 4),
-
-new Piece(2, "Cataphract", 1, 2),
-new Piece(2, "Cataphract", 1, 3),
-new Piece(2, "Cataphract", 1, 4),
-new Piece(1, "Cataphract", 5, 2),
-new Piece(1, "Cataphract", 5, 3),
-new Piece(1, "Cataphract", 5, 4),
-
-new Piece(2, "Dehqan", 1, 0),
-new Piece(2, "Dehqan", 1, 1),
-new Piece(2, "Dehqan", 1, 5),
-new Piece(2, "Dehqan", 1, 6),
-new Piece(1, "Dehqan", 5, 0),
-new Piece(1, "Dehqan", 5, 1),
-new Piece(1, "Dehqan", 5, 5),
-new Piece(1, "Dehqan", 5, 6),
-
-new Piece(2, "Kamandaran", 0, 0),
-new Piece(2, "Kamandaran", 0, 1),
-new Piece(2, "Kamandaran", 0, 5),
-new Piece(2, "Kamandaran", 0, 6),
-new Piece(1, "Kamandaran", 6, 0),
-new Piece(1, "Kamandaran", 6, 1),
-new Piece(1, "Kamandaran", 6, 5),
-new Piece(1, "Kamandaran", 6, 6),
-
-new Piece(2, "Paighan", 2, 1),
-new Piece(2, "Paighan", 2, 2),
-new Piece(2, "Paighan", 2, 3),
-new Piece(2, "Paighan", 2, 4),
-new Piece(2, "Paighan", 2, 5),
-new Piece(1, "Paighan", 4, 1),
-new Piece(1, "Paighan", 4, 2),
-new Piece(1, "Paighan", 4, 3),
-new Piece(1, "Paighan", 4, 4),
-new Piece(1, "Paighan", 4, 5)
+var units = [
+    new Unit(0, "Infantry", 14,  5),
+    new Unit(0, "Archer", 14,  6),
+    new Unit(0, "Mage", 14,  7),
+    new Unit(0, "Cavalry", 14,  8),
+    new Unit(0, "Healer", 14,  9),
+    new Unit(1, "Infantry",  0,  5),
+    new Unit(1, "Archer",  0,  6),
+    new Unit(1, "Mage",  0,  7),
+    new Unit(1, "Cavalry",  0,  8),
+    new Unit(1, "Healer",  0,  9)
 ];
 
-function UpdateBoard() {
-    turn++;
-    for (let i = 0; i < 7; i++) {
-        for (let j = 0; j < 7; j++) {
-            document.getElementById("t".concat(i.toString(), j.toString())).innerHTML = "";
-            document.getElementById("t".concat(i.toString(), j.toString())).onclick = ShowMoves.bind(null, i, j);
-            document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "white";
-        }
+function IDGen(y, x) {
+    if (y < 10) {
+        y = "0" + y.toString();
     }
-    for (let i = 0; i < pieces.length; i++) {
-        document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).innerHTML = pieces[i].type.charAt(0);
-        if (pieces[i].side == 1) {
-            document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "blue";
-        }
-        else {
-            document.getElementById("t".concat(pieces[i].xpos.toString(), pieces[i].ypos.toString())).style.color = "red";
-        }
+    else {
+        y = y.toString();
     }
-    if (pieces[1].type != "Framadar") {
-        if (pieces[0].side == 1) {
-            document.getElementById("bottom").style.color = "blue";
-            document.getElementById("bottom").innerHTML = "Blue team wins! Refresh the page to play again!";
-        }
-        else {
-            document.getElementById("bottom").style.color = "red";
-            document.getElementById("bottom").innerHTML = "Red team wins! Refresh the page to play again!";
-        }
+    if (x < 10) {
+        x = "0" + x.toString();
     }
+    else {
+        x = x.toString();
+    }
+    return (y + x);
 }
 
-function ShowMoves(xpos, ypos) {
-    for (let i = 0; i < 7; i++) {
-        for (let j = 0; j < 7; j++) {
-            document.getElementById("t".concat(i.toString(), j.toString())).onclick = ShowMoves.bind(null, i, j);
-            document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "white";
-        }
-    }
-    let piece = -1;
-    for (let i = 0; i < pieces.length; i++) {
-        if (pieces[i].xpos == xpos && pieces[i].ypos == ypos) {
-            piece = i;
-        }
-    }
-    if (piece != -1) {
-        if (pieces[piece].side != ((turn % 2) + 1))
-        for (let i = 0; i < 7; i++) {
-            for (let j = 0; j < 7; j++) {
-                if ((((i - 1) == pieces[piece].xpos && j == pieces[piece].ypos) || ((i + 1) == pieces[piece].xpos && j == pieces[piece].ypos) || (i == pieces[piece].xpos && (j - 1) == pieces[piece].ypos) || (i == pieces[piece].xpos && (j + 1) == pieces[piece].ypos)) && pieces[piece].type == "Paighan") {
-                    let altpiece = -1;
-                    for (let k = 0; k < pieces.length; k++) {
-                        if (pieces[k].xpos == i && pieces[k].ypos == j) {
-                            altpiece = k;
-                        }
-                    }
-                    if (altpiece == -1) {
-                        document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "purple";
-                        document.getElementById("t".concat(i.toString(), j.toString())).onclick = function() {
-                            pieces[piece].xpos = i;
-                            pieces[piece].ypos = j;
-                            UpdateBoard();
-                        };
-                    }
-                    else if (pieces[piece].side != pieces[altpiece].side) {
-                        let targetpiece = pieces[altpiece];
-                        document.getElementById("t".concat(i.toString(), j.toString())).style.backgroundColor = "purple";
-                        document.getElementById("t".concat(i.toString(), j.toString())).onclick = function() {
-                            pieces[piece].xpos = i;
-                            pieces[piece].ypos = j;
-                            const index = pieces.indexOf(targetpiece, 0);
-                            if (index > -1) {
-                                pieces.splice(index, 1);
-                            }
-                            UpdateBoard();
-                        };
-                    }
-                }
+function Start() {
+    let board = document.getElementById("board");
+    board.innerHTML = "";
+
+    for (let i = 0; i < dimensions[0]; i++) {
+        for (let j = 0; j < dimensions[1]; j++) {
+            let id = IDGen(i, j);
+            board.innerHTML += "<div class=\"tile\" id=\"" + id + "\">" + id + "</div>";
+            if (j == 0) {
+                document.getElementById(id).style.borderLeftWidth = "0.5vh";
+            }
+            else if (j == (dimensions[1] - 1)) {
+                document.getElementById(id).style.borderRightWidth = "0.5vh";
             }
         }
     }
 }
 
-for (let i = 0; i < 7; i++) {
-    for (let j = 0; j < 7; j++) {
-        document.getElementById("t".concat(i.toString(), j.toString())).className = "tile";
+function UpdateBoard() {
+    for (let i = 0; i < dimensions[0]; i++) {
+        for (let j = 0; j < dimensions[1]; j++) {
+            let id = IDGen(i, j);
+            //document.getElementById(id).innerHTML = "";
+            document.getElementById(id).style.backgroundColor = "white";
+        }
+    }
+    let unitnum = [0, 0];
+    for (let i = 0; i < units.length; i++) {
+        let id = IDGen(units[i].ypos, units[i].xpos);
+        document.getElementById(id).innerHTML = units[i].type.charAt(0);
+        unitnum[units[i].side]++;
+        if (units[i].side == 0) {
+            document.getElementById(id).style.color = "blue";
+        }
+        else {
+            document.getElementById(id).style.color = "red";
+        }
+    }
+    if (unitnum[0] == 0) {
+        console.log("Side 1 victory");
+    }
+    else if (unitnum[1] == 0) {
+        console.log("Side 0 victory");
     }
 }
