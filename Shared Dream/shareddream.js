@@ -106,7 +106,7 @@ function Quit() {
 }
 
 function Start() {
-    Output("Please enter your name.<br /><input id=\"nameInput\" class=\"input\">");
+    Output("Please enter your name.<br><input id=\"nameInput\" class=\"input\">");
     let nameInput = document.getElementById("nameInput");
     nameInput.style.backgroundColor = document.getElementById("b1").style.backgroundColor;
     nameInput.style.color = document.getElementById("text").style.color;
@@ -128,13 +128,13 @@ function NameCheck() {
 }
 
 function Gender() {
-    let output = "Please select a gender and associated pronouns, or fill out the following fields with your own.<br />\
-        <br />Subject: <input id=\"subject\" class=\"input\">\
-        <br />Object: <input id=\"object\" class=\"input\">\
-        <br />Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
-        <br />Predicative Adjective: <input id=\"preadj\" class=\"input\">\
-        <br />Reflexive: <input id=\"reflex\" class=\"input\">\
-        <br />\"Is\" Contraction (must end in 's or 're): <input id=\"contrac\" class=\"input\">";
+    let output = "Please select a gender and associated pronouns, or fill out the following fields with your own.<br>\
+        <br>Subject: <input id=\"subject\" class=\"input\">\
+        <br>Object: <input id=\"object\" class=\"input\">\
+        <br>Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
+        <br>Predicative Adjective: <input id=\"preadj\" class=\"input\">\
+        <br>Reflexive: <input id=\"reflex\" class=\"input\">\
+        <br>\"Is\" Contraction (must end in 's or 're): <input id=\"contrac\" class=\"input\">";
     Output(output);
 
     let subject = document.getElementById("subject");
@@ -196,7 +196,7 @@ function Confirm(newgender) {
     }
     else {
         gender = newgender;
-        Output("Your name is ".concat(pcname, ". You use the following pronouns: ", gender[0], "/", gender[1], "/", gender[2], "/", gender[3], "/", gender[4], "/", gender[5], ".<br />Is this correct?"));
+        Output("Your name is ".concat(pcname, ". You use the following pronouns: ", gender[0], "/", gender[1], "/", gender[2], "/", gender[3], "/", gender[4], "/", gender[5], ".<br>Is this correct?"));
         ClearButtons();
         button[0].update(Awaken, "Yes");
         button[1].update(Start, "No");
