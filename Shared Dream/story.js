@@ -16,7 +16,7 @@ function IntroWhere(step) {
         button[0].update(IntroWhere.bind(null, 1), "Okay.");
         button[1].update(IntroWhere.bind(null, 2), "No, tell me where this is, first.");
     }
-    else if (step == 3) {
+    else if (step == 1) {
         Output("&emsp;&emsp;&emsp;&emsp;\"Very well, let us start simply: What is your name?\"");
         button[0].update(IntroQuestions.bind(null, 0), "<i>Tell him your name.</i>");
         button[1].update(IntroWhere.bind(null, 3), "Tell me yours, first.");
