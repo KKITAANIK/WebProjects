@@ -23,7 +23,7 @@ function IntroWhere(step) {
         button[2].update(IntroWhere.bind(null, 4), "<i>Remain silent.</i>");
     }
     else if (step == 2) {
-        Output("&emsp;&emsp;&emsp;&emsp;He sighs softly before nodding. \"I have reason to believe that none of this is real. Or at least, real in the objective sense. The stars have remained static, and I have no memory of how I would have arrived here. It is as if this world were a potent dream, a true simulation and fully realized in experience, but lacking in worldly substance&mdash;in construction. I don't yet know how you fit in to this dream, however I will relate to you my most complete speculation if you would be willing answer a few of my questions. Let us start simply: What is you name?\"");
+        Output("&emsp;&emsp;&emsp;&emsp;He sighs softly before nodding. \"I have reason to believe that none of this is real. Or at least, real in the objective sense. The stars have remained static, and I have no memory of how I would have arrived here. It is as if this world were a potent dream, a true simulation and fully realized in experience, but lacking in worldly substance&mdash;in construction. I do not yet know how you fit in to this dream, however I will relate to you my most complete speculation if you would be willing answer a few of my questions. Let us start simply: What is you name?\"");
         button[0].update(IntroQuestions.bind(null, 0), "<i>Tell him your name.</i>");
         button[1].update(IntroWhere.bind(null, 3), "Tell me yours, first.");
         button[2].update(IntroWhere.bind(null, 4), "<i>Remain silent.</i>");
