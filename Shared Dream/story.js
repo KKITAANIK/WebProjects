@@ -37,7 +37,7 @@ function IntroWhere(step) {
         button[0].update(IntroQuestions.bind(null, 0), "<i>Tell him your name.</i>");
         button[2].update(IntroWhere.bind(null, 5), "<i>Remain silent.</i>");
     }
-    else if (step == 6) {
+    else if (step == 5) {
         Output("&emsp;&emsp;&emsp;&emsp;\"What if I were to tell you mine, to show you there is no danger in the action? My name is Cáel. It can mean both 'warrior' and 'poet', but I hope to affirm only the latter. I could talk long over the meaning of names, but let us save that for another time. Do you feel ready to share your own?\"");
         button[0].update(IntroQuestions.bind(null, 0), "<i>Tell him your name.</i>");
     }
