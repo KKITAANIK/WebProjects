@@ -1,7 +1,7 @@
 let button = [];
 
 let time;
-let timecodes = ["Morning", "Afternoon", "Evening", "Night"]
+let timecodes = ["Morning", "Afternoon", "Evening", "Night"];
 let day = 1;
 
 let pcname = "";
@@ -30,7 +30,7 @@ function Styling() {
         day++;
     }
 
-    document.getElementById("topbar").innerHTML = "Day ".concat(day.toString(), ", ", timecodes[time]);
+    document.getElementById("topbar").innerHTML = "Day " + day.toString() + ", " + timecodes[time];
 
     document.getElementById("topbar").style.backgroundColor = topbarColors[time];
     document.getElementById("text").style.backgroundColor = textColors[time];
@@ -51,8 +51,8 @@ function Styling() {
             b[i].style.display = "none";
         }
     }
-    document.getElementById("buttons").style.height = (textheight - 1).toString().concat("vh");
-    document.getElementById("text").style.height = "calc(".concat((92 - textheight).toString(), "vh - 2vw)");
+    document.getElementById("buttons").style.height = (textheight - 1).toString() + "vh";
+    document.getElementById("text").style.height = "calc(" + (92 - textheight).toString() + "vh - 2vw)";
 }
 
 class Button {
@@ -94,8 +94,12 @@ function Output(output) {
     document.getElementById("text").innerHTML = output;
 }
 
-function PassTime() {
-    time++;
+function Rand(min, max) { //both included
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
+function PassTime(num) {
+    time += num;
     Styling();
 }
 
@@ -180,8 +184,7 @@ function Confirm(newgender) {
             }
         }
     }
-    let lastchars = newgender[5].charAt(newgender[5].length - 2).toString().concat(newgender[5].charAt(newgender[5].length - 1).toString());
-    console.log(lastchars);
+    let lastchars = newgender[5].charAt(newgender[5].length - 2).toString() + newgender[5].charAt(newgender[5].length - 1).toString();
     if (lastchars != "'s" && lastchars != "re") {
         emptypronoun++;
     }
@@ -196,7 +199,7 @@ function Confirm(newgender) {
     }
     else {
         gender = newgender;
-        Output("Your name is ".concat(pcname, ". You use the following pronouns: ", gender[0], "/", gender[1], "/", gender[2], "/", gender[3], "/", gender[4], "/", gender[5], ".<br>Is this correct?"));
+        Output("Your name is " + pcname + ". You use the following pronouns: " + gender[0] + "/" + gender[1] + "/" + gender[2] + "/" + gender[3] + "/" + gender[4] + "/" + gender[5] + ". Is this correct?");
         ClearButtons();
         button[0].update(Awaken, "Yes");
         button[1].update(Start, "No");
