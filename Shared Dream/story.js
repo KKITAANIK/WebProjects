@@ -93,8 +93,8 @@ function InitializeFlags() {
     flag.waitCount = 0;
     flag.exploreCount = 0;
     flag.mountainCount = 0;
-    flag.foundShingle = 0;
-    flag.foundHouse = 0;
+    flag.foundSlateTile = 0;
+    flag.tookTile = 0;
 }
 
 function Awaken() {
@@ -129,17 +129,21 @@ function StartLoop(step) {
             output += "<br>&emsp;&emsp;&emsp;&emsp;You wonder if the sun usually moves that quickly. It's hard to tell, but it feels like it should have taken just a slight bit longer for the sun to have gotten there from where it was when you started. You guess you just haven't paid much attention before.";
         }
         Output(output);
+        button[0].update(IntroMenu, "<i>Next.</i>");
     }
     else if (step == 1) {
         flag.exploreCount++;
-        let output = "";
-        if (flag.foundShingle == 0) {
-            let rand = Rand(0, 1);
-            if ((rand == 1 && flag.exploreCount == 2) || flag.exploreCount == 3) {
-                output += "";
+        let output = "&emsp;&emsp;&emsp;&emsp;You spend your time wandering aimlessly through the hills.";
+        if (flag.foundSlateTile == 0) {
+            let rand = Rand(1, 100);
+            if ((rand % 2 == 0 && flag.exploreCount == 2) || flag.exploreCount == 3) {
+                output += "<br>&emsp;&emsp;&emsp;&emsp;After twenty minutes or so of mindless walking, the acitivity mostly background for your thoughts, the previously consistent feeling of soft grass beneath your feet is interrupted by the firm resistance of stone. Looking down, you're able to identify a thin, somewhat large rectangle of grey slate, covered in dust and dirt. It was clearly cut to its size, and there seem to be two holes located in the center of the upper -left and -right quarters. However unimpresive a slate tile may be, it is the first unique object you've found in this world.";
+                button[0].update(SlateTile.bind(null, "take"), "<i>Carry the tile with you.</i>");
+                button[1].update(SlateTile.bind(null, "leave"), "<i>Leave the tile where you found it.</i>");
             }
             else {
                 output += "";
+                button[0].update(IntroMenu, "<i>Next.</i>");
             }
         }
         Output(output);
@@ -149,8 +153,8 @@ function StartLoop(step) {
     }
     else if (step == 3) {
         Output("&emsp;&emsp;&emsp;&emsp;You wake up.");
+        button[0].update(IntroMenu, "<i>Next.</i>");
     }
-    button[0].update(IntroMenu, "<i>Next.</i>");
 }
 
 function IntroMenu() {
@@ -164,4 +168,17 @@ function IntroMenu() {
     else {
         button[0].update(StartLoop.bind(null, 3), "<i>Sleep in the grass.</i>");
     }
+}
+
+function SlateTile(option) {
+    flag.foundSlateTile = 1;
+    if (option == "take") {
+        Output("&emsp;&emsp;&emsp;&emsp;You decide it's best to take the tile with you. It must serve some purpose, or at the very least it's simply a possession, which is comforting in its own right.");
+        flag.tookTile = 1;
+    }
+    else if (option == "leave") {
+        Output("&emsp;&emsp;&emsp;&emsp;You decide it's leave the tile where you found it. It's just a piece of rock you can't be bothered to carry around with you.");
+    }
+    ClearButtons();
+    button[0].update(IntroMenu, "<i>Next.</i>");
 }
