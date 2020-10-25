@@ -95,6 +95,8 @@ function InitializeFlags() {
     flag.mountainCount = 0;
     flag.foundSlateTile = 0;
     flag.tookTile = 0;
+    flag.houseSpawned = 0;
+    flag.houseFound = 0;
 }
 
 function Awaken() {
@@ -102,9 +104,7 @@ function Awaken() {
     InitializeFlags();
     Output("&emsp;&emsp;&emsp;&emsp;You open your eyes slowly. The first thing you are able to process about your surroundings is that you seem to be outside. There's a slight breeze, along with soft grass, brushing against your skin, the latter tickling the back of your neck as you turn your head. Your eyes finally focusing, you're able to make out a little more detail. You seem to be in the middle of a tract of rolling hills, a vast expanse of meadow with quite a variety of flowers on display. There are a few streams winding through the lows and valleys, not powerful enough to carve away much at the landscape and likely originating from a range of mountains several kilometers in the distance, capped in ice.");
     ClearButtons();
-    button[0].update(StartLoop.bind(null, 0), "<i>Wait.</i>");
-    button[1].update(StartLoop.bind(null, 1), "<i>Explore.</i>");
-    button[2].update(StartLoop.bind(null, 2), "<i>Walk in the direction of the mountain.</i>");
+    button[0].update(IntroMenu, "<i>Next.</i>");
 }
 
 function StartLoop(step) {
@@ -142,7 +142,7 @@ function StartLoop(step) {
                 button[1].update(SlateTile.bind(null, "leave"), "<i>Leave the tile where you found it.</i>");
             }
             else {
-                output += "";
+                output += "<br>&emsp;&emsp;&emsp;&emsp;You feel a bit more able to find your way in this world, by feel rather than landmark given the endless expanse of rolling, flowered hills that lend very little to conventional navigation. You don't <i>find</i> anything in particular, but you get the feeling that doesn't mean there's nothing to be found.";
                 button[0].update(IntroMenu, "<i>Next.</i>");
             }
         }
@@ -152,21 +152,45 @@ function StartLoop(step) {
         
     }
     else if (step == 3) {
-        Output("&emsp;&emsp;&emsp;&emsp;You wake up.");
+        if (flag.houseFound == 0) {
+            if (flag.houseSpawned == 0 && flag.tookTile == 1) {
+                flag.houseSpawned = 1;
+                flag.houseFound = 1;
+                //house spawns
+                Output("&emsp;&emsp;&emsp;&emsp;You wake up.");
+            }
+            else {
+                //sleep in grass
+                Output("&emsp;&emsp;&emsp;&emsp;You wake up.");
+            }
+        }
+        else {
+            //standard wake up in house
+            Output("&emsp;&emsp;&emsp;&emsp;You wake up.");
+        }
         button[0].update(IntroMenu, "<i>Next.</i>");
     }
 }
 
 function IntroMenu() {
     PassTime(1);
-    Output("&emsp;&emsp;&emsp;&emsp;Menu text.")
+    if (time == 0) {
+        Output("&emsp;&emsp;&emsp;&emsp;Menu text.");
+    }
+    else if (time == 1) {
+        Output("&emsp;&emsp;&emsp;&emsp;Menu text.");
+    }
+    else if (time == 2) {
+        Output("&emsp;&emsp;&emsp;&emsp;Menu text.");
+    }
+    else if (time == 3) {
+        Output("&emsp;&emsp;&emsp;&emsp;Menu text.");
+        button[0].update(StartLoop.bind(null, 3), "<i>Sleep in the grass.</i>");
+    }
     if (time != 3) {
         button[0].update(StartLoop.bind(null, 0), "<i>Wait.</i>");
         button[1].update(StartLoop.bind(null, 1), "<i>Explore aimlessly.</i>");
         button[2].update(StartLoop.bind(null, 2), "<i>Walk in the direction of the mountain.</i>");
-    }
-    else {
-        button[0].update(StartLoop.bind(null, 3), "<i>Sleep in the grass.</i>");
     }
 }
 
