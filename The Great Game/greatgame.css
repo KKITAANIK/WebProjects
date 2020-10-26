@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+html, body {
+    height: 100%;
+    margin: 0px;
+    font-family: "Open Sans";
+    font-size: 4vh;
+}
