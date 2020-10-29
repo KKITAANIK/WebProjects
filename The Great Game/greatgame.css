@@ -41,7 +41,7 @@ html, body {
     font-family: "Open Sans";
     font-size: 0.8vw;
     color: lightgrey;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: none;
     text-align: justify;
     position: absolute;
     bottom: 0.8vw;
@@ -50,5 +50,17 @@ html, body {
 }
 a {
     color: lightskyblue;
-    cursor: pointer;
+    text-shadow: none;
+}
+.errorpage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: calc(100% - 20vw);
+    text-align: center;
+    padding: 10vw;
+    font-family: "Open Sans";
+    background-color: #c0c0c0;
+    color: #606060;
 }
