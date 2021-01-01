@@ -50,8 +50,10 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
+    listEnemies();
     makeButtons();
     setPlayer();
+    attackableHeroes();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -134,6 +136,19 @@ function updateRes() {
     $("#resresult").html(resans);
 }
 
+function setDef(defender, def, res) {
+    document.getElementById("defender").innerHTML = defender;
+    document.getElementById("def").value = parseInt(def);
+    document.getElementById("res").value = parseInt(res);
+    updateRes();
+}
+
+function setAtk(attacker, atk) {
+    document.getElementById("attacker").innerHTML = attacker;
+    document.getElementById("atk").value = parseInt(atk);
+    updateRes();
+}
+
 function makeButtons() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
@@ -141,21 +156,13 @@ function makeButtons() {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            function setVals(defender, def, res) {
-                updateRes();
-                document.getElementById("defender").innerHTML = defender;
-                document.getElementById("def").value = def;
-                document.getElementById("res").value = res;
-            }
             for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
-                btn.onclick = setVals.bind(null, row[0], row[3], row[4]);
+                btn.onclick = setDef.bind(null, row[0], row[3], row[4]);
                 document.getElementById("enemies").appendChild(btn);
             }
-            document.getElementById("enemies").innerHTML += "<br>Heroes: <span id=\"heroes\"></span>";
-            attackableHeroes();
         } else {
             appendPre('No data found.');
         }
@@ -167,7 +174,7 @@ function makeButtons() {
 function setPlayer() {};
 function attackableHeroes() {};
 
-function setAtk(player) {
+function setHeroes(player) {
     sheetid = player + "!A2:F";
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
@@ -175,17 +182,12 @@ function setAtk(player) {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            function setVals(atk) {
-                updateRes();
-                document.getElementById("attacker").innerHTML = player;
-                document.getElementById("atk").value = atk;
-            }
             document.getElementById("player").innerHTML = "";
             for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
-                btn.onclick = setVals.bind(null, row[2]);
+                btn.onclick = setAtk.bind(null, row[0], row[2]);
                 document.getElementById("player").appendChild(btn);
             }
             var btn = document.createElement("BUTTON");
@@ -208,17 +210,12 @@ function addHeroes(player) {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            function setVals(atk) {
-                updateRes();
-                document.getElementById("attacker").innerHTML = player;
-                document.getElementById("atk").value = atk;
-            }
             document.getElementById("heroes").innerHTML = "";
             for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
-                btn.onclick = setVals.bind(null, row[2]);
+                btn.onclick = setDef.bind(null, row[0], row[3], row[4]);
                 document.getElementById("heroes").appendChild(btn);
             }
             var btn = document.createElement("BUTTON");
@@ -235,12 +232,12 @@ function addHeroes(player) {
 
 setPlayer = function() {
     document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Enemies</button>"
-    document.getElementById("player1").onclick = setAtk.bind(null, document.getElementById("player1").innerHTML);
-    document.getElementById("player2").onclick = setAtk.bind(null, document.getElementById("player2").innerHTML);
-    document.getElementById("player3").onclick = setAtk.bind(null, document.getElementById("player3").innerHTML);
-    document.getElementById("player4").onclick = setAtk.bind(null, document.getElementById("player4").innerHTML);
-    document.getElementById("player5").onclick = setAtk.bind(null, document.getElementById("player5").innerHTML);
-    document.getElementById("player6").onclick = setAtk.bind(null, document.getElementById("player6").innerHTML);
+    document.getElementById("player1").onclick = setHeroes.bind(null, document.getElementById("player1").innerHTML);
+    document.getElementById("player2").onclick = setHeroes.bind(null, document.getElementById("player2").innerHTML);
+    document.getElementById("player3").onclick = setHeroes.bind(null, document.getElementById("player3").innerHTML);
+    document.getElementById("player4").onclick = setHeroes.bind(null, document.getElementById("player4").innerHTML);
+    document.getElementById("player5").onclick = setHeroes.bind(null, document.getElementById("player5").innerHTML);
+    document.getElementById("player6").onclick = setHeroes.bind(null, document.getElementById("player6").innerHTML);
 }
 
 attackableHeroes = function() {
