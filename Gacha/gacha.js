@@ -129,8 +129,29 @@ function updateRes() {
     let ebuffs = parseInt(document.getElementById("ebuffs").value);
     if (isNaN(ebuffs))
         ebuffs = 0;
-    let defans = atk + mod + hbuffs - def - ebuffs;
-    let resans = atk + mod + hbuffs - res - ebuffs;
+
+    let defans = atk.toString();
+    let resans = atk.toString();
+    if (mod != 0) {
+        defans += " + " + mod.toString();
+        resans += " + " + mod.toString();
+    }
+    if (hbuffs != 0) {
+        defans += " + " + hbuffs.toString();
+        resans += " + " + hbuffs.toString();
+    }
+    if (def != 0)
+        defans += " - " + def.toString();
+    if (res != 0)
+        resans += " - " + res.toString();
+    if (ebuffs != 0) {
+        defans += " - " + ebuffs.toString();
+        resans += " - " + ebuffs.toString();
+    }
+
+    defans += " = " + (atk + mod + hbuffs - def - ebuffs).toString();
+    resans += " = " + (atk + mod + hbuffs - res - ebuffs).toString();
+
     $("#defresult").html(defans);
     $("#resresult").html(resans);
 }
