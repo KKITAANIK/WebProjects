@@ -50,7 +50,6 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
-    listEnemies();
     makeButtons();
     setPlayer();
     attackableHeroes();
