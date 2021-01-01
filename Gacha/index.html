@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gacha Combat</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>Gacha Combat</p>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" style="display: none;">Authorize</button>
+    <button id="signout_button" style="display: none;">Sign Out</button>
+
+    <label for="atk">Base Atk Stat:</label>
+    <input type="number" class="field" id="atk">
+    <label for="mod">Weapon/Attack Modifier:</label>
+    <input type="number" class="field" id="mod">
+    <label for="hbuffs">Attack Buffs:</label>
+    <input type="number" class="field" id="hbuffs">
+    <label for="def"><br>Enemy Def Stat:</label>
+    <input type="number" class="field" id="def">
+    <label for="res">Enemy Res Stat:</label>
+    <input type="number" class="field" id="res">
+    <label for="ebuffs">Enemy Buffs:</label>
+    <input type="number" class="field" id="ebuffs">
+    <div>Damage if Def = <span id="defresult"></span></div>
+    <div>Damage if Res = <span id="resresult"></span></div>
+    <script>
+        $(".field").change(function() {
+            let atk = parseInt(document.getElementById("atk").value);
+            if (isNaN(atk))
+                atk = 0;
+            let mod = parseInt(document.getElementById("mod").value);
+            if (isNaN(mod))
+                mod = 0;
+            let hbuffs = parseInt(document.getElementById("hbuffs").value);
+            if (isNaN(hbuffs))
+                hbuffs = 0;
+            let def = parseInt(document.getElementById("def").value);
+            if (isNaN(def))
+                def = 0;
+            let res = parseInt(document.getElementById("res").value);
+            if (isNaN(res))
+                res = 0;
+            let ebuffs = parseInt(document.getElementById("ebuffs").value);
+            if (isNaN(ebuffs))
+                ebuffs = 0;
+            let defans = atk + mod + hbuffs - def - ebuffs;
+            let resans = atk + mod + hbuffs - res - ebuffs;
+            $("#defresult").html(defans);
+            $("#resresult").html(resans);
+        });
+    </script>
+    <div><br></div>
+    <div id="player"></div>
+    <div><br></div>
+    <div id="enemies"></div>
+    
+    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+    <script src="gacha.js"></script> <!--this is all the stuff that came with it that I just don't want to deal with-->
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>

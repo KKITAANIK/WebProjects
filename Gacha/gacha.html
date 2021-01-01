@@ -39,5 +39,11 @@
                 $("#result").html(ans);
             });
         </script>
+        <div id="sheet"></div>
+        <script>
+            $.getJSON("https://spreadsheets.google.com/feeds/cells/1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc/6/public/full?alt=json", function(data) {
+                document.getElementById("sheet").innerHTML = $(data);
+            });
+        </script>
     </body>
 </html>
