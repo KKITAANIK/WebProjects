@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Damage calculator</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <script src=gacha.js></script>
+    <body>
+        <label for="atk">Base Atk Stat:</label>
+        <input type="number" class="field" id="atk">
+        <label for="mod">Weapon/Attack Modifier:</label>
+        <input type="number" class="field" id="mod">
+        <label for="hbuffs">Attack Buffs:</label>
+        <input type="number" class="field" id="hbuffs">
+        <label for="defres">Enemy Def/Res Stat:</label>
+        <input type="number" class="field" id="defres">
+        <label for="ebuffs">Enemy Def/Res Buffs:</label>
+        <input type="number" class="field" id="ebuffs">
+        <div>Damage = <span id="result"></span></div>
+        <script>
+            $(".field").change(function() {
+                let atk = parseInt(document.getElementById("atk").value);
+                if (isNaN(atk))
+                    atk = 0;
+                let mod = parseInt(document.getElementById("mod").value);
+                if (isNaN(mod))
+                    mod = 0;
+                let hbuffs = parseInt(document.getElementById("hbuffs").value);
+                if (isNaN(hbuffs))
+                    hbuffs = 0;
+                let defres = parseInt(document.getElementById("defres").value);
+                if (isNaN(defres))
+                    defres = 0;
+                let ebuffs = parseInt(document.getElementById("ebuffs").value);
+                if (isNaN(ebuffs))
+                    ebuffs = 0;
+                let ans = atk + mod + hbuffs - defres - ebuffs;
+                $("#result").html(ans);
+            });
+        </script>
+    </body>
+</html>
