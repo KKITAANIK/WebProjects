@@ -147,13 +147,15 @@ function makeButtons() {
                 document.getElementById("def").value = def;
                 document.getElementById("res").value = res;
             }
-            for (i = 0; i < range.values[i][0] != undefined; i++) {
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
                 btn.onclick = setVals.bind(null, row[0], row[3], row[4]);
                 document.getElementById("enemies").appendChild(btn);
             }
+            document.getElementById("enemies").innerHTML += "<br>Heroes: <span id=\"heroes\"></span>";
+            attackableHeroes();
         } else {
             appendPre('No data found.');
         }
@@ -163,6 +165,7 @@ function makeButtons() {
 }
 
 function setPlayer() {};
+function attackableHeroes() {};
 
 function setAtk(player) {
     sheetid = player + "!A2:F";
@@ -178,7 +181,7 @@ function setAtk(player) {
                 document.getElementById("atk").value = atk;
             }
             document.getElementById("player").innerHTML = "";
-            for (i = 0; range.values[i][0] != undefined; i++) {
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
@@ -197,11 +200,54 @@ function setAtk(player) {
     });
 }
 
+function addHeroes(player) {
+    sheetid = player + "!A2:F";
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: sheetid,
+    }).then(function(response) {
+        var range = response.result;
+        if (range.values.length > 0) {
+            function setVals(atk) {
+                updateRes();
+                document.getElementById("attacker").innerHTML = player;
+                document.getElementById("atk").value = atk;
+            }
+            document.getElementById("heroes").innerHTML = "";
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
+                var row = range.values[i];
+                var btn = document.createElement("BUTTON");
+                btn.innerHTML = row[0];
+                btn.onclick = setVals.bind(null, row[2]);
+                document.getElementById("heroes").appendChild(btn);
+            }
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = "Back";
+            btn.onclick = attackableHeroes;
+            document.getElementById("heroes").appendChild(btn);
+        } else {
+            appendPre('No data found.');
+        }
+    }, function(response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
+}
+
 setPlayer = function() {
-    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button>"
+    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Enemies</button>"
     document.getElementById("player1").onclick = setAtk.bind(null, document.getElementById("player1").innerHTML);
     document.getElementById("player2").onclick = setAtk.bind(null, document.getElementById("player2").innerHTML);
     document.getElementById("player3").onclick = setAtk.bind(null, document.getElementById("player3").innerHTML);
     document.getElementById("player4").onclick = setAtk.bind(null, document.getElementById("player4").innerHTML);
     document.getElementById("player5").onclick = setAtk.bind(null, document.getElementById("player5").innerHTML);
+    document.getElementById("player6").onclick = setAtk.bind(null, document.getElementById("player6").innerHTML);
+}
+
+attackableHeroes = function() {
+    document.getElementById("heroes").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button>"
+    document.getElementById("heroset1").onclick = addHeroes.bind(null, document.getElementById("heroset1").innerHTML);
+    document.getElementById("heroset2").onclick = addHeroes.bind(null, document.getElementById("heroset2").innerHTML);
+    document.getElementById("heroset3").onclick = addHeroes.bind(null, document.getElementById("heroset3").innerHTML);
+    document.getElementById("heroset4").onclick = addHeroes.bind(null, document.getElementById("heroset4").innerHTML);
+    document.getElementById("heroset5").onclick = addHeroes.bind(null, document.getElementById("heroset5").innerHTML);
 }
