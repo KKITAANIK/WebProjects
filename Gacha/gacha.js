@@ -146,7 +146,7 @@ function makeButtons() {
                 document.getElementById("def").value = def;
                 document.getElementById("res").value = res;
             }
-            for (i = 0; i < range.values.length; i++) {
+            for (i = 0; i < range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];

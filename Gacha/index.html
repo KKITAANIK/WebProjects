@@ -12,6 +12,8 @@
     <button id="authorize_button" style="display: none;">Authorize</button>
     <button id="signout_button" style="display: none;">Sign Out</button>
 
+    <div><span id="attacker">No one</span> attacking <span id="defender">no one</span></div>
+    <div><br></div>
     <label for="atk">Base Atk Stat:</label>
     <input type="number" class="field" id="atk">
     <label for="mod">Weapon/Attack Modifier:</label>
@@ -26,9 +28,6 @@
     <input type="number" class="field" id="ebuffs">
     <div>Damage if Def = <span id="defresult"></span></div>
     <div>Damage if Res = <span id="resresult"></span></div>
-    <script>
-        $(".field").change(updateRes);
-    </script>
     <div><br></div>
     <div id="player"></div>
     <div><br></div>
@@ -37,6 +36,10 @@
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
     <script src="gacha.js"></script> <!--this is all the stuff that came with it that I just don't want to deal with-->
+    
+    <script>
+        $(".field").change(updateRes);
+    </script>
 
     <script async defer src="https://apis.google.com/js/api.js"
       onload="this.onload=function(){};handleClientLoad()"
