@@ -50,7 +50,6 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
-    listEnemies();
     makeButtons();
     setPlayer();
   } else {
@@ -110,6 +109,31 @@ function listEnemies() {
   });
 }
 
+function updateRes() {
+    let atk = parseInt(document.getElementById("atk").value);
+    if (isNaN(atk))
+        atk = 0;
+    let mod = parseInt(document.getElementById("mod").value);
+    if (isNaN(mod))
+        mod = 0;
+    let hbuffs = parseInt(document.getElementById("hbuffs").value);
+    if (isNaN(hbuffs))
+        hbuffs = 0;
+    let def = parseInt(document.getElementById("def").value);
+    if (isNaN(def))
+        def = 0;
+    let res = parseInt(document.getElementById("res").value);
+    if (isNaN(res))
+        res = 0;
+    let ebuffs = parseInt(document.getElementById("ebuffs").value);
+    if (isNaN(ebuffs))
+        ebuffs = 0;
+    let defans = atk + mod + hbuffs - def - ebuffs;
+    let resans = atk + mod + hbuffs - res - ebuffs;
+    $("#defresult").html(defans);
+    $("#resresult").html(resans);
+}
+
 function makeButtons() {
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
@@ -118,6 +142,7 @@ function makeButtons() {
         var range = response.result;
         if (range.values.length > 0) {
             function setVals(def, res) {
+                updateRes();
                 document.getElementById("def").value = def;
                 document.getElementById("res").value = res;
             }
@@ -147,6 +172,7 @@ function setAtk(player) {
         var range = response.result;
         if (range.values.length > 0) {
             function setVals(atk) {
+                updateRes();
                 document.getElementById("atk").value = atk;
             }
             document.getElementById("player").innerHTML = "";

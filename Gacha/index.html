@@ -27,30 +27,7 @@
     <div>Damage if Def = <span id="defresult"></span></div>
     <div>Damage if Res = <span id="resresult"></span></div>
     <script>
-        $(".field").change(function() {
-            let atk = parseInt(document.getElementById("atk").value);
-            if (isNaN(atk))
-                atk = 0;
-            let mod = parseInt(document.getElementById("mod").value);
-            if (isNaN(mod))
-                mod = 0;
-            let hbuffs = parseInt(document.getElementById("hbuffs").value);
-            if (isNaN(hbuffs))
-                hbuffs = 0;
-            let def = parseInt(document.getElementById("def").value);
-            if (isNaN(def))
-                def = 0;
-            let res = parseInt(document.getElementById("res").value);
-            if (isNaN(res))
-                res = 0;
-            let ebuffs = parseInt(document.getElementById("ebuffs").value);
-            if (isNaN(ebuffs))
-                ebuffs = 0;
-            let defans = atk + mod + hbuffs - def - ebuffs;
-            let resans = atk + mod + hbuffs - res - ebuffs;
-            $("#defresult").html(defans);
-            $("#resresult").html(resans);
-        });
+        $(".field").change(updateRes);
     </script>
     <div><br></div>
     <div id="player"></div>
