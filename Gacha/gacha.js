@@ -141,8 +141,9 @@ function makeButtons() {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            function setVals(def, res) {
+            function setVals(defender, def, res) {
                 updateRes();
+                document.getElementById("defender").innerHTML = defender;
                 document.getElementById("def").value = def;
                 document.getElementById("res").value = res;
             }
@@ -150,7 +151,7 @@ function makeButtons() {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
-                btn.onclick = setVals.bind(null, row[3], row[4]);
+                btn.onclick = setVals.bind(null, row[0], row[3], row[4]);
                 document.getElementById("enemies").appendChild(btn);
             }
         } else {
@@ -173,6 +174,7 @@ function setAtk(player) {
         if (range.values.length > 0) {
             function setVals(atk) {
                 updateRes();
+                document.getElementById("attacker").innerHTML = player;
                 document.getElementById("atk").value = atk;
             }
             document.getElementById("player").innerHTML = "";
