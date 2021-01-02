@@ -152,8 +152,8 @@ function updateRes() {
     defans += " = " + (atk + mod + hbuffs - def - ebuffs).toString();
     resans += " = " + (atk + mod + hbuffs - res - ebuffs).toString();
 
-    $("#defresult").html(defans);
-    $("#resresult").html(resans);
+    document.getElementById("defresult").value = defans;
+    document.getElementById("resresult").value = resans;
 }
 
 function setDef(defender, def, res) {
@@ -169,7 +169,21 @@ function setAtk(attacker, atk) {
     updateRes();
 }
 
+function copyRes(idname) {
+    /* Get the text field */
+    let copyText = document.getElementById(idname);
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+}
+
 function makeButtons() {
+    document.getElementById("copydefres").onclick = copyRes.bind(null, "defresult");
+    document.getElementById("copyresres").onclick = copyRes.bind(null, "resresult");
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
         range: 'Enemies!A2:F',
