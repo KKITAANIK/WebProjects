@@ -156,6 +156,18 @@ function updateRes() {
     document.getElementById("resresult").value = resans;
 }
 
+function setMod(attack, mod, defres, cd, desc) {
+    document.getElementById("attack").innerHTML = attack;
+    if (mod != "-" && mod != "Passive")
+        document.getElementById("mod").value = parseInt(mod);
+    else
+        document.getElementById("mod").value = "";
+    document.getElementById("defres").innerHTML = defres;
+    document.getElementById("cooldown").innerHTML = cd;
+    document.getElementById("attackdesc").innerHTML = desc;
+    updateRes();
+}
+
 function setDef(defender, def, res) {
     document.getElementById("defender").innerHTML = defender;
     document.getElementById("def").value = parseInt(def);
@@ -167,6 +179,32 @@ function setAtk(attacker, atk) {
     document.getElementById("attacker").innerHTML = attacker;
     document.getElementById("atk").value = parseInt(atk);
     updateRes();
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: "Attacks!A2:G",
+    }).then(function(response) {
+        var range = response.result;
+        if (range.values.length > 0) {
+            document.getElementById("player").innerHTML = "";
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
+                var row = range.values[i];
+                if (row[1] == attacker) {
+                    var btn2 = document.createElement("BUTTON");
+                    btn2.innerHTML = row[2];
+                    btn2.onclick = setMod.bind(null, row[2], row[3], row[4], row[5], row[6]);
+                    document.getElementById("player").appendChild(btn2);
+                }
+            }
+            var btn2 = document.createElement("BUTTON");
+            btn2.innerHTML = "Back";
+            btn2.onclick = addHeroes.bind(null, attacker);
+            document.getElementById("player").appendChild(btn2);
+        } else {
+            appendPre('No data found.');
+        }
+    }, function(response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
 }
 
 function copyRes(idname) {
