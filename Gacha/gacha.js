@@ -162,6 +162,10 @@ function setMod(attack, mod, defres, cd, desc) {
         document.getElementById("mod").value = parseInt(mod);
     else
         document.getElementById("mod").value = "";
+    if (mod == "Passive")
+        document.getElementById("passive").innerHTML = "<br><em>Passive</em>";
+    else   
+    document.getElementById("passive").innerHTML = "";
     document.getElementById("defres").innerHTML = defres;
     document.getElementById("cooldown").innerHTML = cd;
     document.getElementById("attackdesc").innerHTML = desc;
