@@ -183,12 +183,14 @@ function setAtk(attacker, atk) {
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
         range: "Attacks!A2:G",
     }).then(function(response) {
+        let master;
         var range = response.result;
         if (range.values.length > 0) {
             document.getElementById("player").innerHTML = "";
             for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 if (row[1] == attacker) {
+                    master = row[0];
                     var btn2 = document.createElement("BUTTON");
                     btn2.innerHTML = row[2];
                     btn2.onclick = setMod.bind(null, row[2], row[3], row[4], row[5], row[6]);
@@ -197,7 +199,7 @@ function setAtk(attacker, atk) {
             }
             var btn2 = document.createElement("BUTTON");
             btn2.innerHTML = "Back";
-            btn2.onclick = addHeroes.bind(null, attacker);
+            btn2.onclick = setHeroes.bind(null, master);
             document.getElementById("player").appendChild(btn2);
         } else {
             appendPre('No data found.');
