@@ -62,6 +62,7 @@ body {
     overflow: auto;
     border-style: solid;
     border-width: 1px;
+    background-color: white;
 }
   
 /* Links inside the dropdown */
