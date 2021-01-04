@@ -293,20 +293,22 @@ function addDefenders(player, friendorfoe) {
 }
 
 setPlayer = function() {
-    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Enemies</button>"
+    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Lilu</button><button id=\"player7\">Enemies</button>"
     document.getElementById("player1").onclick = setHeroes.bind(null, document.getElementById("player1").innerHTML);
     document.getElementById("player2").onclick = setHeroes.bind(null, document.getElementById("player2").innerHTML);
     document.getElementById("player3").onclick = setHeroes.bind(null, document.getElementById("player3").innerHTML);
     document.getElementById("player4").onclick = setHeroes.bind(null, document.getElementById("player4").innerHTML);
     document.getElementById("player5").onclick = setHeroes.bind(null, document.getElementById("player5").innerHTML);
     document.getElementById("player6").onclick = setHeroes.bind(null, document.getElementById("player6").innerHTML);
+    document.getElementById("player7").onclick = setHeroes.bind(null, document.getElementById("player7").innerHTML);
 }
 
 attackableHeroes = function() {
-    document.getElementById("heroes").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button>"
+    document.getElementById("heroes").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button><button id=\"heroset6\">Lilu</button>"
     document.getElementById("heroset1").onclick = addDefenders.bind(null, document.getElementById("heroset1").innerHTML, "heroes");
     document.getElementById("heroset2").onclick = addDefenders.bind(null, document.getElementById("heroset2").innerHTML, "heroes");
     document.getElementById("heroset3").onclick = addDefenders.bind(null, document.getElementById("heroset3").innerHTML, "heroes");
     document.getElementById("heroset4").onclick = addDefenders.bind(null, document.getElementById("heroset4").innerHTML, "heroes");
     document.getElementById("heroset5").onclick = addDefenders.bind(null, document.getElementById("heroset5").innerHTML, "heroes");
+    document.getElementById("heroset6").onclick = addDefenders.bind(null, document.getElementById("heroset6").innerHTML, "heroes");
 }
