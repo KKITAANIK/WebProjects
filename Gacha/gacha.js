@@ -154,9 +154,9 @@ function updateRes() {
 
     document.getElementById("defresult").value = defans;
     document.getElementById("resresult").value = resans;
-    if (isNaN(document.getElementById("defbhealth").value) || document.getElementById("defbhealth").value == 0)
+    if (document.getElementById("defbhealth").value == 0)
         document.getElementById("defbhealth").value = 0;
-    if (isNaN(document.getElementById("resbhealth").value) || document.getElementById("resbhealth").value == 0)
+    if (document.getElementById("resbhealth").value == 0)
         document.getElementById("resbhealth").value = 0;
     document.getElementById("defahealth").value = document.getElementById("defbhealth").value - (atk + mod + hbuffs - def - ebuffs);
     document.getElementById("resahealth").value = document.getElementById("resbhealth").value - (atk + mod + hbuffs - res - ebuffs);
