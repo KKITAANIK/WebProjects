@@ -257,6 +257,9 @@ function makeButtons() {
         document.getElementById("resbhealth").value = document.getElementById("resahealth").value;
         updateRes();
     };
+    document.getElementById("randgen").onclick = function() {
+        document.getElementById("randres").innerHTML = (Math.floor(Math.random() * 4) + 1).toString();
+    }
 }
 
 function setPlayer() {};
