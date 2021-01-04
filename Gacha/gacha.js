@@ -53,6 +53,7 @@ function updateSigninStatus(isSignedIn) {
     makeButtons();
     setPlayer();
     attackableHeroes();
+    fillPassives();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
@@ -314,6 +315,37 @@ function addDefenders(player, friendorfoe) {
                 btn.innerHTML = "Back";
                 btn.onclick = attackableHeroes;
                 document.getElementById(friendorfoe).appendChild(btn);
+            }
+        } else {
+            appendPre('No data found.');
+        }
+    }, function(response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
+}
+
+function togglePassive(hero, passive, desc) {
+    if (document.getElementById(hero + passive) != null)
+        document.getElementById(hero + passive).remove();
+    else
+        document.getElementById("selectedpassives").innerHTML += "<span id=\"" + hero + passive + "\"><br>" + hero + ": " + passive + " - " + desc + "</span>";
+}
+
+function fillPassives() {
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: "Attacks!A2:G",
+    }).then(function(response) {
+        var range = response.result;
+        if (range.values.length > 0) {
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
+                var row = range.values[i];
+                if (row[3] == "Passive") {
+                    var btn = document.createElement("BUTTON");
+                    btn.innerHTML = row[1] + ": " + row[2];
+                    btn.onclick = togglePassive.bind(null, row[1], row[2], row[6]);
+                    document.getElementById("passivebuttons").appendChild(btn);
+                }
             }
         } else {
             appendPre('No data found.');

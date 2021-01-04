@@ -7,49 +7,54 @@
     <link rel="stylesheet" href="gacha.css">
   </head>
   <body>
-    <p>Gacha Combat</p>
+    <div class="leftpane">
+      <!--Add buttons to initiate auth sequence and sign out-->
+      <button id="authorize_button" style="display: none;">Authorize</button>
+      <button id="signout_button" style="display: none;">Sign Out</button>
+      <div><br></div>
+      <div><span id="attacker">No one</span> attacking <span id="defender">no one</span> with <span id="attack">nothing</span></div>
+      <div><br></div>
+      <label for="atk">Base Atk Stat:</label>
+      <input type="number" class="field" id="atk">
+      <label for="mod">Weapon/Attack Modifier:</label>
+      <input type="number" class="field" id="mod">
+      <label for="hbuffs">Attack Buffs:</label>
+      <input type="number" class="field" id="hbuffs">
+      <label for="def"><br>Enemy Def Stat:</label>
+      <input type="number" class="field" id="def">
+      <label for="res">Enemy Res Stat:</label>
+      <input type="number" class="field" id="res">
+      <label for="ebuffs">Enemy Buffs:</label>
+      <input type="number" class="field" id="ebuffs">
+      <div>Damage if Def: <input type="text" id="defresult"></span><button id="copydefres">Copy value to clipboard</button></div>
+      <div>Damage if Res: <input type="text" id="resresult"></span><button id="copyresres">Copy value to clipboard</button></div>
+      <div><br></div>
+      <div>Health Before (Def/Res): <input type="number" id="defbhealth"></input><input type="number" id="resbhealth"></input></div>
+      <div>Health After (Def/Res): <input type="number" id="defahealth"></input><input type="number" id="resahealth"></input><button id="swaphealth">Copy to "Health Before"</button></div>
+      <div><br></div>
+      <div>Def or Res: <span id="defres"></span>
+        <br>Cooldown: <span id="cooldown"></span>
+        <br>Attack Description: <span id="attackdesc"></span><span id="passive"></span>
+      </div>
+      <div><br></div>
+      <div><button id="randgen">Generate a random number between 1 and 4</button>     <spinan id="randres"></span></div>
+      <div><br></div>
+      <div id="player"></div>
+      <div><br></div>
+      <div>Enemies: <span id="enemies"></span><br>Heroes: <span id="heroes"></span></div>
+      
+      <pre id="content" style="white-space: pre-wrap;"></pre>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" style="display: none;">Authorize</button>
-    <button id="signout_button" style="display: none;">Sign Out</button>
-
-    <div><br></div>
-    <div><span id="attacker">No one</span> attacking <span id="defender">no one</span> with <span id="attack">nothing</span></div>
-    <div><br></div>
-    <label for="atk">Base Atk Stat:</label>
-    <input type="number" class="field" id="atk">
-    <label for="mod">Weapon/Attack Modifier:</label>
-    <input type="number" class="field" id="mod">
-    <label for="hbuffs">Attack Buffs:</label>
-    <input type="number" class="field" id="hbuffs">
-    <label for="def"><br>Enemy Def Stat:</label>
-    <input type="number" class="field" id="def">
-    <label for="res">Enemy Res Stat:</label>
-    <input type="number" class="field" id="res">
-    <label for="ebuffs">Enemy Buffs:</label>
-    <input type="number" class="field" id="ebuffs">
-    <div>Damage if Def: <input type="text" id="defresult"></span><button id="copydefres">Copy value to clipboard</button></div>
-    <div>Damage if Res: <input type="text" id="resresult"></span><button id="copyresres">Copy value to clipboard</button></div>
-    <div><br></div>
-    <div>Health Before (Def/Res): <input type="number" id="defbhealth"></input><input type="number" id="resbhealth"></input></div>
-    <div>Health After (Def/Res): <input type="number" id="defahealth"></input><input type="number" id="resahealth"></input><button id="swaphealth">Copy to "Health Before"</button></div>
-    <div><br></div>
-    <div>Def or Res: <span id="defres"></span><br>Cooldown: <span id="cooldown"></span><br>Attack Description: <span id="attackdesc"></span><span id="passive"></span></div>
-    <div><br></div>
-    <div><button id="randgen">Generate a random number between 1 and 4</button>     <spinan id="randres"></span></div>
-    <div><br></div>
-    <div id="player"></div>
-    <div><br></div>
-    <div>Enemies: <span id="enemies"></span><br>Heroes: <span id="heroes"></span></div>
-    
-    <pre id="content" style="white-space: pre-wrap;"></pre>
-
-    <script src="gacha.js"></script> <!--this is all the stuff that came with it that I just don't want to deal with-->
-    
-    <script>
-        $(".field").change(updateRes);
-    </script>
-
+      <script src="gacha.js"></script> <!--this is all the stuff that came with it that I just don't want to deal with-->
+      
+      <script>
+          $(".field").change(updateRes);
+      </script>
+    </div>
+    <div class="rightpane">
+      <div>Toggle Passives:<br><span id="passivebuttons"></span></div>
+      <div>Selected Passives:<span id="selectedpassives"></span></div>
+    </div>
     <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRpnD1A-Td_JvJq630HylDpdKrwSQVSfOnkioSff6h5V4VbyI1wH_sYPrMeWaEP8Etg3gUirMLmtpHi/pubhtml?widget=true&amp;headers=false" class="embeddedSheet"></iframe>
 
     <script async defer src="https://apis.google.com/js/api.js"

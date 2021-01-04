@@ -32,3 +32,12 @@
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.leftpane {
+    width: 70%;
+    float: left;
+}
+.rightpane {
+    width: 30%;
+    float: left;
+}
