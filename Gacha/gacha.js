@@ -252,7 +252,6 @@ function copyRes(idname) {
 function makeButtons() {
     document.getElementById("copydefres").onclick = copyRes.bind(null, "defresult");
     document.getElementById("copyresres").onclick = copyRes.bind(null, "resresult");
-    addDefenders("Enemies", "enemies");
     document.getElementById("swaphealth").onclick = function() {
         document.getElementById("defbhealth").value = document.getElementById("defahealth").value;
         document.getElementById("resbhealth").value = document.getElementById("resahealth").value;
@@ -294,7 +293,7 @@ function setHeroes(player) {
     });
 }
 
-function addDefenders(player, friendorfoe) {
+function addDefenders(player) {
     sheetid = player + "!A2:F";
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
@@ -302,20 +301,18 @@ function addDefenders(player, friendorfoe) {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            document.getElementById(friendorfoe).innerHTML = "";
+            document.getElementById("enemies").innerHTML = "";
             for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
                 btn.onclick = setDef.bind(null, row[0], row[1], row[3], row[4]);
-                document.getElementById(friendorfoe).appendChild(btn);
+                document.getElementById("enemies").appendChild(btn);
             }
-            if (friendorfoe == "heroes") {
-                var btn = document.createElement("BUTTON");
-                btn.innerHTML = "Back";
-                btn.onclick = attackableHeroes;
-                document.getElementById(friendorfoe).appendChild(btn);
-            }
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = "Back";
+            btn.onclick = attackableHeroes;
+            document.getElementById("enemies").appendChild(btn);
         } else {
             appendPre('No data found.');
         }
@@ -328,7 +325,7 @@ function togglePassive(hero, passive, desc) {
     if (document.getElementById(hero + passive) != null)
         document.getElementById(hero + passive).remove();
     else
-        document.getElementById("selectedpassives").innerHTML += "<span id=\"" + hero + passive + "\"><br>" + hero + ": " + passive + " - " + desc + "</span>";
+        document.getElementById("selectedpassives").innerHTML += "<span id=\"" + hero + passive + "\"><br><i>" + hero + ":</i> " + passive + " - " + desc + "</span>";
 }
 
 function fillPassives() {
@@ -367,11 +364,12 @@ setPlayer = function() {
 }
 
 attackableHeroes = function() {
-    document.getElementById("heroes").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button><button id=\"heroset6\">Lilu</button>"
-    document.getElementById("heroset1").onclick = addDefenders.bind(null, document.getElementById("heroset1").innerHTML, "heroes");
-    document.getElementById("heroset2").onclick = addDefenders.bind(null, document.getElementById("heroset2").innerHTML, "heroes");
-    document.getElementById("heroset3").onclick = addDefenders.bind(null, document.getElementById("heroset3").innerHTML, "heroes");
-    document.getElementById("heroset4").onclick = addDefenders.bind(null, document.getElementById("heroset4").innerHTML, "heroes");
-    document.getElementById("heroset5").onclick = addDefenders.bind(null, document.getElementById("heroset5").innerHTML, "heroes");
-    document.getElementById("heroset6").onclick = addDefenders.bind(null, document.getElementById("heroset6").innerHTML, "heroes");
+    document.getElementById("enemies").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button><button id=\"heroset6\">Lilu</button><button id=\"heroset7\">Enemies</button>"
+    document.getElementById("heroset1").onclick = addDefenders.bind(null, document.getElementById("heroset1").innerHTML);
+    document.getElementById("heroset2").onclick = addDefenders.bind(null, document.getElementById("heroset2").innerHTML);
+    document.getElementById("heroset3").onclick = addDefenders.bind(null, document.getElementById("heroset3").innerHTML);
+    document.getElementById("heroset4").onclick = addDefenders.bind(null, document.getElementById("heroset4").innerHTML);
+    document.getElementById("heroset5").onclick = addDefenders.bind(null, document.getElementById("heroset5").innerHTML);
+    document.getElementById("heroset6").onclick = addDefenders.bind(null, document.getElementById("heroset6").innerHTML);
+    document.getElementById("heroset7").onclick = addDefenders.bind(null, document.getElementById("heroset7").innerHTML);
 }
