@@ -154,6 +154,12 @@ function updateRes() {
 
     document.getElementById("defresult").value = defans;
     document.getElementById("resresult").value = resans;
+    if (isNaN(document.getElementById("defbhealth").value) || document.getElementById("defbhealth").value == 0)
+        document.getElementById("defbhealth").value = 0;
+    if (isNaN(document.getElementById("resbhealth").value) || document.getElementById("resbhealth").value == 0)
+        document.getElementById("resbhealth").value = 0;
+    document.getElementById("defahealth").value = document.getElementById("defbhealth").value - (atk + mod + hbuffs - def - ebuffs);
+    document.getElementById("resahealth").value = document.getElementById("resbhealth").value - (atk + mod + hbuffs - res - ebuffs);
 }
 
 function setMod(attack, mod, defres, cd, desc) {
@@ -172,10 +178,12 @@ function setMod(attack, mod, defres, cd, desc) {
     updateRes();
 }
 
-function setDef(defender, def, res) {
+function setDef(defender, health, def, res) {
     document.getElementById("defender").innerHTML = defender;
     document.getElementById("def").value = parseInt(def);
     document.getElementById("res").value = parseInt(res);
+    document.getElementById("defbhealth").value = parseInt(health);
+    document.getElementById("resbhealth").value = parseInt(health);
     updateRes();
 }
 
@@ -229,6 +237,11 @@ function makeButtons() {
     document.getElementById("copydefres").onclick = copyRes.bind(null, "defresult");
     document.getElementById("copyresres").onclick = copyRes.bind(null, "resresult");
     addDefenders("Enemies", "enemies");
+    document.getElementById("swaphealth").onclick = function() {
+        document.getElementById("defbhealth").value = document.getElementById("defahealth").value;
+        document.getElementById("resbhealth").value = document.getElementById("resahealth").value;
+        updateRes();
+    };
 }
 
 function setPlayer() {};
@@ -275,7 +288,7 @@ function addDefenders(player, friendorfoe) {
                 var row = range.values[i];
                 var btn = document.createElement("BUTTON");
                 btn.innerHTML = row[0];
-                btn.onclick = setDef.bind(null, row[0], row[3], row[4]);
+                btn.onclick = setDef.bind(null, row[0], row[1], row[3], row[4]);
                 document.getElementById(friendorfoe).appendChild(btn);
             }
             if (friendorfoe == "heroes") {
