@@ -204,7 +204,8 @@ function setAtk(attacker, atk) {
                 if (row[1] == attacker) {
                     master = row[0];
                     var btn2 = document.createElement("BUTTON");
-                    btn2.innerHTML = row[2];
+                    btn2.classList.add("tooltip")
+                    btn2.innerHTML = row[2] + "<span class=\"tooltiptext\">" + row[6] + "</span>";
                     btn2.onclick = setMod.bind(null, row[2], row[3], row[4], row[5], row[6]);
                     document.getElementById("player").appendChild(btn2);
                 }
