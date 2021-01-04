@@ -260,6 +260,9 @@ function makeButtons() {
     document.getElementById("randgen").onclick = function() {
         document.getElementById("randres").innerHTML = (Math.floor(Math.random() * 4) + 1).toString();
     }
+    document.getElementById("embeddedSheet").style.height = "calc(100vh - " + (document.getElementById("main").clientHeight + 16).toString() + "px)";
+    document.getElementById("embeddedDoc").style.height = "calc(100vh - " + (document.getElementById("main").clientHeight + 16).toString() + "px)";
+    console.log((document.getElementById("main").clientHeight + 16).toString());
 }
 
 function setPlayer() {};

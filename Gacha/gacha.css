@@ -2,11 +2,6 @@ body {
     font-family: "Open Sans";
 }
 
-.embeddedSheet {
-    width: 90vw;
-    height: 90vh;
-}
-
 /* Tooltip container */
 .tooltip {
     position: relative;
@@ -77,4 +72,18 @@ body {
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.embeds {
+    width: 98vw;
+    background-color: red;
+    height: auto;
+}
+.embeddedSheet {
+    width: 49%;
+    float: left;
+}
+.embeddedDoc {
+    width: 49%;
+    float: left;
 }
