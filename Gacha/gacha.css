@@ -75,16 +75,16 @@ body {
 }
 
 .embeds {
-    width: 98vw;
+    width: 98.5vw;
     height: auto;
 }
 .embeddedSheet {
-    width: 49%;
+    width: 49.75%;
     float: left;
     height: 75vh;
 }
 .embeddedDoc {
-    width: 49%;
+    width: 49.75%;
     float: left;
     height: 75vh;
 }
