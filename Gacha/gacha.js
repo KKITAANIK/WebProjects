@@ -257,9 +257,10 @@ function makeButtons() {
         document.getElementById("resbhealth").value = document.getElementById("resahealth").value;
         updateRes();
     };
+    document.getElementById("randmaxinput").value = 4;
     document.getElementById("randgen").onclick = function() {
-        document.getElementById("randres").innerHTML = (Math.floor(Math.random() * 4) + 1).toString();
-    }
+        document.getElementById("randres").innerHTML = (Math.floor(Math.random() * document.getElementById("randmaxinput").value) + 1).toString();
+    };
 }
 
 function setPlayer() {};
