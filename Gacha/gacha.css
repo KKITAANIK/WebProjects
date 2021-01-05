@@ -79,12 +79,12 @@ body {
     height: auto;
 }
 .embeddedSheet {
-    width: 49.75%;
+    width: 49%;
     float: left;
     height: 75vh;
 }
 .embeddedDoc {
-    width: 49.75%;
+    width: 49%;
     float: left;
     height: 75vh;
 }
