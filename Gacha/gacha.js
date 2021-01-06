@@ -354,7 +354,7 @@ function fillPassives() {
 }
 
 setPlayer = function() {
-    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Lilu</button><button id=\"player7\">Enemies</button>"
+    document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Lilu/Lilitu</button><button id=\"player7\">Enemies</button>"
     document.getElementById("player1").onclick = setHeroes.bind(null, document.getElementById("player1").innerHTML);
     document.getElementById("player2").onclick = setHeroes.bind(null, document.getElementById("player2").innerHTML);
     document.getElementById("player3").onclick = setHeroes.bind(null, document.getElementById("player3").innerHTML);
@@ -365,7 +365,7 @@ setPlayer = function() {
 }
 
 attackableHeroes = function() {
-    document.getElementById("enemies").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button><button id=\"heroset6\">Lilu</button><button id=\"heroset7\">Enemies</button>"
+    document.getElementById("enemies").innerHTML = "<button id=\"heroset1\">Yuugo</button><button id=\"heroset2\">Futaba</button><button id=\"heroset3\">Tomoko</button><button id=\"heroset4\">Pit</button><button id=\"heroset5\">Nanoko</button><button id=\"heroset6\">Lilu/Lilitu</button><button id=\"heroset7\">Enemies</button>"
     document.getElementById("heroset1").onclick = addDefenders.bind(null, document.getElementById("heroset1").innerHTML);
     document.getElementById("heroset2").onclick = addDefenders.bind(null, document.getElementById("heroset2").innerHTML);
     document.getElementById("heroset3").onclick = addDefenders.bind(null, document.getElementById("heroset3").innerHTML);
