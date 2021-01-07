@@ -261,6 +261,7 @@ function makeButtons() {
     document.getElementById("randgen").onclick = function() {
         document.getElementById("randres").innerHTML = (Math.floor(Math.random() * document.getElementById("randmaxinput").value) + 1).toString();
     };
+    //document.getElementById("bossbattle").onclick = bossBattle;
 }
 
 function setPlayer() {};
@@ -373,4 +374,10 @@ attackableHeroes = function() {
     document.getElementById("heroset5").onclick = addDefenders.bind(null, document.getElementById("heroset5").innerHTML);
     document.getElementById("heroset6").onclick = addDefenders.bind(null, document.getElementById("heroset6").innerHTML);
     document.getElementById("heroset7").onclick = addDefenders.bind(null, document.getElementById("heroset7").innerHTML);
+}
+
+function bossBattle() {
+    if (confirm("Are you sure you want to begin a boss battle?")) {
+        window.location.href = 'bossbattle.html'; 
+    }
 }
