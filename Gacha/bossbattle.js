@@ -52,10 +52,7 @@ function updateSigninStatus(isSignedIn) {
   if (isSignedIn) {
     authorizeButton.style.display = 'none';
     signoutButton.style.display = 'block';
-    makeButtons();
-    setPlayer();
-    attackableHeroes();
-    fillPassives();
+    bossSelection();
   } else {
     authorizeButton.style.display = 'block';
     signoutButton.style.display = 'none';
