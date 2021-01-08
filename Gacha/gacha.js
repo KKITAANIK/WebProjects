@@ -150,8 +150,8 @@ function updateRes() {
         resans += " - " + ebuffs.toString();
     }
 
-    defans += " = " + (atk + mod + hbuffs - def - ebuffs).toString();
-    resans += " = " + (atk + mod + hbuffs - res - ebuffs).toString();
+    defans += " = " + (atk + mod + hbuffs - def - ebuffs).toString() + " to " + document.getElementById("defender").innerHTML;
+    resans += " = " + (atk + mod + hbuffs - res - ebuffs).toString() + " to " + document.getElementById("defender").innerHTML;
 
     document.getElementById("defresult").value = defans;
     document.getElementById("resresult").value = resans;
