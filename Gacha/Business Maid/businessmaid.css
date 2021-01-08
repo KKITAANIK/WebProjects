@@ -1,0 +1,32 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    background-color: #181818;
+}
+.images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image {
+    width: calc(100% / 7);
+    float: left;
+}
+.healthbar {
+    height: 3vh;
+    padding: 0.5vh;
+    width: calc((100% / 7) - 1vh);
+    float:left;
+}
+.healthgreen {
+    background-color: lime;
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+.healthred {
+    background-color: red;
+    float: left;
+    width: 0%;
+    height: 100%;
+}

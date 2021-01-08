@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Business Maid</title>
+        <meta charset="utf-8" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="businessmaid.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <button id="authorize_button" style="display: none;">Authorize</button>
+        <button id="signout_button" style="display: none;">Sign Out</button>
+        
+        <div id="images" class="images">
+            <img id="img0" class="image" src="Business_Maid_Pout.png">
+            <img id="img1" class="image" src="Business_Maid_Pout.png">
+            <img id="img2" class="image" src="Business_Maid_Pout.png">
+            <img id="img3" class="image" src="Business_Maid_Lecture.png">
+            <img id="img4" class="image" src="Business_Maid_Pout.png">
+            <img id="img5" class="image" src="Business_Maid_Pout.png">
+            <img id="img6" class="image" src="Business_Maid_Pout.png">
+        </div>
+        <div id="healthbars" class="healthbars">
+            <div id="health0" class="healthbar">
+                <div id="healthgreen0" class="healthgreen"></div>
+                <div id="healthred0" class="healthred"></div>
+            </div>
+            <div id="health1" class="healthbar">
+                <div id="healthgreen1" class="healthgreen"></div>
+                <div id="healthred1" class="healthred"></div>
+            </div>
+            <div id="health2" class="healthbar">
+                <div id="healthgreen2" class="healthgreen"></div>
+                <div id="healthred2" class="healthred"></div>
+            </div>
+            <div id="health3" class="healthbar">
+                <div id="healthgreen3" class="healthgreen"></div>
+                <div id="healthred3" class="healthred"></div>
+            </div>
+            <div id="health4" class="healthbar">
+                <div id="healthgreen4" class="healthgreen"></div>
+                <div id="healthred4" class="healthred"></div>
+            </div>
+            <div id="health5" class="healthbar">
+                <div id="healthgreen5" class="healthgreen"></div>
+                <div id="healthred5" class="healthred"></div>
+            </div>
+            <div id="health6" class="healthbar">
+                <div id="healthgreen6" class="healthgreen"></div>
+                <div id="healthred6" class="healthred"></div>
+            </div>
+        </div>
+        
+        <script src="businessmaid.js"></script>
+
+        <script async defer src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+    </body>
+</html>

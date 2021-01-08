@@ -16,7 +16,7 @@ var signoutButton = document.getElementById('signout_button');
  *  On load, called to load the auth2 library and API client library.
  */
 function handleClientLoad() {
-  gapi.load('client:auth2', initClient);
+    gapi.load('client:auth2', initClient);
 }
 
 /**
@@ -24,54 +24,54 @@ function handleClientLoad() {
  *  listeners.
  */
 function initClient() {
-  gapi.client.init({
-    apiKey: API_KEY,
-    clientId: CLIENT_ID,
-    discoveryDocs: DISCOVERY_DOCS,
-    scope: SCOPES
-  }).then(function () {
-    // Listen for sign-in state changes.
-    gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+    gapi.client.init({
+        apiKey: API_KEY,
+        clientId: CLIENT_ID,
+        discoveryDocs: DISCOVERY_DOCS,
+        scope: SCOPES
+    }).then(function () {
+        // Listen for sign-in state changes.
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-    // Handle the initial sign-in state.
-    updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    authorizeButton.onclick = handleAuthClick;
-    signoutButton.onclick = handleSignoutClick;
-  }, function(error) {
-    appendPre(JSON.stringify(error, null, 2));
-  });
+        // Handle the initial sign-in state.
+        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+        authorizeButton.onclick = handleAuthClick;
+        signoutButton.onclick = handleSignoutClick;
+    }, function(error) {
+        appendPre(JSON.stringify(error, null, 2));
+    });
 }
 
 /**
- *  Called when the signed in status changes, to update the UI
- *  appropriately. After a sign-in, the API is called.
- */
+*  Called when the signed in status changes, to update the UI
+*  appropriately. After a sign-in, the API is called.
+*/
 function updateSigninStatus(isSignedIn) {
-  if (isSignedIn) {
-    authorizeButton.style.display = 'none';
-    signoutButton.style.display = 'block';
-    makeButtons();
-    setPlayer();
-    attackableHeroes();
-    fillPassives();
-  } else {
-    authorizeButton.style.display = 'block';
-    signoutButton.style.display = 'none';
-  }
+    if (isSignedIn) {
+        authorizeButton.style.display = 'none';
+        signoutButton.style.display = 'block';
+        makeButtons();
+        setPlayer();
+        attackableHeroes();
+        fillPassives();
+    } else {
+        authorizeButton.style.display = 'block';
+        signoutButton.style.display = 'none';
+    }
 }
 
 /**
  *  Sign in the user upon button click.
  */
 function handleAuthClick(event) {
-  gapi.auth2.getAuthInstance().signIn();
+    gapi.auth2.getAuthInstance().signIn();
 }
 
 /**
  *  Sign out the user upon button click.
  */
 function handleSignoutClick(event) {
-  gapi.auth2.getAuthInstance().signOut();
+    gapi.auth2.getAuthInstance().signOut();
 }
 
 /**
@@ -81,9 +81,9 @@ function handleSignoutClick(event) {
  * @param {string} message Text to be placed in pre element.
  */
 function appendPre(message) {
-  var pre = document.getElementById('content');
-  var textContent = document.createTextNode(message + '\n');
-  pre.appendChild(textContent);
+    var pre = document.getElementById('content');
+    var textContent = document.createTextNode(message + '\n');
+    pre.appendChild(textContent);
 }
 
 /**
@@ -91,24 +91,24 @@ function appendPre(message) {
  * https://docs.google.com/spreadsheets/d/1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc/edit
  */
 function listEnemies() {
-  gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
-    range: 'Enemies!A2:F',
-  }).then(function(response) {
-    var range = response.result;
-    if (range.values.length > 0) {
-      appendPre('Name, HP, Atk, Def, Res, Spd');
-      for (i = 0; i < range.values.length; i++) {
-        var row = range.values[i];
-        // Print columns A and E, which correspond to indices 0 and 4.
-        appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5]);
-      }
-    } else {
-      appendPre('No data found.');
-    }
-  }, function(response) {
-    appendPre('Error: ' + response.result.error.message);
-  });
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: 'Enemies!A2:F',
+    }).then(function(response) {
+        var range = response.result;
+        if (range.values.length > 0) {
+            appendPre('Name, HP, Atk, Def, Res, Spd');
+            for (i = 0; i < range.values.length; i++) {
+                var row = range.values[i];
+                // Print columns A and E, which correspond to indices 0 and 4.
+            appendPre(row[0] + ', ' + row[1] + ', ' + row[2] + ', ' + row[3] + ', ' + row[4] + ', ' + row[5]);
+            }
+        } else {
+            appendPre('No data found.');
+        }
+    }, function(response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
 }
 
 function updateRes() {
@@ -261,7 +261,7 @@ function makeButtons() {
     document.getElementById("randgen").onclick = function() {
         document.getElementById("randres").innerHTML = (Math.floor(Math.random() * document.getElementById("randmaxinput").value) + 1).toString();
     };
-    //document.getElementById("bossbattle").onclick = bossBattle;
+    document.getElementById("bossbattle").onclick = bossSelection;
 }
 
 function setPlayer() {};
@@ -376,8 +376,31 @@ attackableHeroes = function() {
     document.getElementById("heroset7").onclick = addDefenders.bind(null, document.getElementById("heroset7").innerHTML);
 }
 
-function bossBattle() {
-    if (confirm("Are you sure you want to begin a boss battle?")) {
-        window.location.href = 'bossbattle.html'; 
+function bossBattle(boss) {
+    if (confirm("Are you sure you want to begin a boss battle against " + boss + "?")) {
+        window.open(boss + '/'); 
     }
+}
+
+function bossSelection() {
+    gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: "Bosses!A2:C",
+    }).then(function(response) {
+        document.getElementById("bosses").innerHTML = "";
+        var range = response.result;
+        if (range.values.length > 0) {
+            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
+                var row = range.values[i];
+                var btn = document.createElement("BUTTON");
+                btn.innerHTML = row[0];
+                btn.onclick = bossBattle.bind(null, row[0]);
+                document.getElementById("bosses").appendChild(btn);
+            }
+        } else {
+            appendPre('No data found.');
+        }
+    }, function(response) {
+        appendPre('Error: ' + response.result.error.message);
+    });
 }
