@@ -2,6 +2,7 @@ html, body {
     height: 100%;
     margin: 0px;
     background-color: #181818;
+    color: white;
 }
 .images {
     display: flex;
@@ -29,4 +30,12 @@ html, body {
     float: left;
     width: 0%;
     height: 100%;
+}
+.healthbars {
+    display: block;
+    height: 4vh;
+}
+.output {
+    overflow: auto;
+    font-size: x-large;  
 }

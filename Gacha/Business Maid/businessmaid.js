@@ -51,6 +51,10 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'none';
         updateHealth();
         document.getElementById("img3").onclick = updateHealth;
+        document.getElementById("output").style.height = "calc(100vh - " + (document.getElementById("images").offsetHeight + document.getElementById("healthbars").offsetHeight).toString() + "px)";
+        $(window).resize(function() {
+            document.getElementById("output").style.height = "calc(100vh - " + (document.getElementById("images").offsetHeight + document.getElementById("healthbars").offsetHeight).toString() + "px)";
+        });
     } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
@@ -79,23 +83,26 @@ function updateHealth() {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            for (i = 0; range.values[i] != undefined && range.values[i][0] != undefined; i++) {
+            for (i = 0; i < range.values.length; i++) {
                 var row = range.values[i];
-                maidHealth[i] = parseInt(row[1]);
-            }
-            for (let i = 0; i < 7; i++) {
-                if (i == 3) {
-                    document.getElementById("healthgreen" + i.toString()).style.width = "calc(100% * (" + parseInt(maidHealth[i]) +" / 50))";
-                    document.getElementById("healthred" + i.toString()).style.width = "calc(100% - (100% * (" + parseInt(maidHealth[i]) +" / 50)))";
+                if (i < 7) {
+                    maidHealth[i] = parseInt(row[1]);
+                    if (i == 3) {
+                        document.getElementById("healthgreen" + i.toString()).style.width = "calc(100% * (" + parseInt(maidHealth[i]) +" / 50))";
+                        document.getElementById("healthred" + i.toString()).style.width = "calc(100% - (100% * (" + parseInt(maidHealth[i]) +" / 50)))";
+                    }
+                    else {
+                        document.getElementById("healthgreen" + i.toString()).style.width = "calc(100% * (" + parseInt(maidHealth[i]) +" / 20))";
+                        document.getElementById("healthred" + i.toString()).style.width = "calc(100% - (100% * (" + parseInt(maidHealth[i]) +" / 20)))";
+                        if(maidHealth[i] == 0)
+                            document.getElementById("health" + i.toString()).style.opacity = 0;
+                        else
+                            document.getElementById("health" + i.toString()).style.opacity = 1;
+                        document.getElementById("img" + i.toString()).style.opacity = maidHealth[i] / 20;
+                    }
                 }
-                else {
-                    document.getElementById("healthgreen" + i.toString()).style.width = "calc(100% * (" + parseInt(maidHealth[i]) +" / 20))";
-                    document.getElementById("healthred" + i.toString()).style.width = "calc(100% - (100% * (" + parseInt(maidHealth[i]) +" / 20)))";
-                    if(maidHealth[i] == 0)
-                        document.getElementById("health" + i.toString()).style.opacity = 0;
-                    else
-                        document.getElementById("health" + i.toString()).style.opacity = 1;
-                    document.getElementById("img" + i.toString()).style.opacity = maidHealth[i] / 20;
+                else if (i == 8) {
+                    document.getElementById("output").innerHTML = "\"" + row[1] + "\"";
                 }
             }
         } else {
