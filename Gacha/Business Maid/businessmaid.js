@@ -7,7 +7,7 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
 
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
@@ -101,8 +101,8 @@ function updateHealth() {
                         document.getElementById("img" + i.toString()).style.opacity = maidHealth[i] / 20;
                     }
                 }
-                else if (i == 8) {
-                    document.getElementById("output").innerHTML = "\"" + row[1] + "\"";
+                else if (i == 9) {
+                    document.getElementById("output").innerHTML += "<br><i>" + row[0] + "</i><br>";
                 }
             }
         } else {

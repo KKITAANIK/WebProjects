@@ -7,7 +7,7 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
+var SCOPES = "https://www.googleapis.com/auth/spreadsheets";
 
 var authorizeButton = document.getElementById('authorize_button');
 var signoutButton = document.getElementById('signout_button');
@@ -262,6 +262,9 @@ function makeButtons() {
         document.getElementById("randres").innerHTML = (Math.floor(Math.random() * document.getElementById("randmaxinput").value) + 1).toString();
     };
     document.getElementById("bossbattle").onclick = bossSelection;
+    document.getElementById("maidcommitdefdmg").onclick = maidCommit.bind(null, "def");
+    document.getElementById("maidcommitresdmg").onclick = maidCommit.bind(null, "res");
+    document.getElementById("maidcommitnodmg").onclick = maidCommit.bind(null, "no");
 }
 
 function setPlayer() {};
@@ -354,6 +357,14 @@ function fillPassives() {
     });
 }
 
+/* Character - Player Cheat Sheet 
+Yuugo - Bagel
+Futaba - Joe
+Tomoko - Stuart
+Pit - Cog
+Nanako - Beta
+Lilu/Lilitu - Adrian*/
+
 setPlayer = function() {
     document.getElementById("player").innerHTML = "<button id=\"player1\">Yuugo</button><button id=\"player2\">Futaba</button><button id=\"player3\">Tomoko</button><button id=\"player4\">Pit</button><button id=\"player5\">Nanoko</button><button id=\"player6\">Lilu/Lilitu</button><button id=\"player7\">Enemies</button>"
     document.getElementById("player1").onclick = setHeroes.bind(null, document.getElementById("player1").innerHTML);
@@ -378,6 +389,7 @@ attackableHeroes = function() {
 
 function bossBattle(boss) {
     if (confirm("Are you sure you want to begin a boss battle against " + boss + "?")) {
+        document.getElementById("maidcommit").style.display = "block";
         window.open(boss + '/'); 
     }
 }
@@ -402,5 +414,51 @@ function bossSelection() {
         }
     }, function(response) {
         appendPre('Error: ' + response.result.error.message);
+    });
+}
+
+function maidCommit(dmg) {
+    let atk = parseInt(document.getElementById("atk").value);
+    if (isNaN(atk))
+        atk = 0;
+    let mod = parseInt(document.getElementById("mod").value);
+    if (isNaN(mod))
+        mod = 0;
+    let hbuffs = parseInt(document.getElementById("hbuffs").value);
+    if (isNaN(hbuffs))
+        hbuffs = 0;
+    let def = parseInt(document.getElementById("def").value);
+    if (isNaN(def))
+        def = 0;
+    let res = parseInt(document.getElementById("res").value);
+    if (isNaN(res))
+        res = 0;
+    let ebuffs = parseInt(document.getElementById("ebuffs").value);
+    if (isNaN(ebuffs))
+        ebuffs = 0;
+    
+    let msg = $("#attacker").html() + " used " + $("#attack").html() + " on " + $("#defender").html();
+    if (dmg == "def")
+        msg += ", dealing " + (atk + mod + hbuffs - def - ebuffs).toString() + " damage.";
+    else if (dmg == "res")
+        msg += ", dealing " + (atk + mod + hbuffs - res - ebuffs).toString() + " damage.";
+    else if (dmg == "no")
+        msg += "."
+    var values = [
+        [
+            msg
+        ]
+    ];
+    var body = {
+        values: values
+    };
+    gapi.client.sheets.spreadsheets.values.update({
+        spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
+        range: "Boss Arena!A11",
+        valueInputOption: "RAW",
+        resource: body
+    }).then((response) => {
+        var result = response.result;
+        console.log(`${result.updatedCells} cells updated.`);
     });
 }

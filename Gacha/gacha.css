@@ -92,3 +92,6 @@ body {
     float: left;
     height: 75vh;
 }
+.maidcommit {
+    display: none;
+}
