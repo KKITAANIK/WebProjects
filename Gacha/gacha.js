@@ -185,6 +185,7 @@ function setDef(defender, health, def, res) {
     document.getElementById("res").value = parseInt(res);
     document.getElementById("defbhealth").value = parseInt(health);
     document.getElementById("resbhealth").value = parseInt(health);
+    document.getElementById("ebuffs").value = "";
     updateRes();
 }
 
@@ -197,6 +198,7 @@ function setAtk(attacker, atk) {
     document.getElementById("attacker").innerHTML = attacker;
     document.getElementById("atk").value = parseInt(atk);
     updateRes();
+    document.getElementById("hbuffs").value = "";
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
         range: "Attacks!A2:G",
