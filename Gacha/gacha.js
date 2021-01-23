@@ -130,9 +130,18 @@ function updateRes() {
     let ebuffs = parseInt(document.getElementById("ebuffs").value);
     if (isNaN(ebuffs))
         ebuffs = 0;
+    let mult = parseInt(document.getElementById("mult").value);
+    if (isNaN(mult))
+        mult = 1;
 
-    let defans = atk.toString();
-    let resans = atk.toString();
+    let defans = "";
+    let resans = "";
+    if (mult != 1){
+        defans += "(";
+        resans += "(";
+    }
+    defans += atk.toString();
+    resans += atk.toString();
     if (mod != 0) {
         defans += " + " + mod.toString();
         resans += " + " + mod.toString();
@@ -149,9 +158,13 @@ function updateRes() {
         defans += " - " + ebuffs.toString();
         resans += " - " + ebuffs.toString();
     }
+    if (mult != 1){
+        defans += ") * " + mult.toString();
+        resans += ") * " + mult.toString();
+    }
 
-    defans += " = " + (atk + mod + hbuffs - def - ebuffs).toString() + " damage";
-    resans += " = " + (atk + mod + hbuffs - res - ebuffs).toString() + " damage";
+    defans += " = " + ((atk + mod + hbuffs - def - ebuffs) * mult).toString() + " damage";
+    resans += " = " + ((atk + mod + hbuffs - res - ebuffs) * mult).toString() + " damage";
 
     document.getElementById("defresult").value = defans;
     document.getElementById("resresult").value = resans;
@@ -163,7 +176,7 @@ function updateRes() {
     document.getElementById("resahealth").value = document.getElementById("resbhealth").value - (atk + mod + hbuffs - res - ebuffs);
 }
 
-function setMod(attack, mod, defres, cd, desc) {
+function setMod(attack, mod, defres, mult, cd, desc) {
     document.getElementById("attack").innerHTML = attack;
     if (mod != "-" && mod != "Passive")
         document.getElementById("mod").value = parseInt(mod);
@@ -171,7 +184,12 @@ function setMod(attack, mod, defres, cd, desc) {
         document.getElementById("mod").value = "";
     if (mod == "Passive")
         document.getElementById("passive").innerHTML = "<br><em>Passive</em>";
-    else   
+    else
+        document.getElementById("passive").innerHTML = "";
+    if (mult != "-")
+        document.getElementById("mult").value = parseInt(mult);
+    else
+        document.getElementById("mult").value = "";
     document.getElementById("passive").innerHTML = "";
     document.getElementById("defres").innerHTML = defres;
     document.getElementById("cooldown").innerHTML = cd;
@@ -186,6 +204,7 @@ function setDef(defender, health, def, res) {
     document.getElementById("defbhealth").value = parseInt(health);
     document.getElementById("resbhealth").value = parseInt(health);
     document.getElementById("ebuffs").value = "";
+    document.getElementById("mult").value = "";
     updateRes();
 }
 
@@ -199,9 +218,10 @@ function setAtk(attacker, atk) {
     document.getElementById("atk").value = parseInt(atk);
     updateRes();
     document.getElementById("hbuffs").value = "";
+    document.getElementById("mult").value = "";
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1DQ9TO44xktiyA-keA1kyb2unOZ3mWoTMIZQU-xUVRnc',
-        range: "Attacks!A2:G",
+        range: "Attacks!A2:H",
     }).then(function(response) {
         let master;
         let j = 0;
@@ -215,8 +235,8 @@ function setAtk(attacker, atk) {
                     var btn2 = document.createElement("BUTTON");
                     btn2.classList.add("tooltip");
                     btn2.id = "attackbutton" + j.toString();
-                    btn2.innerHTML = row[2] + "<span class=\"tooltiptext\">" + row[6] + "</span>";
-                    btn2.onclick = setMod.bind(null, row[2], row[3], row[4], row[5], row[6]);
+                    btn2.innerHTML = row[2] + "<span class=\"tooltiptext\">" + row[7] + "</span>";
+                    btn2.onclick = setMod.bind(null, row[2], row[3], row[4], row[5], row[6], row[7]);
                     document.getElementById("player").appendChild(btn2);
                     j++;
                 }
@@ -438,12 +458,15 @@ function maidCommit(dmg) {
     let ebuffs = parseInt(document.getElementById("ebuffs").value);
     if (isNaN(ebuffs))
         ebuffs = 0;
+    let mult = parseInt(document.getElementById("mult").value);
+    if (isNaN(mult))
+        mult = 1;
     
     let msg = $("#attacker").html() + " used " + $("#attack").html() + " on " + $("#defender").html();
     if (dmg == "def")
-        msg += ", dealing " + (atk + mod + hbuffs - def - ebuffs).toString() + " damage.";
+        msg += ", dealing " + ((atk + mod + hbuffs - def - ebuffs) * mult).toString() + " damage.";
     else if (dmg == "res")
-        msg += ", dealing " + (atk + mod + hbuffs - res - ebuffs).toString() + " damage.";
+        msg += ", dealing " + ((atk + mod + hbuffs - res - ebuffs) * mult).toString() + " damage.";
     else if (dmg == "no")
         msg += "."
     var values = [
