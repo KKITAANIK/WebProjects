@@ -1,0 +1,1 @@
+document.getElementById("cont").onclick = function(){document.getElementById("form").innerHTML = ""};
