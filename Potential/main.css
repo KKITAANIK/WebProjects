@@ -14,6 +14,15 @@ body {
     float: left;
     z-index: 4;
     position: absolute;
+    margin-right: 79.25vw;
+}
+.right {
+    width: 20.75vw;
+    height: 100vh;
+    float: right;
+    margin-left: 79.25vw;
+    z-index: 4;
+    position: absolute;
 }
 .leftcontent {
     height: 100vh;
@@ -21,15 +30,28 @@ body {
     background-color: #d8d8d8;
     float: left;
 }
+.rightcontent {
+    height: 100vh;
+    width: 20vw;
+    background-color: #d8d8d8;
+    float: right;
+}
 .leftshadow {
     width: 0.75vw;
     height: 100vh;
     float: left;
     background-image: linear-gradient(to right, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
 }
+.rightshadow {
+    width: 0.75vw;
+    height: 100vh;
+    float: right;
+    background-image: linear-gradient(to left, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
+}
 .display {
     margin-left: 20vw;
-    width: 80vw;
+    margin-right: 20vw;
+    width: 60vw;
     height: calc(75vh + 0.75vw);
     float: left;
     position: absolute;
@@ -37,11 +59,11 @@ body {
 }
 .displaycontent {
     height: calc(75vh - 2vw);
-    width: 78vw;
+    width: 58vw;
     background-color: #e0e0e0;
     overflow: auto;
     font-family: 'Open Sans', Arial, sans-serif;
-    font-size: 1em;
+    font-size: 1.5vw;
     padding: 1vw;
 }
 ::-webkit-scrollbar {
@@ -53,14 +75,15 @@ body {
 }
 .displayshadow {
     height: 0.75vw;
-    width: 80vw;
+    width: 60vw;
     background-image: linear-gradient(to bottom, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
 }
 .buttons {
     margin-left: 20vw;
+    margin-right: 20vw;
     margin-top: 75vh;
     height: 25vh;
-    width: 80vw;
+    width: 60vw;
     background-color: #d8d8d8;
     position: absolute;
     display: flex;
@@ -69,7 +92,7 @@ body {
 }
 .button {
     height: calc((25vh - 0.5vw) / 3 - 0.5vw);
-    width: calc(79.5vw / 7 - 0.5vw);
+    width: calc(59.5vw / 5 - 0.5vw);
     margin: 0.25vw;
     border: solid;
     border-width: 0.25vw;
