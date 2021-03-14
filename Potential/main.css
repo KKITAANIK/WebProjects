@@ -3,6 +3,11 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    font-family: "Open Sans";
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
 }
 .main {
     width: 100vw;
@@ -12,7 +17,7 @@ body {
     width: 20.75vw;
     height: 100vh;
     float: left;
-    z-index: 4;
+    z-index: 8;
     position: absolute;
     margin-right: 79.25vw;
 }
@@ -21,7 +26,7 @@ body {
     height: 100vh;
     float: right;
     margin-left: 79.25vw;
-    z-index: 4;
+    z-index: 8;
     position: absolute;
 }
 .leftcontent {
@@ -55,7 +60,7 @@ body {
     height: calc(75vh + 0.75vw);
     float: left;
     position: absolute;
-    z-index: 2;
+    z-index: 4;
 }
 .displaycontent {
     height: calc(75vh - 2vw);
@@ -82,8 +87,8 @@ body {
     margin-left: 20vw;
     margin-right: 20vw;
     margin-top: 75vh;
-    height: 25vh;
-    width: 60vw;
+    height: calc(25vh - 0.5vw);
+    width: 59.5vw;
     background-color: #d8d8d8;
     position: absolute;
     display: flex;
@@ -99,6 +104,10 @@ body {
     border-color: #d0d0d0;
     border-radius: 0.5vw;
     background-color: #e0e0e0;
+    font-size: 1.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .button:hover {
     border-color: #c8c8c8;
@@ -115,4 +124,45 @@ body {
 .button:active {
     border-color: #c0c0c0;
     background-color: #d0d0d0;
+}
+.button .tooltip {
+    width: 15vw;
+    background-color: #d8d8d8;
+    text-align: center;
+    padding: 1vw;
+    position: absolute;
+    z-index: 20;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 0.25vw;
+    border-color: #c8c8c8;
+    bottom: 27.5vh;
+    border-radius: 0.5vw;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: black;
+}
+.button:hover .tooltip {
+    opacity: 1;
+}
+
+.location, .time {
+    padding: 0.5vw;
+    width: 20vw;
+    font-size: 1.5vw;
+    height: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.location {
+    color: #707070;
+}
+.time {
+    color: #353535;
+}
+
+.devtext {
+    font-family: 'Consolas';
 }
