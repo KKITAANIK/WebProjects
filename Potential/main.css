@@ -96,7 +96,7 @@ body {
 }
 .button {
     height: calc((25vh - 0.5vw) / 3 - 0.5vw);
-    width: calc(79.5vw / 7 - 0.5vw);
+    width: calc(99.5vw / 9 - 0.5vw);
     margin: 0.25vw;
     border: solid;
     border-width: 0.25vw;
@@ -107,6 +107,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #404040
 }
 .button:hover {
     border-color: #c8c8c8;
@@ -140,7 +141,6 @@ body {
     border-radius: 0.5vw;
     opacity: 0;
     transition: opacity 0.5s;
-    color: black;
 }
 .button:hover .tooltip {
     opacity: 1;
