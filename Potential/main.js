@@ -2,7 +2,7 @@ let buttons = [[], [], []];
 
 function FillButtons() {
     for (let i = 0; i < 3; i++){
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < 7; j++) {
             buttons[i][j] = new Button(i.toString() + j.toString());
         }
     }
@@ -34,7 +34,7 @@ class Button {
 }
 function ClearButtons() {
     for (let i = 0; i < 3; i++){
-        for (let j = 0; j < 5; j++) {
+        for (let j = 0; j < 7; j++) {
             buttons[i][j].disable();
         }
     }

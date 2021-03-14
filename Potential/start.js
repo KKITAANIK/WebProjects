@@ -33,11 +33,13 @@ function LeftAppear() {
     Output('<span id="devtext" class="devtext"></span>');
     setTimeout(SlowType.bind(null, "> /W/e/l/l/,/ /t/h/a/t/'/s/ /n/o/t/ /r/e/a/l/l/y/ /t/h/a/t/ /h/e/l/p/f/u/l/./ /W/e/ /a/l/r/e/a/d/y/ /k/n/o/w/ /t/h/e/r/e/'/s/ /n/o/t/h/i/n/g/ /h/e/r/e/."), 500);
     setTimeout(SlowType.bind(null, "<br>> /B/u/t/ /I/ /p/r/o/m/i/s/e/ /i/t/'/l/l/ /b/e/ /r/e/a/l/l/y/ /h/e/l/p/f/u/l/,/ /l/a/t/e/r/!"), 5500);
-    setTimeout(SlowType.bind(null, "<br>> /I/t/ /l/o//o/k/s/ /p/r/e/t/t/y/ /l/o/p/s/i/d/e/d/,/ /t/h/o/u/g/h/./ /A/n/d/ /I/ /d/o/n/'/t/ /w/a/n/t/ /y/o/u/ /t/o/ /h/a/v/e/ /t/o/ /r/e/a/d/ /a/l/l/ /t/h/e/ /w/a/y/ /a/c/r/o/s/s/././."), 9000);
-    setTimeout(RightAppear, 15000);
+    setTimeout(SlowType.bind(null, "<br>> /T/h/a/t/'/s/ /e/v/e/r/y/t/h/i/n/g/ /I/ /h/a/v/e/ /s/o/ /f/a/r/./ /L/i/k/e/ /I/ /s/a/i/d/,/ /I/ /r/e/a/l/l/y/ /d/i/d/n/'/t/ /e/x/p/e/c/t/ /y/o/u/ /t/o/ /b/e/ /h/e/r/e/ /s/o/ /s/o/o/n/."), 9000);
+    setTimeout(SlowType.bind(null, "<br>> /I/'/m/ /g/o/i/n/g/ /t/o/ /t/u/r/n/ /i/t/ /o/n/,/ /n/o/w/./ /G/o/ /a/h/e/a/d/ /a/n/d/ /e/x/p/l/o/r/e/ /e/v/e/r/y/t/h/i/n/g/ /t/h/a/t/'/s/ /t/h/e/r/e/ /r/i/g/h/t/ /n/o/w/."), 15000);
+    setTimeout(SlowType.bind(null, "<br>> /G/o/o/d/ /l/u/c/k/!"), 21000);
+    setTimeout(function() {buttons[0][0].update(Begin, "Next")}, 22500);
 }
 
-function RightAppear() {
+/*function RightAppear() {
     document.getElementById("right").style.zIndex = "8";
     document.getElementById("display").style.width = "60vw";
     document.getElementById("displaycontent").style.width = "58vw";
@@ -49,4 +51,8 @@ function RightAppear() {
     setTimeout(SlowType.bind(null, "<br>> /I/'/m/ /g/o/i/n/g/ /t/o/ /t/u/r/n/ /i/t/ /o/n/,/ /n/o/w/./ /G/o/ /a/h/e/a/d/ /a/n/d/ /e/x/p/l/o/r/e/ /e/v/e/r/y/t/h/i/n/g/ /t/h/a/t/'/s/ /t/h/e/r/e/ /r/i/g/h/t/ /n/o/w/."), 13500);
     setTimeout(SlowType.bind(null, "<br>> /G/o/o/d/ /l/u/c/k/!"), 19000)
     setTimeout(Output.bind(null, "test"), 21000);
+}*/
+
+function Begin() {
+    Output("text");
 }

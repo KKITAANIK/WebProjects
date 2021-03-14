@@ -85,10 +85,9 @@ body {
 }
 .buttons {
     margin-left: 20vw;
-    margin-right: 20vw;
     margin-top: 75vh;
     height: calc(25vh - 0.5vw);
-    width: 59.5vw;
+    width: 79.5vw;
     background-color: #d8d8d8;
     position: absolute;
     display: flex;
@@ -97,7 +96,7 @@ body {
 }
 .button {
     height: calc((25vh - 0.5vw) / 3 - 0.5vw);
-    width: calc(59.5vw / 5 - 0.5vw);
+    width: calc(79.5vw / 7 - 0.5vw);
     margin: 0.25vw;
     border: solid;
     border-width: 0.25vw;
