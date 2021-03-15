@@ -98,6 +98,7 @@ p {
     display: flex;
     flex-wrap: wrap;
     padding: 0.25vw;
+    z-index: 2;
 }
 .button {
     height: calc((25vh - 0.5vw) / 3 - 0.5vw);
@@ -112,7 +113,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #404040
+    color: #404040;
 }
 .button:hover {
     border-color: #c8c8c8;
@@ -169,4 +170,9 @@ p {
 
 .devtext {
     font-family: 'Consolas';
+}
+.kkitaanik {
+    font-family: "Times New Roman";
+    font-size: 2vw;
+    color: #a75e79
 }
