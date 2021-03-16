@@ -42,3 +42,14 @@ function ClearButtons() {
         }
     }
 }
+
+class Character {
+    // initialize
+    constructor(name, sexattr) {
+        this.name = name;
+        // sexattr must be an array with three binary values
+        this.breasts = sexattr[0];
+        this.vagina = sexattr[1];
+        this.penis = sexattr[2];
+    }
+}

@@ -21,7 +21,7 @@ function ButtonAppear() {
     document.getElementById("display").style.height = "calc(75vh + 0.75vw)";
     document.getElementById("displaycontent").style.height = "calc(75vh - 2vw)";
     ClearButtons();
-    buttons[0][0].update(Begin.bind(null, 0), "Skip");
+    buttons[0][0].update(Initialize.bind(null, 0, 0), "Skip");
     timeouts.push(setTimeout(SlowType.bind(null, "<br><br>> /T/h/e/r/e/ /y/o/u/ /g/o/!/ /Y/o/u/ /p/r/o/b/a/b/l/y/ /w/o/n/'/t/ /n/e/e/d/ /a/l/l/ /o/f/ /t/h/o/s/e/,/ /b/u/t/ /t/h/e/y/'/r/e/ /t/h/e/r/e/ /i/f/ /y/o/u/ /w/a/n/t/."), 500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /I/t/'/s/ /s/t/i/l/l/ /j/u/s/t/ /u/s/,/ /t/h/o/u/g/h/./ /I/ /r/e/a/l/l/y/ /p/r/e/f/e/r/ /b/e/i/n/g/ /i/n/ /t/h/e/ /b/a/c/k/g/r/o/u/n/d/,/ /b/u/t/ /I/ /s/h/o/u/l/d/ /b/e/ /a/b/l/e/ /t/o/ /p/u/t/ /s/o/m/e/t/h/i/n/g/ /t/o/g/e/t/h/e/r/ /s/o/ /y/o/u/ /a/r/e/n/'/t/ /o/n/ /y/o/u/r/ /o/w/n/././."), 5500));
     timeouts.push(setTimeout(LeftAppear, 15000));
@@ -41,13 +41,13 @@ function LeftAppear() {
         }
     }
     ClearButtons();
-    buttons[0][0].update(Begin.bind(null, 0), "Skip");
+    buttons[0][0].update(Initialize.bind(null, 0, 0), "Skip");
     timeouts.push(setTimeout(SlowType.bind(null, "<br><br>> /W/e/l/l/,/ /t/h/a/t/'/s/ /n/o/t/ /r/e/a/l/l/y/ /t/h/a/t/ /h/e/l/p/f/u/l/./ /W/e/ /a/l/r/e/a/d/y/ /k/n/o/w/ /t/h/e/r/e/'/s/ /n/o/t/h/i/n/g/ /h/e/r/e/."), 500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /B/u/t/ /I/ /p/r/o/m/i/s/e/ /i/t/'/l/l/ /b/e/ /r/e/a/l/l/y/ /h/e/l/p/f/u/l/,/ /l/a/t/e/r/,/ /a/n/d/ /I/ /t/h/i/n/k/ /w/e/ /c/o/u/l/d/ /a/f/f/o/r/d/ /t/o/ /l/o/s/e/ /a/ /f/e/w/ /b/u/t/t/o/n/s/ /f/o/r/ /i/t/."), 5500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /T/h/a/t/'/s/ /e/v/e/r/y/t/h/i/n/g/ /I/ /h/a/v/e/ /s/o/ /f/a/r/./ /L/i/k/e/ /I/ /s/a/i/d/,/ /I/ /r/e/a/l/l/y/ /d/i/d/n/'/t/ /e/x/p/e/c/t/ /y/o/u/ /t/o/ /b/e/ /h/e/r/e/ /s/o/ /s/o/o/n/."), 12000));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /I/'/m/ /g/o/i/n/g/ /t/o/ /t/u/r/n/ /i/t/ /o/n/,/ /n/o/w/./ /G/o/ /a/h/e/a/d/ /a/n/d/ /e/x/p/l/o/r/e/ /e/v/e/r/y/t/h/i/n/g/ /t/h/a/t/'/s/ /t/h/e/r/e/ /r/i/g/h/t/ /n/o/w/."), 18000));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /G/o/o/d/ /l/u/c/k/!"), 23000));
-    timeouts.push(setTimeout(function() {buttons[0][0].update(Begin.bind(null, 0), "Next")}, 24500));
+    timeouts.push(setTimeout(function() {buttons[0][0].update(Initialize.bind(null, 0, 0), "Next")}, 24500));
 }
 
 /*function RightAppear() {
@@ -64,7 +64,9 @@ function LeftAppear() {
     setTimeout(Output.bind(null, "test"), 21000);
 }*/
 
-function Begin(key) {
+function Initialize(key, sexattrnum) {
+    let pcname;
+    let pcsexattr = [0, 0, 0];
     if (key == 0) {
         document.getElementById("left").style.zIndex = "8";
         document.getElementById("display").style.width = "80vw";
@@ -81,8 +83,41 @@ function Begin(key) {
         for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
         }
-        ClearButtons();
         timeouts = [];
-        Output("test");
+        Output("Please enter your character's name.<br><br><input type=\"text\" id=\"name\">");
+        ClearButtons();
+        buttons[0][0].update(Initialize.bind(null, 1, 0), "Confirm");
+    }
+    else if (key == 1) {
+        pcname = document.getElementById("nameInput").value;
+        if (pcname.length >= 1) {
+            Initialize(2, 0);
+        }
+    }
+    else if (key == 2) {
+        if (sexattrnum != 0) {
+            pcsexattr[sexattrnum -1] = 1;
+        }
+        Output("Please select your sexual attributes. You may choose any combination.");
+        ClearButtons();
+        let i = 0;
+        if (pcsexattr[0] == 0) {
+            buttons[0][i].update(Initialize.bind(null, 2, 1), "Breasts");
+            i++;
+        }
+        if (pcsexattr[1] == 0) {
+            buttons[0][i].update(Initialize.bind(null, 2, 2), "Vagina");
+            i++;
+        }
+        if (pcsexattr[2] == 0) {
+            buttons[0][i].update(Initialize.bind(null, 2, 3), "Penis");
+            i++;
+        }
+        buttons[0][i].update(Initialize.bind(null, 3, 0), "Done");
+    }
+    else if (key == 3) {
+        player = new Character(pcname, pcsexattr);
+        Output("Check the console for the character.");
+        console.log(player);
     }
 }
