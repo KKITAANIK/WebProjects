@@ -1,3 +1,6 @@
+let pcname;
+let pcsexattr = [0, 0, 0];
+
 async function SlowType(output) {
     chararray = output.split("/");
     for (i = 0; i < chararray.length; i++) {
@@ -65,8 +68,6 @@ function LeftAppear() {
 }*/
 
 function Initialize(key, sexattrnum) {
-    let pcname;
-    let pcsexattr = [0, 0, 0];
     if (key == 0) {
         document.getElementById("left").style.zIndex = "8";
         document.getElementById("display").style.width = "80vw";
@@ -83,8 +84,9 @@ function Initialize(key, sexattrnum) {
         for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
         }
+        
         timeouts = [];
-        Output("Please enter your character's name.<br><br><input type=\"text\" id=\"name\">");
+        Output("Please enter your character's name.<br><input type=\"text\" id=\"nameInput\">");
         ClearButtons();
         buttons[0][0].update(Initialize.bind(null, 1, 0), "Confirm");
     }
@@ -96,7 +98,7 @@ function Initialize(key, sexattrnum) {
     }
     else if (key == 2) {
         if (sexattrnum != 0) {
-            pcsexattr[sexattrnum -1] = 1;
+            pcsexattr[sexattrnum - 1] = 1;
         }
         Output("Please select your sexual attributes. You may choose any combination.");
         ClearButtons();
