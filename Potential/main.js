@@ -45,11 +45,19 @@ function ClearButtons() {
 
 class Character {
     // initialize
-    constructor(name, sexattr) {
+    constructor(name, sexattr, gender, isconj) {
         this.name = name;
         // sexattr must be an array with three binary values
         this.breasts = sexattr[0];
         this.vagina = sexattr[1];
         this.penis = sexattr[2];
+        //Gender: subject, object, pronominal adjective, predicative adjective, reflexive, "is" contraction
+        this.subject = gender[0];
+        this.object = gender[1];
+        this.proadj = gender[2];
+        this.predadj = gender[3];
+        this.reflex = gender[4];
+        this.contrac = gender[5];
+        this.isconj = isconj;
     }
 }

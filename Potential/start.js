@@ -1,5 +1,7 @@
 let pcname;
 let pcsexattr = [0, 0, 0];
+let gender;
+let isconj;
 
 async function SlowType(output) {
     chararray = output.split("/");
@@ -115,10 +117,54 @@ function Initialize(key, sexattrnum) {
             buttons[0][i].update(Initialize.bind(null, 2, 3), "Penis");
             i++;
         }
-        buttons[0][i].update(Initialize.bind(null, 3, 0), "Done");
+        buttons[0][i].update(Gender, "Done");
     }
-    else if (key == 3) {
-        player = new Character(pcname, pcsexattr);
+}
+
+function Gender() {
+    let output = "Please select a gender and associated pronouns, or fill out the following fields with your own.<br>\
+        <br>Subject: <input id=\"subject\" class=\"input\">\
+        <br>Object: <input id=\"object\" class=\"input\">\
+        <br>Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
+        <br>Predicative Adjective: <input id=\"predadj\" class=\"input\">\
+        <br>Reflexive: <input id=\"reflex\" class=\"input\">\
+        <br>\"Is\" Contraction (must end in 's or 're): <input id=\"contrac\" class=\"input\">";
+    Output(output);
+
+    //subject, object, pronominal adjective, predicative adjective, reflexive, contraction
+    ClearButtons();
+    buttons[0][0].update(Confirm.bind(null, "custom"), "Submit Custom");
+    buttons[0][1].update(Confirm.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Masculine<span class=\"tooltip\">(he/him/his/his/himself/he's)</span>");
+    buttons[0][2].update(Confirm.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Feminine<span class=\"tooltip\">(she/her/her/hers/herself/she's)</span>");
+    buttons[0][3].update(Confirm.bind(null, ["they", "them", "their", "theirs", "themself", "they're"]), "Nonbinary<span class=\"tooltip\">(they/them/their/theirs/themself/they're)</span>");
+}
+
+function Confirm(newgender) {
+    let emptypronoun = 0;
+    if (newgender == "custom") {
+        newgender = [document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("predadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
+        for (let i = 0; i < 6; i++) {
+            if (newgender[i].length < 1) {
+                emptypronoun++;
+            }
+        }
+    }
+    let lastchars = newgender[5].charAt(newgender[5].length - 2).toString() + newgender[5].charAt(newgender[5].length - 1).toString();
+    if (lastchars != "'s" && lastchars != "re") {
+        emptypronoun++;
+    }
+    else if (lastchars == "'s") {
+        isconj = "is";
+    }
+    else {
+        isconj = "are";
+    }
+    if (emptypronoun > 0) {
+        Gender();
+    }
+    else {
+        gender = newgender;
+        player = new Character(pcname, pcsexattr, gender, isconj);
         Output("Check the console for the character.");
         console.log(player);
     }
