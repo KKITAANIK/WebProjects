@@ -88,7 +88,7 @@ function Initialize(key, sexattrnum) {
         }
         
         timeouts = [];
-        Output("Please enter your character's name.<br><input type=\"text\" id=\"nameInput\">");
+        Output("Please enter your character's name.<br><input type=\"text\" id=\"nameInput\" class=\"input\">");
         ClearButtons();
         buttons[0][0].update(Initialize.bind(null, 1, 0), "Confirm");
     }

@@ -10,10 +10,12 @@ p {
     margin-block-start: 0;
     margin-block-end: 0; 
 }
+
 @font-face {
     font-family: "Open Sans";
     src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
 }
+
 .main {
     width: 100vw;
     height: 100vh;
@@ -166,6 +168,11 @@ p {
 }
 .time {
     color: #353535;
+}
+.input {
+    border-style: solid;
+    background-color: #e8e8e8;
+    font-size: 1.5vw;
 }
 
 .devtext {
