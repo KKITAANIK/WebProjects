@@ -11,10 +11,10 @@ function timer(ms) { return new Promise(res => setTimeout(res, ms)); }
 var timeouts = [];
 
 function Start() {
-    Output('<span id="devtext" class="devtext"></span>');
-    timeouts.push(setTimeout(SlowType.bind(null, "> /O/h/,/ /h/e/l/l/o/!/ /I/ /t/h/o/u/g/h/t/ /I/ /w/o/u/l/d/ /h/a/v/e/ /m/o/r/e/ /t/i/m/e/./ /C/a/n/ /y/o/u/ /r/e/a/d/ /t/h/i/s/?"), 0));
-    timeouts.push(setTimeout(SlowType.bind(null, "<br>> /R/i/g/h/t/,/ /y/o/u/ /n/e/e/d/ /a/ /w/a/y/ /t/o/ /r/e/s/p/o/n/d/./ /L/e/t/'/s/ /s/e/e/././."), 6000));
-    timeouts.push(setTimeout(ButtonAppear, 11000));
+    Output("<p>You are in a vast, empty space of pure white. The walls or sky or ceiling or floor, whichever combination exists in this space, blend into one another, and it is all but impossible to judge distance and direction. The white itself is not blinding, the same as any commonplace white surface, the odd, infinite quality the simple result of its purity. A perfectly smooth surface, free of any markings or dirt, lit evenly. The actual source of this space's illumination is unclear, it seems to come from every direction and nowhere at the same time. Looking down at yourself, you notice that you aren't casting any sort of shadow, either on the ground or yourself. The feeling is disorienting, as you see every detail of your clothing, every nook and cranny of your person normally shadowed or obscured on display. It is very strange to think of how artificial it all looks, as if your own appearance is somehow incomplete.</p><br><span id=\"devtext\" class=\"devtext\"></span>");
+    timeouts.push(setTimeout(SlowType.bind(null, "> /O/h/,/ /h/e/l/l/o/!/ /I/ /t/h/o/u/g/h/t/ /I/ /w/o/u/l/d/ /h/a/v/e/ /m/o/r/e/ /t/i/m/e/./ /C/a/n/ /y/o/u/ /r/e/a/d/ /t/h/i/s/?"), 20000));
+    timeouts.push(setTimeout(SlowType.bind(null, "<br>> /R/i/g/h/t/,/ /y/o/u/ /n/e/e/d/ /a/ /w/a/y/ /t/o/ /r/e/s/p/o/n/d/./ /L/e/t/'/s/ /s/e/e/././."), 26000));
+    timeouts.push(setTimeout(ButtonAppear, 31000));
 }
 
 function ButtonAppear() {
@@ -22,8 +22,7 @@ function ButtonAppear() {
     document.getElementById("displaycontent").style.height = "calc(75vh - 2vw)";
     ClearButtons();
     buttons[0][0].update(Begin.bind(null, 0), "Skip");
-    Output('<span id="devtext" class="devtext"></span>');
-    timeouts.push(setTimeout(SlowType.bind(null, "> /T/h/e/r/e/ /y/o/u/ /g/o/!/ /Y/o/u/ /p/r/o/b/a/b/l/y/ /w/o/n/'/t/ /n/e/e/d/ /a/l/l/ /o/f/ /t/h/o/s/e/,/ /b/u/t/ /t/h/e/y/'/r/e/ /t/h/e/r/e/ /i/f/ /y/o/u/ /w/a/n/t/."), 500));
+    timeouts.push(setTimeout(SlowType.bind(null, "<br><br>> /T/h/e/r/e/ /y/o/u/ /g/o/!/ /Y/o/u/ /p/r/o/b/a/b/l/y/ /w/o/n/'/t/ /n/e/e/d/ /a/l/l/ /o/f/ /t/h/o/s/e/,/ /b/u/t/ /t/h/e/y/'/r/e/ /t/h/e/r/e/ /i/f/ /y/o/u/ /w/a/n/t/."), 500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /I/t/'/s/ /s/t/i/l/l/ /j/u/s/t/ /u/s/,/ /t/h/o/u/g/h/./ /I/ /r/e/a/l/l/y/ /p/r/e/f/e/r/ /b/e/i/n/g/ /i/n/ /t/h/e/ /b/a/c/k/g/r/o/u/n/d/,/ /b/u/t/ /I/ /s/h/o/u/l/d/ /b/e/ /a/b/l/e/ /t/o/ /p/u/t/ /s/o/m/e/t/h/i/n/g/ /t/o/g/e/t/h/e/r/ /s/o/ /y/o/u/ /a/r/e/n/'/t/ /o/n/ /y/o/u/r/ /o/w/n/././."), 5500));
     timeouts.push(setTimeout(LeftAppear, 15000));
 }
@@ -43,8 +42,7 @@ function LeftAppear() {
     }
     ClearButtons();
     buttons[0][0].update(Begin.bind(null, 0), "Skip");
-    Output('<span id="devtext" class="devtext"></span>');
-    timeouts.push(setTimeout(SlowType.bind(null, "> /W/e/l/l/,/ /t/h/a/t/'/s/ /n/o/t/ /r/e/a/l/l/y/ /t/h/a/t/ /h/e/l/p/f/u/l/./ /W/e/ /a/l/r/e/a/d/y/ /k/n/o/w/ /t/h/e/r/e/'/s/ /n/o/t/h/i/n/g/ /h/e/r/e/."), 500));
+    timeouts.push(setTimeout(SlowType.bind(null, "<br><br>> /W/e/l/l/,/ /t/h/a/t/'/s/ /n/o/t/ /r/e/a/l/l/y/ /t/h/a/t/ /h/e/l/p/f/u/l/./ /W/e/ /a/l/r/e/a/d/y/ /k/n/o/w/ /t/h/e/r/e/'/s/ /n/o/t/h/i/n/g/ /h/e/r/e/."), 500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /B/u/t/ /I/ /p/r/o/m/i/s/e/ /i/t/'/l/l/ /b/e/ /r/e/a/l/l/y/ /h/e/l/p/f/u/l/,/ /l/a/t/e/r/,/ /a/n/d/ /I/ /t/h/i/n/k/ /w/e/ /c/o/u/l/d/ /a/f/f/o/r/d/ /t/o/ /l/o/s/e/ /a/ /f/e/w/ /b/u/t/t/o/n/s/ /f/o/r/ /i/t/."), 5500));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /T/h/a/t/'/s/ /e/v/e/r/y/t/h/i/n/g/ /I/ /h/a/v/e/ /s/o/ /f/a/r/./ /L/i/k/e/ /I/ /s/a/i/d/,/ /I/ /r/e/a/l/l/y/ /d/i/d/n/'/t/ /e/x/p/e/c/t/ /y/o/u/ /t/o/ /b/e/ /h/e/r/e/ /s/o/ /s/o/o/n/."), 12000));
     timeouts.push(setTimeout(SlowType.bind(null, "<br>> /I/'/m/ /g/o/i/n/g/ /t/o/ /t/u/r/n/ /i/t/ /o/n/,/ /n/o/w/./ /G/o/ /a/h/e/a/d/ /a/n/d/ /e/x/p/l/o/r/e/ /e/v/e/r/y/t/h/i/n/g/ /t/h/a/t/'/s/ /t/h/e/r/e/ /r/i/g/h/t/ /n/o/w/."), 18000));
@@ -83,14 +81,8 @@ function Begin(key) {
         for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
         }
-        timeouts = [];
-        Output("<p>You are in a vast, empty space of pure white. The walls or sky or ceiling or floor, whichever combination exists in this space, blend into one another, and it is all but impossible to judge distance and direction. The white itself is not blinding, the same as any commonplace white surface, the odd, infinite quality the simple result of its purity. A perfectly smooth surface, free of any markings or dirt, lit evenly. The actual source of this space's illumination is unclear, it seems to come from every direction and nowhere at the same time. Looking down at yourself, you notice that you aren't casting any sort of shadow, either on the ground or yourself. The feeling is disorienting, as you see every detail of your clothing, ever nook and cranny of your person normally shadowed or obscured on display. It is very strange to think of how artificial it all looks, as if your own appearance is somehow incomplete.</p>\
-        <br>\
-        <p>You see a brochure on the ground, the cover displaying an image of a metal ring, with several ropes tied around it and emenating outwards, a metal sphere resting at the end of each.</p>");
         ClearButtons();
-        buttons[0][0].update(Begin.bind(null, 1), "Take Brochure<span class=\"tooltip\">Pick up and read the brochure.</span>");
-    }
-    else if (key == 1) {
-        Output("<p><i>Bored with your surroundings? Want to escape?</i> <span class=\"kkitaanik\">KK̈ITAȺNIK</span> <i>is proud to present many options for your enjoyment! <b>This production copy is not meant for general distribution. All products advertised are in early concept stages.</b></i></p>");
+        timeouts = [];
+        Output("test");
     }
 }
