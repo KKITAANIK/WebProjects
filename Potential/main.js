@@ -21,7 +21,7 @@ class Button {
     update(func, text) {
         // update the attributes
         document.getElementById(this.id).disabled = false;
-        document.getElementById(this.id).innerHTML = "<span>" + text + "</span>";
+        document.getElementById(this.id).innerHTML = "<span class=\"buttoncontent\">" + text + "</span>";
         document.getElementById(this.id).onclick = func;
         $("#" + this.id.toString()).textfill({
             maxFontPixels: 0.015 * screen.width
