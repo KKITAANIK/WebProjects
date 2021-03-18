@@ -1,11 +1,12 @@
+var player;
 let pcname;
 let pcsexattr = [0, 0, 0];
-let gender;
-let isconj;
+let pcgender;
+let pcappearance = ["", "", "", "", "", "", "", "", ""];
 
 async function SlowType(output) {
     chararray = output.split("/");
-    for (i = 0; i < chararray.length; i++) {
+    for (let i = 0; i < chararray.length; i++) {
         await timer(50)
         document.getElementById("devtext").innerHTML += chararray[i];
     }
@@ -138,13 +139,13 @@ function Gender() {
 
     //subject, object, pronominal adjective, predicative adjective, reflexive, contraction
     ClearButtons();
-    buttons[0][0].update(Confirm.bind(null, "custom"), "Submit Custom");
-    buttons[0][1].update(Confirm.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Masculine<span class=\"tooltip\">Will fill with: he/&ZeroWidthSpace;him/&ZeroWidthSpace;his/&ZeroWidthSpace;his/&ZeroWidthSpace;himself/&ZeroWidthSpace;he's</span>");
-    buttons[0][2].update(Confirm.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Feminine<span class=\"tooltip\">Will fill with: she/&ZeroWidthSpace;her/&ZeroWidthSpace;her/&ZeroWidthSpace;hers/&ZeroWidthSpace;herself/&ZeroWidthSpace;she's</span>");
-    buttons[0][3].update(Confirm.bind(null, ["they", "them", "their", "theirs", "themself", "they're"]), "Nonbinary<span class=\"tooltip\">Will fill with: they/&ZeroWidthSpace;them/&ZeroWidthSpace;their/&ZeroWidthSpace;theirs/&ZeroWidthSpace;themself/&ZeroWidthSpace;they're</span>");
+    buttons[0][0].update(ConfirmGender.bind(null, "custom"), "Submit Custom");
+    buttons[0][1].update(ConfirmGender.bind(null, ["he", "him", "his", "his", "himself", "he's"]), "Masculine<span class=\"tooltip\">Will fill with: he/&ZeroWidthSpace;him/&ZeroWidthSpace;his/&ZeroWidthSpace;his/&ZeroWidthSpace;himself/&ZeroWidthSpace;he's</span>");
+    buttons[0][2].update(ConfirmGender.bind(null, ["she", "her", "her", "hers", "herself", "she's"]), "Feminine<span class=\"tooltip\">Will fill with: she/&ZeroWidthSpace;her/&ZeroWidthSpace;her/&ZeroWidthSpace;hers/&ZeroWidthSpace;herself/&ZeroWidthSpace;she's</span>");
+    buttons[0][3].update(ConfirmGender.bind(null, ["they", "them", "their", "theirs", "themself", "they're"]), "Nonbinary<span class=\"tooltip\">Will fill with: they/&ZeroWidthSpace;them/&ZeroWidthSpace;their/&ZeroWidthSpace;theirs/&ZeroWidthSpace;themself/&ZeroWidthSpace;they're</span>");
 }
 
-function Confirm(newgender) {
+function ConfirmGender(newgender) {
     let emptypronoun = 0;
     if (newgender == "custom") {
         newgender = [document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("predadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
@@ -159,18 +160,176 @@ function Confirm(newgender) {
         emptypronoun++;
     }
     else if (lastchars == "'s") {
-        isconj = "is";
+        newgender[6] = "is";
     }
     else {
-        isconj = "are";
+        newgender[6] = "are";
     }
     if (emptypronoun > 0) {
         Gender();
     }
     else {
-        gender = newgender;
-        player = new Character(pcname, pcsexattr, gender, isconj);
-        Output("Check the console for the character.");
+        pcgender = newgender;
+        Appearance(0);
+    }
+}
+
+function Appearance(key, arg1) {
+    /*this.height = appearance[0];
+    this.thickness = appearance[1];
+    this.musculature = appearance[2];
+    this.breastSize = appearance[3];
+    this.cockSize = appearance[4];
+    this.skinTone = appearance[5];
+    this.hairColor = appearance[6];
+    this.eyeColor = appearance[7];*/
+    if (key == 0) {
+        Output("Please enter your height in a unit of your preference.\
+        <br><input class=\"input\" id=\"height\" type=\"number\">");
+        if (pcsexattr[0] == 1) {
+            document.getElementById("height").value = 160;
+        }
+        else if (pcsexattr[0] == 0) {
+            document.getElementById("height").value = 171;
+        }
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 1, "cm"), "Submit Centimeters");
+        buttons[0][1].update(Appearance.bind(null, 1, "in"), "Submit Inches");
+    }
+    else if (key == 1) {
+        if (arg1 == "in") {
+            pcappearance[0] = InToCm(document.getElementById("height").value);
+        }
+        else if (arg1 == "cm") {
+            pcappearance[0] = document.getElementById("height").value;
+        }
+        Output("Please select your body shape. This will not impact muscle definition; that will come later.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 2, "thin"), "Thin");
+        buttons[0][1].update(Appearance.bind(null, 2, "average"), "Average");
+        buttons[0][2].update(Appearance.bind(null, 2, "thick"), "Thick");
+    }
+    else if (key == 2) {
+        pcappearance[1] = arg1;
+        Output("Please select your muscle definiton.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 3, "soft"), "Soft");
+        buttons[0][1].update(Appearance.bind(null, 3, "average"), "Average");
+        buttons[0][2].update(Appearance.bind(null, 3, "muscular"), "Muscular");
+    }
+    else if (key == 3) {
+        pcappearance[2] = arg1;
+        if (pcsexattr[0] == 1) {
+            Appearance(4);
+        }
+        else if (pcsexattr[2] == 1) {
+            Appearance(5);
+        }
+        else {
+            Appearance(6);
+        }
+    }
+    else if (key == 4) {
+        Output("Please select your breast size.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 5, "A"), "A");
+        buttons[0][1].update(Appearance.bind(null, 5, "B"), "B");
+        buttons[0][2].update(Appearance.bind(null, 5, "C"), "C");
+        buttons[0][3].update(Appearance.bind(null, 5, "D"), "D");
+        buttons[0][4].update(Appearance.bind(null, 5, "D"), "DD");
+    }
+    else if (key == 5) {
+        /*for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 7; j++) {
+                document.getElementById("b" + i.toString() + j.toString()).style.backgroundColor = "initial";
+                document.getElementById("b" + i.toString() + j.toString()).style.color = "initial";
+            }
+        }*/
+        if (arg1 != undefined) {
+            pcappearance[3] = arg1;
+        }
+        else {
+            pcappearance[3] = "flat"
+        }
+        Output("Please enter your erect penis size in a unit of your preference.\
+        <br><input class=\"input\" id=\"penisSize\" type=\"number\">");
+        document.getElementById("penisSize").value = 13;
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 6, "cm"), "Submit Centimeters");
+        buttons[0][1].update(Appearance.bind(null, 6, "in"), "Submit Inches");
+    }
+    else if (key == 6) {
+        if (pcappearance[3] == "") {
+            pcappearance[3] = "flat"
+        }
+        if (arg1 != undefined) {
+            if (arg1 == "in") {
+                pcappearance[4] = InToCm(document.getElementById("penisSize").value);
+            }
+            else if (arg1 == "cm") {
+                pcappearance[4] = document.getElementById("penisSize").value;
+            }
+        }
+        else {
+            pcappearance[4] = 0;
+        }
+        Output("Please select your skin tone.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 7, "very fair"), "Very Fair");
+        buttons[0][1].update(Appearance.bind(null, 7, "fair"), "Fair");
+        buttons[0][2].update(Appearance.bind(null, 7, "medium"), "Medium");
+        buttons[0][3].update(Appearance.bind(null, 7, "olive"), "Olive");
+        buttons[0][4].update(Appearance.bind(null, 7, "brown"), "Brown");
+        buttons[0][5].update(Appearance.bind(null, 7, "black"), "Black");
+        /*document.getElementById("b00").style.backgroundColor = "#FFF3EA";
+        document.getElementById("b01").style.backgroundColor = "#F9E2D2";
+        document.getElementById("b02").style.backgroundColor = "#E1BDA7";
+        document.getElementById("b03").style.backgroundColor = "#A17956";
+        document.getElementById("b04").style.backgroundColor = "#65422C";
+        document.getElementById("b05").style.backgroundColor = "#312726";
+        document.getElementById("b03").style.color = "white";
+        document.getElementById("b04").style.color = "white";
+        document.getElementById("b05").style.color = "white";*/
+    }
+    else if (key == 7) {
+        pcappearance[5] = arg1;
+        /*for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 7; j++) {
+                document.getElementById("b" + i.toString() + j.toString()).style.backgroundColor = "initial";
+                document.getElementById("b" + i.toString() + j.toString()).style.color = "initial";
+            }
+        }*/
+        Output("Please select your hair color.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 8, "black"), "Black");
+        buttons[0][1].update(Appearance.bind(null, 8, "brown"), "Brown");
+        buttons[0][2].update(Appearance.bind(null, 8, "auburn"), "Auburn");
+        buttons[0][3].update(Appearance.bind(null, 8, "ginger"), "Ginger");
+        if (pcgender[0] == "she") {
+            buttons[0][4].update(Appearance.bind(null, 8, "blonde"), "Blonde");
+        }
+        else {
+            buttons[0][4].update(Appearance.bind(null, 8, "blond"), "Blond");
+        }
+        buttons[0][5].update(Appearance.bind(null, 8, "grey"), "Grey");
+        buttons[0][6].update(Appearance.bind(null, 8, "white"), "White");
+    }
+    else if (key == 8) {
+        pcappearance[6] = arg1;
+        Output("Please select your eye color.");
+        ClearButtons();
+        buttons[0][0].update(Appearance.bind(null, 9, "blue"), "Blue");
+        buttons[0][1].update(Appearance.bind(null, 9, "grey"), "Grey");
+        buttons[0][2].update(Appearance.bind(null, 9, "green"), "Green");
+        buttons[0][3].update(Appearance.bind(null, 9, "hazel"), "Hazel");
+        buttons[0][4].update(Appearance.bind(null, 9, "brown"), "Brown");
+        buttons[0][5].update(Appearance.bind(null, 9, "amber"), "Amber"); 
+    }
+    else if (key == 9) {
+        pcappearance[7] = arg1;
+        player = new Character(pcname, pcsexattr, pcgender, pcappearance);
         console.log(player);
+        Output("Check the console for your character.");
+        ClearButtons();
     }
 }
