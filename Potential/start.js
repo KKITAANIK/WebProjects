@@ -1,4 +1,5 @@
 var player;
+var metric;
 let pcname;
 let pcsexattr = [0, 0, 0];
 let pcgender;
@@ -207,9 +208,11 @@ function Appearance(key, arg1, backbutton) {
         if (backbutton == 0) {
             if (arg1 == "in") {
                 pcappearance[0] = InToCm(document.getElementById("height").value);
+                metric = 0;
             }
             else if (arg1 == "cm") {
                 pcappearance[0] = document.getElementById("height").value;
+                metric = 1;
             }
         }
         Output("Please select your body shape. This will not impact muscle definition; that will come later.");
@@ -230,7 +233,7 @@ function Appearance(key, arg1, backbutton) {
         Output("Please select your muscle definiton.");
         ClearButtons();
         buttons[0][0].update(Appearance.bind(null, 3, "soft"), "Soft");
-        buttons[0][1].update(Appearance.bind(null, 3, "average"), "Average");
+        buttons[0][1].update(Appearance.bind(null, 3, "fit"), "Fit");
         buttons[0][2].update(Appearance.bind(null, 3, "muscular"), "Muscular");
         buttons[2][6].update(Appearance.bind(null, 1, undefined, 1), "Back");
     }
@@ -263,12 +266,24 @@ function Appearance(key, arg1, backbutton) {
             pcappearance[3] = "flat"
         }
         if (pcsexattr[2] == 1) {
-            Output("Please enter your erect penis size in a unit of your preference.\
-            <br><input class=\"input\" id=\"penisSize\" type=\"number\">");
-            document.getElementById("penisSize").value = 13;
+            let output = "Please enter your erect penis size in ";
+            if (metric == 0) {
+                output += "inches";
+            }
+            else if (metric == 1) {
+                ouput += "centimeters";
+            }
+            output += ".<br><input class=\"input\" id=\"penisSize\" type=\"number\">";
+            Output(output);
             ClearButtons();
-            buttons[0][0].update(Appearance.bind(null, 6, "cm", 0), "Submit Centimeters");
-            buttons[0][1].update(Appearance.bind(null, 6, "in", 0), "Submit Inches");
+            if (metric == 0) {
+                document.getElementById("penisSize").value = CmToIn(13);
+                buttons[0][0].update(Appearance.bind(null, 6, "in", 0), "Submit");
+            }
+            else if (metric == 1) {
+                document.getElementById("penisSize").value = 13;
+                buttons[0][0].update(Appearance.bind(null, 6, "cm", 0), "Submit");
+            }
         }
         else {
             Appearance(6, undefined, 0);
@@ -348,9 +363,8 @@ function Appearance(key, arg1, backbutton) {
     }
     else if (key == 9) {
         pcappearance[7] = arg1;
-        player = new Character(pcname, pcsexattr, pcgender, pcappearance);
-        console.log(player);
-        Output("Check the console for your character. Is this correct?");
+        player = new Character(pcname, pcsexattr, pcgender, pcappearance, "human");
+        DisplayAppearance();
         ClearButtons();
         buttons[0][0].update(test, "Yes");
         buttons[0][1].update(Initialize.bind(null, 0, 0), "No (Start Over)");
@@ -359,5 +373,5 @@ function Appearance(key, arg1, backbutton) {
 }
 
 function test() {
-    console.log("Test function was called.");
+    console.log("The test function was called.");
 }

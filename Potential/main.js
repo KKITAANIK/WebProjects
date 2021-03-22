@@ -44,16 +44,16 @@ function ClearButtons() {
 }
 
 function InToCm(val) {
-    return Math.round(val / 0.3937);
+    return Math.round((val / 0.3937) * 10) / 10;
 }
 
 function CmToIn(val) {
-    return Math.round(val * 0.3937);
+    return Math.round((val * 0.3937) * 10) / 10;
 }
 
 class Character {
     // initialize
-    constructor(name, sexattr, gender, appearance) {
+    constructor(name, sexattr, gender, appearance, species) {
         if (name != undefined) {
             this.name = name;
         }
@@ -75,114 +75,69 @@ class Character {
         }
         // Appearance
         if (appearance != undefined) {
-            this.height = appearance[0];
+            if (metric == 0) {
+                this.height = CmToIn(appearance[0]);
+            }
+            else if (metric == 1) {
+                this.height = appearance[0];
+            }
             this.thickness = appearance[1];
             this.musculature = appearance[2];
             this.breastSize = appearance[3];
-            this.cockSize = appearance[4];
+            if (metric == 0) {
+                this.penisSize = CmToIn(appearance[4]);
+            }
+            else if (metric == 1) {
+                this.penisSize = appearance[4];
+            }
             this.skinTone = appearance[5];
             this.hairColor = appearance[6];
             this.eyeColor = appearance[7];
         }
-        /*
-        Unanimous/semi-unanimous:
-            height
-            cock size
-            breast size
-            general build
-            hair color
-            eye color
-            skin color
-        Poll:
-            Cock size
-            Pubic hair (maybe length/color)
-        TiTS:
-            height
-            How thickset (broadness of frame): very thin, thin, lithe, normal, husky, thickset
-            hair color: black, brown, dirty blonde, blonde, auburn, red, gray
-            eye color: blue, green, hazel, brown
-            skin color: pale, fair, tan, olive, dark, ebony
-            breast size: flat, A, B, C, (for females) D, DD
-            penis size: 4-8 inches
-            personality: kind, mischievous, hard
-        CoC II:
-            height
-            frame built: bodybuilder, amazonian, well-built, average, thick, plush, overweight, bear, slender, lean, thin
-            hair color: brown, blonde, red, black
-            eye color: blue, green, hazel, brown
-            skin color: pale, bronze, dark
-            penis size: 4-9 inches
-            breast size: B, C, D, DD
-        Lith:
-            penis length: 7, 10, 14 inches
-            vagina or no
-            breasts: none, C, DD
-        Lilith's Throne:
-            Start month
-            Femininity
-            Birthday
-            Sexual orientation
-            Personality (any combo or none, some exclude others): Confident, Shy, Kind, Selfish, Naive, Cynical, Brave,
-                Cowardly, Lewd, Innocent, Prude, Lisp, Stutter, Slovenly
-            Name *for each level of femininity*
-            Appearance:
-                Core:
-                    height
-                    skin pattern: Plain, Freckled (face), Freckled
-                    skin color: pale, light, porcelain, rosy, olive, tanned, dark, chocolate, ebony
-                    body size: skinny, slender, average, large, huge
-                    muscle definition: soft, lightly muscled, toned, muscular, ripped
-                                          skinny    slender     average  large    huge    
-                                        x-------------------------------------------------
-                        soft            | gaunt     slim        chubby   fat      obese   
-                        lightly muscled | petite    thin        average  plump    chunky  
-                        toned           | willowy   spry        healthy  burly    robust  
-                        muscular        | lean      lithe       fit      powerful thickset
-                        ripped          | gymnastic aerobicised athletic buff     jacked  
-                Face:
-                    lip size: thin, average-sized, full, plump, huge
-                    puffy lips: normal, puffy
-                    iris pattern: normal, heterochromia
-                    iris color: brown, amber, hazel, dark blue, blue, light blue, aqua, green, grey-green, grey
-                Hair:
-                    hair length: bald, very short, short, shoulder-length, long, very long, incredibly long, floor-length
-                    hair style:
-                        (all)                natural
-                        (at very short)      messy, loose, curly, straight, slicked-back, afro
-                        (at short)           sidecut, mohawk, dreadlocks, pixie-cut
-                        (at shoulder-length) topknot, bun, bob-cut, chonmage, wavy, ponytail, low ponytail, twintails
-                        (at long)            chignon, braided, twin braids, crown braid, drill hair, hime-cut
-                        (at floor-length)    bird cage
-                    hair pattern: highlighted, striped, ombre, plain, marked, spotted, mottled
-                    hair color: white, blonde, dirty-blonde, sandy, ginger, brown, dark brown, auburn, grey, black, pitch black
-                        scarlet, light red, red, dark red, tan, orange, bleach-blonde, yellow, amber, green, dark green, light blue,
-                        blue, dark blue, periwinkle, pale lilac, lilac, indigo, light purple, purple, dark purple, pink, light pink,
-                        rainbow, pastel rainbow, metallic platinum, metallic rose gold, metallic gold, metallic silver, metallic bronze,
-                        metallic copper, metallic brass, metallic steel, metallic black steel
-                Breasts:
-                    breast size:
-                        males: flat, training AAA, training AA, training A
-                        females: AA, A, B, C, D, DD, E
-                    breast shape: round, pointy, perky, side-set, wide, narrow
-                    nipple size: tiny, small, big, (for female) large, massive
-                    areolae size: tiny, small. average=sized, (for female) large, massive
-                    puffy nipples: normal, puffy
-                    lactation
-                Ass & Hips:
-                    ass size: flat, tiny, small, round, large
-                    hip size: completely straight, very narrow, narrow, girly, (for females) womanly, very wide, extremely wide, absurdly wide
-                    bleached anus: normal, bleached
-                (for males) Penis:
-                    penis size: 1-8 inches
-                    testicle size: vestigal, tiny, average-sized, large
-                    cum sortage
-                (for females) Vagina:
-                    vagina capacity: extremely tight, tight, somewhat tight, slightly loose, loose, very loose, stretched open, gaping wide
-                    labia size: tiny, small, average-sized, large, massive
-                    clitoris size: small, big
-            Wardobe
-            Job: unemployed, office worker, student, musician, teacher, writer, chef, construction worker, soldier, athlete, aristocrat, maid/butler
-            Sexual experience
-        */
+        this.species = species;
     }
+}
+
+function DisplayAppearance() {
+    let output = "<p>You are " + player.name + ". You are a ";
+    if (metric == 0) {
+        output += Math.floor(player.height / 12).toString() + "'" + (player.height - (Math.floor(player.height / 12) * 12)).toString();
+    }
+    else if (metric == 1) {
+        output += player.height.toString() + "cm tall";
+    }
+    output += " " + player.species + " with ";
+    if (player.breasts == 1) {
+        output += player.breastSize + "-cup breasts";
+    }
+    else if (player.breasts == 0) {
+        output += "a flat chest";
+    }
+    if (player.vagina == 1 && player.penis == 1) {
+        output += ", ";
+    }
+    else if (player.vagina == 0 && player.penis == 0) {
+        output += " and nothing between your legs";
+    }
+    else {
+        output += " and ";
+    }
+    if (player.penis == 1) {
+        output += "a " + player.penisSize.toString();
+        if (metric == 0) {
+            output += " inch";
+        }
+        else if (metric == 0) {
+            output += "cm";
+        }
+        output += " penis";
+        if (player.vagina == 1) {
+            output += ", and ";
+        }
+    }
+    if (player.vagina == 1) {
+        output += "a vagina";
+    }
+    output += ". Your overall build could be described as " + player.thickness + " and " + player.musculature + ". You have " + player.skinTone + " skin, " + player.hairColor + " hair, and " + player.eyeColor + " eyes. You use " + player.subject + "/" + player.object + " pronouns.";
+    Output(output);
 }
