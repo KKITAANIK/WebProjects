@@ -44,11 +44,11 @@ function ClearButtons() {
 }
 
 function InToCm(val) {
-    return round(val / 0.3937);
+    return Math.round(val / 0.3937);
 }
 
 function CmToIn(val) {
-    return round(val * 0.3937);
+    return Math.round(val * 0.3937);
 }
 
 class Character {
