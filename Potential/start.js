@@ -364,14 +364,10 @@ function Appearance(key, arg1, backbutton) {
     else if (key == 9) {
         pcappearance[7] = arg1;
         player = new Character(pcname, pcsexattr, pcgender, pcappearance, "human");
-        DisplayAppearance();
+        Output(DisplayAppearance());
         ClearButtons();
-        buttons[0][0].update(test, "Yes");
+        buttons[0][0].update(StoryStart, "Yes");
         buttons[0][1].update(Initialize.bind(null, 0, 0), "No (Start Over)");
         buttons[2][6].update(Appearance.bind(null, 8, pcappearance[6]), "Back"); 
     }
-}
-
-function test() {
-    console.log("The test function was called.");
 }

@@ -138,6 +138,10 @@ function DisplayAppearance() {
     if (player.vagina == 1) {
         output += "a vagina";
     }
-    output += ". Your overall build could be described as " + player.thickness + " and " + player.musculature + ". You have " + player.skinTone + " skin, " + player.hairColor + " hair, and " + player.eyeColor + " eyes. You use " + player.subject + "/" + player.object + " pronouns.";
-    Output(output);
+    output += ". Your overall build could be described as " + player.thickness + " and " + player.musculature + ". You have " + player.skinTone + " skin, " + player.hairColor + " hair, and " + player.eyeColor + " eyes. You use " + player.subject + "/" + player.object + " pronouns.</p>";
+    return output;
+}
+
+function test() {
+    console.log("The test function was called.");
 }
