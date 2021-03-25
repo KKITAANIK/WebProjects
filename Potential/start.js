@@ -52,6 +52,7 @@ function LeftAppear() {
             document.getElementById("b" + i.toString() + j.toString()).style.width = "calc(79.5vw / 7 - 0.5vw)";
         }
     }
+    UpdateMeters();
     ClearButtons();
     buttons[0][0].update(Initialize.bind(null, 0, 0), "Skip");
     timeouts.push(setTimeout(SlowType.bind(null, "<br><br>> /W/e/l/l/,/ /t/h/a/t/'/s/ /n/o/t/ /r/e/a/l/l/y/ /t/h/a/t/ /h/e/l/p/f/u/l/./ /W/e/ /a/l/r/e/a/d/y/ /k/n/o/w/ /t/h/e/r/e/'/s/ /n/o/t/h/i/n/g/ /h/e/r/e/."), 500));
@@ -91,10 +92,11 @@ function Initialize(key, sexattrnum, backbutton) {
                 document.getElementById("b" + i.toString() + j.toString()).style.width = "calc(79.5vw / 7 - 0.5vw)";
             }
         }
+        UpdateMeters();
+
         for (var i = 0; i < timeouts.length; i++) {
             clearTimeout(timeouts[i]);
         }
-        
         timeouts = [];
         Output("Please enter your character's name.<br><input type=\"text\" id=\"nameInput\" class=\"input\">");
         ClearButtons();

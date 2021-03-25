@@ -1,4 +1,8 @@
 let buttons = [[], [], []];
+var minute = 0;
+var hour = 0;
+var day = 0;
+var locale = "An Empty Space";
 
 function FillButtons() {
     for (let i = 0; i < 3; i++){
@@ -11,6 +15,7 @@ function FillButtons() {
 function Output(output) {
     document.getElementById("displaycontent").innerHTML = output;
 }
+
 class Button {
     constructor(num) {
         // initialize the button
@@ -41,6 +46,24 @@ function ClearButtons() {
             buttons[i][j].disable();
         }
     }
+}
+
+function UpdateMeters() {
+    while (minute >= 60) {
+        hour++;
+        minute -= 60;
+    }
+    while (hour >= 24) {
+        day++;
+        hour -= 24;
+    }
+    if (minute < 10)
+        minute = "0" + minute.toString();
+    else
+        minute = minute.toString();
+    document.getElementById("location").innerHTML = "<span><i>" + locale + "</i>";
+    document.getElementById("time").innerHTML = hour.toString() + ":" + minute + ", Day " + day;
+    minute = parseInt(minute);
 }
 
 function InToCm(val) {

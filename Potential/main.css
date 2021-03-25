@@ -162,10 +162,11 @@ p {
     padding: 0.5vw;
     width: 20vw;
     font-size: 1.5vw;
-    height: 1.5vw;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .location {
     color: #707070;
