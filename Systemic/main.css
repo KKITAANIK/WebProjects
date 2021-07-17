@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'Kreative Square';
+    src: url(fonts/KreativeSquare.ttf);
+}
+
+body {
+    padding: 1vh;
+    margin: 0;
+}
+
+.screen {
+    margin: 0;
+    font-family: 'Kreative Square', 'Courier New', Courier, monospace;
+    white-space: pre;
+    font-size: calc(98vh/68);
+    line-height: 1em;
+    letter-spacing: 0;
+}
