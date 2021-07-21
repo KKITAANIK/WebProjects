@@ -12,7 +12,9 @@ body {
     margin: 0;
     font-family: 'Kreative Square', 'Courier New', Courier, monospace;
     white-space: pre;
-    font-size: calc(98vh/68);
+    /*font-size: calc(98vh/68);*/
+    font-size: calc(98vh/35);
     line-height: 1em;
     letter-spacing: 0;
+    cursor: default;
 }
