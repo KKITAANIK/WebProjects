@@ -54,10 +54,11 @@ class Tile {
 }
 
 class Sprite {
-    constructor(name, char, color) {
+    constructor(name, char, color, scripts) {
         this.name = name;
         this.char = char;
         this.color = color;
+        this.scripts = scripts;
     }
 }
 
@@ -78,7 +79,7 @@ function populateSprites() {
     for (let i = 0; i < screenHeight; i++) {
         let row = [];
         for (let j = 0; j < screenWidth; j++) {
-            row.push(new Sprite('nothing', ' ', 'rgba(0, 0, 0, 0)'));
+            row.push(new Sprite('nothing', ' ', 'rgba(0, 0, 0, 0)', function(){}));
         }
         tempArray.push(row);
     }
@@ -203,10 +204,7 @@ function Display(content){
             else if (j < 100)
                 id[1] = '0' + id[1];
 
-            document.getElementById(id[0] + "-" + id[1]).onclick = function() {
-                console.log(content[i][j][0]);
-                console.log(content[i][j][1]);
-            }
+            document.getElementById(id[0] + "-" + id[1]).onclick = content[i][j][0].scripts;
         }
     }
 
@@ -216,13 +214,13 @@ function Display(content){
 let tempscreen = spriteTileOverlay(populateSprites(), populateTiles());
 let guyXPos = Math.floor(Math.random() * screenWidth);
 let guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy1', '', '#000');
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy1', '', '#000', function(){console.log("guy 1 says hi!")});
 guyXPos = Math.floor(Math.random() * screenWidth);
 guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy2', '', '#000');
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy2', '', '#000', function(){console.log("guy 2 says hi!")});
 guyXPos = Math.floor(Math.random() * screenWidth);
 guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy3', '', '#000');
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy3', '', '#000', function(){console.log("guy 3 says hi!")});
 Display(tempscreen);
 
 
