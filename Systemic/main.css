@@ -6,6 +6,8 @@
 body {
     padding: 1vh;
     margin: 0;
+    background-color: slategrey;
+    overflow:hidden;
 }
 
 .screen {

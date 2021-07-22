@@ -67,7 +67,7 @@ function populateTiles() {
     for (let i = 0; i < screenHeight; i++) {
         let row = [];
         for (let j = 0; j < screenWidth; j++) {
-            row.push(new Tile('void', 'rgba(0, 0, 0, 0)'));
+            row.push(new Tile('void', 'grey'));
         }
         tempArray.push(row);
     }
@@ -79,7 +79,7 @@ function populateSprites() {
     for (let i = 0; i < screenHeight; i++) {
         let row = [];
         for (let j = 0; j < screenWidth; j++) {
-            row.push(new Sprite('nothing', ' ', 'rgba(0, 0, 0, 0)', function(){}));
+            row.push(new Sprite('nothing', '🮕', 'rgba(0, 0, 0, 0)', function(){}));
         }
         tempArray.push(row);
     }
@@ -168,6 +168,11 @@ function Display(content){
     for (let i = 0; i < screen.length; i++) {
         screen[i] = screen[i].split("");
     }
+    for (let i = 0; i < screen.length; i++) {
+        for (let j = 0; j < screen[i].length; j++) {
+            screen[i][j] = "<span style=\"color:gold;\">" + screen[i][j] + "</span>";
+        }
+    }
 
     for (let i = 0; i < screenHeight; i++) {
         for (let j = 0; j < screenWidth; j++) {
@@ -214,13 +219,13 @@ function Display(content){
 let tempscreen = spriteTileOverlay(populateSprites(), populateTiles());
 let guyXPos = Math.floor(Math.random() * screenWidth);
 let guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy1', '', '#000', function(){console.log("guy 1 says hi!")});
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy1', '', 'black', function(){console.log("guy 1 says hi!")});
 guyXPos = Math.floor(Math.random() * screenWidth);
 guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy2', '', '#000', function(){console.log("guy 2 says hi!")});
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy2', '', 'black', function(){console.log("guy 2 says hi!")});
 guyXPos = Math.floor(Math.random() * screenWidth);
 guyYPos = Math.floor(Math.random() * screenWidth);
-tempscreen[guyYPos][guyXPos][0] = new Sprite('guy3', '', '#000', function(){console.log("guy 3 says hi!")});
+tempscreen[guyYPos][guyXPos][0] = new Sprite('guy3', '', 'black', function(){console.log("guy 3 says hi!")});
 Display(tempscreen);
 
 
