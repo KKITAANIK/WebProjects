@@ -1,0 +1,80 @@
+}
+.buttons {
+    height: 18vh;
+    width: calc(100vw - 1vw);
+    margin: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    background-color: #e8e8e8;
+}
+.choicebuttons {
+    width: calc(36vw * (99 / 42));
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+.button {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 42));
+    margin-right: calc(0.5vw * (99 / 42));
+    height: 7vh;
+    width: calc(8vw * (99 / 42));
+    padding: 0;
+    float:left;
+    background-color: #d8d8d8;
+}
+.leftbutton {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 42));
+    margin-right: calc(0.5vw * (99 / 42));
+    height: 16vh;
+    width: calc(2vw * (99 / 42));
+    padding: 0;
+    float: left;
+    background-color: #d8d8d8;
+    background-image: url("imgs/chevron2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    background-position: center;
+    transform: ScaleX(-1);
+}
+.rightbutton {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 42));
+    margin-right: calc(0.5vw * (99 / 42));
+    height: 16vh;
+    width: calc(2vw * (99 / 42));
+    padding: 0;
+    float: left;
+    background-color: #d8d8d8;
+    background-image: url("imgs/chevron2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    background-position: center;
+}
+
+
+
+
+	    <div id="buttons" class="buttons">
+                <button class="leftbutton" id="lb" disabled></button>
+                <div id="choicebuttons" class="choicebuttons">
+                    <button class="button" id="b0" disabled></button>
+                    <button class="button" id="b1" disabled></button>
+                    <button class="button" id="b2" disabled></button>
+                    <button class="button" id="b3" disabled></button>
+                    <button class="button" id="b4" disabled></button>
+                    <button class="button" id="b5" disabled></button>
+                    <button class="button" id="b6" disabled></button>
+                    <button class="button" id="b7" disabled></button>
+                </div>
+                <button class="rightbutton" id="rb" disabled></button>
+            </div>

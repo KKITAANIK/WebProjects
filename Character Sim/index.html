@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Character Sim</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="main.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible" rel="stylesheet">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="infoTitle">Info</div>
+            <div id="nameDisplay" class="nameDisplay"><i>No Name Given</i></div>
+            <div class="statsBlock">
+                <div class="blockTitle">Mood</div>
+                <div class="barLabel">Happiness:</div><div class="barContainer">
+                    <div id="happinessBar" class="bar">
+                        <div id="happinessValue" class="barValue">0%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Sadness:</div><div class="barContainer">
+                    <div id="sadnessBar" class="bar">
+                        <div id="sadnessValue" class="barValue">12.5%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Distaste:</div><div class="barContainer">
+                    <div id="distasteBar" class="bar">
+                        <div id="distasteValue" class="barValue">25%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Alertness:</div><div class="barContainer">
+                    <div id="alertnessBar" class="bar">
+                        <div id="alertnessValue" class="barValue">50%</div>
+                    </div>
+                </div>
+            </div>
+            <div class="needsBlock">
+                <div class="blockTitle">Needs</div>
+                <!--<div class="barLabel">Sleep:</div><div class="barContainer">
+                    <div id="sleepBar" class="bar">
+                        <div id="sleepValue" class="barValue">100%</div>
+                    </div>
+                </div>-->
+                <div class="barLabel">Attachment:</div><div class="barContainer">
+                    <div id="attachmentBar" class="bar">
+                        <div id="attachmentValue" class="barValue">100%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Control:</div><div class="barContainer">
+                    <div id="controlBar" class="bar">
+                        <div id="controlValue" class="barValue">66.7%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Pleasure:</div><div class="barContainer">
+                    <div id="pleasureBar" class="bar">
+                        <div id="pleasureValue" class="barValue">33.3%</div>
+                    </div>
+                </div>
+                <div class="barLabel">Improvement:</div><div class="barContainer">
+                    <div id="improvementBar" class="bar">
+                        <div id="improvementValue" class="barValue">0%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="output"></div>
+        <script src="main.js"></script>
+    </body>
+</html>

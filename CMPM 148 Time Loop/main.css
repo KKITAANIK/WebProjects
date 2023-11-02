@@ -1,0 +1,215 @@
+body {
+	margin: 0;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	opacity: 1;
+	transition-duration: 1s;
+	transition-property: opacity;
+}
+body.fade {
+	opacity: 0;
+}
+.topbar {
+	background-color: #000;
+	color: #fff;
+	height: 5.25vh;
+	width: 100%;
+	text-align: center;
+	font-family: "Montserrat", sans-serif;
+	padding: 0.5vh;
+}
+.time {
+	width: 100%;
+	line-height: 3.67vh;
+	height: 3.67vh;
+	font-size: 3.62vh;
+	padding: 0;
+}
+.date {
+	width: 100%;
+	line-height: 1.58vh;
+	height: 1.58vh;
+	font-size: 1.53vh;
+	padding: 0;
+}
+.bottombar {
+	height: 37vh;
+	width: calc(100% - 3vh);
+	background-color: #c0c0c0;
+	padding: 1.5vh;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5vh;
+}
+.button {
+	display: flex;
+	height: calc(6.2vh - 1vh);
+	margin: 0;
+	padding: 0.5vh;
+	width: calc(100vw - 4vh);
+	background-color: #989898;
+	justify-content: center;
+	align-items: center;
+	font-size: 4.7vh;
+	font-family: 'Noto Sans', sans-serif;
+}
+.buttoncontent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	max-height: 4.7vh;
+}
+.button:hover {
+	background-color: #888888;
+	cursor: pointer;
+}
+.content {
+	height: calc(47.75vh - 6vh);
+	width: calc(100% - 6vh);
+	background-color: #fff;
+	font-family: 'Noto Sans', sans-serif;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5vh;
+	overflow: auto;
+	padding-top: 3vh;
+	padding-left: 3vh;
+	padding-bottom: 3vh;
+	padding-right: 2vh;
+	margin-right: 1vh;
+	font-size: 4.5vw;
+}
+.message {
+	max-width: calc(100vw - 6vh - 3vh);
+	width:fit-content;
+	background-color: #e0e0e0;
+	border-radius: 2.5vh;
+	padding-top: 0.75vh;
+	padding-bottom: 0.75vh;
+	padding-left: 1.5vh;
+	padding-right: 1.5vh;
+	height:auto;
+	display: flex;
+	flex-direction: column;
+}
+.pmessage {
+	max-width: calc(100vw - 6vh - 3vh);
+	width:fit-content;
+	background-color: #80a0ff;
+	border-radius: 2.5vh;
+	padding-top: 0.75vh;
+	padding-bottom: 0.75vh;
+	padding-left: 1.5vh;
+	padding-right: 1.5vh;
+	height:auto;
+	display: flex;
+	margin-left: auto;
+	flex-direction: column;
+}
+.typing {
+	width:10.5vw;
+	background-color: #e0e0e0;
+	border-radius: 2.5vh;
+	padding-top: 0.75vh;
+	padding-bottom: 0.75vh;
+	padding-left: 1.5vh;
+	padding-right: 1.5vh;
+	height:calc(0.75vh + 4.5vw);
+	min-height: calc(0.75vh + 4.5vw);
+	display: flex;
+}
+/**
+ * ==============================================
+ * Dot Flashing
+ * ==============================================
+ */
+.dot-flashing {
+	top: 0.75vh;
+	position: relative;
+	left: 3.75vw;
+	width: 2.5vw;
+	height: 2.5vw;
+	border-radius: 1.25vw;
+	background-color: #000000;
+	color: #000000;
+	animation: dot-flashing 1s infinite linear alternate;
+	animation-delay: 0.5s;
+}
+.dot-flashing::before, .dot-flashing::after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	top: 0;
+}
+.dot-flashing::before {
+	left: -3.75vw;
+	width: 2.5vw;
+	height: 2.5vw;
+	border-radius: 1.25vw;
+	background-color: #000000;
+	color: #000000;
+	animation: dot-flashing 1s infinite alternate;
+	animation-delay: 0s;
+}
+.dot-flashing::after {
+	left: 3.75vw;
+	width: 2.5vw;
+	height: 2.5vw;
+	border-radius: 1.25vw;
+	background-color: #000000;
+	color: #000000;
+	animation: dot-flashing 1s infinite alternate;
+	animation-delay: 1s;
+}
+
+@keyframes dot-flashing {
+	0% {
+		background-color: #000000;
+	}
+	50%, 100% {
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 2.5vw;
+	display: block;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0);
+	border-radius: 1.25vw;
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #e0e0e0;
+	border-radius: 1.25vw;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #c0c0c0;
+}
+.timestamp {
+	color: #808080;
+	font-size: 2.25vw;
+	margin-left: auto
+}
+.ptimestamp {
+	color: #404080;
+	font-size: 2.25vw;
+	margin-left: auto
+}
+.separatingBar {
+	height: 0.5vh;
+	min-height: 0.5vh;
+	background-color: #404040;
+	width: 100%;
+	border-radius: 50vh/3vh;
+}

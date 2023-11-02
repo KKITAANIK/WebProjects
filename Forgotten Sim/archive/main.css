@@ -1,0 +1,79 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow:hidden;
+}
+.display {
+    width:100%;
+    height:100%;  
+}
+.displaycontent {
+    width:100%;
+    height:calc(80vh - 2em);
+    background-color:#f8f8f8;
+    padding: 1em;
+    overflow: auto;
+}
+.buttons {
+    height: 18vh;
+    width: calc(100vw - 1vw);
+    margin: 0;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    background-color: #e8e8e8;
+}
+/*.choicebuttons {
+    width: calc(36vw * (99 / 42));
+    padding: 0;
+    margin: 0;
+    float: left;
+}*/
+.button {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 45));
+    margin-right: calc(0.5vw * (99 / 45));
+    height: 7vh;
+    width: calc(8vw * (99 / 45));
+    padding: 0;
+    float:left;
+    background-color: #d8d8d8;
+}
+/*.leftbutton {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 42));
+    margin-right: calc(0.5vw * (99 / 42));
+    height: 16vh;
+    width: calc(2vw * (99 / 42));
+    padding: 0;
+    float: left;
+    background-color: #d8d8d8;
+    background-image: url("imgs/chevron2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    background-position: center;
+    transform: ScaleX(-1);
+}
+.rightbutton {
+    border: none;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: calc(0.5vw * (99 / 42));
+    margin-right: calc(0.5vw * (99 / 42));
+    height: 16vh;
+    width: calc(2vw * (99 / 42));
+    padding: 0;
+    float: left;
+    background-color: #d8d8d8;
+    background-image: url("imgs/chevron2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 75%;
+    background-position: center;
+}*/

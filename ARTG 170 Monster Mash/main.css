@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Cascadia Mono';
+    font-style: normal;
+    font-weight: normal;
+    src: url(Fonts/CascadiaMono.woff2);
+}
+@font-face {
+    font-family: 'Cascadia Mono';
+    font-style: italic;
+    font-weight: normal;
+    src: url(Fonts/CascadiaMonoItalic.woff2);
+}
+
+body {
+    background-color: black;
+    color: white;
+    overflow: auto;
+    font-family: "Cascadia Mono";
+    font-size: 1.5vw;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+span {
+    max-width: 100vw;
+    width: 100vw;
+}
+
+.displaycontent {
+    max-width: 100vw;
+    width: 100vw;
+}
+
+/*.cursor {
+    animation: cursor-blink 1.5s steps(2) infinite;
+}
+
+@keyframes cursor-blink {
+    0% {
+      opacity: 0;
+    }
+}*/
+
+textarea {
+    background-color: black;
+    border: none;
+    color: white;
+    font-family: "Cascadia Mono";
+    font-size: 1.5vw;
+    outline:none;
+    /*caret-color: transparent;*/
+    margin: 0;
+    padding: 0;
+    height: 0px;
+    min-height: 0;
+    min-width: 0;
+    resize: none;
+    overflow:auto;
+    width: 98vw;
+}

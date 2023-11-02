@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #a8b8d0;
+}
+.main {
+    background-color: white;
+    height: 93vh;
+    width: calc(100vh * 9 / 18);
+    float: left;
+    border: solid;
+    border-width: 2.5vh 1.5vh;
+    border-radius: 2vh;
+    margin: 1vh;
+    padding: 0;
+}
+.left {
+    background-color: #a8b8d0;
+    height: 100vh;
+    width: calc(calc(100vw - calc(calc(100vh * 9 / 18) + 5vh)) / 2);
+    float: left;
+}
+.right {
+    background-color: #a8b8d0;
+    height: 100vh;
+    width: calc(calc(100vw - calc(calc(100vh * 9 / 18) + 5vh)) / 2);
+    float: left;
+}
+.topBar {
+    padding: 0;
+    left: 50%;
+    margin-left: calc(calc(calc(100vh * 9 / 18) + 1px) / -2);
+    position: fixed;
+    width: calc(calc(100vh * 9 / 18) + 1px);
+    background-color: #3d3d90;
+    height: calc(93vh * 0.1);
+}
+.content {
+    background-color: #f8f8fc;
+    height: calc(93vh * 0.835);
+    top: calc(calc(93vh * 0.1) + 3.5vh);
+    left: 50%;
+    margin-left: calc(calc(calc(100vh * 9 / 18) + 1px) / -2);
+    position: fixed;
+    width: calc(calc(100vh * 9 / 18) + 1px);
+}
+.bottomBar {
+    background-color: #3d3d90;
+    top: calc(calc(93vh * 0.935) + 3.5vh);
+    height: calc(93vh * 0.065);
+    left: 50%;
+    margin-left: calc(calc(calc(100vh * 9 / 18) + 1px) / -2);
+    position: fixed;
+    width: calc(calc(100vh * 9 / 18) + 1px);
+}

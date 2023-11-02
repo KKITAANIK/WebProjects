@@ -1,0 +1,195 @@
+<!DOCTYPEhtml><head>
+<title>Bold of you to assume I'd name my game</title>
+
+
+<script src="jquery-1.11.2.min.js"></script>
+<script src="input_output.js"></script>
+<script src="mathUtil.js"></script>
+
+<script src="narrativeManager.js"></script>
+<script src="incremental.js"></script>
+<script src="statAnalysis.js"></script>
+
+<link rel="stylesheet" href="main.css">
+
+<style>
+.selected {
+	color: red;
+	background-color: #beef
+}
+#reports {
+	overflow-y: scroll; 
+	border: 1px solid black; 
+	height: 100px; 
+	width: 50%;
+	margin:auto;
+	display: inline-block;
+}
+</style>
+
+
+</head>
+<body>
+<div id="reports" style=></div><div class="playertimer">Time played: <span id="playertimer"></span></div>
+<div class="stage" id="stage1" style="z-index: 1"> 
+	<div class="panel" id="panel1">
+		<h2>Resources</h2>
+		<button onclick="game.swichPanels('panel1')" id="showPanel1">1</button>
+		<button onclick="game.swichPanels('panel2')" id="showPanel2">2</button>
+		<table>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td class="units"> Seconds</td>
+							<td> </td>
+							<td class="resource1Number"></td>
+							<td>
+								<button onclick=game.gainResource1()> Gain a second </button>
+							</td>
+						</tr>
+						<tr id="resource2Row">
+							<td> Tickers</td>
+							<td></td>
+							<td class="resource2Number"></td>
+							<td>
+								<button onclick=game.gainResource2()> Buy a Ticker</button>
+							</td>
+							<td id="tickerDescription">Costs <span class='sevenSegment'>10</span> seconds — will generate<span class='sevenSegment'>1</span> second every 10 seconds
+							</td>
+						</tr>
+						<tr id="resource3Row">
+							<td>
+								Manufactories
+							</td>
+							<td></td>
+							<td class="resource3Number"></td>
+							<td>
+								<button onclick=game.gainResource3()> Buy a Manufactory</button>
+							</td>
+							<td>Costs <span class='sevenSegment'>30</span> seconds — will purchase a Ticker every 10 seconds, if possible</td>
+							<td></td>
+							<td>
+								<button id="toggleManufactories"onclick=game.ToggleManufactories()>Stop Manufactories</button>
+							</td>
+						</tr>
+						<tr id="autoManufactoriesRow">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<button id="autoManufactories"onclick=game.ToggleAutoManufactories()>Automate Manufactory Purchase</button>
+							</td>
+							<td>Purchase a Manufactory whenever there are excess seconds after Ticker purchases</td>
+						</tr>
+						<tr id="upgradeTickersRow">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td>
+								<button id="upgradeTickersRow"onclick=game.upgradeTickers()>Upgrade Tickers</button>
+							</td>
+							<td id="tickerUpgradeDescription">Costs <span class="sevenSegment">30</span> minutes — Upgrade your Tickers to generate<span class="sevenSegment">1</span> second per second</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<table>
+			<tr id="runoutRow">
+				<td>Expected conclusion</td>
+				<td></td>
+				<td id="runout"></td>
+			</tr>
+			<tr id="birthsRow">
+				<td>Million humans born</td>
+				<td></td>
+				<td id="births"></td>
+			</tr>
+			<tr id="deathsRow">
+				<td>Million humans died</td>
+				<td></td>
+				<td id="deaths"></td>
+			</tr>
+		</table>
+
+
+	</div>
+
+
+
+	<!-- delete the following 2 panels if you structuring with sequential stages -->
+	<div class="panel" id="panel2">
+		<h2>Entertainment</h2>
+		<button onclick="game.swichPanels('panel1')" id="showPanel1">1</button>
+		<button onclick="game.swichPanels('panel2')" id="showPanel2">2</button>
+		<h4>Choose how much to wager</h4>
+		<table>
+			<tr>
+				<td class="units"> Seconds</td>
+				<td> </td>
+				<td class="resource1Number"></td>
+			</tr>
+			<tr>
+				<td> Tickers</td>
+				<td></td>
+				<td class="resource2Number"></td>
+			</tr>
+			<tr>
+				<td>
+					Manufactories
+				</td>
+				<td></td>
+				<td class="resource3Number"></td>
+			</tr>
+		</table>
+		<table>
+			<tr>
+				<td>1</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(1, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(1, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(1, 3)">Manufactories</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(5, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(5, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(5, 3)">Manufactories</button></td>
+			</tr>
+			<tr>
+				<td>25</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(25, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(25, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(25, 3)">Manufactories</button></td>
+			</tr>
+			<tr>
+				<td>125</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(125, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(125, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(125, 3)">Manufactories</button></td>
+			</tr>
+			<tr>
+				<td>625</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(625, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(625, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(625, 3)">Manufactories</button></td>
+			</tr>
+			<tr>
+				<td>All In</td>
+				<td></td>
+				<td><button class="wagerunits" onclick="game.Wager(-1, 1)">Seconds</button></td>
+				<td><button onclick="game.Wager(-1, 2)">Tickers</button></td>
+				<td><button onclick="game.Wager(-1, 3)">Manufactories</button></td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+</body>
+</html>

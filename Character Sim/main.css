@@ -1,0 +1,114 @@
+body {
+    background-color: #ff00ff;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: 'Atkinson Hyperlegible';
+    color: #fff;
+    overflow: hidden;
+}
+
+/* color palette:
+ 0 dp: #121212,
+ 1 dp: #1e1e1e
+ 2 dp: #232323
+ 3 dp: #252525
+ 4 dp: #282828
+ 6 dp: #2C2C2C
+ 8 dp: #2E2E2E
+12 dp: #333333
+16 dp: #363636
+24 dp: #393939
+*/
+
+.sidebar {
+    float: left;
+    height: 100vh;
+    width: 25vw;
+    background-color: #1e1e1e;
+}
+.output {
+    float: left;
+    height: 100vh;
+    width: 75vw;
+    background-color: #121212;
+}
+
+.infoTitle {
+    margin: 1vh;
+    font-size: 5vh;
+    width: calc(100% - 2vh);
+    height: 5vh;
+    text-align: center;
+    line-height: 5vh;
+}
+.nameDisplay {
+    margin: 1vh;
+    padding: 0.5vh;
+    font-size: 2.5vh;
+    width: calc(100% - 2vh);
+    height: 2.5vh;
+    text-align: center;
+    line-height: 2.5vh;
+    background-color: #232323;
+    text-align: center;
+}
+.statsBlock {
+    margin: 1vh;
+    padding-top: 0.5vh;
+    width: calc(100% - 2vh);
+    height: 16.75vh;
+    background-color: #232323;
+}
+.needsBlock {
+    margin: 1vh;
+    padding-top: 0.5vh;
+    width: calc(100% - 2vh);
+    height: 16.75vh;
+    background-color: #232323;
+}
+.blockTitle {
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+    margin-bottom: 0.5vh;
+    width: calc(100% - 1vh);
+    font-size: 3.75vh;
+    height: 3.75vh;
+    line-height: 3.75vh;
+    text-align: center; 
+}
+.barLabel {
+    float: left;
+    margin: 0.5vh;
+    font-size: 2vh;
+    width: calc(33% - 1vh);
+    height: 2vh;
+    line-height: 2vh;
+    text-align: right;
+}
+.barContainer {
+    float: left;
+    margin: 0.5vh;
+    width: calc(67% - 1vh);
+    height: 2vh;
+    background-color: #2E2E2E;
+}
+.bar {
+    float: left;
+    margin: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #fff;
+}
+.barValue {
+    color: #d1d1d1;
+    mix-blend-mode: difference;
+    text-align: center;
+    width: calc(100% - 1vh);
+    height: 100%;
+    font-size: 1.75vh;
+    line-height: 2vh;
+    margin-left: 0.5vh;
+    margin-right: 0.5vh;
+}

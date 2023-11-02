@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: "Bitter";
+    color: black;
+}
+p {
+    text-indent: 5vw;
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: "Domine";
+    src: url(fonts/Domine/static/Domine-Regular.ttf);
+}
+@font-face {
+    font-family: "Bitter";
+    src: url(fonts/Bitter/Bitter-VariableFont_wght.ttf);
+}
+@font-face {
+    font-family: "Atkinson Hyperlegible";
+    src: url(fonts/Atkinson_Hyperlegible/AtkinsonHyperlegible-Regular.ttf);
+}
+.kkitaanik {
+    font-family: "Times New Roman";
+    font-size: 2vw;
+    color: #a75e79
+}
+.left {
+    width:20vw;
+    height:100vh;
+    background-color: red;
+    float: left;
+}
+.right {
+    width: 20vw;
+    height: 100vh;
+    background-color: red;
+    float: left;
+}
+.main {
+    width: 60vw;
+    height: 100vh;
+    background-color: white;
+    float: left;
+}
+.output {
+    width: 56vw;
+    height: 96vh;
+    overflow: auto;
+    padding: 2vh 2vw;
+    font-size: 1.475vw;
+}
+.hoverable {
+    cursor: help;
+    border-bottom: dotted;
+    border-width: 0.15vw;
+    position:relative;
+}
+.hoverable .tooltip {
+    width: 15vw;
+    text-align: center;
+    padding: 0.75vw;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    top: 100%;
+    left: 50%;
+    margin-left: calc(16.5vw / -2);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: black;
+    background-color: white;
+    box-shadow: 0 0.25vw 0.5vw 0 rgba(0, 0, 0, 0.2), 0 0.375vw 1.25vw 0 rgba(0, 0, 0, 0.19);
+    text-indent: 0vw;
+    border-radius: 0.25vw;
+}
+.hoverable:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+.twicehoverable {
+    cursor: help;
+    border-bottom: dotted;
+    border-width: 0.15vw;
+    position:relative;
+}
+.twicehoverable .twicetooltip {
+    width: 15vw;
+    text-align: center;
+    padding: 0.75vw;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    top: 100%;
+    left: 50%;
+    margin-left: calc(16.5vw / -2);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: black;
+    background-color: white;
+    box-shadow: 0 0.25vw 0.5vw 0 rgba(0, 0, 0, 0.2), 0 0.375vw 1.25vw 0 rgba(0, 0, 0, 0.19);
+    text-indent: 0vw;
+    border-radius: 0.25vw;
+}
+.twicehoverable:hover .twicetooltip {
+    visibility: visible;
+    opacity: 1;
+}
+.clickable {
+    cursor: pointer;
+    color: #6488ea;
+    text-decoration: underline;
+}
+.clickable[disabled] {
+    pointer-events: none;
+}
+.clickedtext {
+    color: #a66fb5;
+}
+.dialogue {
+    font-family: "Open Sans";
+}
+.input {
+    height: auto;
+    font-family: "Atkinson Hyperlegible";
+    font-size: 1.475vw;
+}
+.ooctext {
+    font-family: "Atkinson Hyperlegible";
+}
