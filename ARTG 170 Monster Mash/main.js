@@ -232,7 +232,7 @@ async function InputHandler() {
             else {
                 await SlowType(1, "|青sure青", 2000);
             }
-            document.getElementById("displaycontent").innerHTML += "<br/><br/><p style=\"color:red;\">It was at this point Adrian's interest in this particular project waned completely, due to the issue of scope involved in processing freeform text input, and the limitations it imposes on the desired play experience. He chose to start another project, to be developed as much as is possible in a one-week timeframe, to submit alongside this project for the second game jam assignment.</p><p>If you would like to play a similar style of game with a different Riley, made for CMPM 148, click <a href=\"https://kkitaanik.github.io/WebProjects/CMPM%20148%20Time%20Loop/\">here</a>";
+            document.getElementById("displaycontent").innerHTML += "<br/><br/><p style=\"color:red;\">It was at this point Adrian's interest in this particular project waned completely, due to the issue of scope involved in processing freeform text input, and the limitations it imposes on the desired play experience. He chose to start another project, to be developed as much as is possible in a one-week timeframe, to submit alongside this project for the second game jam assignment.</p><p style=\"color:red;\">If you would like to play a similar style of game with a different Riley, made for CMPM 148, click <a style=\"color:red;\" href=\"https://kkitaanik.github.io/WebProjects/CMPM%20148%20Time%20Loop/\" target=\"_blank\">here</a>";
             window.scrollTo(0, document.body.scrollHeight);
         }
     }
