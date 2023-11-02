@@ -14,6 +14,7 @@ async function SlowType(delaynum, output, startwait = 0) {
     let purplebool = false;
     let yellowbool = false;
     let cyanbool = false;
+    let linkbool = false;
     if (startwait > 0) {
         await timer(startwait);
     }
@@ -94,6 +95,16 @@ async function SlowType(delaynum, output, startwait = 0) {
                 cyanbool = false;
             }
         }
+        else if (chararray[i] == "名") {
+            if (linkbool == false) {
+                chararray[i] = "<a style=\"color:white;\" href=\"https://kkitaanik.github.io/WebProjects/ARTG%20170%20Monster%20Mash/A.R.S.%20Industries%20Communications%20Handbook.pdf\" target=\"_blank\">"
+                linkbool = true;
+            }
+            else if (linkbool == true) {
+                chararray[i] = "</a>";
+                linkbool = false;
+            }
+        }
         await timer(delay);
         document.getElementById("displaycontent").innerHTML = totaloutput + chararray[i] + "|";
         totaloutput += chararray[i];
@@ -127,7 +138,7 @@ async function Start() {
 ||Relevant security metrics achieved. Opening communications", 1000);
     await SlowType(500, "... ");
     await SlowType(500, "|||||");
-    await SlowType(1, "You have been connected. Please follow the communications script during all communications.");
+    await SlowType(1, "You have been connected. Please follow 名the communications script名 during all communications.");
     await PrepareInput();
     
     input.addEventListener("input", function(){
