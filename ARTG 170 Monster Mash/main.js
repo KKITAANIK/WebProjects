@@ -190,7 +190,7 @@ async function InputHandler() {
         input.value = "";
         input.style.height = "0px";
         if (stage == 0) {
-            if ((inputVal.toLowerCase().includes("you have been connected to a remote consultant representing") && inputVal.toLowerCase("what is the reason for your communication today")) == false) {
+            if ((inputVal.toLowerCase().includes("you have been connected to a remote consultant representing") && inputVal.toLowerCase().includes("what is the reason for your communication today")) == false) {
                 await SlowType(1, "红Message denied. Reason: Script incongruity. Please try again.红");
                 await PrepareInput();
             }
