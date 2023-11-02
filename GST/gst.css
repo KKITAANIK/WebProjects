@@ -1,0 +1,147 @@
+html, body {
+    height: 100%;
+    margin: 0px;
+    background-color: #293542;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+@font-face {
+    font-family: "Alien League";
+    src: url(fonts/alien_league/alienleague.ttf);
+}
+@font-face {
+    font-family: "Alien League Bold";
+    src: url(fonts/alien_league/alienleaguebold.ttf);
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+.display {
+    font-family: "Alien League";
+    font-size: 7vw;
+    color: #33b5e5;
+}
+.toptext {
+    font-family: "Alien League";
+    font-size: 3vw;
+    color: #33b5e5;
+}
+.bottomtext {
+    font-family: "Alien League";
+    font-size: 1.25vw;
+    color: #33b5e5;
+    bottom: 3vh;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.help {
+    position: absolute;
+    top: 3vh;
+    right: 3vh;
+    height: 5vh;
+    width: 5vh;
+    font-size: 5vh;
+    color: #33b5e5;
+    font-family: "Alien League";
+}
+.help .tooltip {
+    width: 15vw;
+    background-color: #192532;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #091522;
+    top: -1vh;
+    right: 6vh;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: #33b5e5;
+}
+.help:hover {
+    cursor: pointer;
+}
+.help:hover .tooltip {
+    opacity: 1;
+}
+.back {
+    position: absolute;
+    top: 3vh;
+    left: 3vh;
+    height: 5vh;
+    width: 5vh;
+    font-size: 5vh;
+    color: #33b5e5;
+    font-family: "Alien League";
+}
+.back .tooltip {
+    width: 15vw;
+    background-color: #192532;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #091522;
+    top: -1vh;
+    left: 6vh;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: #33b5e5;
+}
+.back:hover {
+    cursor: pointer;
+}
+.back:hover .tooltip {
+    opacity: 1;
+}
+a {
+    color: inherit;
+}
+.note {
+    font-family: "Alien League";
+    font-size: 1.5vw;
+    color: #33b5e5;
+}
+
+.startDate {
+    height: 1.75vw;
+    margin: 0.25vw;
+    border-style: solid;
+    border-width: 0px;
+    text-align: center;
+    border-color: #28112c;
+    background-color: #301934;
+    font-family: "Alien League Bold";
+    font-size: 1.25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #DA70D6;
+}
+.startDate:hover {
+    background-color: #28112c;
+}
+.startDate:active
+{
+    background-color: #28112c;
+}
+.startDate:focus {
+    outline: none;
+    border-width: 5px;
+}

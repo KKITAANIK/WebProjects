@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KKITAANIK Web Projects</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="webprojects.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp">
+    </head>
+    <body>
+        <div class="scifi">
+            <button class="scifibutton" onclick="location.href = 'Sci-fi/scifi.html'">Exodus<span class="tooltip">Play a text-based science fiction game taking place during humanity's first excursion into the cosmos.</span></button>
+            <button class="scifibutton" onclick="location.href = 'GST/gst.html'">GST<span class="tooltip">Watch a live display of the current time in Galactic Standard Time, or calculate the GST for any date and time.</span></button>
+        </div>
+        <div class="plana">
+            <button class="planabutton" onclick="location.href = 'Plana/plana.html'">Plana<span class="tooltip">Play a text-based fantasy game taking place in the Plana universe.</span></button>
+        </div>
+        <div class="shareddream" id="container">
+            <button class="shareddreambutton" onclick="location.href = 'Shared Dream/shareddream.html'" id="button">A Shared Dream</span></button>
+        </div>
+        <script>
+            let time = 0;
+
+            let textColors   = ["#dec2c4", "#9cc9e3", "#8e7ea1", "#2e3d4c"];
+            let buttonColors = ["#c5acae", "#8bb3ca", "#b19dc9", "#394c5f"];
+            let fontColors   = ["#000000", "#000000", "#ffffff", "#ffffff"];
+                
+            let d = new Date();
+            if (d.getHours() >= 6 && d.getHours() < 12) {
+                time = 0;
+            }
+            else if (d.getHours() >= 12 && d.getHours() < 17) {
+                time = 1;
+            }
+            else if (d.getHours() >= 17 && d.getHours() < 20) {
+                time = 2;
+            }
+            else {
+                time = 3;
+            }
+
+            document.getElementById("container").style.backgroundColor = textColors[time];
+            document.getElementById("container").style.color = fontColors[time];
+            document.getElementById("button").style.backgroundColor = buttonColors[time];
+            document.getElementById("button").style.color = fontColors[time];
+        </script>
+        <div class="dolor">
+            <buttons class="dolorbutton" onclick="location.href = 'Dolor/prologue.html'">( Dolor )</buttons>
+        </div>
+    </body>
+</html>

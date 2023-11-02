@@ -1,0 +1,65 @@
+label, input, body {
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+body {
+    margin: 0;
+}
+.main {
+    padding: 5vh;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-image: url('paddleboat.jpg');
+    height: 90vh;
+    background-size: cover;
+    background-position: center;
+}
+.field {
+    border: none;
+    border-bottom: solid;
+    border-width: 2px;
+    background-color: rgba(255, 255, 255, 0)
+}
+.card {
+    width: 50vw;
+    height: 50vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding: 2.5em;
+    text-align: justify;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+.button {
+    position: absolute;
+    bottom: 4em;
+}
+.cont {
+    height: 4em;
+    width: 8em;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border-color: white;
+    border-style: solid;
+    border-radius: 0.25em;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.longtext {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 15em;
+    width: 50em;
+}
+.block {
+    display: block;
+    text-align: center;
+}

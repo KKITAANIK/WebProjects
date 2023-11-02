@@ -1,0 +1,187 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+@font-face {
+    font-family: "Alien League Bold";
+    src: url(Sci-fi/fonts/alien_league/alienleaguebold.ttf);
+}
+@font-face {
+    font-family: "Open Sans";
+    src: url(Sci-fi/fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: "Beth Ellen";
+    src: url(Dolor/fonts/Beth_Ellen/BethEllen-Regular.ttf);
+}
+@font-face {
+    font-family: "Courgette";
+    src: url(Shared\ Dream/fonts/Courgette/Courgette-Regular.ttf);
+}
+.scifi {
+    width: 50%;
+    background-color: #293542;
+    float: left;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.plana {
+    width: 50%;
+    background-color: #fbfcdd;
+    float: left;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.shareddream {
+    background-color: #151919;
+    width: calc(50vw - 1vh);
+    height: calc(50vh - 1vh);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5vh;
+    float: left;
+}
+.dolor {
+    width: 50%;
+    background-color: #E5D0B1;
+    float: left;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scifibutton {
+    height: 20%;
+    width: 33%;
+    margin: 0.25vw;
+    float: left;
+    border-style: solid;
+    border-width: 0px;
+    text-align: center;
+    border-color: #28112c;
+    background-color: #301934;
+    font-family: "Alien League Bold";
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #DA70D6;
+}
+.scifibutton .tooltip {
+    width: 15vw;
+    background-color: #192532;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #091522;
+    bottom: 55%;
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: #33b5e5;
+}
+.scifibutton:hover .tooltip {
+    opacity: 1;
+}
+.scifibutton:hover {
+    background-color: #28112c;
+    cursor: pointer;
+}
+.scifibutton:active
+{
+    background-color: #28112c;
+}
+.scifibutton:focus {
+    outline: none;
+    border-width: 5px;
+}
+
+.planabutton {
+    height: 20%;
+    width: 33%;
+    float: left;
+    border-style: outset;
+    border-width: 5px;
+    border-color: #a07d47;
+    text-align: center;
+    background-color: #b08d57;
+    font-family: "MedievalSharp";
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.planabutton .tooltip {
+    width: 15vw;
+    background-color: #fff;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    font-family: "Open Sans";
+    font-size: 1vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #c0c0c0;
+    bottom: 55%;
+    border-radius: 1px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.planabutton:hover .tooltip {
+    opacity: 1;
+}
+.planabutton:hover {
+    background-color: #a07d47;
+    border-color: #906d37;
+    cursor: pointer;
+}
+.planabutton:active
+{
+    border-style: inset;
+    background-color: #a07d47;
+    border-color: #906d37;
+}
+
+.shareddreambutton {
+    background-color: #1f2525;
+    height: 8vh;
+    width: calc(50vw - 2vh);
+    margin: 0.5vh;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+    position: absolute;
+    bottom: 0.5vh;
+    font-family: "Courgette";
+}
+.shareddreambutton:hover {
+    cursor: pointer;
+}
+
+.dolorbutton {
+    font-family: "Beth Ellen";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+}
+.dolorbutton:hover {
+    cursor: pointer;
+}

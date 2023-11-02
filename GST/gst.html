@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Current GST</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="gst.css">
+    </head>
+    <body>
+        <div class="back" onclick="window.location = 'https://kkitaanik.github.io/WebProjects/'">&lt;-<span class=tooltip>Click here to go back to the hub menu.</span></div>
+        <div class="help" onclick="window.open('https://docs.google.com/document/d/12oDuYMcHC7TVgo5vwI8t1YIGqC7oqFU3cetTiq6D0SA/edit?usp=sharing')">?<span class=tooltip>Click to learn more about Galactic Standard Time.</span></div>
+        <div class="toptext">it is currently*</div>
+        <div class="display" id="display">00:00:00</div>
+        <div class="note"><a href="https://kkitaanik.github.io/WebProjects/GST/calc.html">Click here to calculate the GST for any given time</a>.</div>
+        <div class="bottomtext" id="bottomtext"></div>
+        <script>
+            var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+            document.getElementById("bottomtext").innerHTML = "All calculations are assuming this story begins&nbsp;<input type=\"datetime-local\" id=\"startDate\" class=\"startDate\" value=\"\">. if it were to begin now it would always be 1:39:00 6/2/6896 AA GST.&nbsp;<a href=\"https://docs.google.com/document/d/1eOMmL1oh7wX1BtbXX5euZjhczD0t88es6xECjaUSBqg/edit?usp=sharing\" target=\"_blank\">Click here to find out why</a>.";
+            document.getElementById("startDate").value = (new Date(1597536000000 - tzoffset)).toISOString().slice(0, -1);
+        </script>
+        <script src="gst.js"></script>
+        <script>setInterval(UpdateTime, 226.8);</script>
+    </body>
+</html>

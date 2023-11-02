@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Plana</title>
+        <link rel="icon" href="PlanaIcon.png">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="plana.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=MedievalSharp">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>   
+        <script src="plana.js"></script>
+        <script src="charactercreation.js"></script>
+        <script src="mapgen.js"></script>
+        <script src="story.js"></script>
+        <div class="window">
+            <div class="side">
+                <div class="map" id="map"></div>
+                <div class="meters">
+                    <div id="health">HLTH NOT UPDATED</div>
+                    <div id="strength">STRN NOT UPDATED</div>
+                    <div id="constitution">CNST NOT UPDATED</div>
+                    <div id="agility">AGLT NOT UPDATED</div>
+                    <div id="perception">PRCP NOT UPDATED</div>
+                    <div id="control">CTRL NOT UPDATED</div>
+                    <div id="cleverness">CLVR NOT UPDATED</div>
+                    <div id="lsd">FNDS NOT UPDATED</div>
+                    <div id="time">TIME NOT UPDATED</div>
+                    <script>UpdateMeters();</script>
+                </div>
+                <div class="altbuttons">
+                    <button class="altbutton" id="ab1" onclick="SaveGame()" disabled></button>
+                    <button class="altbutton" id="ab2" onclick="LoadGame()" disabled></button>
+                    <button class="altbutton2" id="ab3" onclick="Menu()" disabled></button>
+                </div>
+            </div>
+            <div class="main">
+                <div class="text" id="output">LOADING TEXT...<br /><br />(Please note: this game requires an internet connection.)</div>
+                <div class="buttons">
+                    <button class="button" id="b1" disabled>B1 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b2" disabled>B2 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b3" disabled>B3 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b4" disabled>B4 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b5" disabled>B5 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b6" disabled>B6 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b7" disabled>B7 NOT UPDATED<span class="tooltip"></span></button>
+                    <button class="button" id="b8" disabled>B8 NOT UPDATED<span class="tooltip"></span></button>
+                </div>
+                <script>Menu();</script>
+            </div>
+       </div>
+    </body>
+</html>

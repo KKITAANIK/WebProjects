@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Idle</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="idle.css">
+    </head>
+    <body>
+        <script src="idle.js"></script>
+        <div class="display">
+            <div class="counter" id="counter"></div>
+            <div class="buttons" id="buttons"><button onclick="UpdateText();">Click me.</button></div>
+            <div class="text" id="text"></div>
+        </div>
+        <script>setInterval(UpdateCounter, 250);</script>
+    </body>
+</html>

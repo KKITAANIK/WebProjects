@@ -1,0 +1,48 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+.display {
+    width: 100%;
+    height: 100%;
+}
+.left {
+    width: calc((100vw - 100vh) / 2);
+    height: 100vh;
+    float: left;
+}
+.board {
+    width: calc(100vh + 0.5vh);
+    height: 100vh;
+    float: left;
+}
+.right {
+    width: calc((100vw - 100vh) / 2);
+    height: 100vh;
+    float: left;
+}
+.bottom {
+    width: 100vw;
+    height: 25vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+}
+.tile {
+    width: calc(100vh / 15 - 0.5vh);
+    height: calc(100vh / 15 - 0.5vh);
+    justify-content: center;
+    display: flex;  
+    align-items: center;
+    justify-content: bottom;
+    font-size: 3vh;
+    border-width: 0.25vh;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    cursor: pointer;
+}

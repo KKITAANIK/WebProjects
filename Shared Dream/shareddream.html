@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>A Shared Dream</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="shareddream.css">
+    </head>
+    <body>
+        <script src="shareddream.js"></script>
+        <script src="story.js"></script>
+        <div class="display">
+            <div class="topbar" id="topbar">Day 1, Afternoon</div>
+            <div class="text" id="text"><div class="title">A Shared Dream</div></div>
+            <div class="buttons" id="buttons">
+                <button class="button" id="b0" onclick="Start();">Begin</button>
+                <button class="button" id="b1" onclick="Quit();">Quit</button>
+                <button class="button" id="b2" disabled></button>
+                <button class="button" id="b3" disabled></button>
+                <button class="button" id="b4" disabled></button>
+                <button class="button" id="b5" disabled></button>
+                <button class="button" id="b6" disabled></button>
+                <button class="button" id="b7" disabled></button>
+            </div>
+        </div>
+        <script>
+            let d = new Date();
+            if (d.getHours() >= 6 && d.getHours() < 12) {
+                time = 0;
+            }
+            else if (d.getHours() >= 12 && d.getHours() < 17) {
+                time = 1;
+            }
+            else if (d.getHours() >= 17 && d.getHours() < 20) {
+                time = 2;
+            }
+            else {
+                time = 3;
+            }
+        </script>
+        <script>FillButtons();</script>
+        <script>Styling();</script>
+    </body>
+</html>

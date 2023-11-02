@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url(fonts/Open_Sans/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: "Courgette";
+    src: url(fonts/Courgette/Courgette-Regular.ttf);
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    font-family: "Open Sans";
+    color: white;
+    overflow: hidden;
+}
+.topbar {
+    background-color: #0e1111;
+    height: 8vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4vh;
+}
+.text {
+    background-color: #151919;
+    width: 98vw;
+    padding: 1vw;
+    overflow: auto;
+    text-align: justify;
+    font-size: x-large;
+}
+.buttons {
+    background-color: #151919;
+    width: calc(100vw - 1vh);
+    display: flex;
+    flex-direction: column;
+    padding: 0.5vh;
+}
+.button {
+    background-color: #1f2525;
+    height: 8vh;
+    width: calc(100vw - 2vh);
+    margin: 0.5vh;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+}
+.button:hover {
+    cursor: pointer;
+}
+.title {
+    height: 100%;
+    display: flex;
+    font-size: 6vw;
+    align-items: center;
+    justify-content: center;
+    font-family: "Courgette";
+}
+.input {
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: x-large;
+    font-family: "Open Sans";
+    padding-left: 1vw;
+}

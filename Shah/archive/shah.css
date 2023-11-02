@@ -1,0 +1,51 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    overflow: hidden;
+}
+.display {
+    width: 100%;
+    height: 100%;
+}
+.left {
+    width: calc((100vw - 75vh) / 2);
+    height: 75vh;
+    float: left;
+}
+.grid {
+    width: calc(75vh - 0.25vw);
+    height: calc(75vh - 0.25vw);
+    float: left;
+    border-width: 0.125vw;
+    border-style: solid;
+    border-color: black;
+}
+.right {
+    width: calc((100vw - 75vh) / 2);
+    height: 75vh;
+    float: left;
+}
+.bottom {
+    width: 100vw;
+    height: 25vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vw;
+}
+.tile {
+    width: calc(100% / 7 - 0.25vw);
+    height: calc(100% / 7 - 0.25vw);
+    justify-content: center;
+    display: flex;  
+    align-items: center;
+    justify-content: bottom;
+    font-size: 4vw;
+    border-width: 0.125vw;
+    border-style: solid;
+    border-color: black;
+    float: left;
+    cursor: pointer;
+}

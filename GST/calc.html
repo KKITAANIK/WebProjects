@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GST Calculator</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="calc.css">
+    </head>
+    <body>
+        <div class="back" onclick="window.location = 'https://kkitaanik.github.io/WebProjects/'">&lt;-<span class=tooltip>Click here to go back to the hub menu.</span></div>
+        <div class="help" onclick="window.open('https://docs.google.com/document/d/12oDuYMcHC7TVgo5vwI8t1YIGqC7oqFU3cetTiq6D0SA/edit?usp=sharing')">?<span class=tooltip>Click to learn more about Galactic Standard Time.</span></div>
+        <div class="uppertext">
+            <div class="toptext">Please enter a date and time using your time zone.</div>
+            <div class="note">Note: Large deviations from the selected start date may take some time to calculate.</div>
+            <div class="inputfield">
+                <input type="datetime-local" id="dateInput" class="button">
+                <button id="button" class="button">Submit</button>
+            </div>
+        </div>
+        <div class="toptext" id="toptext"></div>
+        <div id="display" class="display">No Date Given</div>
+        <div class="note"><a href="https://kkitaanik.github.io/WebProjects/GST/gst.html">Click here to go to a live feed of the current time in GST</a>.</div>
+        <div class="bottomtext" id="bottomtext"></div>
+        <script>
+            var tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+            document.getElementById("bottomtext").innerHTML = "All calculations are assuming this story begins&nbsp;<input type=\"datetime-local\" id=\"startDate\" class=\"startDate\" value=\"\">.&nbsp;<a href=\"https://docs.google.com/document/d/1eOMmL1oh7wX1BtbXX5euZjhczD0t88es6xECjaUSBqg/edit?usp=sharing\" target=\"_blank\">Click here to learn why this specification is neccesary</a>.";
+            document.getElementById("startDate").value = (new Date(1597536000000 - tzoffset)).toISOString().slice(0, -1);
+        </script>
+        <script src="calc.js"></script>
+    </body>
+</html>
