@@ -67,6 +67,8 @@ async function Play(key) {
         await SlowType("※Strain to hear.※", 2000, 10, "Play(2);")
     }
     else if (key == 2) {
-        
+        await SlowType("You focus.Ⅴ Somewhere, instinctually, you recognize the immense silence surrounding you.Ⅴ Your breathing is uncompromisingly audible, and when a drip of water sounds from some unknown direction, it's almost deafening.");
+        await SlowType("The sound echoes through the space, implying an immense internal volume and making it impossible to place.Ⅴ Several seconds pass, and you hear another.Ⅴ Wherever you are, it is...Ⅴ wet.", 1000)
+        await SlowType("※Strain to feel.※", 2000, 10, "Play(3);")
     }
 }
