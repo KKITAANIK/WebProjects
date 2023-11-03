@@ -5,7 +5,7 @@ CAPTION="yes"
 SHOWINTASKBAR="yes"
 SINGLEINSTANCE="yes"
 SYSMENU="yes"
-SCROLL="no"
+SCROLL="yes"
 WINDOWSTATE="normal">
 
 
@@ -16,15 +16,47 @@ WINDOWSTATE="normal">
         <title>Adrian's Interactive School Portfolio</title>
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+        <script type="text/javascript">
+            function openURL(url) {
+                var shell = new ActiveXObject("WScript.Shell");
+                shell.run(url);
+            }
+            
+            function openFile(filepath) {
+                var relpath = window.location.pathname.replace(/\\/g,'/').split('/');
+                relpath.pop();// JScript: relpath.length = relpath.length - 1;
+                relpath = relpath.join('/') + '/';
+                
+                var fullpath = relpath + filepath;
+                
+                var oShell = new ActiveXObject("Shell.Application");
+                var commandtoRun = fullpath; 
+                oShell.ShellExecute(commandtoRun,"","","open","1");
+            }
+        </script>
     </head>
     <body>
         <h1>CMPM 80K — Spring 2021</h1>
-            <a href="https://kkitaanik.github.io/WebProjects/CMPM%20Link-Based%20Game/">The Reptillian Tyrant-King</a>
-            <br/>
-            <a href="https://kkitaanik.itch.io/orpheus-run">Orpheus Run</a>
+            <h2>The Reptillian Tyrant-King</h2>
+                <button onclick="openURL('https://kkitaanik.github.io/WebProjects/CMPM%20Link-Based%20Game/')">Play Online</button>
+            <h2>Orpheus Run</h2>
+                <button onclick="openURL('https://kkitaanik.itch.io/orpheus-run')">Play Online</button>
         <h1>ARTG 80G — Fall 2021</h1>
-            
-            <a href="https://youtu.be/PWQs70jEfL0?si=VIDXXOLjtT4KB161">Watch the video</a>
+            <h2>Solitaire the Card Game the Video Game the Tabletop Game™</h2>
+                <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/StCGtVGtTG%E2%84%A2/How%20To%20Play%20Solitaire%20the%20Card%20Game%20the%20Video%20Game%20the%20Tabletop%20Game%E2%84%A2%20.pdf')">How To Play</button>
+                <br/>
+                <button onclick="openURL('https://youtu.be/PWQs70jEfL0?si=VIDXXOLjtT4KB161')">Watch the ad</button>
+                <br/>
+                <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/StCGtVGtTG%E2%84%A2/Production%20Files.pdf')">Production Files</button>
+            <h1>CMPM 176 — Winter 2023</h1>
+                <h2>Battle of Stirling Bridge</h2>
+                    <button onclick="openFile('Local Files/Battle of Stirling Bridge/')">Get the .vmod file</button>
+                    <h3>Additional Rules</h3>
+                        <h4>Rallying</h4>
+                            <p>Cards with the ability “Rallying” begin the scenario in the Rallying state. Rallying formations cannot attack or be attacked. Only one rallying formation can be given dice in a turn, but when rallying a formation’s wing is disregarded for the purposes of assigning dice. Using the Rallying ability does not count as an action, and adds 1 to the unit’s strength. A formation stops Rallying when the card targeted by the Rallying ability is Retired or Routed, and can no longer use the “Rallying” ability. When formations stop Rallying, they retain their dice.</p>
+                            <p>Also, the English (red) go first.</p>
+                <h2>Legend of Korra: Pro Bending</h2>
+                <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/Legend%20of%20Korra%20Pro%20Bending/Legend%20of%20Korra%20Pro%20Bending.pdf')">How To Play</button>
     </body>
 </html>
 
