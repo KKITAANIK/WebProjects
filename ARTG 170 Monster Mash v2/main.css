@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: normal;
+    src: url(Fonts/NotoSerif-Regular.ttf);
+}
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: italic;
+    font-weight: normal;
+    src: url(Fonts/NotoSerif-Italic.ttf);
+}
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-weight: bold;
+    src: url(Fonts/NotoSerif-Bold.ttf);
+}
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: italic;
+    font-weight: bold;
+    src: url(Fonts/NotoSerif-BoldItalic.ttf);
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: "Noto Serif";
+    font-size: 1.25em;
+    text-indent: 2em;
+    text-align: justify;
+    text-justify: inter-word;
+    /*max-width: calc(100vh * 1.5);*/
+}
+
+a {
+    color: #808080;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #a0a0a0;
+}
