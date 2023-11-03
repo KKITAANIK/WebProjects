@@ -35,11 +35,13 @@ WINDOWSTATE="normal">
         </script>
     </head>
     <body>
-        <h1>CMPM 80K — Spring 2021</h1>
+        <button type="button" class="collapsible"><h1>CMPM 80K — Spring 2021</h1></button>
+        <div class="content">
             <h2>The Reptillian Tyrant-King</h2>
                 <button onclick="openURL('https://kkitaanik.github.io/WebProjects/CMPM%20Link-Based%20Game/')">Play Online</button>
             <h2>Orpheus Run</h2>
                 <button onclick="openURL('https://kkitaanik.itch.io/orpheus-run')">Play Online</button>
+        </div>
         <h1>ARTG 80G — Fall 2021</h1>
             <h2>Solitaire the Card Game the Video Game the Tabletop Game™</h2>
                 <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/StCGtVGtTG/How%20To%20Play%20Solitaire%20the%20Card%20Game%20the%20Video%20Game%20the%20Tabletop%20Game.pdf')">How To Play</button>
@@ -94,5 +96,21 @@ WINDOWSTATE="normal">
                     <button onclick="openURL('https://kkitaanik.github.io/WebProjects/ARTG%20170%20Monster%20Mash')">Play Online</button>
                 <h3>Monster Mash v2</h3>
                     <button onclick="openURL('https://kkitaanik.github.io/WebProjects/ARTG%20170%20Monster%20Mash%20v2')">Play Online</button>
+        <script type="text/javascript">
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+                coll[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if (content.style.display === "block") {
+                        content.style.display = "none";
+                    } else {
+                        content.style.display = "block";
+                    }
+                });
+            }
+        </script>
     </body>
 </html>
