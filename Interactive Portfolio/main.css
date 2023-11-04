@@ -25,6 +25,27 @@
 
 html {
     font-family: 'Noto Sans';
-    background-color: #101020;
-    color: white;
+}
+
+.collapsible {
+    width: 100%;
+    margin: 5px;
+}
+
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+
+button {
+    border-style:none;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+h2 {
+    padding: 0;
+    margin: 0;
 }
