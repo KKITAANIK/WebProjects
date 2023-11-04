@@ -35,6 +35,7 @@ body {
 }
 
 p {
+    font-family: 'Noto Sans';
     text-indent: 2em;
     font-size: 1.25em;
     text-align: justify;
@@ -52,6 +53,7 @@ p {
 }
 
 button {
+    font-family: 'Noto Sans';
     border-style:none;
     font-size: 1.25em;
     background-color: #212125;
@@ -70,12 +72,14 @@ h1, h2, h3, h4 {
 }
 
 a {
+    font-family: 'Noto Sans';
     color: #f290ab;
     text-decoration: underline;
     cursor: pointer;
 }
 
 table, tr, td, th {
+    font-family: 'Noto Sans';
     border: 0;
     padding-left: 25px;
     padding-right: 25px;
