@@ -29,7 +29,8 @@ html {
 
 body {
     font-family: 'Noto Sans';
-    padding: 5px;
+    padding: 10px;
+    padding-top: 0px;
     background-color: #141418;
     color: white;
 }
@@ -44,7 +45,8 @@ p {
 
 .collapsible {
     width: 100%;
-    margin: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 5px;
 }
 
@@ -63,6 +65,10 @@ button {
 
 button:hover {
     background-color: #353539;
+}
+
+button:active::before {
+    transform: translate(0, 0);
 }
 
 h1, h2, h3, h4 {
@@ -92,4 +98,21 @@ table {
 
 .highlight {
     color: #60E060;
+}
+
+ul {
+    font-family: 'Noto Sans';
+    font-size: 1.25em;
+    margin-top: -0.25em;
+    margin-bottom: -0.25em;
+    text-indent: 1em;
+}
+
+.text {
+    font-family: 'Noto Sans';
+    font-size: 1.25em;
+}
+
+img {
+    height: 480px;
 }

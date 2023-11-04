@@ -11,12 +11,38 @@
     </table>
 </button>
 <div class="content" style="display:none;">
-    <h2>The Reptillian Tyrant-King</h2>
-        <button onclick="openURL('https://kkitaanik.github.io/WebProjects/CMPM%20Link-Based%20Game/')">Play Online</button>
-    <br/><br/>
-    <h2>Orpheus Run</h2>
-        <button onclick="openURL('https://kkitaanik.itch.io/orpheus-run')">Play Online</button>
-    <br/><br/>
+    <button type="button" class="collapsible"><h2>The Reptillian Tyrant-King</h2></button>
+    <div class="content" style="display:none;">
+        <button onclick="openURL('https://kkitaanik.github.io/WebProjects/CMPM%20Link-Based%20Game/')" style="margin-top:5px;">Play Online</button>
+        <h3>Content Warning</h3>
+        <p>The game contains potentially disturbing content, up to and including descriptions of murder, gore, cruelty, dead bodies, and matricannibalism (the eating of one's mother). If you do not wish to experience such content, this game is not for you.</p>
+        <br/><br/>
+        <p>This is a text-based game built in Twine. The assignment was to create a link-based game in the engine, over the course of roughly a month. This included a week of ideation, drafting, playtesting, and finalization respectively.</p>
+        <p>In the game you play as a dragon, first as a hatchling, then as an adult paying a visit to a human village. There is a strong focus on player freedom, while still offering difficult decisions.</p>
+        <p>The game had to follow at least one of five selected "seed words", which were essentially game jam themes. These were:</p>
+            <ul>
+                <li>Killer Whales</li>
+                <li>Lightning</li>
+                <li>Tyrannosaurus Rex</li>
+                <li>Coconuts</li>
+                <li>A Locker Room</li>
+            </ul>
+        <p>I decided to go with "Tyrannosaurus Rex", though I played with it a little. I deconstructed the word etymologically, and from the original Greek and Latin it roughly translates to "king tyrant lizard". I then interpreted this descriptively, reasoning that the creature most accurately described by that is a dragon.</p>
+        <p>This game has a prologue where you play as a hatchling, and then has content up to the conclusion of your first outing. It is for the most part complete, though one section of exposition was never finished.</p>
+        <p>As the assignment included a draft, the prologue was finished first. As part of procrastinating various assignments, I ended up making the node graph for the prologue in the shape of a dragon, which I'm quite pleased with.</p>
+        <img src="https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/Assets/The%20Reptillian%20Tyrant-King/prologue_dragon.png">
+        <p>Overall, the design of the game was very focused on allowing a wide breadth of player choice. I felt strongly that the player shouldn't be unable to do something simply because I hadn't written it, and tried to make options for every general desired approach (that doesn't mean full control over every detail, but generally that there should be something that approximates and pleases whatever a given player might want to do). The effects of this can be seen in the game's node map, which grew very large very quickly, and is the reason the linear length of the game is as short as it is.</p>
+        <img src="https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/Assets/The%20Reptillian%20Tyrant-King/full_map.png">
+        <p>I actually discovered the game I currently help work on while I was working on this project, and that game is actually what really motivated me to finish this assignment. A year later, given the overlap of subject matter, I shared this project as part of my application to become a writer, and it's one of the reasons I was moved forward in that process.</p>
+    </div>
+    <button type="button" class="collapsible"><h2>Orpheus Run</h2></button>
+    <div class="content" style="display:none;">
+        <button onclick="openURL('https://kkitaanik.itch.io/orpheus-run')" style="margin-top:5px;">Play Online</button>
+        <p>This game is a very short platformer built in Construct 3. The assignment was to create a graphical game in the engine with a timeframe of just under a month, following the theme of "Pitfall". This was a group project, in which I collaborated with <a onclick="openURL('https://willisclayton.itch.io/')">Willis Clayton</a>. We called our group the Clayton Construction Co., due to the shared last name.</p>
+        <p>In the game, you play as Orpheus, platforming to the end of the level. You are followed by Eurydice, and if she is in your vision for too long you lose the game. The main mechanic of interest in the game is the "vision cone" system, which limits what you (the player) can see to what the character can actually see based on the direction they're looking and any obstacles that are in the way. You use your mouse to look around and the keyboard to move.</p>
+        <p>I did all the programming and level design, Willis created the character and torch sprites, and the background and environmental art is by <a onclick="openURL('https://assetstore.unity.com/packages/2d/environments/2d-hell-side-scrolling-platformer-pack-111285')">Super Brutal Assets</a> and <a onclick="openURL('https://assetstore.unity.com/packages/2d/environments/pixel-fantasy-caves-152375')">Szadi Art</a>.</p>
+        <p>As an amusing annecdote, the following is a comment from the professor, left on the final submission of this assignment: "The main mechanic is very well executed. Even looking at the code, I don't know how you got the shadows with the platforms looking so clean."</p>
+    </div>
 </div>
 
 <button type="button" class="collapsible">
@@ -228,7 +254,6 @@
     var i;
 
     for (i = 0; i < coll.length; i++) {
-        $('.collapsible').eq(i).css('width', '-=10px')
         hookEvent(coll[i], "click", function() {
             if (hasClass(this, "active")) {
                 this.className = this.className.replace( /(?:^|\s)active(?!\S)/g , '' )
