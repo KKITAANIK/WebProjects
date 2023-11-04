@@ -27,25 +27,65 @@ html {
     font-family: 'Noto Sans';
 }
 
+body {
+    font-family: 'Noto Sans';
+    padding: 5px;
+    background-color: #141418;
+    color: white;
+}
+
+p {
+    text-indent: 2em;
+    font-size: 1.25em;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
 .collapsible {
     width: 100%;
     margin: 5px;
+    padding: 5px;
 }
 
 .active, .collapsible:hover {
-    background-color: #ccc;
+    background-color: #353539;
 }
 
 button {
     border-style:none;
+    font-size: 1.25em;
+    background-color: #212125;
+    color: white;
+    cursor: pointer;
 }
 
-h1 {
-    padding: 0;
-    margin: 0;
+button:hover {
+    background-color: #353539;
 }
 
-h2 {
-    padding: 0;
-    margin: 0;
+h1, h2, h3, h4 {
+    font-family: 'Noto Sans';
+    margin-bottom: 0;
+    color: #f290ab;
+}
+
+a {
+    color: #f290ab;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+table, tr, td, th {
+    border: 0;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #c0c0c0
+}
+
+table {
+    margin-top: 5px;
+}
+
+.highlight {
+    color: #60E060;
 }
