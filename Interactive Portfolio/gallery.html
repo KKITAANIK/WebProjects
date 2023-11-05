@@ -48,7 +48,7 @@
 <button type="button" class="collapsible">
     <h1>Data Structures for Interactive Media</h1>
     <h2 style="margin:0;margin-bottom:15px;">Fall 2021</h2>
-    Three short text games made with Glitch (Adrian needs to review these to see if any of them get *'d)
+    Three short text-based games using YAML and TOML, made with Glitch
     <br/>
     <table>
         <tr>
@@ -69,7 +69,7 @@
     <div class="content" style="display:none;">
         <button onclick="openURL('https://a-glimpse-of-something-else.glitch.me/')"">Play Online</button>
         <p>I'm not sure of the exact parameters for this assignment. I gather there were a few themes to pick from, and I chose "subjective". The game itself has the player waiting at a bus stop, only to glimpse something odd out of the corner of their eye. They have the choice to investigate, and if successful they notice <span class="spoiler">a four-inch tall girl taking off on a robin</span>.</p>
-        <p>This game was quite directly inspired by the Studio Ghibli movie Arrietty, as one of the songs from the soundtrack came on as I was trying to think of ideas.</p>
+        <p>This game was quite directly inspired by the Studio Ghibli film <i>Arrietty</i>, as one of the songs from the soundtrack came on as I was trying to think of ideas.</p>
     </div>
     <button type="button" class="collapsible"><h2>This Isn't Hard</h2></button>
     <div class="content" style="display:none;">
@@ -97,7 +97,7 @@
     <button type="button" class="collapsible"><h2>Solitaire the Card Game the Video Game the Tabletop Game™</h2></button>
     <div class="content" style="display:none;">
         <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/StCGtVGtTG/How%20To%20Play%20Solitaire%20the%20Card%20Game%20the%20Video%20Game%20the%20Tabletop%20Game.pdf')">How To Play</button>
-        <p>This class was largely focused on graphic design in general, and its use in interaction design. The final project involved making a physical adaptation of a digital game, with a focus on visual design and fabrication. I made a joke about adapting Microsoft Solitaire into an analogue game, and the professor challenged me to follow through with it. As someone with a life-long commitment to the bit, I accepted.</p>
+        <p>This class was largely focused on graphic design in general, and its use in interaction design. The final project involved making a physical adaptation of a digital game, with a focus on visual design and fabrication. I made a joke about adapting <i>Microsoft Solitaire</i> into an analogue game, and the professor challenged me to follow through with it. As someone with a life-long commitment to the bit, I accepted.</p>
         <p>Solitaire the Card Game the Video Game the Tabletop Game™ is meant to be playable from the end state of a standard Solitaire game. In terms of materials required, you need at least one (ideally two, visually-distinct) 12-sided dice in addition to a standard deck of cards, and that's it. It's intentionally designed with a very minimalist philosophy, and is targeted at people who really enjoy standard Solitaire (like me).</p>
         <p>I am really happy with how this game came out. It is very simple, but incredibly fun, and I found myself enjoying it immensely. The ability to play out of a standard Solitaire game (and in turn to play standard Solitaire out of StCGtVGtTG™'s end state) is very satisfying. If you are someone who likes Solitaire, I highly recommend giving the game a try.</p>
         <p>The assignment also required that you make a short video advertising and describing your game. Though I'm generally not a fan of pictures and recordings of myself, the video did come out well enough, and I recognize it's worth including.</p>
@@ -121,16 +121,21 @@
     <span style="display:inline-block;color:'#c0c0c0';margin-top:5px;"></span>
 </button>
 <div class="content" style="display:none;">
-    <h2>Battle of Stirling Bridge</h2>
+    <p>This class focused on, predictably, game systems and systemic games. Both of these games, when submitted as assignments, included a comprehensive systems analysis, which I have chosen not to include.</p>
+    <button type="button" class="collapsible"><h2>Battle of Stirling Bridge</h2></button>
+    <div class="content" style="display:none;">
         <button onclick="openFile('Local Files/Battle of Stirling Bridge/')">Get the .vmod file</button>
         <h3>Additional Rules</h3>
-            <h4>Rallying</h4>
-                <p>Cards with the ability “Rallying” begin the scenario in the Rallying state. Rallying formations cannot attack or be attacked. Only one rallying formation can be given dice in a turn, but when rallying a formation’s wing is disregarded for the purposes of assigning dice. Using the Rallying ability does not count as an action, and adds 1 to the unit’s strength. A formation stops Rallying when the card targeted by the Rallying ability is Retired or Routed, and can no longer use the “Rallying” ability. When formations stop Rallying, they retain their dice.</p>
-                <p>Also, the English (red) go first.</p>
-    <br/><br/>
-    <h2>Legend of Korra: Pro Bending</h2>
+            <h4 style="text-indent:2em;">Rallying</h4>
+                <p style="margin-left:2em;"><q>Cards with the ability “Rallying” begin the scenario in the Rallying state. Rallying formations cannot attack or be attacked. Only one rallying formation can be given dice in a turn, but when rallying a formation’s wing is disregarded for the purposes of assigning dice. Using the Rallying ability does not count as an action, and adds 1 to the unit’s strength. A formation stops Rallying when the card targeted by the Rallying ability is Retired or Routed, and can no longer use the “Rallying” ability. When formations stop Rallying, they retain their dice.</q></p>
+                <p><q>Also, the English (red) go first.</q></p>
+        <p>This assignment involved taking a historical battle and adapting it into a Table Battles Scenario. It was a group assignment, and I worked with Tiana Chamsi, Adrian Cheng, Oliver Mason, Michael Quinn, and Kenice Washington. We decided on the Battle of Stirling Bridge, largely because it's the battle depicted in the movie Braveheart. Humorously, no one in our group (save one person who joined partway through, though I can't remember who specifically that was) had actually seen Braveheart, and I personally still haven't. We did, however, reason that if it was significant enough to represented in film that it was probably interesting enough for our project, and it proved to be just that.</p>
+        <p>One requirement of the assignment was to add a new system to the game, which is the reason for "Rallying". The following is an excerpt form our systems analysis document, which felt worth preserving: <q>"During the Battle of Stirling Bridge, the main advantage that drove Scottish victory was the tactical use of Stirling Bridge to control the English forces. Specifically, they would allow only as many English forces to cross as they could defeat, and would then attack them before reinforcements could arrive. Given this was a central part of the battle, it’s the first thing we looked at to adapt into a new mechanic for this scenario. In our implementation, if the player controlling the Scottish side strategizes well and eliminates English forces before they build up, the Scots retain the upper hand, but if the English are allowed to rally their forces (thanks to the Scottish player taking too long to eliminate the current combatants) they gain an advantage."</q></p>
+    </div>
+    <button type="button" class="collapsible"><h2>Legend of Korra: Pro Bending</h2></button>
+    <div class="content" style="display:none;">
         <button onclick="openURL('https://kkitaanik.github.io/WebProjects/Interactive%20Portfolio/Hosted%20Files/Legend%20of%20Korra%20Pro%20Bending/Legend%20of%20Korra%20Pro%20Bending%20Rules%20Text.pdf')">How To Play</button>
-    <br/><br/>
+    </div>
 </div>
 
 <button type="button" class="collapsible">
