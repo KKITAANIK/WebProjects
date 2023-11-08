@@ -44,3 +44,13 @@ a {
 a:hover {
     color: #a0a0a0;
 }
+
+.splatter1 {
+    width: 66.7%;
+    opacity: 0;
+    z-index: 10;
+    position: fixed;
+    top: 2vh;
+    right: 1vw;
+    pointer-events: none;
+}
