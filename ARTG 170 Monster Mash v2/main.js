@@ -27,6 +27,16 @@ async function SlowType(output, startwait = 0, delay = 10, onclick = undefined) 
             chararray[i] = "";
             document.getElementById("splatter2").style.opacity = 0.95;
         }
+        else if (chararray[i] == 'ɠ') {
+            chararray[i] = "";
+            var audio = new Audio('Audio/angry-beast-6172-1.mp3');
+            audio.play();
+        }
+        else if (chararray[i] == 'Ɠ') {
+            chararray[i] = "";
+            var audio = new Audio('Audio/angry-beast-6172-2.mp3');
+            audio.play();
+        }
         else if (chararray[i] == "*") {
             if (italicbool == false) {
                 chararray[i] = "<i>"
@@ -99,13 +109,13 @@ async function Play(key) {
     }
     else if (key == 4) {
         await SlowType("You anchor your hands at your sides, slowly pushing to your feet.Ⅴ You move carefully, and it is for that that you avoid hitting your head on the low ceiling.Ⅴ You are forced to hunch slightly—head lowered, knees bent—as you find your footing.");
-        await SlowType("A rumbling, growling sound comes from your left, though you can discern no finer direction.Ⅴ The sound itself melts into the rest of the environment, giving it the same character as this place's natural background of wind and geology, though you can't shake the notion that it might be something more...Ⅴ animal.", 1000);
+        await SlowType("ɠA rumbling, growling sound comes from your left, though you can discern no finer direction.Ⅴ The sound itself melts into the rest of the environment, giving it the same character as this place's natural background of wind and geology, though you can't shake the notion that it might be something more...Ⅴ animal.", 1000);
         await SlowType("※Wait.※", 2000, 10, "Play(6);");
         await SlowType("※Flee.※", 500, 10, "Play(9);");
     }
     else if (key == 5) {
         await SlowType("You close your eyes, though it changes your vision none.Ⅴ At least it allows you some sense of rest.Ⅴ You do not know where you are, but movement does not feel like the right answer.");
-        await SlowType("A rumbling, growling sound from your left forces you to your feet moments later, your ascent quick enough that you knock your head† against the low ceiling.Ⅴ There's an immediate throbbing in your skull, but you gather yourself, instinctively looking for the source of the sound.", 1000);
+        await SlowType("ɠA rumbling, growling sound from your left forces you to your feet moments later, your ascent quick enough that you knock your head† against the low ceiling.Ⅴ There's an immediate throbbing in your skull, but you gather yourself, instinctively looking for the source of the sound.", 1000);
         p.wounds++;
         await SlowType("The darkness offers you nothing.Ⅴ By the time you've gathered yourself, it has already faded into the natural background of wind and geology.Ⅴ Perhaps that's the mechanism from which it came.", 1000);
         await SlowType("※Wait.※", 2000, 10, "Play(6);");
@@ -113,7 +123,7 @@ async function Play(key) {
     }
     else if (key == 6) {
         await SlowType("You stand still, ears open for some new disturbance.Ⅴ You feel your weight instinctively lowered, ready to spring.");
-        await SlowType("The sound comes again.Ⅴ The geometry of the space swallows any of the finer detail of direction, but it is *louder*, and that alone is enough to plant a conviction that whatever is it is is getting closer.", 1000);
+        await SlowType("ƓThe sound comes again.Ⅴ The geometry of the space swallows any of the finer detail of direction, but it is *louder*, and that alone is enough to plant a conviction that whatever is it is is getting closer.", 1000);
         await SlowType("You stare into the darkness, some instinct telling you that, surely, anything that moves and breathes must be visible, if only it gets close enough.Ⅴ You wait for the uncompromising blackness to resolve into a form—to give you some greater hint about your situation.", 1000);
         await SlowType("For a moment, you feel something in front of you—a shift in the air to indicate only the subtlest change in current...Ⅴ and then your chest explodes in pain‡.", 1000);
         await SlowType("An accompanying sharpness rings through the back of your head, and you find yourself on your back.Ⅴ Hot air rushes across you as twisting agony spears through you, something *digging* just under your sternum.Ⅴ There is some rough, rhythmic sound as whatever is on top of you tears away at your chest, but your ears refuse to resolve it.Ⅴ Only a few moments pass before you black out completely.", 1000);
