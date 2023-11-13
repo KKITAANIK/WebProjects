@@ -54,3 +54,13 @@ a:hover {
     right: 1vw;
     pointer-events: none;
 }
+
+.splatter2 {
+    width: 75%;
+    opacity: 0;
+    z-index: 10;
+    position: fixed;
+    bottom: 0;
+    right: 10vw;
+    pointer-events: none;
+}
