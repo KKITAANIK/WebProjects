@@ -116,7 +116,7 @@ async function Play(key) {
         await SlowType("You anchor your hands at your sides, slowly pushing to your feet.Ⅴ You move carefully, and it is for that that you avoid hitting your head on the low ceiling.Ⅴ You are forced to hunch slightly—head lowered, knees bent—as you find your footing.");
         await SlowType("ɠA rumbling, growling sound comes from your left, though you can discern no finer direction.Ⅴ The sound itself melts into the rest of the environment, giving it the same character as this place's natural background of wind and geology, though you can't shake the notion that it might be something more...Ⅴ animal.", 1000);
         await SlowType("※Wait.※", 2000, 10, "Play(6);");
-        await SlowType("※Flee.※", 500, 10, "Play(9);");
+        await SlowType("※Flee.※", 500, 10, "Play(8);");
     }
     else if (key == 5) {
         await SlowType("You close your eyes, though it changes your vision none.Ⅴ At least it allows you some sense of rest.Ⅴ You do not know where you are, but movement does not feel like the right answer.");
@@ -124,7 +124,7 @@ async function Play(key) {
         p.wounds++;
         await SlowType("The darkness offers you nothing.Ⅴ By the time you've gathered yourself, it has already faded into the natural background of wind and geology.Ⅴ Perhaps that's the mechanism from which it came.", 1000);
         await SlowType("※Wait.※", 2000, 10, "Play(6);");
-        await SlowType("※Flee.※", 500, 10, "Play(9);");
+        await SlowType("※Flee.※", 500, 10, "Play(8);");
     }
     else if (key == 6) {
         await SlowType("You stand still, ears open for some new disturbance.Ⅴ You feel your weight instinctively lowered, ready to spring.");
@@ -138,5 +138,20 @@ async function Play(key) {
         await SlowType("You do.", 1000);
         await timer(5000);
         window.close();
+    }
+    else if(key == 8) {
+        await SlowType("You quickly begin moving away.Ⅴ Though your instinct is to glance behind you, you know it will do you no good without any light to see by.");
+        await SlowType("You are agonizingly aware of your pace, forced to little more than a crawl as you feel the terrain in front of you.Ⅴ You keep your back to the source of the sound, if only to catch yourself in case you fall.Ⅴ The sound of your breathing, accelerating with your escape, feels almost overpowering.Ⅴ Surely, for anyone—or anything—nearby, it would be impossible to miss.", 1000)
+        await SlowType("Your flight stalls as the space in front comes to an abrupt end, your foot coming up against a wall that your hands quickly reaffirm.Ⅴ With forward egress no longer an option, all you are left with is the instinctual conviction that the world behind you *is not safe*.", 1000);
+        await SlowType("※Follow the wall to the left.※", 2000, 10, "Play(9);");
+        await SlowType("※Follow the wall to the right.※", 500, 10, "Play(9);");
+    }
+    else if (key == 9) {
+        await SlowType("Left or right, you have no greater plan, fleeing into an unknown space with no real understanding of the options that will be presented to you.Ⅴ There is no guarantee that there is any true escape ahead of you—any legitimate opportunity to leave this place.Ⅴ All you can do is move away from an area you no longer wish to be.");
+        await SlowType("This whole, fully formed even if unfinished, does not hold an answer.Ⅴ The darkness remains just as inscrutable, and the moments within leave no record.", 1000);
+        await SlowType("What I'm trying to say is I've been absurdly busty this week and this is as far as I've developed the game.Ⅴ You should try staying still if you haven't already—that has more content, too.", 1000, 5);
+        await SlowType("Okay cool.Ⅴ Thanks for checking in.Ⅴ Bye bye, now!", 1000, 5);
+        await SlowType("Also, just like...Ⅴ don't go into random caves unless you know what you're doing.Ⅴ Total skill issue.", 1000, 5);
+        await SlowType("That's really the end, now.Ⅴ There's no more text.Ⅴ Promise.", 5000, 5);
     }
 }
