@@ -37,6 +37,11 @@ async function SlowType(output, startwait = 0, delay = 10, onclick = undefined) 
             var audio = new Audio('Audio/angry-beast-6172-2.mp3');
             audio.play();
         }
+        else if (chararray[i] == '₫') {
+            chararray[i] = "";
+            var audio = new Audio('Audio/droplets-in-a-cave-6785.mp3');
+            audio.play();
+        }
         else if (chararray[i] == "*") {
             if (italicbool == false) {
                 chararray[i] = "<i>"
@@ -97,7 +102,7 @@ async function Play(key) {
         await SlowType("※Strain to hear.※", 2000, 10, "Play(2);");
     }
     else if (key == 2) {
-        await SlowType("You focus.Ⅴ Somewhere, instinctively, you recognize the dense silence that envelops your senses.Ⅴ Your breathing is uncompromisingly audible, and when a drip of water rings out from some unknown direction, it's almost deafening.");
+        await SlowType("You focus.Ⅴ Somewhere, instinctively, you recognize the dense silence that envelops your senses.Ⅴ Your breathing is uncompromisingly audible, and when ₫a drip of water rings out from some unknown direction, it's almost deafening.");
         await SlowType("The sound echoes through the space, impossible to locate, implying an immense internal volume.Ⅴ Several seconds pass, and you hear another.Ⅴ Wherever you are, it is...Ⅴ wet.", 1000);
         await SlowType("※Strain to feel.※", 2000, 10, "Play(3);");
     }
