@@ -8,6 +8,7 @@ async function SlowType(output, startwait = 0, delay = 10, onclick = undefined) 
     totaloutput = document.getElementById("output").innerHTML + "<p>";
     let italicbool = false;
     let linkbool = false;
+    let codebool = false;
     if (startwait > 0) {
         await timer(startwait);
     }
@@ -50,6 +51,16 @@ async function SlowType(output, startwait = 0, delay = 10, onclick = undefined) 
             else if (italicbool == true) {
                 chararray[i] = "</i>";
                 italicbool = false;
+            }
+        }
+        else if (chararray[i] == "`") {
+            if (codebool == false) {
+                chararray[i] = "<span class=\"codestyle\">"
+                codebool = true;
+            }
+            else if (codebool == true) {
+                chararray[i] = "</span>";
+                codebool = false;
             }
         }
         if (chararray[i] == '※') {
@@ -147,11 +158,14 @@ async function Play(key) {
         await SlowType("※Follow the wall to the right.※", 500, 10, "Play(9);");
     }
     else if (key == 9) {
-        await SlowType("Left or right, you have no greater plan, fleeing into an unknown space with no real understanding of the options that will be presented to you.Ⅴ There is no guarantee that there is any true escape ahead of you—any legitimate opportunity to leave this place.Ⅴ All you can do is move away from an area you no longer wish to be.");
+        await SlowType("Left or right, you have no greater plan, fleeing into an unknown space with no real understanding of the options that will be presented to you.Ⅴ There is no guarantee that there is any true escape ahead of you—any legitimate opportunity to leave this place.Ⅴ All you can do is move away from an area in which you no longer wish to be.");
         await SlowType("This whole, fully formed even if unfinished, does not hold an answer.Ⅴ The darkness remains just as inscrutable, and the moments within leave no record.", 1000);
-        await SlowType("What I'm trying to say is I've been absurdly busty this week and this is as far as I've developed the game.Ⅴ You should try staying still if you haven't already—that has more content, too.", 1000, 5);
-        await SlowType("Okay cool.Ⅴ Thanks for checking in.Ⅴ Bye bye, now!", 1000, 5);
-        await SlowType("Also, just like...Ⅴ don't go into random caves unless you know what you're doing.Ⅴ Total skill issue.", 1000, 5);
-        await SlowType("That's really the end, now.Ⅴ There's no more text.Ⅴ Promise.", 5000, 5);
+        await SlowType("What I'm trying to say is I've been absurdly busy this past week and this is as far as I've developed the game.Ⅴ You should try staying still if you haven't already—that has more content, too.", 1000);
+        await SlowType("Okay cool.Ⅴ Thanks for checking in.Ⅴ Bye bye, now!", 1000);
+        await SlowType("Also, just like...Ⅴ don't go into random caves unless you know what you're doing.Ⅴ Total skill issue.", 1000);
+        await SlowType("That's really the end, now.Ⅴ There's no more text.Ⅴ Promise.", 5000);
+        await SlowType("Deep into that darkness peering, long I stood there wondering, fearing,|Doubting, dreaming dreams no mortal ever dared to dream before;|But the silence was unbroken, and the stillness gave no token,|And the only word there spoken was the whispered word, `window.close();`", 20000);
+        await timer(250);
+        window.close();
     }
 }

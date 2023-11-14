@@ -23,6 +23,19 @@
     src: url(Fonts/NotoSerif-BoldItalic.ttf);
 }
 
+@font-face {
+    font-family: 'Noto Sans Mono';
+    font-style: normal;
+    font-weight: normal;
+    src: url(Fonts/NotoSansMono-Regular.ttf);
+}
+@font-face {
+    font-family: 'Noto Sans Mono';
+    font-style: normal;
+    font-weight: bold;
+    src: url(Fonts/NotoSansMono-Bold.ttf);
+}
+
 body {
     background-color: black;
     color: white;
@@ -63,4 +76,8 @@ a:hover {
     bottom: 0;
     right: 10vw;
     pointer-events: none;
+}
+
+.codestyle {
+    font-family: "Noto Sans Mono";
 }
