@@ -1,8 +1,23 @@
 <!doctype HTML>
-<html>
+<html lang="en-us">
     <head>
         <meta charset="utf-8">
         <title>Forgotten Sim</title>
+        <script src="hyphenopoly/Hyphenopoly_Loader.js"></script>
+        <script>
+            Hyphenopoly.config({
+                require: {
+                    "de": "Silbentrennungsalgorithmus",
+                    "en-us": "Supercalifragilisticexpialidocious",
+                    "en-gb": "Supercalifragilisticexpialidocious"
+                },
+                setup: {
+                    selectors: {
+                        ".hyphenate": {}
+                    }
+                }
+            });
+        </script>
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
@@ -19,8 +34,8 @@
                 </div>
                 <div class="leftshadow" id="leftshadow"></div>
             </div>
-            <div class="display" id="display" style="width:100vw;height:100vh;margin:0;">
-                <div class="displaycontent" id="displaycontent" style="width:98vw;height:calc(100vh - 2vw);"></div>
+            <div class="display hyphenate" id="display" style="width:100vw;height:100vh;margin:0;">
+                <div class="displaycontent hyphenate" id="displaycontent" style="width:98vw;height:calc(100vh - 2vw);"></div>
                 <div class="displayshadow" id="displayshadow" style="width:100vw;"></div>
             </div>
             <div class="buttons" id="buttons" style="width:99.5vw;margin-left:0;display:none;">

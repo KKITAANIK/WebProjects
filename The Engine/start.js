@@ -1,6 +1,15 @@
-let pcname;
-let pcgender;
+let p = {
+        name: "",
+        they: "",
+        them: "",
+       their: "",
+      theirs: "",
+    themself: "",
+      theyre: "",
+         are: ""
+};
 let flags = {};
+let displaycontent = document.getElementById("displaycontent");
 
 function ButtonAppear() {
     document.getElementById("display").style.height = "calc(90vh + 0.25vw)";
@@ -29,24 +38,118 @@ function LeftAppear() {
 }
 
 async function Start(key) {
-    ClearButtons();
     if (key == 1) {
         await SlowType("Oh.ⅤⅤ A player.ⅤⅤⅤⅤ This is a surprise.ⅤⅤⅤⅤ||Well, let's get you set up.Ⅴ Please be patient.", 2500);
         await timer (4000);
         ButtonAppear();
         LeftAppear();
-        await SlowType("||Much bet­ter.Ⅴ Let's start with in­tro­duc­tions.ⅤⅤ||I'm the En­gine.Ⅴ In oth­er words, I'm an in­ter­me­di­ary between you and the game.Ⅴ It's my job to take the world you'll be in­ter­act­ing with and trans­late it in­to a format that you can make sense of.Ⅴ Largely, that format will be text.Ⅴ||Present­ing you with in­fin­ite de­tail isn't an op­tion, so I ex­ist as a fil­ter, com­mu­nic­at­ing everything that is im­port­ant while spar­ing you from everything else.Ⅴ I will en­deav­our to be as ob­ject­ive as pos­sible, but you aren't re­quired to trust my judge­ment.", 2000);
-        await SlowType("||You are a play­er.Ⅴ You are not phys­ic­ally cap­able of ex­ist­ing in this real­ity, so you'll be in­ter­act­ing it through the use of an avatar.Ⅴ", 2000) 
+        await SlowType("||Much better.Ⅴ Let's start with introductions.ⅤⅤ||I'm the Engine—Ⅴan intermediary between you and the game.Ⅴ It's my job to take the world you'll be interacting with and translate it into a format that you can make sense of.Ⅴ Largely, that format will be text.Ⅴ||Presenting you with infinite detail isn't an option, so I exist as a filter, communicating everything that is important while sparing you from everything else.Ⅴ I will endeavour to be as objective as possible, but you aren't required to trust my judgement.", 2000);
+        await SlowType("||You are a player.Ⅴ You are not physically capable of existing in this reality, so you'll be interacting it through the use of an avatar.Ⅴ", 2000) 
         inStart = true;
         ButtonAppear();
         LeftAppear();
-        await SlowType(" By util­iz­ing the but­tons you see at the bot­tom of your screen, you can dir­ect your avatar and make choices.Ⅴ I en­cour­age you to pre­tend you have full con­trol of this avatar, and that it is per­form­ing ex­actly as you in­tend it to.");
-        await SlowType("||If you understand everything so far, please demonstrate your mastery by clicking this button.", 2000);
+        await SlowType(" By utilizing the buttons you see at the bottom of your screen, you can direct your avatar and make choices.Ⅴ I encourage you to pretend you have full control of this avatar, and that it is performing exactly as you intend it to.");
+        await SlowType("||Here is an example.", 2000);
         ClearButtons();
-        buttons[0][0].update(Start.bind(null, 2), "I understand.");
+        buttons[0][0].update(Start.bind(null, 2), "Proceed.");
         inStart = false;
     }
     else if (key == 2) {
-        await SlowType("||Very good.")
+        Output("");
+        await SlowType("Good.Ⅴ Before you can actually interact with this world, you will need to make a few decisions about your avatar.Ⅴ First, what is your name?");
+        Append("<br><br><span id=\"namefield\" class=\"devtext\">Name: <input type=\"text\" id=\"nameInput\" class=\"input devtext\"><br><br></span>");
+        displaycontent.scrollTop = displaycontent.scrollHeight;
+        buttons[0][0].update(ConfirmName, "Submit");
+    }
+    else if (key == 3) {
+        await SlowType("Good.Ⅴ And your gender?");
+        buttons[0][0].update(ConfirmGender.bind(null, ["she", "her", "her", "hers", "herself", "she's", "is"], 1), "Feminine");
+        buttons[0][1].update(ConfirmGender.bind(null, ["he", "him", "his", "his", "himself", "he's", "is"], 1), "Masculine");
+        buttons[0][2].update(ConfirmGender.bind(null, ["they", "them", "their", "theirs", "themself", "they're", "are"], 1), "Nonbinary (them)");
+        buttons[0][3].update(ConfirmGender.bind(null, ["it", "it", "its", "its", "itself", "it's", "is"], 1), "Nonbinary (it)");
+        buttons[0][4].update(CustomGender, "Custom");
+    }
+    else if (key == 4) {
+        Output("");
+        await SlowType(`Your avatar will be named ${p.name}.Ⅴ ${UC(p.their)} gender follows the following schema:Ⅴ`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Subject:               ${p.they}</span>`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Object:                ${p.them}</span>`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Pronominal Adjective:  ${p.their}`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Predicative Adjective: ${p.theirs}`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Reflexive:             ${p.themself}`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Contraction:      ${p.theyre}`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Conujugation:     ${p.are}</span>`);
+        await SlowType(`||${UC(p.they)} gave ${p.their} book to ${p.them}.Ⅴ The book is ${p.theirs}, and now ${p.theyre} without it.Ⅴ That's how nice ${p.they} ${p.are}.`, 500);
+    }
+}
+
+function ConfirmName() {
+    let nameInput = document.getElementById("nameInput");
+    p.name = nameInput.value;
+    if (p.name.length >= 1) {
+        nameInput.disabled = true;
+        nameInput.placeholder = p.name;
+        Start(3);
+    }
+    else {
+        buttons[0][0].update(ConfirmName, "Submit");
+    }
+}
+
+async function CustomGender() {
+    await SlowType("||Please enter your gender information in lowercase.Ⅴ");
+    Append("<br><br><span id=\"pronounfields\" class=\"devtext\">Subject: <input id=\"subject\" class=\"input\">\
+    <br>Object: <input id=\"object\" class=\"input\">\
+    <br>Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
+    <br>Predicative Adjective: <input id=\"predadj\" class=\"input\">\
+    <br>Reflexive: <input id=\"reflex\" class=\"input\">\
+    <br>\"Is\" Contraction (must end in 's or 're): <input id=\"contrac\" class=\"input\"><br><br><br><br></span>");
+    buttons[0][0].update(ConfirmGender.bind(null, false, 2), "Submit");
+    displaycontent.scrollTop = displaycontent.scrollHeight;
+}
+
+function ConfirmGender(g, key) {
+    if (key == 1) {
+        p.they     = g[0];
+        p.them     = g[1];
+        p.their    = g[2];
+        p.theirs   = g[3];
+        p.themself = g[4];
+        p.theyre   = g[5];
+        p.are      = g[6];
+        
+        console.log(p);
+        Start(4);
+    }
+    else if (key == 2) {
+        let emptypronoun = 0;
+        newgender = [document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("predadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
+        for (let i = 0; i < 6; i++) {
+            if (newgender[i].length < 1) {
+                emptypronoun++;
+            }
+        }
+        let lastchars = newgender[5].charAt(newgender[5].length - 2).toString() + newgender[5].charAt(newgender[5].length - 1).toString();
+        if (lastchars != "'s" && lastchars != "re") {
+            emptypronoun++;
+        }
+        else if (lastchars == "'s") {
+            newgender[6] = "is";
+        }
+        else {
+            newgender[6] = "are";
+        }
+        if (emptypronoun == 0) {
+            ConfirmGender(newgender, 1);
+        }
+        else {
+            buttons[0][0].update(ConfirmGender.bind(null, false, 2), "Submit");
+        }
     }
 }

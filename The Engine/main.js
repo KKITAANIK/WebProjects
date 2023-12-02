@@ -39,8 +39,8 @@ class Button {
         document.getElementById(this.id).innerHTML = "<span class=\"buttoncontent\">" + text + "</span>";
         document.getElementById(this.id).onclick = function(){
             document.getElementById(this.id).disabled = true;
+            ClearButtons();
             func();
-            //document.getElementById(this.id).disabled = false;
         }
         $("#" + this.id.toString()).textfill({
             maxFontPixels: 0.015 * screen.width
@@ -166,7 +166,7 @@ document.body.onmouseup = function() {
 }
 
 async function SlowType(output, startwait = 0, delay = 25) {
-    displaycontent = document.getElementById("displaycontent");
+    let displaycontent = document.getElementById("displaycontent");
     chararray = output.split("");
     totaloutput = displaycontent.innerHTML + "<span class=\"devtext\">";
     let italicbool = false;
@@ -200,4 +200,8 @@ async function SlowType(output, startwait = 0, delay = 25) {
         totaloutput += chararray[i];
         displaycontent.scrollTo(0, displaycontent.scrollHeight);
     }
+}
+
+function UC(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
