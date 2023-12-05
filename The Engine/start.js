@@ -71,8 +71,10 @@ async function Start(key) {
     }
     else if (key == 4) {
         Output("");
-        await SlowType(`Your avatar will be named ${p.name}.Ⅴ ${UC(p.their)} gender follows the following schema:Ⅴ`);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Subject:               ${p.they}</span>`);
+        await SlowType(`Your avatar will abide by the following details:Ⅴ`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Name:                  ${p.name}</span>`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Subject:               ${p.they}</span>`);
         await timer(500);
         Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Object:                ${p.them}</span>`);
         await timer(500);
@@ -85,7 +87,7 @@ async function Start(key) {
         Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Contraction:      ${p.theyre}`);
         await timer(500);
         Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Conujugation:     ${p.are}</span>`);
-        await SlowType(`||${UC(p.they)} gave ${p.their} book to ${p.them}.Ⅴ The book is ${p.theirs}, and now ${p.theyre} without it.Ⅴ That's how nice ${p.they} ${p.are}.`, 500);
+        await SlowType(`||${UC(p.name)} gave ${p.their} book to ${p.them}.Ⅴ The book is ${p.theirs}, and now ${p.theyre} without it.Ⅴ That's how nice ${p.they} ${p.are}.`, 500);
     }
 }
 
