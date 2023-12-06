@@ -59,6 +59,17 @@ class Button {
     }
 }
 
+function SetButtons(buttonList) {
+    // buttonlist is [{}, {}, {}]
+    for (let i = 0; i < buttonList.length; i++) {
+        if (buttonList[i] != false) { // you can use false to leave a space blank
+            let yval = Math.floor(i / 7);
+            let xval = i % 7
+            buttons[yval][xval].update(buttonList[i].func, buttonList[i].text);
+        }
+    }
+}
+
 function ClearButtons() {
     for (let i = 0; i < 3; i++){
         for (let j = 0; j < 7; j++) {

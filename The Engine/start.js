@@ -1,12 +1,21 @@
 let p = {
-        name: "",
-        they: "",
-        them: "",
-       their: "",
-      theirs: "",
+    name:     "",
+    
+    gender:   "",
+    they:     "",
+    them:     "",
+    their:    "",
+    theirs:   "",
     themself: "",
-      theyre: "",
-         are: ""
+    theyre:   "",
+    are:      ""
+    
+    // hair color
+    // hair length
+    // eye color
+    // skin tone
+    // height
+    // sexual characyeristics
 };
 let flags = {};
 let displaycontent = document.getElementById("displaycontent");
@@ -63,30 +72,44 @@ async function Start(key) {
     }
     else if (key == 3) {
         await SlowType("Good.Ⅴ And your gender?");
-        buttons[0][0].update(ConfirmGender.bind(null, ["she", "her", "her", "hers", "herself", "she's", "is"], 1), "Feminine");
-        buttons[0][1].update(ConfirmGender.bind(null, ["he", "him", "his", "his", "himself", "he's", "is"], 1), "Masculine");
-        buttons[0][2].update(ConfirmGender.bind(null, ["they", "them", "their", "theirs", "themself", "they're", "are"], 1), "Nonbinary (them)");
-        buttons[0][3].update(ConfirmGender.bind(null, ["it", "it", "its", "its", "itself", "it's", "is"], 1), "Nonbinary (it)");
-        buttons[0][4].update(CustomGender, "Custom");
+        SetButtons([{
+                func: ConfirmGender.bind(null, ["feminine", "she", "her", "her", "hers", "herself", "she's", "is"], 1),
+                text: "Feminine"
+            }, {
+                func: ConfirmGender.bind(null, ["masculine", "he", "him", "his", "his", "himself", "he's", "is"], 1), text: "Masculine"
+            }, {
+                func: ConfirmGender.bind(null, ["nonbinary", "they", "them", "their", "theirs", "themself", "they're", "are"], 1),
+                text: "Nonbinary (them)"
+            }, {
+                func: ConfirmGender.bind(null, ["nonbinary", "it", "it", "its", "its", "itself", "it's", "is"], 1),
+                text: "Nonbinary (it)"
+            },
+            false,
+            false, {
+                func: CustomGender,
+                text: "Custom"
+        }]);
     }
     else if (key == 4) {
         Output("");
         await SlowType(`Your avatar will abide by the following details:Ⅴ`);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Name:                  ${p.name}</span>`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Name:   ${p.name}</span>`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Subject:               ${p.they}</span>`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Gender: ${p.gender}</span>`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Object:                ${p.them}</span>`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Subject:               ${p.they}</span>`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Pronominal Adjective:  ${p.their}`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Object:                ${p.them}</span>`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Predicative Adjective: ${p.theirs}`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Pronominal Adjective:  ${p.their}`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Reflexive:             ${p.themself}`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Predicative Adjective: ${p.theirs}`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Contraction:      ${p.theyre}`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Reflexive:             ${p.themself}`);
         await timer(500);
-        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>\"Is\" Conujugation:     ${p.are}</span>`);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    \"Is\" Contraction:      ${p.theyre}`);
+        await timer(500);
+        Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    \"Is\" Conjugation:      ${p.are}</span>`);
         await SlowType(`||${UC(p.name)} gave ${p.their} book to ${p.them}.Ⅴ The book is ${p.theirs}, and now ${p.theyre} without it.Ⅴ That's how nice ${p.they} ${p.are}.`, 500);
     }
 }
@@ -106,7 +129,8 @@ function ConfirmName() {
 
 async function CustomGender() {
     await SlowType("||Please enter your gender information in lowercase.Ⅴ");
-    Append("<br><br><span id=\"pronounfields\" class=\"devtext\">Subject: <input id=\"subject\" class=\"input\">\
+    Append("<br><br><span id=\"pronounfields\" class=\"devtext\">Label: <input id=\"gender\" class=\"input\" value=\"custom\">\
+    <br>Subject: <input id=\"subject\" class=\"input\">\
     <br>Object: <input id=\"object\" class=\"input\">\
     <br>Pronominal Adjective: <input id=\"proadj\" class=\"input\">\
     <br>Predicative Adjective: <input id=\"predadj\" class=\"input\">\
@@ -118,34 +142,35 @@ async function CustomGender() {
 
 function ConfirmGender(g, key) {
     if (key == 1) {
-        p.they     = g[0];
-        p.them     = g[1];
-        p.their    = g[2];
-        p.theirs   = g[3];
-        p.themself = g[4];
-        p.theyre   = g[5];
-        p.are      = g[6];
+        p.gender   = g[0]
+        p.they     = g[1];
+        p.them     = g[2];
+        p.their    = g[3];
+        p.theirs   = g[4];
+        p.themself = g[5];
+        p.theyre   = g[6];
+        p.are      = g[7];
         
         console.log(p);
         Start(4);
     }
     else if (key == 2) {
         let emptypronoun = 0;
-        newgender = [document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("predadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
-        for (let i = 0; i < 6; i++) {
+        newgender = [document.getElementById("gender").value, document.getElementById("subject").value, document.getElementById("object").value, document.getElementById("proadj").value, document.getElementById("predadj").value, document.getElementById("reflex").value, document.getElementById("contrac").value];  
+        for (let i = 0; i < newgender.length; i++) {
             if (newgender[i].length < 1) {
                 emptypronoun++;
             }
         }
-        let lastchars = newgender[5].charAt(newgender[5].length - 2).toString() + newgender[5].charAt(newgender[5].length - 1).toString();
+        let lastchars = newgender[6].charAt(newgender[6].length - 2).toString() + newgender[6].charAt(newgender[6].length - 1).toString();
         if (lastchars != "'s" && lastchars != "re") {
             emptypronoun++;
         }
         else if (lastchars == "'s") {
-            newgender[6] = "is";
+            newgender[7] = "is";
         }
         else {
-            newgender[6] = "are";
+            newgender[7] = "are";
         }
         if (emptypronoun == 0) {
             ConfirmGender(newgender, 1);
