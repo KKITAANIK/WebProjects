@@ -8,7 +8,11 @@ let locale = "Nowhere";
 let inStart = false;
 let savedata = {};
 
-function timer(ms) { return new Promise(res => setTimeout(res, ms)); }
+function timer(ms) { 
+    if (!mouseDown) {
+        return new Promise(res => setTimeout(res, ms));
+    }
+}
 
 function FillButtons() {
     for (let i = 0; i < 3; i++){
@@ -24,6 +28,8 @@ function Output(output) {
 
 function Append(output) {
     document.getElementById("displaycontent").innerHTML += output;
+    let displaycontent = document.getElementById("displaycontent");
+    displaycontent.scrollTo(0, displaycontent.scrollHeight);
 }
 
 class Button {
@@ -94,6 +100,8 @@ function UpdateButtonAreaHeight() {
                 document.getElementById("display").style.height = "100vh";
                 document.getElementById("displaycontent").style.height = "calc(100vh - 2vw)";
             }
+        let displaycontent = document.getElementById("displaycontent");
+        displaycontent.scrollTo(0, displaycontent.scrollHeight);
     }
 }
 

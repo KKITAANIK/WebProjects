@@ -7,10 +7,6 @@ body {
     opacity: 1;
     transition-duration: 1s;
     transition-property: opacity;
-    hyphens: auto;
-    -ms-hyphens: auto;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
 }
 body.fade {
     opacity: 0;
@@ -191,15 +187,16 @@ p {
     position: absolute;
     z-index: 20;
     font-family: "Noto Sans";
-    font-size: 1em;
+    font-size: 0.75em;
     border-style: solid;
     border-width: 0.25vw;
     border-color: #c8c8c8;
-    bottom: 21vh;
+    bottom: 15vh;
     border-radius: 0.5vw;
     opacity: 0;
     transition: opacity 0.5s;
     color: black;
+    pointer-events: none;
 }
 .button:hover .tooltip {
     opacity: 1;
