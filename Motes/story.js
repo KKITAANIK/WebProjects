@@ -28,7 +28,7 @@ async function StoryStart(key) {
             
         }
         
-        locale = "An Unfamiliar Clearing";
+        locale = "A Test Passage";
         hour = 11;
         minute = 43;
         day = 1;
@@ -50,9 +50,5 @@ async function StoryStart(key) {
         ]);
         
         document.body.classList.remove('fade');
-    }
-    if (key == 1) {
-        Output("<p>You gaze out at an unwritten landscape.</p>");
-        ClearButtons();
     }
 }
