@@ -68,12 +68,12 @@ function LeftAppear() {
 
 async function Start(key, param) {
     if (key == 1) {
-        await SlowType("Oh.ⅤⅤ A player.ⅤⅤⅤⅤ This is a surprise.ⅤⅤⅤⅤ||Well, let's get you set up.Ⅴ Please be patient.", 2500);
+        await SlowType("Welcome.ⅤⅤ Please be patient; I'll get you set up.", 2500);
         await timer (4000);
         ButtonAppear();
         LeftAppear();
         await SlowType("||Much better.Ⅴ Let's start with introductions.ⅤⅤ||I'm the Engine—Ⅴan intermediary between you and the game.Ⅴ It's my job to take the world you'll be interacting with and translate it into a format that you can make sense of.Ⅴ Largely, that format will be text.Ⅴ||Presenting you with infinite detail isn't an option, so I exist as a filter, communicating everything that is important while sparing you from everything else.Ⅴ I will endeavour to be as objective as possible, but you aren't required to trust my judgement.", 2000);
-        await SlowType("||You are a player.Ⅴ You are not physically capable of existing in this reality, so you'll be interacting it through the use of an avatar.Ⅴ", 2000) 
+        await SlowType("||You are a player.Ⅴ You are not physically capable of existing in this reality, so you'll be interacting with it through the use of an avatar.Ⅴ", 2000) 
         inStart = true;
         ButtonAppear();
         LeftAppear();

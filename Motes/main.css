@@ -118,6 +118,7 @@ p {
     -ms-hyphens: auto;
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
+    text-align: justify;
 }
 ::-webkit-scrollbar {
     width: 1vw;
