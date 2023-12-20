@@ -1,5 +1,7 @@
 let p = {};
-let flags = {};
+let flags = {
+	darkMode: false
+};
 let displaycontent = document.getElementById("displaycontent");
 let skinToneIndex = {
 	"null": "#e8e8e8",
@@ -17,7 +19,7 @@ let skinToneIndex = {
 let hairLengthIndex = {
 	"null": "",
 	"bald": "",
-	"very short": " Less than an inch of hair, as with a buzz cut.",
+	"very short": " Less than an inch of hair.",
 	"short": " Ear-length hair.",
 	"medium": " Jaw-length hair.",
 	"long": " Shoulder-length hair.",
@@ -67,26 +69,14 @@ async function ClearPlayerObject() {
 		hasBreasts: false,
 		hasPenis:   false,
 		hasVagina:  false,
+		
 		breastSize: "",
 		penisSize:  "",
-		
-		skinTone: '',
-		// Monk Skin Tone Scale:
-		//         A: #f7ede4
-		//         B: #f3e7da
-		//         C: #f6ead0
-		//         D: #ead9bb
-		//         E: #d7bd96
-		//         F: #9f7d54
-		//         G: #815d44
-		//         H: #604234
-		//         I: #3a312a
-		//         J: #2a2420
-	
 		hairColor:   "",
 		hairTexture: "",
 		hairLength:  "",
 		eyeColor:    "",
+		skinTone: '',
 		height:      "",
 		thickness:   "",
 		musculature: "",
@@ -101,26 +91,32 @@ async function Start(key, param) {
 		await SlowType("Welcome.ⅤⅤⅤⅤⅤ", 2500);
 		ButtonAppear();
 		LeftAppear();
-		await SlowType("||You will need an avatar.Ⅴ Please choose a name.Ⅴ", 2000);
-		Start(2, false);
+		await SlowType(" That's better.ⅤⅤ||Before we begin, would you like to switch to dark mode?", 2000);
+		
+		buttons[0][0].update(Start.bind(null, 2, 1), "Yes");
+		buttons[0][1].update(Start.bind(null, 2, 2), "No");
+		inStart = true;
 	}
 	else if (key == 2) {
 		ClearPlayerObject();
 		
-		if (param == true) {
+		if (param == 0) {
 			Output("")
 		}
 		else {
 			Append("<br/><br/>")
+			if (param == 1) {
+				document.getElementById("inverter").style.opacity = 1;
+				flags.darkMode = true;
+			}
 		}
-		Append("<span id=\"namefield\" class=\"devtext\">Name: <input type=\"text\" id=\"nameInput\" class=\"input devtext\"><br><br></span>");
+		await SlowType("You will need an avatar.Ⅴ Please choose a name.Ⅴ");
+		Append("<br/><br/><span id=\"namefield\" class=\"devtext\">Name: <input type=\"text\" id=\"nameInput\" class=\"input devtext\"><br><br></span>");
 		displaycontent.scrollTop = displaycontent.scrollHeight;
-		buttons[0][0].update(StoryStart.bind(null, 0), "Begin");
-		//buttons[0][0].update(ConfirmName, "Submit");
-		//inStart = true;
+		buttons[0][0].update(ConfirmName, "Submit");
 	}
 	else if (key == 3) {
-		await SlowType("Please choose a gender.Ⅴ This can be changed at any time.");
+		await SlowType("Please choose a gender.");
 		SetButtons([{
 				func: ConfirmGender.bind(null, ["feminine", "she", "her", "her", "hers", "herself", "she's", "is"], 1),
 				text: "Feminine"
@@ -140,7 +136,7 @@ async function Start(key, param) {
 		}]);
 	}
 	else if (key == 3.5) {
-		await SlowType(`||Please choose your desired sexual characteristics.||Ⅴ`);
+		await SlowType(`||Please choose your desired sexual characteristics.Ⅴ||`);
 		Append("<span class=\"devtext\" id=\"sexReadout\" style=\"white-space: pre;\"></span>")
 		Start(4, false);
 	}
@@ -180,99 +176,120 @@ async function Start(key, param) {
 		inStart = false;
 	}
 	else if (key == 7) {
-		p.breastSize = param;
 		
 		await SlowType("||Please fill out your additional customization options:Ⅴ")
+		Append("<br/>")
 		
-		Append(`<br/><br/><label for="skinTone" class="devtext" style="white-space:pre;">Skin Tone:         </label>
-<select name="skinTone" id="skinTone" class="devtext">
-	<option value="null" class="devtext" style="background-color:#e8e8e8;">&lt;Choose&gt;</option>
-	<option value="A" class="devtext" style="background-color:#f7ede4;"></option>
-	<option value="B" class="devtext" style="background-color:#f3e7da;"></option>
-	<option value="C" class="devtext" style="background-color:#f6ead0;"></option>
-	<option value="D" class="devtext" style="background-color:#ead9bb;"></option>
-	<option value="E" class="devtext" style="background-color:#d7bd96;"></option>
-	<option value="F" class="devtext" style="background-color:#9f7d54;"></option>
-	<option value="G" class="devtext" style="background-color:#815d44;"></option>
-	<option value="H" class="devtext" style="background-color:#604234;"></option>
-	<option value="I" class="devtext" style="background-color:#3a312a;"></option>
-	<option value="J" class="devtext" style="background-color:#2a2420;"></option>
-</select>
-<br/>
-<label for="hairColor" class="devtext" style="white-space:pre;">Hair Color:        </label>
-<select name="hairColor" id="hairColor" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="black"          class="devtext">Black</option>
-	<option value="brown"          class="devtext">Brown</option>
-	<option value="auburn"         class="devtext">Auburn</option>
-	<option value="ginger"         class="devtext">Ginger</option>
-	<option value="blond"          class="devtext" id="blondOption">Blond</option>
-	<option value="grey"           class="devtext">Grey</option>
-	<option value="white"          class="devtext">White</option>
-</select>
-<br/>
-<label for="hairTexture" class="devtext" style="white-space:pre;">Hair Texture:      </label>
-<select name="hairTexture" id="hairTexture" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="straight"       class="devtext">Straight</option>
-	<option value="wavy"           class="devtext">Wavy</option>
-	<option value="curly"          class="devtext">Curly</option>
-	<option value="kinky"          class="devtext">Kinky</option>
-</select>
-<br/>
-<label for="hairLength" class="devtext" style="white-space:pre;">Hair Length:       </label>
-<select name="hairLength" id="hairLength" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="bald"           class="devtext">Bald</option>
-	<option value="very short"     class="devtext">Very Short</option>
-	<option value="short"          class="devtext">Short</option>
-	<option value="medium"         class="devtext">Medium</option>
-	<option value="long"           class="devtext">Long</option>
-	<option value="very long"      class="devtext">Very Long</option>
-	<option value="very very long" class="devtext">Very Very Long</option>
-</select>
-<span id="hairLengthDesc" class="devtext" style="white-space:pre;color:#707070;"></span>
-<br/>
-<label for="eyeColor" class="devtext" style="white-space:pre;">Eye Color:         </label>
-<select name="eyeColor" id="eyeColor" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="amber"          class="devtext">Amber</option>
-	<option value="brown"          class="devtext">Brown</option>
-	<option value="hazel"          class="devtext">Hazel</option>
-	<option value="green"          class="devtext">Green</option>
-	<option value="blue"           class="devtext">Blue</option>
-	<option value="grey"           class="devtext">Grey</option>
-</select>
-<br/>
-<label for="height" class="devtext" style="white-space:pre;">Height:            </label>
-<select name="height" id="height" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="very short"     class="devtext">Very Short</option>
-	<option value="short"          class="devtext">Short</option>
-	<option value="average"        class="devtext">Average</option>
-	<option value="tall"           class="devtext">Tall</option>
-	<option value="very tall"      class="devtext">Very Tall</option>
-</select>
-<br/>
-<label for="bodyShape" class="devtext" style="white-space:pre;">Body Shape:        </label>
-<select name="bodyShape" id="bodyShape" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="thin"           class="devtext">Thin</option>
-	<option value="average"        class="devtext">Average</option>
-	<option value="thick"          class="devtext">Thick</option>
-</select>
-<br/>
-<label for="muscleDefinition" class="devtext" style="white-space:pre;">Muscle Definition: </label>
-<select name="muscleDefinition" id="muscleDefinition" class="devtext">
-	<option value="null"           class="devtext">&lt;Choose&gt;</option>
-	<option value="soft"           class="devtext">Soft</option>
-	<option value="fit"            class="devtext">Fit</option>
-	<option value="muscular"       class="devtext">Muscular</option>
-</select>`);
+		if (p.hasBreasts == true) {
+			Append(`<br/><label for="breastSize" class="devtext" style="white-space:pre;">Breast Size:       </label>
+			<select name="breastSize" id="breastSize" class="devtext">
+				<option value="null"       class="devtext">&lt;Choose&gt;</option>
+				<option value="very small" class="devtext">Very Small</option>
+				<option value="small"      class="devtext">Small</option>
+				<option value="average"    class="devtext">Average</option>
+				<option value="large"      class="devtext">Large</option>
+				<option value="very large" class="devtext">Very Large</option>
+			</select>`)
+		}
 		
-		$('#skinTone').change(function() {
-			document.getElementById("skinTone").style.backgroundColor = skinToneIndex[document.getElementById("skinTone").value];
-		});
+		if (p.hasPenis == true) {
+			Append(`<br/><label for="penisSize" class="devtext" style="white-space:pre;">Penis Size:        </label>
+			<select name="penisSize" id="penisSize" class="devtext">
+				<option value="null"       class="devtext">&lt;Choose&gt;</option>
+				<option value="very small" class="devtext">Very Small</option>
+				<option value="small"      class="devtext">Small</option>
+				<option value="average"    class="devtext">Average</option>
+				<option value="large"      class="devtext">Large</option>
+				<option value="very large" class="devtext">Very Large</option>
+			</select>`)
+		}
+		
+		Append(`<br/>
+		<label for="hairColor" class="devtext" style="white-space:pre;">Hair Color:        </label>
+		<select name="hairColor" id="hairColor" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="black"          class="devtext">Black</option>
+			<option value="brown"          class="devtext">Brown</option>
+			<option value="auburn"         class="devtext">Auburn</option>
+			<option value="ginger"         class="devtext">Ginger</option>
+			<option value="blond"          class="devtext" id="blondOption">Blond</option>
+			<option value="grey"           class="devtext">Grey</option>
+			<option value="white"          class="devtext">White</option>
+		</select>
+		<br/>
+		<label for="hairTexture" class="devtext" style="white-space:pre;">Hair Texture:      </label>
+		<select name="hairTexture" id="hairTexture" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="straight"       class="devtext">Straight</option>
+			<option value="wavy"           class="devtext">Wavy</option>
+			<option value="curly"          class="devtext">Curly</option>
+			<option value="kinky"          class="devtext">Kinky</option>
+		</select>
+		<br/>
+		<label for="hairLength" class="devtext" style="white-space:pre;">Hair Length:       </label>
+		<select name="hairLength" id="hairLength" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="bald"           class="devtext">Bald</option>
+			<option value="very short"     class="devtext">Very Short</option>
+			<option value="short"          class="devtext">Short</option>
+			<option value="medium"         class="devtext">Medium</option>
+			<option value="long"           class="devtext">Long</option>
+			<option value="very long"      class="devtext">Very Long</option>
+			<option value="very very long" class="devtext">Very Very Long</option>
+		</select>
+		<span id="hairLengthDesc" class="devtext" style="white-space:pre;color:#707070;"></span>
+		<br/>
+		<label for="eyeColor" class="devtext" style="white-space:pre;">Eye Color:         </label>
+		<select name="eyeColor" id="eyeColor" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="amber"          class="devtext">Amber</option>
+			<option value="brown"          class="devtext">Brown</option>
+			<option value="hazel"          class="devtext">Hazel</option>
+			<option value="green"          class="devtext">Green</option>
+			<option value="blue"           class="devtext">Blue</option>
+			<option value="grey"           class="devtext">Grey</option>
+		</select>
+		<br/>
+		<label for="skinTone" class="devtext" style="white-space:pre;">Skin Tone:         </label>
+		<select name="skinTone" id="skinTone" class="devtext">
+			<option value="null" class="devtext" style="background-color:#e8e8e8;" id="skinToneNull">&lt;Choose&gt;</option>
+			<option value="A" class="devtext" style="background-color:#f7ede4;"></option>
+			<option value="B" class="devtext" style="background-color:#f3e7da;"></option>
+			<option value="C" class="devtext" style="background-color:#f6ead0;"></option>
+			<option value="D" class="devtext" style="background-color:#ead9bb;"></option>
+			<option value="E" class="devtext" style="background-color:#d7bd96;"></option>
+			<option value="F" class="devtext" style="background-color:#9f7d54;"></option>
+			<option value="G" class="devtext" style="background-color:#815d44;"></option>
+			<option value="H" class="devtext" style="background-color:#604234;"></option>
+			<option value="I" class="devtext" style="background-color:#3a312a;"></option>
+			<option value="J" class="devtext" style="background-color:#2a2420;"></option>
+		</select>
+		<br/>
+		<label for="height" class="devtext" style="white-space:pre;">Height:            </label>
+		<select name="height" id="height" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="very short"     class="devtext">Very Short</option>
+			<option value="short"          class="devtext">Short</option>
+			<option value="average"        class="devtext">Average</option>
+			<option value="tall"           class="devtext">Tall</option>
+			<option value="very tall"      class="devtext">Very Tall</option>
+		</select>
+		<br/>
+		<label for="bodyShape" class="devtext" style="white-space:pre;">Body Shape:        </label>
+		<select name="bodyShape" id="bodyShape" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="thin"           class="devtext">Thin</option>
+			<option value="average"        class="devtext">Average</option>
+			<option value="thick"          class="devtext">Thick</option>
+		</select>
+		<br/>
+		<label for="muscleDefinition" class="devtext" style="white-space:pre;">Muscle Definition: </label>
+		<select name="muscleDefinition" id="muscleDefinition" class="devtext">
+			<option value="null"           class="devtext">&lt;Choose&gt;</option>
+			<option value="soft"           class="devtext">Soft</option>
+			<option value="fit"            class="devtext">Fit</option>
+			<option value="muscular"       class="devtext">Muscular</option>
+		</select>`);
 		
 		if (p.gender == "feminine") {
 			document.getElementById("blondOption").innerHTML = "Blonde";
@@ -280,6 +297,19 @@ async function Start(key, param) {
 		
 		$('#hairLength').change(function() {
 			document.getElementById("hairLengthDesc").innerHTML = hairLengthIndex[document.getElementById("hairLength").value];
+		});
+		
+		if (flags.darkMode) {
+			document.getElementById("skinTone").classList.add("inverted");
+			document.getElementById("skinTone").style.backgroundColor = "#171717";
+			document.getElementById("skinTone").style.color = "#fff";
+			document.getElementById("skinToneNull").style.backgroundColor = "#171717";
+			document.getElementById("skinToneNull").style.color = "#fff";
+			skinToneIndex["null"] = "#171717"
+		}
+		
+		$('#skinTone').change(function() {
+			document.getElementById("skinTone").style.backgroundColor = skinToneIndex[document.getElementById("skinTone").value];
 		});
 		
 		let maxSelectWidth = document.getElementById("hairLength").offsetWidth;
@@ -295,16 +325,16 @@ async function Start(key, param) {
 		let vaginaDesc = "none";
 		
 		if (p.hasBreasts) breastDesc = p.breastSize;
-		if (p.hasPenis)    penisDesc = "present";
+		if (p.hasPenis)    penisDesc = p.penisSize;
 		if (p.hasVagina)  vaginaDesc = "present";
 		
 		Output("");
 		await SlowType(`Your avatar will abide by the following details:Ⅴ`);
 		
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Name: ${p.name}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Name:                      ${p.name}</span>`);
 		
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Gender:  ${p.gender}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Gender:                    ${p.gender}</span>`);
 		await timer(500);
 		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    Subject:               ${p.they}</span>`);
 		await timer(500);
@@ -320,31 +350,31 @@ async function Start(key, param) {
 		await timer(500);
 		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>    \"Is\" Conjugation:      ${p.are}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Breasts: ${breastDesc}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Breasts:                   ${breastDesc}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Penis:   ${penisDesc}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Penis:                     ${penisDesc}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Vagina:  ${vaginaDesc}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Vagina:                    ${vaginaDesc}</span>`);
 		
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Skin Tone:         ${p.skinTone} (Monk Skin Tone Scale)</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/><br/>Hair Color:                ${p.hairColor}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Hair Color:        ${p.hairColor}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Hair Texture:              ${p.hairTexture}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Hair Texture:      ${p.hairTexture}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Hair Length:               ${p.hairLength}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Hair Length:       ${p.hairLength}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Eye Color:                 ${p.eyeColor}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Eye Color:         ${p.eyeColor}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Skin Tone:                 ${p.skinTone} (Monk Skin Tone Scale)</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Height:            ${p.height}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Height:                    ${p.height}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Body Shape:        ${p.thickness}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Body Shape:                ${p.thickness}</span>`);
 		await timer(500);
-		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Muscle Definition: ${p.musculature}</span>`);
+		Append(`<span class="devtext" style=\"white-space: pre;\"><br/>Muscle Definition:         ${p.musculature}</span>`);
 		
 		buttons[0][0].update(StoryStart.bind(null, 0), "Begin");
-		buttons[0][6].update(Start.bind(null, 2, true), "Start Over")
+		buttons[0][6].update(Start.bind(null, 2, 0), "Start Over")
 	}
 }
 
@@ -453,16 +483,27 @@ function ConfirmGender(g, key) {
 function ConfirmAppearance() {
 	let emptyField = 0;
 	
-	let skinTone         = document.getElementById("skinTone");
+	let breastSize       = document.getElementById("breastSize");
+	let penisSize        = document.getElementById("penisSize");
 	let hairColor        = document.getElementById("hairColor");
 	let hairTexture      = document.getElementById("hairTexture");
 	let hairLength       = document.getElementById("hairLength");
 	let eyeColor         = document.getElementById("eyeColor");
+	let skinTone         = document.getElementById("skinTone");
 	let height           = document.getElementById("height");
 	let bodyShape        = document.getElementById("bodyShape");
 	let muscleDefinition = document.getElementById("muscleDefinition");
 	
-	let checkList = [skinTone.value, hairColor.value, hairTexture.value, hairLength.value, eyeColor.value, height.value, bodyShape.value, muscleDefinition.value];
+	if (p.hasBreasts == false) {
+		breastSize = {};
+		breastSize.value = false;
+	}
+	if (p.hasPenis == false) {
+		penisSize = {};
+		penisSize.value = false;
+	}
+	
+	let checkList = [breastSize.value, penisSize.value, hairColor.value, hairTexture.value, hairLength.value, eyeColor.value, height.value, skinTone.value, bodyShape.value, muscleDefinition.value];
 	
 	for (let i = 0; i < checkList.length; i++) {
 		if (checkList[i] == "null") {
@@ -471,11 +512,13 @@ function ConfirmAppearance() {
 	}
 	
 	if (emptyField == 0) {
-		p.skinTone    = skinTone.value;
+		p.breastSize  = breastSize.value;
+		p.penisSize   = penisSize.value;
 		p.hairColor   = hairColor.value;
 		p.hairTexture = hairTexture.value;
 		p.hairLength  = hairLength.value;
 		p.eyeColor    = eyeColor.value;
+		p.skinTone    = skinTone.value;
 		p.height      = height.value;
 		p.thickness   = bodyShape.value;
 		p.musculature = muscleDefinition.value;

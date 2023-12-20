@@ -20,39 +20,18 @@ p {
 @font-face {
 	font-family: 'Noto Sans';
 	font-style: normal;
-	font-weight: normal;
-	src: url(fonts/Noto_Sans/static/NotoSans-Regular.ttf);
+	src: url(fonts/Noto_Sans/NotoSans-VariableFont_wdth\,wght.ttf);
 }
 @font-face {
 	font-family: 'Noto Sans';
 	font-style: italic;
-	font-weight: normal;
-	src: url(fonts/Noto_Sans/static/NotoSans-Italic.ttf);
-}
-@font-face {
-	font-family: 'Noto Sans';
-	font-style: normal;
-	font-weight: bold;
-	src: url(fonts/Noto_Sans/static/NotoSans-Bold.ttf);
-}
-@font-face {
-	font-family: 'Noto Sans';
-	font-style: italic;
-	font-weight: bold;
-	src: url(fonts/Noto_Sans/static/NotoSans-BlackItalic.ttf);
+	src: url(fonts/Noto_Sans/NotoSans-Italic-VariableFont_wdth\,wght.ttf);
 }
 
 @font-face {
 	font-family: 'Noto Sans Mono';
 	font-style: normal;
-	font-weight: normal;
-	src: url(fonts/Noto_Sans_Mono/static/NotoSansMono-Regular.ttf);
-}
-@font-face {
-	font-family: 'Noto Sans Mono';
-	font-style: normal;
-	font-weight: bold;
-	src: url(fonts/Noto_Sans_Mono/static/NotoSansMono-Bold.ttf);
+	src: url(fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth\,wght.ttf);
 }
 
 .main {

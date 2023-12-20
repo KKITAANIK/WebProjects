@@ -5,28 +5,33 @@ function JumpStart() {
 	StoryStart(0);
 }
 
+function PrintFromQueue() {
+	let paragraphs = document.getElementsByTagName("p");
+	for(let i = 0; i < paragraphs.length; i++) {
+		paragraphs[i].classList.add("faded");
+	}
+	if (printQueue.length > 0) {
+		if (printQueue[0][1] == true) {
+			Append(printQueue[0][0]);
+		}
+		else {
+			AppendP(printQueue[0][0]);
+		}
+		printQueue.shift();
+	}
+}
+
 async function StoryStart(key) {
 	if (key == 0) {
-		document.body.classList.add('fade');
+		document.getElementById("fader").style.opacity = 1;
 		await timer(2000);
 		
-		document.getElementById("stylesheet").setAttribute("href", "papyrus.css");
-		document.getElementById("displaycontent").onclick = function() { //TODO: Make this also on spacebar pressed
-			let paragraphs = document.getElementsByTagName("p");
-			for(let i = 0; i < paragraphs.length; i++) {
-				paragraphs[i].classList.add("faded");
+		document.getElementById("displaycontent").onclick = PrintFromQueue;
+		document.body.onkeyup = function(e) {
+			if (e.code == "Space" || e.code == "Enter") {
+				PrintFromQueue();
 			}
-			if (printQueue.length > 0) {
-				if (printQueue[0][1] == true) {
-					Append(printQueue[0][0]);
-				}
-				else {
-					AppendP(printQueue[0][0]);
-				}
-				printQueue.shift();
-			}
-			
-		}
+		};
 		
 		locale = "A Test Passage";
 		hour = 11;
@@ -49,6 +54,6 @@ async function StoryStart(key) {
 			["<br/><p>Waggoner, C. M.. <i>The Ruthless Lady's Guide to Wizardry</i> (pp. 19-20). Penguin Publishing Group. Kindle Edition.</p>", true]
 		]);
 		
-		document.body.classList.remove('fade');
+		document.getElementById("fader").style.opacity = 0;
 	}
 }
