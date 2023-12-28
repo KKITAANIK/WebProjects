@@ -155,8 +155,14 @@ async function Start(key, param) {
 		document.getElementById("fader").style.opacity = 1;
 		await timer(2000);
 		
-		Output("")
-		// INSERT MENU HERE
+		Output(`<h1 style=\"text-align:center\"><i>Motes</i></h1>
+		<h2 style=\"text-align:center;margin-top:-1em;\">by <span class=\"kkitaanik\" id=\"kkitaanik\">KK̈ITAȺNIK</span></h2>
+		<button class=\"button\">Test</button>`);
+		if (flags.darkMode) {
+			document.getElementById("kkitaanik").classList.add("inverted");
+			document.getElementById("kkitaanik").style.color = "#f18eaa";
+		}
+		
 		
 		document.getElementById("fader").style.opacity = 0;
 	}
