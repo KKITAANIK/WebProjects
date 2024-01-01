@@ -7,6 +7,7 @@ let day = 0;
 let locale = "Nowhere";
 let inStart = false;
 let savedata = {};
+let fadeStuff = true;
 
 let printQueue = [];
 
@@ -51,7 +52,9 @@ function Print(queue) {
 function PrintFromQueue() {
 	let contentChildren = document.getElementById("displaycontent").children;
 	for(let i = 0; i < contentChildren.length; i++) {
-		contentChildren[i].classList.add("faded");
+		if (fadeStuff == true) {
+			contentChildren[i].classList.add("faded");
+		}
 	}
 	if (printQueue.length > 0) {
 		while (printQueue[0].length <= 0) {
@@ -129,22 +132,28 @@ function ClearButtons() {
 	}
 }
 
-function UpdateButtonAreaHeight() {
+function UpdateButtonAreaHeight(cheat = false) {
 	if (inStart == false) {
-		rows:
-			for (let i = 2; i >= 0; i -= 1) {
-		columns:
-				for (let j = 0; j < 7; j++) {
-					if (document.getElementById(buttons[i][j].id).disabled == false) {
-						document.getElementById("display").style.height = displayHeights[i] + "+ 0.25vw)";
-						document.getElementById("displaycontent").style.height = displayHeights[i] + "- 2.5vw)";
-						break rows;
+		if (cheat !== false) {
+			document.getElementById("display").style.height = displayHeights[cheat] + "+ 0.25vw)";
+			document.getElementById("displaycontent").style.height = displayHeights[cheat] + "- 2.5vw)";
+		}
+		else {
+			rows:
+				for (let i = 2; i >= 0; i -= 1) {
+			columns:
+					for (let j = 0; j < 7; j++) {
+						if (document.getElementById(buttons[i][j].id).disabled == false) {
+							document.getElementById("display").style.height = displayHeights[i] + "+ 0.25vw)";
+							document.getElementById("displaycontent").style.height = displayHeights[i] + "- 2.5vw)";
+							break rows;
+						}
 					}
+					// if you get this far there are no buttons
+					document.getElementById("display").style.height = "100vh";
+					document.getElementById("displaycontent").style.height = "calc(100vh - 2vw)";
 				}
-				// if you get this far there are no buttons
-				document.getElementById("display").style.height = "100vh";
-				document.getElementById("displaycontent").style.height = "calc(100vh - 2vw)";
-			}
+		}
 		let displaycontent = document.getElementById("displaycontent");
 		displaycontent.scrollTo(0, displaycontent.scrollHeight);
 	}

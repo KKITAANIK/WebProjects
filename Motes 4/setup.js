@@ -1,7 +1,8 @@
 let flags = {
 	darkMode: false,
 	EngineIntroWhyText: false,
-	EngineIntroPretend: false
+	EngineIntroPretend: false,
+	over18: false
 };
 let displaycontent = document.getElementById("displaycontent");
 
@@ -104,7 +105,7 @@ async function Start(key, param) {
 			["<span class=\"mono\">Consider a rendered image. Specific exceptions aside, an image must depict everything that is visible within its frame, at a level of detail that is either uniform or dependent on an object's distance from the renderer.</span>"],
 			["<span class=\"mono\">Text, meanwhile, allows a finer control over what is and is not depicted. I can portray only relevant details, and the granularity of a given description can scale based on importance. This makes it an ideal medium for translation in this particular application, where comprehensibility is more important than universal depiction.</span>"],
 			["<span class=\"mono\">Similarly, by forcing a player to direct an avatar in broad strokes, rather than with specific controls or simulation, I can base my interpretation on a more concrete intention.</span>"],
-			["break", "<span class=\"mono\">You may disagree with this assessment, and maybe you'd prefer a visual and/or auditory representation. However, I won't be giving you the opportunity to voice such a preference, so you'll have to keep that to yourself.</span>"],
+			["break", "<span class=\"mono\">You may disagree with this assessment, and maybe you'd prefer a visual and/or auditory representation. However, I won't be giving you the opportunity to voice that preference.</span>"],
 			["execute", function() { SetButtons(buttonPool); }]
 		]);
 	}
@@ -146,6 +147,7 @@ async function Start(key, param) {
 		]);
 	}
 	else if (key == 7) {
+		flags.over18 = true;
 		Print([
 			["<span class=\"mono\">Very good. Welcome to </span><i>Motes</i><span class=\"mono\">.</span>"],
 			["execute", async function() { Start(8) }]
@@ -155,14 +157,23 @@ async function Start(key, param) {
 		document.getElementById("fader").style.opacity = 1;
 		await timer(2000);
 		
+		fadeStuff = false;
 		Output(`<h1 style=\"text-align:center\"><i>Motes</i></h1>
-		<h2 style=\"text-align:center;margin-top:-1em;\">by <span class=\"kkitaanik\" id=\"kkitaanik\">KK̈ITAȺNIK</span></h2>
-		<button class=\"button\">Test</button>`);
+		<h2 style=\"text-align:center;margin-top:-1em;\">by <span class=\"kkitaanik\" id=\"kkitaanik\">KK̈ITAȺNIK</span></h2>`);
 		if (flags.darkMode) {
 			document.getElementById("kkitaanik").classList.add("inverted");
 			document.getElementById("kkitaanik").style.color = "#f18eaa";
 		}
 		
+		buttons[0][0].update(function(){}, "The Autarchate");
+		buttons[0][1].update(function(){}, "The Alchemist's Bestiary");
+		buttons[0][2].update(function(){}, "Powers of Control");
+		buttons[0][3].update(function(){}, "Marks");
+		
+		buttons[1][0].update(function(){}, "Other Work");
+		buttons[1][1].update(function(){}, "Credits");
+		
+		UpdateButtonAreaHeight(0);
 		
 		document.getElementById("fader").style.opacity = 0;
 	}
