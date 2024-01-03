@@ -1,0 +1,98 @@
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #e0e0e0;
+}
+
+@font-face {
+	font-family: 'Noto Sans';
+	font-style: normal;
+	src: url(fonts/Noto_Sans/NotoSans-VariableFont_wdth\,wght.ttf);
+}
+@font-face {
+	font-family: 'Noto Sans';
+	font-style: italic;
+	src: url(fonts/Noto_Sans/NotoSans-Italic-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+	font-family: 'Noto Sans Mono';
+	font-style: normal;
+	src: url(fonts/Noto_Sans_Mono/NotoSansMono-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+	font-family: 'Noto Serif';
+	font-style: normal;
+	src: url(fonts/Noto_Serif/NotoSerif-VariableFont_wdth\,wght.ttf);
+}
+@font-face {
+	font-family: 'Noto Serif';
+	font-style: italic;
+	src: url(fonts/Noto_Serif/NotoSerif-Italic-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+	font-family: 'Noto Sans TC';
+	font-style: normal;
+	src: url(fonts/Noto_Sans_TC/NotoSansTC-VariableFont_wght.ttf);
+}
+
+.leftPanel {
+	width: 95.5vw;
+	height: 100vh;
+	float: left;
+	font-family: 'Noto Sans Mono';
+	padding-left: 2vw;
+	padding-right: 2vw;
+}
+
+.dividingLine {
+	width: 0.5vw;
+	height: 100vh;
+	float: left;
+	background-color: black;
+}
+
+.rightPanel {
+	width: 45.75vw;
+	height: 100vh;
+	float: left;
+	font-family: 'Noto Sans';
+	padding-left: 2vw;
+}
+
+.TC {
+	font-family: 'Noto Sans TC';
+}
+
+select, option, button, input{
+	font-family: inherit;
+}
+
+.mono {
+	font-family: 'Noto Sans Mono';
+}
+
+.displayContainer {
+	width: 100%;
+	height: 45%;
+	background-color: #d0d0d0;
+}
+
+.displayElementList {
+	width: 50%;
+	float: left;
+	white-space:pre;
+	overflow: auto;
+	max-height: 100%;
+}
+
+.displayComboList {
+	width: 50%;
+	float: left;
+	white-space:pre;
+	overflow: auto;
+	max-height: 100%;
+}
