@@ -1,6 +1,7 @@
 let elementList = [];
 let combinations = [];
 let queue = [];
+let sortElements = false;
 
 class Element {
 	constructor(name, isFundamental, recipes) {
@@ -52,6 +53,126 @@ let fundamentalPresets = {
 		new Element(   "lead", true, []),
 		new Element(   "iron", true, []),
 		new Element("mercury", true, [])
+	],
+	"chemistry": [
+		new Element("H",  true, []),
+		new Element("He", true, []),
+		new Element("Li", true, []),
+		new Element("Be", true, []),
+		new Element("B",  true, []),
+		new Element("C",  true, []),
+		new Element("N",  true, []),
+		new Element("O",  true, []),
+		new Element("F",  true, []),
+		new Element("Ne", true, []),
+		new Element("Na", true, []),
+		new Element("Mg", true, []),
+		new Element("Al", true, []),
+		new Element("Si", true, []),
+		new Element("P",  true, []),
+		new Element("S",  true, []),
+		new Element("Cl", true, []),
+		new Element("Ar", true, []),
+		new Element("K",  true, []),
+		new Element("Ca", true, []),
+		new Element("Sc", true, []),
+		new Element("Ti", true, []),
+		new Element("V",  true, []),
+		new Element("Cr", true, []),
+		new Element("Mn", true, []),
+		new Element("Fe", true, []),
+		new Element("Co", true, []),
+		new Element("Ni", true, []),
+		new Element("Cu", true, []),
+		new Element("Zn", true, []),
+		new Element("Ga", true, []),
+		new Element("Ge", true, []),
+		new Element("As", true, []),
+		new Element("Se", true, []),
+		new Element("Br", true, []),
+		new Element("Kr", true, []),
+		new Element("Rb", true, []),
+		new Element("Sr", true, []),
+		new Element("Y",  true, []),
+		new Element("Zr", true, []),
+		new Element("Nb", true, []),
+		new Element("Mo", true, []),
+		new Element("Tc", true, []),
+		new Element("Ru", true, []),
+		new Element("Rh", true, []),
+		new Element("Pd", true, []),
+		new Element("Ag", true, []),
+		new Element("Cd", true, []),
+		new Element("In", true, []),
+		new Element("Sn", true, []),
+		new Element("Sb", true, []),
+		new Element("Te", true, []),
+		new Element("I",  true, []),
+		new Element("Xe", true, []),
+		new Element("Cs", true, []),
+		new Element("Ba", true, []),
+		new Element("La", true, []),
+		new Element("Ce", true, []),
+		new Element("Pr", true, []),
+		new Element("Nd", true, []),
+		new Element("Pm", true, []),
+		new Element("Sm", true, []),
+		new Element("Eu", true, []),
+		new Element("Gd", true, []),
+		new Element("Tb", true, []),
+		new Element("Dy", true, []),
+		new Element("Ho", true, []),
+		new Element("Er", true, []),
+		new Element("Tm", true, []),
+		new Element("Yb", true, []),
+		new Element("Lu", true, []),
+		new Element("Hf", true, []),
+		new Element("Ta", true, []),
+		new Element("W",  true, []),
+		new Element("Re", true, []),
+		new Element("Os", true, []),
+		new Element("Ir", true, []),
+		new Element("Pt", true, []),
+		new Element("Au", true, []),
+		new Element("Hg", true, []),
+		new Element("Tl", true, []),
+		new Element("Pb", true, []),
+		new Element("Bi", true, []),
+		new Element("Po", true, []),
+		new Element("At", true, []),
+		new Element("Rn", true, []),
+		new Element("Fr", true, []),
+		new Element("Ra", true, []),
+		new Element("Ac", true, []),
+		new Element("Th", true, []),
+		new Element("Pa", true, []),
+		new Element("U",  true, []),
+		new Element("Np", true, []),
+		new Element("Pu", true, []),
+		new Element("Am", true, []),
+		new Element("Cm", true, []),
+		new Element("Bk", true, []),
+		new Element("Cf", true, []),
+		new Element("Es", true, []),
+		new Element("Fm", true, []),
+		new Element("Md", true, []),
+		new Element("No", true, []),
+		new Element("Lr", true, []),
+		new Element("Rf", true, []),
+		new Element("Db", true, []),
+		new Element("Sg", true, []),
+		new Element("Bh", true, []),
+		new Element("Hs", true, []),
+		new Element("Mt", true, []),
+		new Element("Ds", true, []),
+		new Element("Rg", true, []),
+		new Element("Cn", true, []),
+		new Element("Nh", true, []),
+		new Element("Fl", true, []),
+		new Element("Mc", true, []),
+		new Element("Lv", true, []),
+		new Element("Ts", true, []),
+		new Element("Og", true, [])
 	],
 	"devil": [
 		new Element(      "air", true, []),
@@ -134,14 +255,16 @@ function PullFromQueue() {
 }
 
 function RefreshData() {
-	elementList.sort(function(a, b) {
-		/*if (a.isFundamental && !b.isFundamental)
-			return -1;
-		else if (!a .isFundamental && b.isFundamental)
-			return 1;
-		else*/
-			return a.name.localeCompare(b.name);
-	})
+	if (sortElements) {
+		elementList.sort(function(a, b) {
+			/*if (a.isFundamental && !b.isFundamental)
+				return -1;
+			else if (!a .isFundamental && b.isFundamental)
+				return 1;
+			else*/
+				return a.name.localeCompare(b.name);
+		});
+	}
 	
 	let displayElementList = document.getElementById("displayElementList");
 	let displayComboList = document.getElementById("displayComboList");
@@ -407,6 +530,14 @@ function RemoveCombo(recipe) {
 function AddNullCombo(recipe) {
 	combinations.push(new Combination(false, recipe));
 	RemoveFromQueue(recipe);
+	
+	PullFromQueue();
+}
+
+function ToggleSort() {
+	var checkBox = document.getElementById("sortCheckbox");
+	
+	sortElements = checkBox.checked;
 	
 	PullFromQueue();
 }
