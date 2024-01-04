@@ -136,9 +136,11 @@ function PullFromQueue() {
 function RefreshData() {
 	let displayElementList = document.getElementById("displayElementList");
 	let displayComboList = document.getElementById("displayComboList");
+	let displayQueue = document.getElementById("displayQueue");
 	
-	let displayElementListContents = "";
+	let displayElementListContents = "<h2>Elements</h2><br/>";
 	for (let i = 0; i < elementList.length; i++) {
+		displayElementListContents += "<button onclick=\"RemoveElement('" + elementList[i].name + "')\">⃠</button> ";
 		if (elementList[i].isFundamental)
 			displayElementListContents += "𝔽 ";
 		
@@ -165,11 +167,22 @@ function RefreshData() {
 	document.getElementById("queueStatus").innerHTML = "There are " + queue.length + " combinations left in the queue.";
 	console.log(queue);
 	
-	let displayComboListContents = "";
+	let displayComboListContents = "<h2>Combinations</h2><br/>";
 	for (let i = 0; i < combinations.length; i++) {
-		displayComboListContents += combinations[i].components[0] + " + " + combinations[i].components[1] + " = " + combinations[i].result + "<br/>";
+		if (combinations[i].result != false) {
+			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + " = " + combinations[i].result + "<br/>";
+		}
+		else {
+			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + ": does not combine<br/>";
+		}
 	}
 	displayComboList.innerHTML = displayComboListContents;
+	
+	let displayQueueList = "<h2>Queue</h2><br/>";
+	for (let i = 0; i < queue.length; i++) {
+		displayQueueList += "<button onclick=\"AddNullCombo(['" + queue[i][0] + "', '" + queue[i][1] +"'])\">⃠</button> " + queue[i][0] + " + " + queue[i][1] + "<br/>";
+	}
+	displayQueue.innerHTML = displayQueueList;
 	
 	let comboPiece1 = document.getElementById("comboPiece1");
 	let comboPiece2 = document.getElementById("comboPiece2");
@@ -251,6 +264,7 @@ function RemoveFromQueue(recipe) {
 		if ((queue[k][0] == recipe[0] && queue[k][1] == recipe[1])
 			|| (queue[k][0] == recipe[1] && queue[k][1] == recipe[0])) {
 			queue.splice(k, 1);
+			k--;
 		}
 	}
 }
@@ -313,6 +327,74 @@ function PopFromQueue() {
 	if (comboPiece1.value.length <= 0 || comboPiece2.value.lenth <= 0) return;
 	
 	RemoveFromQueue([comboPiece1.value, comboPiece2.value]);
+	
+	PullFromQueue();
+}
+
+function SaveJSONFile() {
+	const a = document.createElement("a");
+	a.href = URL.createObjectURL(new Blob([JSON.stringify({"elements": elementList, "combinations": combinations}, null, 2)], {
+		type: "text/plain"
+	}));
+	a.setAttribute("download", "data.json");
+	document.body.appendChild(a);
+	a.click();
+	document.body.removeChild(a);
+}
+
+function RemoveElement(element) {
+	for (let i = 0; i < elementList.length; i++) {
+		if (elementList[i].name == element) {
+			elementList.splice(i, 1);
+			i--;
+			
+			for (let j = 0; j < queue.length; j++) {
+				if (queue[j][0] == element || queue[j][1] == element) {
+					queue.splice(j, 1);
+					j--;
+				}
+			}
+			
+			for (let j = 0; j < combinations.length; j++) {
+				if (combinations[j].components[0] == element || combinations[j].components[1] == element || combinations[j].result == element) {
+					RemoveCombo(combinations[j].components);
+				}
+			}
+		}
+	}
+	PullFromQueue();
+}
+
+function RemoveCombo(recipe) {
+	for (let k = 0; k < combinations.length; k++) {
+		if ((combinations[k].components[0] == recipe[0] && combinations[k].components[1] == recipe[1])
+			|| (combinations[k].components[0] == recipe[1] && combinations[k].components[1] == recipe[0])) {
+			for (let l = 0; l < elementList.length; l++) {
+				if (elementList[l].name == combinations[k].result) {
+					for (let m = 0; m < elementList[l].recipes.length; m++) {
+						if ((elementList[l].recipes[m][0] == recipe[0] && elementList[l].recipes[m][1] == recipe[1])
+						|| (elementList[l].recipes[m][0] == recipe[1] && elementList[l].recipes[m][1] == recipe[0])) {
+							elementList[l].recipes.splice(m, 1);
+							m--;
+						}
+					}
+					if (elementList[l].recipes.length <= 0 && elementList[l].isFundamental == false) {
+						RemoveElement(elementList[l].name);
+					}
+				}
+			}
+			
+			combinations.splice(k, 1);
+			k--;
+		}
+	}
+	
+	PullFromQueue();
+}
+
+function AddNullCombo(recipe) {
+	combinations.push(new Combination(false, recipe));
+	RemoveFromQueue(recipe);
 	
 	PullFromQueue();
 }

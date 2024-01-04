@@ -9,46 +9,53 @@
 		<script src="jquery-3.7.1.min.js"></script>
 		<script src="main.js"></script>
 		<div class="leftPanel" id="leftPanel">
-			<h1>Editor</h1>
-			Choose a preset:
-			<select id="presetSelector">
-				<option value="classical">Classical (Start with earth, water, air, and fire)</option>
-				<option value="classical2">Classical v2 (Same as Classical, but also includes aether)</option>
-				<option value="五行"><span class="TC">五行</span> (Start with fire, water, wood, metal, and earth)</option>
-				<option value="paracelsus">Paracelsus (Start with sulphur, mercury, and salt)</option>
-				<option value="metals">Metals (Start with gold, silver, copper, tin, lead, iron, and mercury)</option>
-				<option value="chemistry">Chemistry NOT YET IMPLEMENTED (Start with the 118 chemical elements)</option>
-				<option value="devil">Doodle Devil (Mirrors the start of Joy Bits' <i>Doodle Devil</i>)</option>
-				<option value="farm">Doodle Farm (Mirrors the start of Joy Bits' <i>Doodle Farm</i>)</option>
-				<option value="adventure time">Adventure Time (Start with candy, ice, slime, fire, and lumpy)</option>
-				<option value="none">None (Start with no preset fundamental elements)</option>
-			</select>
-			<br/>
-			<button onclick=ApplyPreset()>Apply Preset</button>
-			<br/>
-			<br/>
-			<br/>
-			<input id="newFundamentalElement"><button onclick=MakeNewElement()>Make New Fundamental Element</button>
-			<br/>
-			<br/>
-			<br/>
-			<button onclick=PullFromQueue()>Pull from Combination Queue</button><span id="queueStatus"></span>
-			<br/>
-			<select id="comboPiece1"></select> combined with <select id="comboPiece2"></select>
-			<br/>
-			<br/>
-			<button onclick=DoesNotCombine()>Does not combine</button>
-			<br/>
-			<select id="comboResultExisting"></select><button onclick=FillWithExistingElement()>Fill in with existing element</button>
-			<br/>
-			<input id="newElementToFill"><button onclick=FillWithNewElement()>Fill in with new element</button>
-			<br/>
-			<button onclick=PopFromQueue()>Wait for later</button>
-			<br/>
-			<br/>
+			<div class="leftContainer">
+				<div>
+					<h1>Editor</h1>
+					Choose a preset:
+					<select id="presetSelector">
+						<option value="classical">Classical (Start with earth, water, air, and fire)</option>
+						<option value="classical2">Classical v2 (Same as Classical, but also includes aether)</option>
+						<option value="五行"><span class="TC">五行</span> (Start with fire, water, wood, metal, and earth)</option>
+						<option value="paracelsus">Paracelsus (Start with sulphur, mercury, and salt)</option>
+						<option value="metals">Metals (Start with gold, silver, copper, tin, lead, iron, and mercury)</option>
+						<option value="chemistry">Chemistry NOT YET IMPLEMENTED (Start with the 118 chemical elements)</option>
+						<option value="devil">Doodle Devil (Mirrors the start of Joy Bits' <i>Doodle Devil</i>)</option>
+						<option value="farm">Doodle Farm (Mirrors the start of Joy Bits' <i>Doodle Farm</i>)</option>
+						<option value="adventure time">Adventure Time (Start with candy, ice, slime, fire, and lumpy)</option>
+						<option value="none">None (Start with no preset fundamental elements)</option>
+					</select>
+					<br/>
+					<button onclick=ApplyPreset()>Apply Preset</button>
+					<br/>
+					<br/>
+					<br/>
+					<input id="newFundamentalElement"><button onclick=MakeNewElement()>Make New Fundamental Element</button>
+					<br/>
+					<br/>
+					<br/>
+					<button onclick=PullFromQueue()>Pull from Combination Queue</button><span id="queueStatus"></span>
+					<br/>
+					<select id="comboPiece1"></select> combined with <select id="comboPiece2"></select>
+					<br/>
+					<br/>
+					<button onclick=DoesNotCombine()>Does not combine</button>
+					<br/>
+					<select id="comboResultExisting"></select><button onclick=FillWithExistingElement()>Fill in with existing element</button>
+					<br/>
+					<input id="newElementToFill"><button onclick=FillWithNewElement()>Fill in with new element</button>
+					<br/>
+					<button onclick=PopFromQueue()>Wait for later</button>
+					<br/>
+					<br/>
+					<br/>
+					<button onclick=SaveJSONFile()>Save current elements as JSON</button>
+				</div>
+			</div>
 			<div class="displayContainer">
 				<div class="displayElementList" id="displayElementList"></div>
 				<div class="displayComboList" id="displayComboList"></div>
+				<div class="displayQueue" id="displayQueue"></div>
 			</div>
 		</div>
 		<div class="dividingLine"></div>
