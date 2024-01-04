@@ -5,6 +5,7 @@
 
 body {
 	background-color: #e0e0e0;
+	overflow:hidden;
 }
 
 @font-face {
@@ -62,10 +63,14 @@ body {
 
 .rightPanel {
 	width: 45.75vw;
-	height: 100vh;
+	height: calc(100vh - 2vw);
 	float: left;
 	font-family: 'Noto Sans';
 	padding-left: 2vw;
+	padding-right: 2vw;
+	padding-bottom: 2vw;
+	display: flex;
+	flex-flow: column;
 }
 
 .TC {
@@ -80,7 +85,7 @@ select, option, button, input{
 	font-family: 'Noto Sans Mono';
 }
 
-.leftContainer {
+.leftContainer, .rightContainer {
 	flex: 0 1 auto;
 	display: flex;
 }
@@ -93,29 +98,12 @@ select, option, button, input{
 	overflow: hidden;
 }
 
-.displayElementList {
+.displayElementList, .displayComboList, .displayQueue, .elementsDiscoveredList, .combosDiscoveredList, .fullyExploredList {
 	width: calc(100%/3);
 	float: left;
 	white-space:pre;
 	overflow: auto;
-	max-height: 100%;
-	padding: 0 1vw 0 1vw;
-}
-
-.displayComboList {
-	width: calc(100%/3);
-	float: left;
-	white-space:pre;
-	overflow: auto;
-	max-height: 100%;
-	padding: 0 1vw 0 1vw;
-}
-
-.displayQueue {
-	width: calc(100%/3);
-	float: left;
-	white-space:pre;
-	overflow: auto;
+	text-wrap: wrap;
 	max-height: 100%;
 	padding: 0 1vw 0 1vw;
 }
@@ -127,4 +115,8 @@ h1 {
 h2 {
 	padding-top: 1vh;
 	margin-bottom: -1rem;
+}
+
+.reduceFontSize h2 {
+	font-size: 1em;
 }

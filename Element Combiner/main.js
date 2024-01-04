@@ -2,6 +2,11 @@ let elementList = [];
 let combinations = [];
 let queue = [];
 let sortElements = false;
+let playElementList = [];
+let playCombinations = [];
+let playInventory = [];
+let playInventoryCombos = [];
+let actualCombosNumber = 0;
 
 class Element {
 	constructor(name, isFundamental, recipes) {
@@ -272,7 +277,7 @@ function RefreshData() {
 	
 	let displayElementListContents = "<h2>Elements – (" + elementList.length + ")</h2><br/>";
 	for (let i = 0; i < elementList.length; i++) {
-		displayElementListContents += "<button onclick=\"RemoveElement('" + elementList[i].name + "')\">⃠</button> ";
+		displayElementListContents += "<button onclick=\"RemoveElement('" + elementList[i].name + "')\" style=\"color: darkred; font-weight: bold;\">⃠</button> ";
 		if (elementList[i].isFundamental)
 			displayElementListContents += "<b>";
 		
@@ -305,17 +310,17 @@ function RefreshData() {
 	let displayComboListContents = "<h2>Combinations – (" + combinations.length + ")</h2><br/>";
 	for (let i = 0; i < combinations.length; i++) {
 		if (combinations[i].result != false) {
-			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + " = " + combinations[i].result + "<br/>";
+			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\" style=\"color: darkred; font-weight: bold;\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + " = " + combinations[i].result + "<br/>";
 		}
 		else {
-			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + ": does not combine<br/>";
+			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\" style=\"color: darkred; font-weight: bold;\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + ": does not combine<br/>";
 		}
 	}
 	displayComboList.innerHTML = displayComboListContents;
 	
 	let displayQueueList = "<h2>Queue – (" + queue.length + ")</h2><br/>";
 	for (let i = 0; i < queue.length; i++) {
-		displayQueueList += "<button onclick=\"AddNullCombo(['" + queue[i][0] + "', '" + queue[i][1] +"'])\">⃠</button> " + queue[i][0] + " + " + queue[i][1] + "<br/>";
+		displayQueueList += "<button onclick=\"AddNullCombo(['" + queue[i][0] + "', '" + queue[i][1] +"'])\" style=\"color: darkred; font-weight: bold;\">⃠</button> " + queue[i][0] + " + " + queue[i][1] + "<br/>";
 	}
 	displayQueue.innerHTML = displayQueueList;
 	
@@ -374,7 +379,7 @@ function AdjustComboPiece2() {
 	let comboPiece2List = "";
 	for (let i = 0; i < elementList.length; i++) {
 		if (CheckRecipeInQueue([comboPiece1.value, elementList[i].name])) {
-			comboPiece2List += "<option value=\"" + elementList[i].name + "\">" + elementList[i].name + "</option>"
+			comboPiece2List += "<option value=\"" + elementList[i].name + "\">" + elementList[i].name + "</option>";
 		}
 	}
 	comboPiece2.innerHTML = comboPiece2List;
@@ -399,7 +404,7 @@ function RemoveFromQueue(recipe) {
 		if ((queue[k][0] == recipe[0] && queue[k][1] == recipe[1])
 			|| (queue[k][0] == recipe[1] && queue[k][1] == recipe[0])) {
 			queue.splice(k, 1);
-			k--;
+			break;
 		}
 	}
 }
@@ -418,6 +423,7 @@ function FillWithExistingElement() {
 	for (let i = 0; i < elementList.length; i++) {
 		if (elementList[i].name == comboResultExisting.value) {
 			elementList[i].recipes.push([comboPiece1.value, comboPiece2.value]);
+			break;
 		}
 	}
 	console.log(elementList);
@@ -443,6 +449,7 @@ function FillWithNewElement() {
 		if (elementList[i].name == newElementToFill.value) {
 			elementAlreadyExists = true;
 			elementList[i].recipes.push([comboPiece1.value, comboPiece2.value]);
+			break;
 		}
 	}
 	if (elementAlreadyExists == false) {
@@ -481,7 +488,6 @@ function RemoveElement(element) {
 	for (let i = 0; i < elementList.length; i++) {
 		if (elementList[i].name == element) {
 			elementList.splice(i, 1);
-			i--;
 			
 			for (let j = 0; j < queue.length; j++) {
 				if (queue[j][0] == element || queue[j][1] == element) {
@@ -495,6 +501,8 @@ function RemoveElement(element) {
 					RemoveCombo(combinations[j].components);
 				}
 			}
+			
+			break;
 		}
 	}
 	PullFromQueue();
@@ -516,11 +524,12 @@ function RemoveCombo(recipe) {
 					if (elementList[l].recipes.length <= 0 && elementList[l].isFundamental == false) {
 						RemoveElement(elementList[l].name);
 					}
+					break;
 				}
 			}
 			
 			combinations.splice(k, 1);
-			k--;
+			break;
 		}
 	}
 	
@@ -540,4 +549,156 @@ function ToggleSort() {
 	sortElements = checkBox.checked;
 	
 	PullFromQueue();
+}
+
+
+
+
+
+function LaunchPlayer() {
+	document.getElementById("leftPanel").style.width = "45.75vw";
+	document.getElementById("playButton").style.right = "52vw";
+	document.getElementById("playButton").innerHTML = "Apply current Editor rules (will restart game)";
+	document.getElementById("displayElementList").classList.add("reduceFontSize");
+	document.getElementById("displayComboList").classList.add("reduceFontSize");
+	document.getElementById("displayQueue").classList.add("reduceFontSize");
+	
+	playElementList = JSON.parse(JSON.stringify(elementList));
+	playCombinations = JSON.parse(JSON.stringify(combinations));
+	
+	playInventory = [];
+	for (let i = 0; i < playElementList.length; i++) {
+		if (playElementList[i].isFundamental)
+			playInventory.push(playElementList[i]);
+	}
+	
+	playInventory = JSON.parse(JSON.stringify(playInventory));
+	
+	for (let i = 0; i < playInventory.length; i++) {
+		playInventory[i].recipes = [];
+	}
+	
+	playInventoryCombos = [];
+	
+	actualCombosNumber = 0;
+	for (let i = 0; i < playCombinations.length; i++) {
+		if (playCombinations[i].result != false) {
+			actualCombosNumber++;
+		}
+	}
+	
+	
+	if (playInventory.length == 0)
+		document.getElementById("playerOutput").innerHTML = "You don't have any fundamental elements.";
+	else
+		document.getElementById("playerOutput").innerHTML = "";
+	
+	RefreshPlayData();
+}
+
+function RefreshPlayData() {
+	let elementsDiscoveredList = document.getElementById("elementsDiscoveredList");
+	let combosDiscoveredList = document.getElementById("combosDiscoveredList");
+	let fullyExploredList = document.getElementById("fullyExploredList");
+	
+	let playFullyExplored = [];
+	let elementsDiscoveredListContents = "<h2>Elements – (" + playInventory.length + "/" + playElementList.length + ")</h2><br/>";
+	for (let i = 0; i < playInventory.length; i++) {
+		for (let j = 0; j < playElementList.length; j++) {
+			if (playElementList[j].name == playInventory[i].name) {
+				let playElement = playElementList[j];
+				
+				if (playElement.isFundamental)
+					elementsDiscoveredListContents += "<b>";
+				
+				elementsDiscoveredListContents += playElement.name;
+				
+				if (playElement.isFundamental) {
+					elementsDiscoveredListContents += "</b>";
+				}
+				
+				if (playInventory[i].recipes.length == playElement.recipes.length) {
+					playFullyExplored.push({"name": playElement.name, "recipeCount": playElement.recipes.length});
+				}
+				
+				if (playElement.recipes.length == 0)
+					elementsDiscoveredListContents += " – unobtainable<br/>";
+				else {
+					elementsDiscoveredListContents += " – (" + playInventory[i].recipes.length + "/" + playElement.recipes.length + ")";
+					if (playInventory[i].recipes.length > 0) {
+						elementsDiscoveredListContents += ":<br/>"
+						for (let k = 0; k < playInventory[i].recipes.length; k++) {
+							elementsDiscoveredListContents += "    " + playInventory[i].recipes[k][0] + " + " + playInventory[i].recipes[k][1] + "<br/>";
+						}
+					}
+					else {
+						elementsDiscoveredListContents += "<br/>"
+					}
+				}
+				
+				break;
+			}
+		}
+	}
+	
+	elementsDiscoveredList.innerHTML = elementsDiscoveredListContents;
+	
+	let actualCombosDiscoveredNumber = 0;
+	for (let i = 0; i < playInventoryCombos.length; i++) {
+		if (playInventoryCombos[i].result != false) {
+			actualCombosDiscoveredNumber++;
+		}
+	}
+	
+	let combosDiscoveredListContents = "<h2>Combinations – (" + actualCombosDiscoveredNumber + "/" + actualCombosNumber + ")</h2><br/>";
+	for (let i = 0; i < playInventoryCombos.length; i++) {
+		combosDiscoveredListContents += playInventoryCombos[i].components[0] + " + " + playInventoryCombos[i].components[1] + " = " + playInventoryCombos[i].result + "<br/>";
+	}
+	combosDiscoveredList.innerHTML = combosDiscoveredListContents;
+	
+	let fullyExploredListContents = "<h2>Fully Explored – (" + playFullyExplored.length + "/" + playElementList.length + ")</h2><br/>";
+	for (let i = 0; i < playFullyExplored.length; i++) {
+		fullyExploredListContents += playFullyExplored[i].name + " – (" + playFullyExplored[i].recipeCount + " recipes)<br/>";
+	}
+	fullyExploredList.innerHTML = fullyExploredListContents;
+	
+	let comboOption1 = document.getElementById("comboOption1");
+	let comboOption2 = document.getElementById("comboOption2");
+	let manualAddSelector = document.getElementById("manualAddSelector");
+	
+	let comboOptionContents = "";
+	for (let i = 0; i < playInventory.length; i++) {
+		if (playFullyExplored.includes(playInventory[i].name) == false) {
+			comboOptionContents += "<option value=\"" + playInventory[i].name + "\">" + playInventory[i].name + "</option>";
+		}
+	}
+	comboOption1.innerHTML = comboOptionContents;
+	comboOption2.innerHTML = comboOptionContents;
+	
+	let manualAddOptions = "";
+	for (let i = 0; i < playElementList.length; i++) {
+		let inInventory = false;
+		for (let j = 0; j < playInventory.length; j++) {
+			if (playInventory[j].name == playElementList[i].name) {
+				inInventory = true;
+				break;
+			}
+		}
+		if (inInventory == false) {
+			manualAddOptions += "<option value=\"" + playElementList[i].name + "\">" + playElementList[i].name + "</option>";
+		}
+	}
+	manualAddSelector.innerHTML = manualAddOptions;
+}
+
+function CombineElements() {
+	
+}
+
+function GetHint() {
+	
+}
+
+function ManualAddElement() {
+	
 }

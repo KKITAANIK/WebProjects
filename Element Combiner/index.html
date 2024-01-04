@@ -11,7 +11,7 @@
 		<div class="leftPanel" id="leftPanel">
 			<div class="leftContainer">
 				<div>
-					<h1>Editor</h1>
+					<h1>Editor</h1><button id="playButton" style="position:absolute;right:2.5vw;top:2vw;" onclick=LaunchPlayer()>Play game with current rules <u>NOT YET READY</u></button>
 					Choose a preset:
 					<select id="presetSelector">
 						<option value="classical">Classical (Start with earth, water, air, and fire)</option>
@@ -59,8 +59,28 @@
 			</div>
 		</div>
 		<div class="dividingLine"></div>
-		<!--<div class="rightPanel" id="rightPanel">
-			<h1>Player</h1>
-		</div>-->
+		<div class="rightPanel" id="rightPanel">
+			<div class="rightContainer">
+				<div>
+					<h1>Player</h1>
+					<div id="playerOutput" style="background-color: darkred; color: white; font-weight: bold;"></div>
+					Combine <select id="comboOption1"></select> with <select id="comboOption2"></select>
+					<br/>
+					<button id="initiateCombo" onclick=CombineElements()>Test combination</button><span id="comboOutput"></span>
+					<br/>
+					<br/>
+					<button id="getHint" onclick=GetHint()>What should I try to make?</button>
+					<br/>
+					<br/>
+					<select id="manualAddSelector"></select><button id="manualAddButton" onclick=ManualAddElement()>Manually add an element</button>
+				</div>
+			</div>
+			<div class="displayContainer">
+				<div class="elementsDiscoveredList reduceFontSize" id="elementsDiscoveredList"></div>
+				<div class="combosDiscoveredList reduceFontSize" id="combosDiscoveredList"></div>
+				<div class="fullyExploredList reduceFontSize" id="fullyExploredList"></div>
+			</div>
+		</div>
+		<script>PullFromQueue();</script>
 	</body>
 </html>
