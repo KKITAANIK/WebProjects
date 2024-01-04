@@ -147,7 +147,7 @@ function RefreshData() {
 	let displayComboList = document.getElementById("displayComboList");
 	let displayQueue = document.getElementById("displayQueue");
 	
-	let displayElementListContents = "<h2>Elements</h2><br/>";
+	let displayElementListContents = "<h2>Elements – (" + elementList.length + ")</h2><br/>";
 	for (let i = 0; i < elementList.length; i++) {
 		displayElementListContents += "<button onclick=\"RemoveElement('" + elementList[i].name + "')\">⃠</button> ";
 		if (elementList[i].isFundamental)
@@ -179,7 +179,7 @@ function RefreshData() {
 	document.getElementById("queueStatus").innerHTML = "There are " + queue.length + " combinations left in the queue.";
 	console.log(queue);
 	
-	let displayComboListContents = "<h2>Combinations</h2><br/>";
+	let displayComboListContents = "<h2>Combinations – (" + combinations.length + ")</h2><br/>";
 	for (let i = 0; i < combinations.length; i++) {
 		if (combinations[i].result != false) {
 			displayComboListContents += "<button onclick=\"RemoveCombo(['" + combinations[i].components[0] + "', '" + combinations[i].components[1] + "'])\">⃠</button> " + combinations[i].components[0] + " + " + combinations[i].components[1] + " = " + combinations[i].result + "<br/>";
@@ -190,7 +190,7 @@ function RefreshData() {
 	}
 	displayComboList.innerHTML = displayComboListContents;
 	
-	let displayQueueList = "<h2>Queue</h2><br/>";
+	let displayQueueList = "<h2>Queue – (" + queue.length + ")</h2><br/>";
 	for (let i = 0; i < queue.length; i++) {
 		displayQueueList += "<button onclick=\"AddNullCombo(['" + queue[i][0] + "', '" + queue[i][1] +"'])\">⃠</button> " + queue[i][0] + " + " + queue[i][1] + "<br/>";
 	}
