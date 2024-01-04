@@ -135,11 +135,11 @@ function PullFromQueue() {
 
 function RefreshData() {
 	elementList.sort(function(a, b) {
-		if (a.isFundamental && !b.isFundamental)
+		/*if (a.isFundamental && !b.isFundamental)
 			return -1;
 		else if (!a .isFundamental && b.isFundamental)
 			return 1;
-		else
+		else*/
 			return a.name.localeCompare(b.name);
 	})
 	
