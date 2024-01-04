@@ -134,6 +134,15 @@ function PullFromQueue() {
 }
 
 function RefreshData() {
+	elementList.sort(function(a, b) {
+		if (a.isFundamental && !b.isFundamental)
+			return -1;
+		else if (!a .isFundamental && b.isFundamental)
+			return 1;
+		else
+			return a.name.localeCompare(b.name);
+	})
+	
 	let displayElementList = document.getElementById("displayElementList");
 	let displayComboList = document.getElementById("displayComboList");
 	let displayQueue = document.getElementById("displayQueue");
@@ -142,9 +151,12 @@ function RefreshData() {
 	for (let i = 0; i < elementList.length; i++) {
 		displayElementListContents += "<button onclick=\"RemoveElement('" + elementList[i].name + "')\">⃠</button> ";
 		if (elementList[i].isFundamental)
-			displayElementListContents += "𝔽 ";
+			displayElementListContents += "<b>";
 		
 		displayElementListContents += elementList[i].name;
+		
+		if (elementList[i].isFundamental)
+			displayElementListContents += "</b>";
 		
 		if (elementList[i].recipes.length > 0)
 			displayElementListContents += ":";
