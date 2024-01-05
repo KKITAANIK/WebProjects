@@ -49,7 +49,7 @@
 					<br/>
 					<br/>
 					<br/>
-					<button onclick=SaveJSONFile()>Save current elements and combinations as JSON</button><input type="checkbox" id="sortCheckbox" onclick=ToggleSort()>Sort elements alphabetically
+					<button onclick=SaveJSONFile()>Save current elements and combinations as JSON</button><button onclick=LoadJSONFile()>Load JSON file <u>NOT IMPLEMENTED</u></button><input type="checkbox" id="sortCheckbox" onclick=ToggleSort()>Sort elements alphabetically
 				</div>
 			</div>
 			<div class="displayContainer">
@@ -69,7 +69,7 @@
 					<button id="initiateCombo" onclick=CombineElements()>Test combination</button><span id="comboOutput"></span>
 					<br/>
 					<br/>
-					<button id="getHint" onclick=GetHint()>What should I try to make?</button>
+					<button id="getHint" onclick=GetHint()>What should I try to make?</button><span id="hintOutput"></span>
 					<br/>
 					<br/>
 					<select id="manualAddSelector"></select><button id="manualAddButton" onclick=ManualAddElement()>Manually add an element</button>

@@ -1,3 +1,5 @@
+//Please don't read this. This is the grossest, most unoptimized code I've ever written. I'm pretty sure this game is O(n⁴)
+
 let elementList = [];
 let combinations = [];
 let queue = [];
@@ -484,6 +486,28 @@ function SaveJSONFile() {
 	document.body.removeChild(a);
 }
 
+function LoadJSONFile() {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+
 function RemoveElement(element) {
 	for (let i = 0; i < elementList.length; i++) {
 		if (elementList[i].name == element) {
@@ -597,6 +621,12 @@ function LaunchPlayer() {
 }
 
 function RefreshPlayData() {
+	if (sortElements) {
+		playElementList.sort(function(a, b) {
+				return a.name.localeCompare(b.name);
+		});
+	}
+	
 	let elementsDiscoveredList = document.getElementById("elementsDiscoveredList");
 	let combosDiscoveredList = document.getElementById("combosDiscoveredList");
 	let fullyExploredList = document.getElementById("fullyExploredList");
@@ -692,13 +722,111 @@ function RefreshPlayData() {
 }
 
 function CombineElements() {
+	let comboOption1 = document.getElementById("comboOption1");
+	let comboOption2 = document.getElementById("comboOption2");
+	let comboOutput = document.getElementById("comboOption2");
 	
+	if (comboOption1.value.length <= 0 || comboOption2.value.length <= 0) return;
+	
+	let comboOutputText = "You made ";
+	for (let i = 0; i < playCombinations.length; i++) {
+		if ((playCombinations[i].components[0] == comboOption1.value && playCombinations[i].components[1] == comboOption2.value)
+		|| (playCombinations[i].components[1] == comboOption1.value && playCombinations[i].components[0] == comboOption2.value)) {
+			for (let j = 0; j < playElementList.length; j++) {
+				if (playElementList[j].name == playCombinations[i].result) {
+					comboOutputText += playElementList[j].name;
+					let inInventory = false;
+					for (let k = 0; k < playInventory.length; k++) {
+						if (playInventory[k].name == playCombinations[i].result) {
+							inInventory = true;
+							break;
+						}
+					}
+					if (!inInventory) {
+						playInventory.push(new Element(playCombinations[i].result, false, [[playCombinations[i].components[0], playCombinations[i].components[1]]]));
+						
+						let inCombinations = false;
+						for (let k = 0; k < playInventoryCombos.length; k++) {
+							if ((playCombinations[i].components[0] == playInventoryCombos[k].components[0] && playCombinations[i].components[1] == playInventoryCombos[k].components[1])
+							|| (playCombinations[i].components[0] == playInventoryCombos[k].components[1] && playCombinations[i].components[1] == playInventoryCombos[k].components[0])) {
+								inCombinations = true;
+								break;
+							}
+						}
+						
+						if (!inCombinations) {
+							playInventoryCombos.push(new Combination(playCombinations[i].result, playCombinations[i].components))
+						}
+					}
+					
+					break;
+				}
+			}
+			
+			break;
+		}
+	}
+	
+	if (comboOutputText == "You made ") {
+		comboOutputText = "These elements do not combine";
+	}
+	
+	comboOutput.innerHTML = comboOutputText + "."
+	
+	RefreshPlayData();
 }
 
 function GetHint() {
+	let possibleCombos = [];
+	for (let i = 0; i < playCombinations.length; i++) {
+		let componentsInInventory = 0;
+		for (let j = 0; j < playInventory.length; j++) {
+			if (playCombinations[i].components[0] == playInventory[j].name)
+				componentsInInventory++;
+			if (playCombinations[i].components[1] == playInventory[j].name)
+				componentsInInventory++;
+			
+			if (componentsInInventory >= 2) {
+				let inInventory = false;
+				for (let k = 0; k < playInventory.length; k++) {
+					if (playInventory[k].name == playCombinations[i].result) {
+						inInventory = true;
+						break;
+					}
+				}
+				if (!inInventory) {
+					possibleCombos.push(playCombinations[i].result);
+					break;
+				}
+			}
+		}
+	}
 	
+	// TODO: If there are no undiscovered elements, find undiscovered combos
+	
+	let hintResult = "";
+	if (possibleCombos.length > 0) {
+		hintResult = "Try making " + possibleCombos[Math.floor(Math.random() * possibleCombos.length)] + ".";
+	}
+	else {
+		hintResult = "You have discovered all the elements."
+	}
+	
+	document.getElementById("hintOutput").innerHTML = hintResult;
 }
 
 function ManualAddElement() {
+	manualAddSelector = document.getElementById("manualAddSelector");
 	
+	if (manualAddSelector.value.length <= 0) return;
+	
+	for (let i = 0; i < playElementList.length; i++) {
+		if (playElementList[i].name == manualAddSelector.value) {
+			playInventory.push(new Element(playElementList[i].name, playElementList[i].isFundamental, []));
+			
+			break;
+		}
+	}
+	
+	RefreshPlayData();
 }
