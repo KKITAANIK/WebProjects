@@ -568,11 +568,22 @@ function AddNullCombo(recipe) {
 }
 
 function ToggleSort() {
-	var checkBox = document.getElementById("sortCheckbox");
+	let checkBox = document.getElementById("sortCheckbox");
 	
 	sortElements = checkBox.checked;
 	
 	PullFromQueue();
+}
+function ToggleDarkMode() {
+	let checkBox = document.getElementById("darkMode");
+	let inverter = document.getElementById("inverter");
+	
+	if (checkBox.checked) {
+		inverter.style.opacity = "1";
+	}
+	else {
+		inverter.style.opacity = "0";
+	}
 }
 
 
@@ -589,6 +600,7 @@ function LaunchPlayer() {
 	
 	playElementList = JSON.parse(JSON.stringify(elementList));
 	playCombinations = JSON.parse(JSON.stringify(combinations));
+	//TODO: Automatically fill in all undetermined combinations with false
 	
 	playInventory = [];
 	for (let i = 0; i < playElementList.length; i++) {
@@ -732,6 +744,24 @@ function CombineElements() {
 	for (let i = 0; i < playCombinations.length; i++) {
 		if ((playCombinations[i].components[0] == comboOption1.value && playCombinations[i].components[1] == comboOption2.value)
 		|| (playCombinations[i].components[1] == comboOption1.value && playCombinations[i].components[0] == comboOption2.value)) {
+			if (playCombinations[i].result == false) {
+				comboOutputText = "These elements do not combine";
+				
+				let inCombinations = false;
+				for (let k = 0; k < playInventoryCombos.length; k++) {
+					if ((playCombinations[i].components[0] == playInventoryCombos[k].components[0] && playCombinations[i].components[1] == playInventoryCombos[k].components[1])
+					|| (playCombinations[i].components[0] == playInventoryCombos[k].components[1] && playCombinations[i].components[1] == playInventoryCombos[k].components[0])) {
+						inCombinations = true;
+						break;
+					}
+				}
+				
+				if (!inCombinations) {
+					playInventoryCombos.push(new Combination(playCombinations[i].result, playCombinations[i].components))
+				}
+				
+				break;
+			}
 			for (let j = 0; j < playElementList.length; j++) {
 				if (playElementList[j].name == playCombinations[i].result) {
 					comboOutputText += playElementList[j].name;
@@ -768,7 +798,7 @@ function CombineElements() {
 	}
 	
 	if (comboOutputText == "You made ") {
-		comboOutputText = "These elements do not combine";
+		comboOutputText = "Combination does not appear in dataset";
 	}
 	
 	comboOutput.innerHTML = comboOutputText + "."
