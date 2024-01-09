@@ -87,12 +87,12 @@ button:active::before {
 h1, h2, h3, h4 {
     font-family: 'Noto Sans';
     margin-bottom: 0;
-    color: #f290ab;
+    color: #51709c;
 }
 
 a {
     font-family: 'Noto Sans';
-    color: #f290ab;
+    color: #51709c;
     text-decoration: underline;
     cursor: pointer;
 }
