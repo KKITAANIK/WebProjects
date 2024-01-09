@@ -694,7 +694,12 @@ function RefreshPlayData() {
 	
 	let combosDiscoveredListContents = "<h2>Combinations – (" + actualCombosDiscoveredNumber + "/" + actualCombosNumber + ")</h2><br/>";
 	for (let i = 0; i < playInventoryCombos.length; i++) {
-		combosDiscoveredListContents += playInventoryCombos[i].components[0] + " + " + playInventoryCombos[i].components[1] + " = " + playInventoryCombos[i].result + "<br/>";
+		if (playInventoryCombos[i].result == false) {
+			combosDiscoveredListContents += playInventoryCombos[i].components[0] + " + " + playInventoryCombos[i].components[1] + ": does not combine<br/>";
+		}
+		else {
+			combosDiscoveredListContents += playInventoryCombos[i].components[0] + " + " + playInventoryCombos[i].components[1] + " = " + playInventoryCombos[i].result + "<br/>";
+		}
 	}
 	combosDiscoveredList.innerHTML = combosDiscoveredListContents;
 	
@@ -717,7 +722,7 @@ function RefreshPlayData() {
 	comboOption1.innerHTML = comboOptionContents;
 	comboOption2.innerHTML = comboOptionContents;
 	
-	let manualAddOptions = "";
+	let manualAddOptions = "<option value=\"\"></option>";
 	for (let i = 0; i < playElementList.length; i++) {
 		let inInventory = false;
 		for (let j = 0; j < playInventory.length; j++) {
@@ -736,7 +741,7 @@ function RefreshPlayData() {
 function CombineElements() {
 	let comboOption1 = document.getElementById("comboOption1");
 	let comboOption2 = document.getElementById("comboOption2");
-	let comboOutput = document.getElementById("comboOption2");
+	let comboOutput = document.getElementById("comboOutput");
 	
 	if (comboOption1.value.length <= 0 || comboOption2.value.length <= 0) return;
 	
@@ -801,7 +806,7 @@ function CombineElements() {
 		comboOutputText = "Combination does not appear in dataset";
 	}
 	
-	comboOutput.innerHTML = comboOutputText + "."
+	comboOutput.innerHTML = comboOutputText + ".";
 	
 	RefreshPlayData();
 }
