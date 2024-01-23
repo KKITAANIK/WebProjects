@@ -180,7 +180,22 @@ async function Start(key, param) {
 		
 		Print([
 			["You stare up into a bright, crystal-blue sky, your eyes slowly adjusting to the light. You are surrounded by sloping sand dunes, stretching far into the distance. You are laid out against the side of one such dune, and though you manage to sit up slightly you still lack the strength to stand."],
-			["break", "A figure is standing several paces off, framed by the sky. They step slowly towards you, and a metallic glint flashes across their face, betraying eyes cast in bronze."]
+			["break", "A figure is watching, several paces off and framed by the sky. They step slowly towards you. A metallic glint flashes across their face, betraying eyes cast in bronze."],
+			["They come to a stop before you, long hair pinned back against their scalp. They watch you through eyes of alloy, seeming to consider your slumped form."],
+			["<q>You're shifting. You aren't going to stay here long.</q>"],
+			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly out of cracked terrain. The figure remains."],
+			["execute", function() {
+				buttons[0][0].update(Start.bind(null, 10, true), "Attempt to speak.");
+				buttons[0][1].update(Start.bind(null, 10, false), "Stay silent.");
+			}]
 		]);
+	}
+	else if (key == 10) {
+		if (param == true) {
+			Print([["A dry croak exits your throat."]]);
+		}
+		Print([
+			[""]
+		])
 	}
 }
