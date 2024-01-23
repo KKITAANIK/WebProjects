@@ -180,7 +180,7 @@ async function Start(key, param) {
 		
 		Print([
 			["You stare up into a bright, crystal-blue sky, your eyes slowly adjusting to the light. You are surrounded by sloping sand dunes, stretching far into the distance. You are laid out against the side of one such dune, and though you manage to sit up slightly you still lack the strength to stand."],
-			["break", "A figure is standing several paces in front "]
+			["break", "A figure is standing several paces off, framed by the sky. They step slowly towards you, and a metallic glint flashes across their face, betraying eyes cast in bronze."]
 		]);
 	}
 }
