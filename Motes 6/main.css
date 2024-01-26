@@ -50,38 +50,29 @@ p {
 	position: absolute;
 	margin-right: 79.25vw;
 }
-.right {
-	width: 20.75vw;
-	height: 100vh;
-	float: right;
-	margin-left: 79.25vw;
-	z-index: 8;
-	position: absolute;
-}
 .leftcontent {
 	height: 100vh;
 	width: 20vw;
 	background-color: #d8d8d8;
 	float: left;
 }
-.rightcontent {
-	height: 100vh;
-	width: 20vw;
-	background-color: #d8d8d8;
-	float: right;
-}
 .leftshadow {
 	width: 0.75vw;
 	height: 100vh;
 	float: left;
-	background-image: linear-gradient(to right, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
+	background-image: linear-gradient(to right,
+	hsla(0, 0%, 66.67%, 1) 0%,
+	hsla(0, 0%, 66.67%, 0.99) 10%,
+	hsla(0, 0%, 66.67%, 0.96) 20%,
+	hsla(0, 0%, 66.67%, 0.91) 30%,
+	hsla(0, 0%, 66.67%, 0.84) 40%,
+	hsla(0, 0%, 66.67%, 0.75) 50%,
+	hsla(0, 0%, 66.67%, 0.64) 60%,
+	hsla(0, 0%, 66.67%, 0.51) 70%,
+	hsla(0, 0%, 66.67%, 0.36) 80%,
+	hsla(0, 0%, 66.67%, 0.19) 90%,
+	transparent 100%);
 	z-index: 8;
-}
-.rightshadow {
-	width: 0.75vw;
-	height: 100vh;
-	float: right;
-	background-image: linear-gradient(to left, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
 }
 .display {
 	margin-left: 20vw;
@@ -114,7 +105,18 @@ p {
 .displayshadow {
 	height: 0.75vw;
 	width: 60vw;
-	background-image: linear-gradient(to bottom, rgba(127, 127, 127, 1), rgba(127, 127, 127, 0));
+	background-image: linear-gradient(to bottom,
+	hsla(0, 0%, 66.67%, 1) 0%, /*Transition taken from inverse square law; 1-x^2 from 0 to 1*/
+	hsla(0, 0%, 66.67%, 0.99) 10%,
+	hsla(0, 0%, 66.67%, 0.96) 20%,
+	hsla(0, 0%, 66.67%, 0.91) 30%,
+	hsla(0, 0%, 66.67%, 0.84) 40%,
+	hsla(0, 0%, 66.67%, 0.75) 50%,
+	hsla(0, 0%, 66.67%, 0.64) 60%,
+	hsla(0, 0%, 66.67%, 0.51) 70%,
+	hsla(0, 0%, 66.67%, 0.36) 80%,
+	hsla(0, 0%, 66.67%, 0.19) 90%,
+	transparent 100%);
 	z-index: 8;
 }
 .buttons {

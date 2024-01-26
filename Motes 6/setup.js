@@ -183,7 +183,13 @@ async function Start(key, param) {
 			["break", "A figure is watching, several paces off and framed by the sky. They step slowly towards you. A metallic glint flashes across their face, betraying eyes cast in bronze."],
 			["They come to a stop before you, long hair pinned back against their scalp. They watch you through eyes of alloy, seeming to consider your slumped form."],
 			["<q>You're shifting. You aren't going to stay here long.</q>"],
-			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly out of cracked terrain. The figure remains."],
+			["execute then print", function(){
+				locale = "A Long-Dry Ocean";
+				UpdateMeters();
+
+				document.getElementById("colorizer").style.background = "#fcf9f3";
+			}],
+			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly, cracked terrain stretching into the distance. The figure remains."],
 			["execute", function() {
 				buttons[0][0].update(Start.bind(null, 10, true), "Attempt to speak.");
 				buttons[0][1].update(Start.bind(null, 10, false), "Stay silent.");
@@ -195,7 +201,14 @@ async function Start(key, param) {
 			Print([["A dry croak exits your throat."]]);
 		}
 		Print([
-			[""]
+			["execute then print", function() {
+				locale = "A Distant Cave";
+				UpdateMeters();
+
+				document.getElementById("colorizer").style.background = "#E4A084";
+			}],
+			["break", "The figure is gone, and you find yourself sitting across from a woman. Two furred ears stick up from their head, and a thin tail curls beneath one thigh. If she notices you, she doesn't show it, focusing on the meager campfire positioned between <i>euch</i>. She holds a small bowl of lentils over the flame."],
+			["You are in a shallow cave, surrounded by walls of red sandstone. The sunlight from outside implies a dusk"]
 		])
 	}
 }
