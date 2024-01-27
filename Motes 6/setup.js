@@ -208,7 +208,7 @@ async function Start(key, param) {
 				document.getElementById("colorizer").style.background = "#E4A084";
 			}],
 			["break", "The figure is gone, and you find yourself sitting across from a woman. Two furred ears stick up from their head, and a thin tail curls beneath one thigh. If she notices you, she doesn't show it, focusing on the meager campfire positioned between <i>euch</i>. She holds a small bowl of lentils over the flame."],
-			["You are in a shallow cave, surrounded by walls of red sandstone. The sunlight from outside implies a dusk"]
+			["You are in a shallow cave, surrounded by walls of red sandstone. Sunlight enters from the cave's wide mouth, illustrating a dusk landscape. An unbuilt trail leads here."]
 		])
 	}
 }
