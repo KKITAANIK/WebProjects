@@ -153,9 +153,9 @@ async function Start(key, param) {
 	else if (key == 8) {
 		document.getElementById("fader").style.opacity = 1;
 		await timer(2000);
-
+		
 		document.getElementById("colorizer").style.background = "#94B1FF";
-
+		
 		Output("");
 		ButtonAppear();
 		LeftAppear();
@@ -186,7 +186,7 @@ async function Start(key, param) {
 			["execute then print", function(){
 				locale = "A Long-Dry Ocean";
 				UpdateMeters();
-
+				
 				document.getElementById("colorizer").style.background = "#fcf9f3";
 			}],
 			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly, cracked terrain stretching into the distance. The figure remains."],
@@ -198,7 +198,7 @@ async function Start(key, param) {
 	}
 	else if (key == 10) {
 		if (param == true) {
-			Print([["A dry croak exits your throat."]]);
+			Print([["!", "<p>A dry croak exits your throat.</p><br/>"]]);
 		}
 		Print([
 			["execute then print", function() {
@@ -207,8 +207,74 @@ async function Start(key, param) {
 
 				document.getElementById("colorizer").style.background = "#E4A084";
 			}],
-			["break", "The figure is gone, and you find yourself sitting across from a woman. Two furred ears stick up from their head, and a thin tail curls beneath one thigh. If she notices you, she doesn't show it, focusing on the meager campfire positioned between <i>euch</i>. She holds a small bowl of lentils over the flame."],
-			["You are in a shallow cave, surrounded by walls of red sandstone. Sunlight enters from the cave's wide mouth, illustrating a dusk landscape. An unbuilt trail leads here."]
-		])
+			["The figure is gone, and you find yourself sitting across from a woman. Two furred ears stick up from her head, and a thin tail curls beneath one thigh. If she notices you, she doesn't show it, focusing on the meager campfire positioned between <i>euch</i>. She holds a small bowl of lentils over the flame."],
+			["You are in a shallow cave, surrounded by walls of red sandstone. Sunlight enters from the cave's wide mouth, highlighting a dusk landscape. An unbuilt trail leads here."],
+			["execute", function() {
+				buttons[0][0].update(Start.bind(null, 11, true), "Greet her.");
+				buttons[0][1].update(Start.bind(null, 11, false), "Watch the fire.");
+			}]
+		]);
+	}
+	else if (key == 11) {
+		if (param == true) {
+			Print([
+				["execute then print", function() {
+					locale = "A Stone Street in the Rain";
+					UpdateMeters();
+					
+					document.getElementById("colorizer").style.background = "#708090";
+					document.getElementById("Greet her.").innerHTML = "Greet Riley.";
+				}],
+				["!", "<p>The cobbler looks up at you, before muttering a short greeting in turn.</p><br/>"]
+			]);
+		}
+		
+		Print([
+			["execute then print", function() {
+				locale = "";
+				UpdateMeters();
+				
+				document.getElementById("colorizer").style.background = "#000";
+				if (flags.darkMode == false) {
+					document.getElementById("mainHTMLElement").classList.add("flipLuminance");
+				}
+			}],
+			["These constants fade, and you are once again lost. A man with lobster's scales and slate grey skin, like the maria of the moon, makes no appearance. You are about to begin."],
+			["execute", function() {
+				UpdateButtonAreaHeight(0);
+			}],
+			["break", "<span class=\"mono\">Not this time.</span>"],
+			["break", "Some grit has lodged itself far in the back of you throat, whether sand, salt, or stone. Minute, and barely noticeable, but it will grow. <span class=\"mono\">Congratulations.</span>"],
+			["execute", function() {
+				UpdateButtonAreaHeight();
+			}],
+			["execute", function() {
+				Start(12);
+			}]
+		]);
+	}
+	else if (key == 12) {
+		document.getElementById("fader").style.opacity = 1;
+		
+		await timer(2000);
+		
+		if (flags.darkMode == false) {
+			document.getElementById("mainHTMLElement").classList.remove("flipLuminance");
+		}
+		
+		locale = "A Clearing in the Forest";
+		UpdateMeters();
+		
+		document.getElementById("colorizer").style.background = "#014421";
+		
+		Output("");
+		
+		Print([
+			["You awaken in a clearing, this time on your feet. A dense forest surrounds you, a decomposing trunk lying on the ground in front of you."],
+			["A woman is watching you. Her most striking feature is her antlers, like that of a stag, encircling her head. You find yourself with a strange certainty that <i>she is not supposed to have them</i>. You also know, instinctually, that her name is <q>Rebecca</q>."]
+		]);
+		Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
+		
+		document.getElementById("fader").style.opacity = 0;
 	}
 }

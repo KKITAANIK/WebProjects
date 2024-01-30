@@ -102,7 +102,7 @@ class Button {
 		document.getElementById(this.id).onclick = function(){
 			document.getElementById(this.id).disabled = true;
 			ClearButtons();
-			printQueue = [["!", "<br/><u>" + text + "</u><br/><br/>"]].concat(printQueue);
+			printQueue = [["!", "<br/><u id=\"" + text + "\">" + text + "</u><br/><br/>"]].concat(printQueue);
 			func();
 			PrintFromQueue();
 			PrintFromQueue();
