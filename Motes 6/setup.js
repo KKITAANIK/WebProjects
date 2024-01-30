@@ -275,6 +275,8 @@ async function Start(key, param) {
 		]);
 		Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
 		
+		//TODO: Rebecca takes you to meet a person in a blind mask, dialogue focus, the person in the blind mask offers you a zippo lighter that they say is yours
+		
 		document.getElementById("fader").style.opacity = 0;
 	}
 }
