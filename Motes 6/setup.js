@@ -270,10 +270,11 @@ async function Start(key, param) {
 			["You awaken in a clearing, this time on your feet. A dense forest surrounds you, a decomposing trunk lying on the ground in front of you."],
 			["A woman is watching you. Her most striking feature is her antlers, like that of a stag, encircling her head. You find yourself with a strange certainty that <i>she is not supposed to have them</i>. You also know, instinctually, that her name is <q>Rebecca</q>."]
 		]);
-		Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
 		
 		//TODO: Rebecca takes you to meet a person in a blind mask, dialogue focus, the person in the blind mask offers you a zippo lighter that they say is yours
 		
 		document.getElementById("fader").style.opacity = 0;
 	}
+	
+	//Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
 }
