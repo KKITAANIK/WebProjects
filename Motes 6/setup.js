@@ -231,13 +231,10 @@ async function Start(key, param) {
 		
 		Print([
 			["execute then print", function() {
-				locale = "";
+				locale = "A Peaceful Meadow";
 				UpdateMeters();
 				
-				document.getElementById("colorizer").style.background = "#000";
-				if (flags.darkMode == false) {
-					document.getElementById("mainHTMLElement").classList.add("flipLuminance");
-				}
+				document.getElementById("colorizer").style.background = "#8bba94";
 			}],
 			["These constants fade, and you are once again lost. A man with lobster's scales and slate grey skin, like the maria of the moon, makes no appearance. You are about to begin."],
 			["execute", function() {
@@ -257,10 +254,6 @@ async function Start(key, param) {
 		document.getElementById("fader").style.opacity = 1;
 		
 		await timer(2000);
-		
-		if (flags.darkMode == false) {
-			document.getElementById("mainHTMLElement").classList.remove("flipLuminance");
-		}
 		
 		locale = "A Clearing in the Forest";
 		UpdateMeters();
