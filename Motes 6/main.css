@@ -267,8 +267,8 @@ q {
 	width: 100vw;
 	position: absolute;
 	top: 0;
-	z-index: 999;
-	background: #fff;
+	z-index: 998;
+	background: #c0c0c0;
 	left: 0;
 	pointer-events: none;
 	opacity: 0;
@@ -281,7 +281,7 @@ q {
 	width: 100vw;
 	position: absolute;
 	top: 0;
-	z-index: 998;
+	z-index: 999;
 	background: #fff;
 	left: 0;
 	mix-blend-mode: color;

@@ -152,9 +152,11 @@ async function Start(key, param) {
 	}
 	else if (key == 8) {
 		document.getElementById("fader").style.opacity = 1;
-		await timer(2000);
+		await timer(1000);
 		
 		document.getElementById("colorizer").style.background = "#94B1FF";
+		
+		await timer(1000)
 		
 		Output("");
 		ButtonAppear();
@@ -253,12 +255,14 @@ async function Start(key, param) {
 	else if (key == 12) {
 		document.getElementById("fader").style.opacity = 1;
 		
-		await timer(2000);
+		await timer(1000);
 		
 		locale = "A Clearing in the Forest";
 		UpdateMeters();
 		
-		document.getElementById("colorizer").style.background = "#014421";
+		document.getElementById("colorizer").style.background = "#243a0f";
+		
+		await timer(1000)
 		
 		Output("");
 		
