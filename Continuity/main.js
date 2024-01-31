@@ -35,16 +35,23 @@ function Main(key, param, subparam) {
 		}
 	}
 	
+	
+	
 	if (key == 0) {
 		Output(`<p>Congratulations. You have invented a machine that allows for the instantaneous reproduction of absolutely anything. Whatever is inside its input enclosure will be seamlessly and immediately duplicated, appearing in an identical form in its output enclosure.</p>
 		<p>Through courage or stupidity, you have decided to begin a series of experiments in which you duplicate yourself.</p>
-		<p style="color:#c0c0c0">For the following experiments, the word <i>du</i> in second person, and <i>ich</i> in first person, will be used to refer to your (the player's) "experienced self": the instance of you from whom's perspective you are making these decisions. The term "the other" will refer to any instance of you that is not <i>du</i>. The choice of terminology here is arbitrary.</p>`);
-		Main(1, "start");
+		<p style="color:#808080">For the following experiments, the word <i>du</i> in second person, and <i>ich</i> in first person, will be used to refer to your (the player's) "experienced self": the instance of you from whom's perspective you are making these decisions. The term "the other" will refer to any instance of you that is not <i>du</i>. The choice of terminology here is arbitrary.</p>`);
+		
+		AppendButtons([
+			["Continue.", "Main(1, 'start')"]
+		]);
 	}
+	
+	
+	
 	else if (key == 1) {
 		if (param == "start") {
-			Append(`<br/>
-			<p>You enter the input and turn on the machine. <b><i>Du</i></b> remains in the input, while another instance of you instantaneously appears in the output. What is the correct interpretation?</p>`);
+			Output(`<p>You enter the input and turn on the machine. <b><i>Du</i></b> remains in the input, while another instance of you instantaneously appears in the output. What is the correct interpretation?</p>`);
 			AppendButtons([
 				["<b><i>Ich</i></b> is entirely me.", "Main(1, 'other', 100)"],
 				["<b><i>Ich</i></b> is partly me.", "Main(1, 'other', 50)"],
@@ -107,15 +114,19 @@ function Main(key, param, subparam) {
 				equality = "less you than";
 			}
 			
-			Append("<p>In the case where <i>du</i> is in the input, you believe that <i>du</i> is " + duAssessment[answers[0][0]] + " you. You believe that the other is " + otherAssessment[answers[0][1]] + ". As a result, you believe that <i>du</i> in the input is " + equality + " the other.");
+			Append("<p>In the case where <i>du</i> is in the input, <i>du</i> is " + duAssessment[answers[0][0]] + " you. The other is " + otherAssessment[answers[0][1]] + ". As a result, <i>du</i> in the input is " + equality + " the other.");
 			
-			Main(2, "start");
+			AppendButtons([
+				["Continue.", "Main(2, 'start')"]
+			]);
 		}
 	}
+	
+	
+	
 	else if (key == 2) {
 		if (param == "start") {
-			Append(`<br/>
-			<p>You enter the input and turn on the machine. <b><i>Du</i></b> finds <b>themself</b> in the output, while another instance of you continues to exist in the input. What is the correct interpretation?</p>`);
+			Output(`<p>You enter the input and turn on the machine. <b><i>Du</i></b> finds <b>themself</b> in the output, while another instance of you continues to exist in the input. What is the correct interpretation?</p>`);
 			AppendButtons([
 				["<b><i>Ich</i></b> is entirely me.", "Main(2, 'other', 100)"],
 				["<b><i>Ich</i></b> is partly me.", "Main(2, 'other', 50)"],
@@ -178,7 +189,16 @@ function Main(key, param, subparam) {
 				equality = "less you than";
 			}
 			
-			Append("<p>In the case where <i>du</i> is in the output, you believe that <i>du</i> is " + duAssessment[answers[1][0]] + " you. You believe that the other is " + otherAssessment[answers[1][1]] + ". As a result, you believe that <i>du</i> in the output is " + equality + " the other.");
+			Append("<p>In the case where <i>du</i> is in the output, <i>du</i> is " + duAssessment[answers[1][0]] + " you. The other is " + otherAssessment[answers[1][1]] + ". As a result, <i>du</i> in the output is " + equality + " the other.");
+			
+			
+		}
+	}
+	
+	
+	else if (key == 3) {
+		if (param == "start") {
+			Output
 		}
 	}
 }
