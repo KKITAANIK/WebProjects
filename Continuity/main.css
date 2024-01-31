@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'Roboto Mono';
+	font-style: normal;
+	src: url(fonts/RobotoMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto Mono';
+	font-style: italic;
+	src: url(fonts/RobotoMono-Italic-VariableFont_wght.ttf);
+}
+
+body {
+	color: white;
+	background-color: black;
+	font-family: 'Roboto Mono';
+	font-size: 1.5em;
+	overflow: auto;
+}
+
+.output {
+	overflow: auto;
+}
+
+a {
+	text-decoration: underline;
+}

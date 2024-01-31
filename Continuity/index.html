@@ -1,0 +1,29 @@
+<!doctype HTML>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>Continuity</title>
+		<script src="hyphenopoly/Hyphenopoly_Loader.js"></script>
+		<script>
+			Hyphenopoly.config({
+				require: {
+					"en-us": "Supercalifragilisticexpialidocious",
+					"en-gb": "Supercalifragilisticexpialidocious"
+				},
+				setup: {
+					selectors: {
+						".hyphenate": {}
+					}
+				}
+			});
+		</script>
+		<link id="stylesheet" rel="stylesheet" href="main.css">
+	</head>
+	<body>
+		<script src="main.js"></script>
+		<div id="output">
+			Lorem ipsum dolor sit amet.
+		</div>
+		<script>Main(0);</script>
+	</body>
+</html>
