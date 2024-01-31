@@ -14,14 +14,16 @@ body {
 	color: white;
 	background-color: black;
 	font-family: 'Roboto Mono';
-	font-size: 1.5em;
+	font-size: 1.25em;
 	overflow: auto;
-}
-
-.output {
-	overflow: auto;
+	text-align: justify;
 }
 
 a {
 	text-decoration: underline;
+	cursor: pointer;
+}
+
+.faded {
+	opacity: 0.6;
 }
