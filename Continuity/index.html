@@ -22,8 +22,33 @@
 	<body>
 		<script src="main.js"></script>
 		<div id="output" class="hyphenate">
-			Lorem ipsum dolor sit amet.
+			<p>Congratulations. You have invented a machine that allows for the instantaneous reproduction of absolutely anything. Whatever is inside its input enclosure will be seamlessly and immediately duplicated, appearing in an identical form in its output enclosure.</p>
+			<p>Through courage or stupidity, you have decided to begin a series of experiments in which you duplicate yourself.</p>
+			<p style="color:#808080">For the following experiments, the word <q><i>du</i></q>  will be used to refer to your (the player's) <q>experienced self</q>: the instance of you from whose perspective you are making these decisions. The term <q>the other</q> will refer to any instance of you that is not <i>du</i>. The choice of terminology here is arbitrary.</p>
+			<p>You will be presented with a scenario. Use the sliders to how much each of the given subject (<i>du</i> and the other) is <q>you</q>. For example, you may choose that one of them is entirely you and the other is in no part you, or that both are equally you whether entirely, partially, or not at all, or you may choose anything in between.</p>
 		</div>
-		<script>Main(0);</script>
+		<div id="sliders" style="display:none;">
+			<div class="fullwidth">
+				<div style="width: 5em; float: left; text-align: center;">
+					<label for="duSlider"><i>Du</i></label>
+					<br/>
+					<input type="range" min="0" max="100" value="50" class="slider" orient="vertical" id="duSlider" oninput="SyncSliders('duSlider', 'otherSlider', 'duNumber', 'otherNumber')">
+					<br/>
+					<input type="number" min="0" max="100" value="50" id="duNumber" style="text-align: center;" oninput="SyncSliders('duNumber', 'otherNumber', 'duSlider', 'otherSlider')">
+				</div>
+				<div style="width: 5em; float: left; text-align: center;">
+					<label for="otherSlider">The other</label>
+					<br/>
+					<input type="range" min="0" max="100" value="50" class="slider" orient="vertical" id="otherSlider" oninput="SyncSliders('otherSlider', 'duSlider', 'otherNumber', 'duNumber')">
+					<br/>
+					<input type="number" min="0" max="100" value="50" id="otherNumber" style="text-align: center;" oninput="SyncSliders('otherNumber', 'duNumber', 'otherSlider', 'duSlider')">
+				</div>
+			</div>
+			<div class="fullwidth">
+				<input type="checkbox" id="sum100"><label for="sum100">Force sliders to sum to 100</label>
+			</div>
+		</div>
+		
+		<a id="submitButton" onclick="Main(0)">Continue.</a>
 	</body>
 </html>

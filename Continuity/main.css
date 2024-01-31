@@ -10,10 +10,22 @@
 	src: url(fonts/RobotoMono-Italic-VariableFont_wght.ttf);
 }
 
+@font-face {
+	font-family: 'Noto Serif';
+	font-style: normal;
+	src: url(fonts/NotoSerif-VariableFont_wdth\,wght.ttf);
+}
+
+@font-face {
+	font-family: 'Noto Serif';
+	font-style: italic;
+	src: url(fonts/NotoSerif-Italic-VariableFont_wdth\,wght.ttf);
+}
+
 body {
 	color: white;
 	background-color: black;
-	font-family: 'Roboto Mono';
+	font-family: 'Noto Serif';
 	font-size: 1.5em;
 	overflow: auto;
 	text-align: justify;
@@ -26,4 +38,15 @@ a {
 
 .faded {
 	opacity: 0.6;
+}
+
+.slider {
+	appearance: slider-vertical;
+	height: 10em;
+	width: 1em;
+}
+
+.fullwidth {
+	width: 100%;
+	float: left;
 }
