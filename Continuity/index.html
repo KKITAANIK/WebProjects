@@ -30,14 +30,14 @@
 		<div id="sliders" style="display:none;">
 			<div class="fullwidth">
 				<div style="width: 5em; float: left; text-align: center;">
-					<label for="duSlider"><b><i>Du</i></b></label>
+					<label for="duNumber"><b><i>Du</i></b></label>
 					<br/>
 					<input type="range" min="0" max="100" value="50" class="slider" orient="vertical" id="duSlider" oninput="SyncSliders('duSlider', 'otherSlider', 'duNumber', 'otherNumber')">
 					<br/>
 					<input type="number" min="0" max="100" value="50" id="duNumber" style="text-align: center;" oninput="SyncSliders('duNumber', 'otherNumber', 'duSlider', 'otherSlider')">
 				</div>
 				<div style="width: 5em; float: left; text-align: center;">
-					<label for="otherSlider"><b>The other</b></label>
+					<label for="otherNumber"><b>The other</b></label>
 					<br/>
 					<input type="range" min="0" max="100" value="50" class="slider" orient="vertical" id="otherSlider" oninput="SyncSliders('otherSlider', 'duSlider', 'otherNumber', 'duNumber')">
 					<br/>
@@ -49,6 +49,6 @@
 			</div>
 		</div>
 		
-		<a id="submitButton" onclick="Main(0)">Continue.</a>
+		<a id="submitButton" onclick="Main(0, 50, 50)">Continue.</a>
 	</body>
 </html>
