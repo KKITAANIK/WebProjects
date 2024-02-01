@@ -1,4 +1,5 @@
 let answers = [];
+let forceSum = false;
 
 function Output(text) {
 	document.getElementById("output").innerHTML = text;
@@ -33,7 +34,7 @@ function SyncSliders(main, partner, mirror, partnerMirror) {
 	
 	document.getElementById(mirror).value = mainVal;
 	
-	if (!document.getElementById("sum100").checked) return;
+	if (!document.getElementById("sum100").checked && !forceSum) return;
 	
 	let partnerVal = document.getElementById(partner).value;
 	
@@ -69,8 +70,28 @@ function Main(key, duVal, otherVal) {
 		SetSubmit(4, 50, 50);
 	}
 	else if (key == 4) {
-		Output(`<p>The machine has been fixed, and its results are once again instantaneous.</p>
-		<p></p>`);
-		SetSubmit(5);
+		document.getElementById("otherSliderSet").style.display = "none";
+		
+		Output(`<p>The machine has been fixed, and its results are once again instantaneous. However, a new error has occurred, and the contents of the input are now instantaneously destroyed.</p>
+		<p>You enter the input and turn on the machine. <b><i>Du</i></b> finds <b>themself</b> in the output at the same moment that <b>the other instance of you</b> is instantaneosly destroyed. What is the correct interpretation?</p>`);
+		SetSubmit(5, 50, 50);
+	}
+	else if (key == 5) {
+		document.getElementById("otherSliderSet").style.display = "block";
+		forceSum = true;
+		document.getElementById("sum100").checked = true;
+		document.getElementById("duLabel").innerHTML = "Input";
+		document.getElementById("otherLabel").innerHTML = "Output";
+		
+		Output(`<p>The error which destroys the input has been adjusted but not removed. Either the contents of the input or the contents of the output will be destroyed, with a probability that you can set, which must sum to 100%. Whether or not the contents of the output is destroyed, the contents of the input will still be first reproduced inside of it. What is the correct distribution of probability?</p>`);
+		SetSubmit(6, 50, 50);
+	}
+	else if (key == 6) {
+		forceSum = false;
+		document.getElementById("sum100").checked = false;
+		document.getElementById("duLabel").innerHTML = "<b><i>Du</i></b>";
+		document.getElementById("otherLabel").innerHTML = "<b>The other</b>";
+		
+		Output(``);
 	}
 }
