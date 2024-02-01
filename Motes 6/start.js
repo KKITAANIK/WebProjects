@@ -2,7 +2,8 @@ let flags = {
 	darkMode: false,
 	engineIntroWhyText: false,
 	engineIntroPretend: false,
-	contentWarningAccepted: false
+	contentWarningAccepted: false,
+	attemptedGreeting: 0
 };
 let displaycontent = document.getElementById("displaycontent");
 
@@ -200,6 +201,7 @@ async function Start(key, param) {
 	}
 	else if (key == 10) {
 		if (param == true) {
+			flags.attemptedGreeting++;
 			Print([["!", "<p>A dry croak exits your throat.</p><br/>"]]);
 		}
 		Print([
@@ -219,6 +221,7 @@ async function Start(key, param) {
 	}
 	else if (key == 11) {
 		if (param == true) {
+			flags.attemptedGreeting++;
 			Print([
 				["execute then print", function() {
 					locale = "A Stone Street in the Rain";
@@ -248,32 +251,9 @@ async function Start(key, param) {
 				UpdateButtonAreaHeight();
 			}],
 			["execute", function() {
-				Start(12);
+				Rebecca(1);
 			}]
 		]);
-	}
-	else if (key == 12) {
-		document.getElementById("fader").style.opacity = 1;
-		
-		await timer(1000);
-		
-		locale = "A Clearing in the Forest";
-		UpdateMeters();
-		
-		document.getElementById("colorizer").style.background = "#243a0f";
-		
-		await timer(1000)
-		
-		Output("");
-		
-		Print([
-			["You awaken in a clearing, this time on your feet. A dense forest surrounds you, a decomposing trunk lying on the ground in front of you."],
-			["A woman is watching you. Her most striking feature is her antlers, like that of a stag, encircling her head. You find yourself with a strange certainty that <i>she is not supposed to have them</i>. You also know, instinctually, that her name is <q>Rebecca</q>."]
-		]);
-		
-		//TODO: Rebecca takes you to meet a person in a blind mask, dialogue focus, the person in the blind mask offers you a zippo lighter that they say is yours
-		
-		document.getElementById("fader").style.opacity = 0;
 	}
 	
 	//Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
