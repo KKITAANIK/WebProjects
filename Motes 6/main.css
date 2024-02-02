@@ -190,6 +190,9 @@ p {
 .button:hover .tooltip {
 	opacity: 1;
 }
+.printedTooltip {
+	display: none;
+}
 
 .location, .time {
 	padding: 0.5vw;
@@ -235,6 +238,9 @@ option {
 
 q {
 	font-weight: 600;
+}
+.noBold {
+	font-weight: 400;
 }
 
 .faded {

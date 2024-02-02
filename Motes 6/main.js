@@ -99,6 +99,7 @@ class Button {
 		// update the attributes
 		document.getElementById(this.id).disabled = false;
 		document.getElementById(this.id).innerHTML = "<span class=\"buttoncontent\">" + text + "</span>";
+		text = text.replaceAll("tooltip", "printedTooltip")
 		document.getElementById(this.id).onclick = function(){
 			document.getElementById(this.id).disabled = true;
 			ClearButtons();
