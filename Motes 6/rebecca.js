@@ -82,7 +82,7 @@ async function Rebecca(key, param) {
 					document.getElementById("seemsChange").innerHTML = "<u>seems</u>";
 					document.getElementById("Don’t follow.").innerHTML = "Agree to follow her.";
 				}],
-				["!", "<p class=\"mono\"><q class=\"noBold\">In fact, it is the case that many illusions function only so long as they go unquestioned.</q></p><br/>"]
+				["!", "<p class=\"mono\"><q class=\"noBold\">It is a reality that many illusions function only so long as they go unquestioned.</q></p><br/>"]
 			]);
 		}
 		Print([
