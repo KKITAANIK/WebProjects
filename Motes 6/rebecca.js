@@ -60,15 +60,33 @@ async function Rebecca(key, param) {
 		}
 		else if (param == 1) {
 			Print([
-				["She blinks once. <q>Oh. I didn’t know.</q> She steps forward. <q>Still, I think I should help you. I need you to follow me.</q>"]
+				["She blinks once. <q>Oh. I didn’t know.</q> She steps forward. <q>Still, I think there's something I should show you. I need you to follow me.</q>"]
 			]);
 		}
 		else if (param == 2) {
-			Print([["She smiles calmly. <q>That’s okay. I want to help you. You just have to follow me.</q>"]])
+			Print([["She smiles calmly. <q>That’s okay. I want to help you. You just have to follow me.</q>"]]);
 		}
 		
 		Print([
-			[]
-		])
+			["It <span id=\"seemsChange\">seems</span> you have a choice to make."],
+			["execute", function(){
+				buttons[0][0].update(Rebecca.bind(null, 4, true), "Agree to follow her.");
+				buttons[0][1].update(Rebecca.bind(null, 4, false), "Don’t follow.");
+			}]
+		]);
+	}
+	else if (key == 4) {
+		if (param == false) {
+			Print([
+				["execute then print", function() {
+					document.getElementById("seemsChange").innerHTML = "<u>seems</u>";
+					document.getElementById("Don’t follow.").innerHTML = "Agree to follow her.";
+				}],
+				["!", "<p class=\"mono\"><q class=\"noBold\">In fact, it is the case that many illusions function only so long as they go unquestioned.</q></p><br/>"]
+			]);
+		}
+		Print([
+			["Rebecca smiles pleasantly."]
+		]);
 	}
 }

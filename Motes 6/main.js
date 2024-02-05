@@ -201,43 +201,6 @@ document.body.onmouseup = function() {
 	mouseDown = false;
 }
 
-async function SlowType(output, startwait = 0, delay = 25) {
-	let displaycontent = document.getElementById("displaycontent");
-	chararray = output.split("");
-	totaloutput = displaycontent.innerHTML + "<span class=\"devtext\">";
-	let italicbool = false;
-	if (startwait > 0) {
-		await timer(startwait);
-	}
-	for (let i = 0; i < chararray.length; i++) {
-		if (chararray[i] == '|') {
-			chararray[i] = "<br/>"
-		}
-		else if (chararray[i] == 'Ⅴ') {
-			chararray[i] = "";
-			if (!mouseDown) {
-				await timer(500 - delay);
-			}
-		}
-		else if (chararray[i] == "*") {
-			if (italicbool == false) {
-				chararray[i] = "<i>"
-				italicbool = true;
-			}
-			else if (italicbool == true) {
-				chararray[i] = "</i>";
-				italicbool = false;
-			}
-		}
-		if (!mouseDown) {
-			await timer(delay);
-		}
-		displaycontent.innerHTML = totaloutput + chararray[i];
-		totaloutput += chararray[i];
-		displaycontent.scrollTo(0, displaycontent.scrollHeight);
-	}
-}
-
 function UC(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
