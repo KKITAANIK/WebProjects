@@ -3,7 +3,15 @@ let flags = {
 	engineIntroWhyText: false,
 	engineIntroPretend: false,
 	contentWarningAccepted: false,
-	attemptedGreeting: 0
+	attemptedGreeting: 0,
+	rebeccaBeenHereBefore: 0,
+	rebeccaAskedWhereTaking: false,
+	rebeccaAskedWhosCecil: false,
+	rebeccaAskedWhatCecilHas: false,
+	rebeccaAskedAntlers: false,
+	rebeccaOfCourseYoudHaveAntlers: false,
+	rebeccaYoureRightAboutAntlers: false,
+	rebeccaApostrophes: false
 };
 let displaycontent = document.getElementById("displaycontent");
 
@@ -86,7 +94,7 @@ async function Start(key, param) {
 	else if (key == 4) {
 		flags.engineIntroWhyText = true;
 		
-		let buttonPool = [];
+		buttonPool = [];
 		let continueText = "Continue."
 		if (flags.engineIntroPretend == false) {
 			buttonPool.push({
@@ -112,7 +120,7 @@ async function Start(key, param) {
 	else if (key == 5) {
 		flags.engineIntroPretend = true;
 		
-		let buttonPool = [];
+		buttonPool = [];
 		let continueText = "Continue."
 		if (flags.engineIntroWhyText == false) {
 			buttonPool.push({

@@ -56,14 +56,17 @@ async function Rebecca(key, param) {
 	}
 	else if (key == 3) {
 		if (param == 0) {
+			flags.rebeccaBeenHereBefore = 0;
 			Print([["She watches you for a few seconds. She blinks once. Finally, she steps forward. <q>I want to help you. You’ll follow me, won’t you?</q>"]]);
 		}
 		else if (param == 1) {
+			flags.rebeccaBeenHereBefore = 1;
 			Print([
-				["She blinks once. <q>Oh. I didn’t know.</q> She steps forward. <q>Still, I think there's something I should show you. I need you to follow me.</q>"]
+				["She blinks once. <q>Oh. I didn’t know.</q> She steps forward. <q>Still, I think there’s something I should show you. I need you to follow me.</q>"]
 			]);
 		}
 		else if (param == 2) {
+			flags.rebeccaBeenHereBefore = -1;
 			Print([["She smiles calmly. <q>That’s okay. I want to help you. You just have to follow me.</q>"]]);
 		}
 		
@@ -86,7 +89,109 @@ async function Rebecca(key, param) {
 			]);
 		}
 		Print([
-			["Rebecca smiles pleasantly."]
+			["Rebecca smiles pleasantly and turns, making her way back into the forest proper. You follow."],
+			["Light filters in from above, leaving speckled patterns on the ground as the canopy fails to fully obscure the sun. The duff beneath your feet is soft, and the roots that do emerge from the soil are low, offering minimal resistance as you make your way after the antlered woman."],
+			["She turns her head to look back at you, apparently having no need to watch the path. <q>My name is <q>Rebecca</q>. It’s supposed to be obvious, but I’m still figuring it out.</q>"]
+			["execute", function() {
+				buttonPool = [
+					{func: Rebecca.bind(null, 5, 0), text: "<q>Where are you taking me?</q>"},
+					{func: Rebecca.bind(null, 6, 0), text: "<q>What’s with the antlers?</q>"},
+					{func: Rebecca.bind(null, 7), text: "Stay silent."}
+				];
+				SetButtons(buttonPool);
+			}]
+		]);
+	}
+	else if (key == 5) {
+		RemoveFromButtonPool("<q>Of course you would.</q>");
+		RemoveFromButtonPool("<q>I think you’d still have the antlers, even if they weren’t important.</q>");
+		RemoveFromButtonPool("<q>You’re right.</q>");
+		RemoveFromButtonPool("<q>You’re right about the antlers.</q>");
+		RemoveFromButtonPool("<q>That’s a lot of apostrophes.</q>");
+		if (param == 0) {
+			flags.rebeccaAskedWhereTaking = true;
+			RemoveFromButtonPool("Stay silent.");
+			RemoveFromButtonPool("Move on.");
+			RemoveFromButtonPool("<q>Where are you taking me?</q>");
+			buttonPool.push({func: Rebecca.bind(null, 5, 1), text: "<q>Who’s <q>Cecil</q>?</q>"});
+			buttonPool.push({func: Rebecca.bind(null, 5, 2), text: "<q>What is he going to give me?</q>"});
+			buttonPool.push({func: Rebecca.bind(null, 7), text: "Move on."});
+			Print([
+				["<q>We’re going to see Cecil. He has something for you.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+		else if (param == 1) {
+			flags.rebeccaAskedWhosCecil = true;
+			RemoveFromButtonPool("<q>Who’s <q>Cecil</q>?</q>");
+			Print([
+				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlesness. <q>I don’t know. He hasn’t told me. But he knows a lot more than I do, and he has something for you.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+		else if (param == 2) {
+			flags.rebeccaAskedWhatCecilHas = true;
+			RemoveFromButtonPool("<q>What is he going to give me?</q>");
+			Print([
+				["She smiles. <q>You’re starting to get it. I’ve seen it, but he hasn’t told me. He just said to make sure you got it if I found you.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+	}
+	else if (key == 6) {
+		if (param == 0) {
+			flags.rebeccaAskedAntlers = true;
+			RemoveFromButtonPool("Stay silent.");
+			RemoveFromButtonPool("Move on.");
+			ReplaceButtonText("<q>What is he going to give me?</q>", "<q>What is Cecil going to give me?</q>");
+			RemoveFromButtonPool("<q>What’s with the antlers?</q>");
+			buttonPool.push({func: Rebecca.bind(null, 6, 1), text: "<q>Of course you would.</q>"});
+			buttonPool.push({func: Rebecca.bind(null, 6, 2), text: "<q>You’re right.</q>"});
+			buttonPool.push({func: Rebecca.bind(null, 6, 3), text: "<q>That’s a lot of apostrophes.</q>"});
+			buttonPool.push({func: Rebecca.bind(null, 7), text: "Move on."});
+			Print([
+				["She pauses, considering you for a moment. Finally, she speaks. <q>They’re branches. Don’t worry, I’m not the one making them. I haven’t figured out how to follow them, yet, but if they weren’t important I wouldn’t have them, right?</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+		else if (param == 1) {
+			RemoveFromButtonPool("<q>Of course you would.</q>");
+			RemoveFromButtonPool("<q>I think you’d still have the antlers, even if they weren’t important.</q>");
+			RemoveFromButtonPool("<q>You’re right.</q>");
+			RemoveFromButtonPool("<q>You’re right about the antlers.</q>");
+			RemoveFromButtonPool("<q>That’s a lot of apostrophes.</q>");
+			flags.rebeccaOfCourseYoudHaveAntlers = true;
+			Print([
+				["She pauses again, before looking back towards the trail. Her answer comes somewhat quieter than before. <q>Well, I guess we’ll see.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+		else if (param == 2) {
+			RemoveFromButtonPool("<q>Of course you would.</q>");
+			RemoveFromButtonPool("<q>I think you’d still have the antlers, even if they weren’t important.</q>");
+			RemoveFromButtonPool("<q>You’re right.</q>");
+			RemoveFromButtonPool("<q>You’re right about the antlers.</q>");
+			RemoveFromButtonPool("<q>That’s a lot of apostrophes.</q>");
+			flags.rebeccaYoureRightAboutAntlers = true;
+			Print([
+				["She smiles. <q>Exactly.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+		else if (param == 2) {
+			ReplaceButtonText("<q>Of course you would.</q>", "<q>I think you’d still have the antlers, even if they weren’t important.</q>");
+			ReplaceButtonText("<q>You’re right.</q>", "<q>You’re right about the antlers.</q>");
+			flags.rebeccaApostrophes = true;
+			Print([
+				["That goads her into a light laugh — a soft, musical sound. <q>Is it? I guess that’s bound to happen when we’re talking about notness.</q>"],
+				["execute", SetButtons.bind(null, buttonPool)]
+			]);
+		}
+	}
+	else if (key == 7) {
+		buttonPool = [];
+		Print([
+			["<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]
 		]);
 	}
 }

@@ -11,6 +11,8 @@ let fadeStuff = true;
 
 let printQueue = [];
 
+let buttonPool = [];
+
 function timer(ms) { 
 	if (!mouseDown) {
 		return new Promise(res => setTimeout(res, ms));
@@ -203,4 +205,22 @@ document.body.onmouseup = function() {
 
 function UC(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function RemoveFromButtonPool(text) {
+	for (let i = 0; i < buttonPool.length; i++) {
+		if (buttonPool[i].text == text) {
+			buttonPool.splice(i, 1);
+		}
+	}
+	return
+}
+
+function ReplaceButtonText(text, newText) {
+	for (let i = 0; i < buttonPool.length; i++) {
+		if (buttonPool[i].text == text) {
+			buttonPool[i].text = newText;
+		}
+	}
+	return
 }
