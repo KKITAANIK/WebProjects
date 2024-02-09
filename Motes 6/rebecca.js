@@ -125,7 +125,7 @@ async function Rebecca(key, param) {
 			flags.rebeccaAskedWhosCecil = true;
 			RemoveFromButtonPool("<q>Who’s <q>Cecil</q>?</q>");
 			Print([
-				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlesness. <q>I don’t know. He hasn’t told me. But he knows a lot more than I do, and he has something for you.</q>"],
+				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>I don’t know. He hasn’t told me. But he knows a lot more than I do, and he has something for you.</q>"],
 				["execute", SetButtons.bind(null, buttonPool)]
 			]);
 		}
