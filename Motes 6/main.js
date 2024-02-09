@@ -58,10 +58,11 @@ async function PrintFromQueue() {
 			contentChildren[i].classList.add("faded");
 		}
 	}
+	
+	while (printQueue.length > 0 && printQueue[0].length <= 0) {
+		printQueue.shift();
+	}
 	if (printQueue.length > 0) {
-		while (printQueue[0].length <= 0) {
-			printQueue.shift();
-		}
 		if (printQueue[0][0] == "!") {
 			Append(printQueue[0][1]);
 			printQueue.shift();
@@ -111,7 +112,10 @@ class Button {
 			PrintFromQueue();
 		}
 		$("#" + this.id.toString()).textfill({
-			maxFontPixels: 0.015 * screen.width
+			maxFontPixels: 0.015 * screen.width,
+			changeLineHeight: true,
+			minFontPixels: 0.0075 * screen.width,
+			allowOverflow: true
 		});
 		
 		UpdateButtonAreaHeight();

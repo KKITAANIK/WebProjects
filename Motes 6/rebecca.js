@@ -91,7 +91,7 @@ async function Rebecca(key, param) {
 		Print([
 			["Rebecca smiles pleasantly and turns, making her way back into the forest proper. You follow."],
 			["Light filters in from above, leaving speckled patterns on the ground as the canopy fails to fully obscure the sun. The duff beneath your feet is soft, and the roots that do emerge from the soil are low, offering minimal resistance as you make your way after the antlered woman."],
-			["She turns her head to look back at you, apparently having no need to watch the path. <q>My name is <q>Rebecca</q>. It’s supposed to be obvious, but I’m still figuring it out.</q>"]
+			["She turns her head to look back at you, apparently having no need to watch the path. <q>My name is <q>Rebecca</q>. It’s supposed to be obvious, but I’m still figuring it out.</q>"],
 			["execute", function() {
 				buttonPool = [
 					{func: Rebecca.bind(null, 5, 0), text: "<q>Where are you taking me?</q>"},
@@ -139,11 +139,11 @@ async function Rebecca(key, param) {
 		}
 	}
 	else if (key == 6) {
+		ReplaceButtonText("<q>What is he going to give me?</q>", "<q>What is Cecil going to give me?</q>");
 		if (param == 0) {
 			flags.rebeccaAskedAntlers = true;
 			RemoveFromButtonPool("Stay silent.");
 			RemoveFromButtonPool("Move on.");
-			ReplaceButtonText("<q>What is he going to give me?</q>", "<q>What is Cecil going to give me?</q>");
 			RemoveFromButtonPool("<q>What’s with the antlers?</q>");
 			buttonPool.push({func: Rebecca.bind(null, 6, 1), text: "<q>Of course you would.</q>"});
 			buttonPool.push({func: Rebecca.bind(null, 6, 2), text: "<q>You’re right.</q>"});
@@ -178,7 +178,7 @@ async function Rebecca(key, param) {
 				["execute", SetButtons.bind(null, buttonPool)]
 			]);
 		}
-		else if (param == 2) {
+		else if (param == 3) {
 			ReplaceButtonText("<q>Of course you would.</q>", "<q>I think you’d still have the antlers, even if they weren’t important.</q>");
 			ReplaceButtonText("<q>You’re right.</q>", "<q>You’re right about the antlers.</q>");
 			flags.rebeccaApostrophes = true;
