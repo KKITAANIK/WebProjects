@@ -193,7 +193,7 @@ async function Rebecca(key, param) {
 		Print([
 			["The character of the forest shifts gradually as you make your way deeper. The background chirping of birds and rustling of fauna seems to occupy less of your notice, and glimpses of blue sky become more frequent as the canopy thins. The sky and, ahead of you, something tall and white rising from the forest. You look to Rebecca and she nods. <q>That’s where we’re going.</q>"],
 			["break", "You come to the edge of a new clearing, and the approach affords a far better view of the object. A large spire stretches up into the sky, composed almost entirely of brilliant, light-colored stone. At its base is a dark wooden door, standing open, which Rebecca leads you towards."],
-			["break", ""],
+			["break", "You slowly climb the spiral staircase inside, following behind Rebecca. The steps are made of the same pale stone, polished by unnamed architects and decades of use."],
 			["execute", function(){
 				buttons[0][0].update(Rebecca.bind(null, 8), "Continue.");
 			}]
