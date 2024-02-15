@@ -47,7 +47,7 @@ async function Rebecca(key, param) {
 			["execute", function() {
 				buttons[0][0].update(Rebecca.bind(null, 3, 0), "<q>What’s with the antlers?</q>");
 				buttons[0][1].update(Rebecca.bind(null, 4, 0), "<q>What’s with the lighter?</q>");
-				buttons[0][2].update(Rebecca.bind(null, 5), "Stay silent.");
+				buttons[0][2].update(Rebecca.bind(null, 5, false), "Stay silent.");
 			}]
 		]);
 	}
@@ -65,13 +65,13 @@ async function Rebecca(key, param) {
 		else if (param == 1) {
 			Print([
 				["She pauses again, before continuing down the stairs. Her answer comes somewhat quieter than before. <q>Well, I guess we’ll see.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 		else if (param == 2) {
 			Print([
 				["She smiles. <q>Exactly.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 		else if (param == 3) {
@@ -80,7 +80,7 @@ async function Rebecca(key, param) {
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 3, 1), "<q>I think you’d still have the antlers, even if they weren’t important.</q>");
 					buttons[0][1].update(Rebecca.bind(null, 3, 2), "<q>You’re right about the antlers.</q>");
-					buttons[0][2].update(Rebecca.bind(null, 5), "Move on.");
+					buttons[0][2].update(Rebecca.bind(null, 5, true), "Move on.");
 				}]
 			]);
 		}
@@ -92,14 +92,14 @@ async function Rebecca(key, param) {
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 4, 1), "<q>Makes sense to me.</q>");
 					buttons[0][1].update(Rebecca.bind(null, 4, 2), "<q>That doesn’t really feel like an answer.</q>");
-					buttons[0][2].update(Rebecca.bind(null, 5), "Move on.");
+					buttons[0][2].update(Rebecca.bind(null, 5, true), "Move on.");
 				}]
 			]);
 		}
 		else if (param == 1) {
 			Print([
 				["She glances back at you, tilting her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>It does? That’s promising.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 		else if (param == 2) {
@@ -115,27 +115,31 @@ async function Rebecca(key, param) {
 		else if (param == 3) {
 			Print([
 				["She smiles mildly. <q>I’m glad. It wasn’t supposed to be.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 		else if (param == 4) {
 			Print([
 				["She seems to consider you for a moment. <q>Maybe. I’m not really sure.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 		else if (param == 5) {
 			Print([
 				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>You’re the one who said it.</q>"],
-				["execute then print", Rebecca.bind(null, 5)]
+				["execute then print", Rebecca.bind(null, 5, true)]
 			]);
 		}
 	}
 	else if (key == 5) {
+		let optionalBreak = "";
+		if (param == true) {
+			optionalBreak = "<br/>";
+		}
 		Print([
-			["You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down."],
-			[""]
+			["!", optionalBreak + "<p>You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down.</p>"],
 		]);
+		Rebecca(6);
 	}
 	
 	
@@ -144,7 +148,7 @@ async function Rebecca(key, param) {
 	
 	else {
 		Print([
-			["<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]
+			["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]
 		]);
 	}
 }
