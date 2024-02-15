@@ -126,12 +126,11 @@ async function Rebecca(key, param) {
 		}
 		else if (param == 5) {
 			Print([
-				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>Well, you're the one who said it.</q>"],
+				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>You're the one who said it.</q>"],
 				["execute then print", Rebecca.bind(null, 5)]
 			]);
 		}
 	}
-	
 	
 	
 	
