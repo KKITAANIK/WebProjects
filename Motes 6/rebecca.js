@@ -21,13 +21,13 @@ async function Rebecca(key, param) {
 			["You are standing in a room atop a pale stone spire, furnished with dark oak. Two figures stand opposite each other, neither facing you. The first is a tall man with short, brown hair framing the edge of a blind mask. The curved iron covers his face completely, bearing an etched, vertical design."],
 			["The other is a woman of average height, her most striking feature the antlers that encircle her head, like that of a stag. You find yourself with a strange certainty that <i>she is not supposed to have them</i>. She glances over at you as the two speak."],
 			["<q>—no guarantee he is even <i>in this world</i>, let along within reach,</q> the man is saying, either not noticing or choosing to ignore your arrival. <q>There may be only so much I can provide you, but do you not prefer that certainty?</q>"],
-			["Rebecca turns her gaze back to the man, choosing her words. When she speaks, her voice is a mild alto. <q>This is my chance to <i>repay</i> you, Cecil! You know that I'll arrive again, so where is the harm in—</q>"],
-			["<q>The harm is in being lost along the way. Who's to say that the path you cross will be mine?</q> He turns away from her, moving to one of the vast bookshelves that decorate the walls. Rebecca follows, speaking to his back as he searches for some item."],
-			["<q>It doesn't have to be. I'm not <i>helpless</i>! And who's to say it wouldn't be?</q>"],
-			["The man finds what he was looking for and turns back, handing it to Rebecca with a low sigh. <q>Then don't tell me this is repayment. Whether you stay or not, you know as well as I do you must be <i>certain</i>.</q>"],
-			["She takes the item and turns, striding now towards you. She presses it into your hands before you can refuse — it's a small, rectangular lighter, somewhat worn. Silas calls out from behind her."],
+			["Rebecca turns her gaze back to the man, choosing her words. When she speaks, her voice is a mild alto. <q>This is my chance to <i>repay</i> you, Cecil! You know that I’ll arrive again, so where is the harm in—</q>"],
+			["<q>The harm is in being lost along the way. Who’s to say that the path you cross will be mine?</q> He turns away from her, moving to one of the vast bookshelves that decorate the walls. Rebecca follows, speaking to his back as he searches for some item."],
+			["<q>It doesn’t have to be. I’m not <i>helpless</i>! And who’s to say it wouldn’t be?</q>"],
+			["The man finds what he was looking for and turns back, handing it to Rebecca with a low sigh. <q>Then don’t tell me this is repayment. Whether you stay or not, you know as well as I do you must be <i>certain</i>.</q>"],
+			["She takes the item and turns, striding now towards you. She presses it into your hands before you can refuse — it’s a small, rectangular lighter, its case lightly-worn steel. Silas calls out from behind her."],
 			["<q>The point is made. Please, help our guest.</q>"],
-			["Rebecca glances back, watching for a moment, before turning to meet your gaze. She has large, chocolate-brown eyes, shaped around a mix of emotions. <q>I'm Rebecca. Please follow me.</q>"],
+			["Rebecca glances back, watching for a moment, before turning to meet your gaze. She has large, chocolate-brown eyes, shaped around a mix of emotions. <q>I’m Rebecca. Please follow me.</q>"],
 			["execute", function() {
 				buttons[0][0].update(Rebecca.bind(null, 2, true), greetMsg);
 				buttons[0][1].update(Rebecca.bind(null, 2, false), "Follow her.");
@@ -88,48 +88,54 @@ async function Rebecca(key, param) {
 	else if (key == 4) {
 		if (param == 0) {
 			Print([
-				["<q>It's yours. Cecil wanted you to have it. A lighter will be useful eventually, won't it?</q> she answers rhetorically as she makes her way down the steps."],
+				["<q>It’s yours. Cecil wanted you to have it. A lighter will be useful eventually, won’t it?</q> she answers rhetorically as she makes her way down the steps."],
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 4, 1), "<q>Makes sense to me.</q>");
-					buttons[0][1].update(Rebecca.bind(null, 4, 2), "<q>That doesn't really feel like an answer.</q>");
+					buttons[0][1].update(Rebecca.bind(null, 4, 2), "<q>That doesn’t really feel like an answer.</q>");
 					buttons[0][2].update(Rebecca.bind(null, 5), "Move on.");
 				}]
 			]);
 		}
 		else if (param == 1) {
 			Print([
-				["She glances back at you, tilting her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>It does? That's promising.</q>"],
+				["She glances back at you, tilting her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>It does? That’s promising.</q>"],
 				["execute then print", Rebecca.bind(null, 5)]
 			]);
 		}
 		else if (param == 2) {
 			Print([
-				["She turns to meet your gaze. <q>Maybe it doesn't. Do you think that's my fault?</q>"],
+				["She turns to meet your gaze. <q>Maybe it doesn’t. Do you think that’s my fault?</q>"],
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 4, 3), "<q>Not really.</q>");
-					buttons[0][1].update(Rebecca.bind(null, 4, 4), "<q>You're the one who said it.</q>");
-					buttons[0][2].update(Rebecca.bind(null, 4, 5), "<q>I'm not sure.</q>");
+					buttons[0][1].update(Rebecca.bind(null, 4, 4), "<q>You’re the one who said it.</q>");
+					buttons[0][2].update(Rebecca.bind(null, 4, 5), "<q>I’m not sure.</q>");
 				}]
 			]);
 		}
 		else if (param == 3) {
 			Print([
-				["She smiles mildly. <q>I'm glad. It wasn't supposed to be.</q>"],
+				["She smiles mildly. <q>I’m glad. It wasn’t supposed to be.</q>"],
 				["execute then print", Rebecca.bind(null, 5)]
 			]);
 		}
 		else if (param == 4) {
 			Print([
-				["She seems to consider you for a moment. <q>Maybe. I'm not really sure.</q>"],
+				["She seems to consider you for a moment. <q>Maybe. I’m not really sure.</q>"],
 				["execute then print", Rebecca.bind(null, 5)]
 			]);
 		}
 		else if (param == 5) {
 			Print([
-				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>You're the one who said it.</q>"],
+				["She tilts her head slightly. Her antlers move with an ease that almost implies weightlessness. <q>You’re the one who said it.</q>"],
 				["execute then print", Rebecca.bind(null, 5)]
 			]);
 		}
+	}
+	else if (key == 5) {
+		Print([
+			["You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down."],
+			[""]
+		]);
 	}
 	
 	
