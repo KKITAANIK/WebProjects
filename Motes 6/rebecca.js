@@ -37,15 +37,13 @@ async function Rebecca(key, param) {
 		document.getElementById("fader").style.opacity = 0;
 	}
 	else if (key == 2) {
+		let optionalNod = "She moves past you";
 		if (param == true) {
-			Print([["She nods, before moving past you, making her way to the spiral staircase and heading downard. You follow."]]);
-		}
-		else {
-			Print([["She moves past you, making her way to the spiral staircase and heading downard. You follow."]]);
+			optionalNod = "She nods, before moving past you";
 		}
 		
 		Print([
-			["Lorem ipsum dolor sit amet"]
+			[optionalNod + ", making her way to the spiral staircase and heading downard. You follow."]
 		]);
 	}
 	
