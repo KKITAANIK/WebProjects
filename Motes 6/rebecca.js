@@ -43,7 +43,7 @@ async function Rebecca(key, param) {
 		}
 		
 		Print([
-			[optionalNod + ", making her way to the spiral staircase and heading downard. You follow."],
+			[optionalNod + ", making her way to the spiral staircase and heading downward. You follow."],
 			["execute", function() {
 				buttons[0][0].update(Rebecca.bind(null, 3, 0), "<q>What’s with the antlers?</q>");
 				buttons[0][1].update(Rebecca.bind(null, 4, 0), "<q>What’s with the lighter?</q>");

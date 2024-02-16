@@ -250,10 +250,10 @@ async function Start(key, param) {
 				document.getElementById("colorizer").style.background = "#8bba94";
 			}],
 			["These constants fade, and you are once again lost. A man with lobster’s scales and slate grey skin, like the maria of the moon, makes no appearance. You are about to begin."],
-			["execute", function() {
+			["execute then print", function() {
 				UpdateButtonAreaHeight(0);
 			}],
-			["break", "<span class=\"mono\">Not this time.</span>"],
+			["break", "<span class=\"mono\">Not this time. Keep going.</span>"],
 			["break", "Some grit has lodged itself far in the back of you throat, whether sand, salt, or stone. Minute, and barely noticeable, but it will grow. <span class=\"mono\">Congratulations.</span>"],
 			["execute", function() {
 				UpdateButtonAreaHeight();
@@ -263,6 +263,4 @@ async function Start(key, param) {
 			}]
 		]);
 	}
-	
-	//Print([["break", "<span class=\"mono\">This is as far as content exists at present. You have reached the end.</span>"]])
 }
