@@ -80,7 +80,7 @@ async function Rebecca(key, param) {
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 3, 1), "<q>I think you’d still have the antlers, even if they weren’t important.</q>");
 					buttons[0][1].update(Rebecca.bind(null, 3, 2), "<q>You’re right about the antlers.</q>");
-					buttons[0][2].update(Rebecca.bind(null, 5, true), "Move on.");
+					buttons[0][2].update(Rebecca.bind(null, 5, false), "Move on.");
 				}]
 			]);
 		}
@@ -92,7 +92,7 @@ async function Rebecca(key, param) {
 				["execute", function() {
 					buttons[0][0].update(Rebecca.bind(null, 4, 1), "<q>Makes sense to me.</q>");
 					buttons[0][1].update(Rebecca.bind(null, 4, 2), "<q>That doesn’t really feel like an answer.</q>");
-					buttons[0][2].update(Rebecca.bind(null, 5, true), "Move on.");
+					buttons[0][2].update(Rebecca.bind(null, 5, false), "Move on.");
 				}]
 			]);
 		}

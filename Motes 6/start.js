@@ -54,7 +54,7 @@ async function Start(key, param) {
 		ButtonAppear();
 		Print([
 			["<span class=\"mono\">Click to progress text.</span>"],
-			["<span class=\"mono\">Good. You can also use the spacebar or <q class=\"noBold\">Enter</q> key.</span>"],
+			//["<span class=\"mono\">Good. You can also use the spacebar or <q class=\"noBold\">Enter</q> key.</span>"],
 			["<span class=\"mono\">Before we continue, would you like to switch to dark mode?</span>"],
 			["execute", function() {
 				buttons[0][0].update(Start.bind(null, 2, 1), "<q>Yes.</q>");
