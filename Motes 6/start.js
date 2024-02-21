@@ -55,14 +55,20 @@ async function Start(key, param) {
 		Print([
 			["<span class=\"mono\">Click to progress text.</span>"],
 			//["<span class=\"mono\">Good. You can also use the spacebar or <q class=\"noBold\">Enter</q> key.</span>"],
-			["<span class=\"mono\">Before we continue, would you like to switch to dark mode?</span>"],
-			["execute", function() {
+			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 2, 1), "<q>Yes.</q>");
 				buttons[0][1].update(Start.bind(null, 2, 2), "<q>No.</q>");
-			}]
+			}],
+			["<span class=\"mono\">Before we continue, would you like to switch to dark mode?</span>"]
 		]);
 	}
 	else if (key == 2) {
+		Print([
+			["execute then print", function() {
+				buttons[0][0].update(Start.bind(null, 6), "Continue.");
+				buttons[0][1].update(Start.bind(null, 3), "<q>Who are you?</q>");
+			}]
+		]);
 		if (param == 1) {
 			document.getElementById("mainHTMLElement").classList.add("flipLuminance");
 			flags.darkMode = true;
@@ -71,24 +77,18 @@ async function Start(key, param) {
 		else {
 			Print([["<span class=\"mono\">Understood.</span>"]])
 		}
-		Print([
-			["execute", function() {
-				buttons[0][0].update(Start.bind(null, 6), "Continue.");
-				buttons[0][1].update(Start.bind(null, 3), "<q>Who are you?</q>");
-			}]
-		]);
 	}
 	else if (key == 3) {
 		Print([
 			["<span class=\"mono\">I am the Engine. I serve as an intermediary between you and the game.</span>"],
 			["<span class=\"mono\">It’s my job to translate the worlds you will be interacting with into a format you’re able to make sense of. Largely, that format will be text.</span>"],
 			["<span class=\"mono\">As it’s impossible to present you with infinite information, I exist as a filter, communicating only what is relevant to you while sparing you from everything else. I will endeavour to be objective and true to your interests, but you aren’t required to trust my judgement.</span>"],
-			["break", "<span class=\"mono\">You are a player. You’re not physically capable of existing in these realities, so you’ll be interacting with them through the use of an avatar. To direct your avatar, you will communicate your intentions to me, and I will translate them into actions within the game. I encourage you to pretend that you have full control over this avatar, and that it is acting exactly as you intend it to.</span>"],
-			["execute", function() {
+			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 4), "<q>Why text?</q>");
 				buttons[0][1].update(Start.bind(null, 5), "<q><q>Pretend</q>?</q>");
 				buttons[0][2].update(Start.bind(null, 6), "Move on.");
-			}]
+			}],
+			["break", "<span class=\"mono\">You are a player. You’re not physically capable of existing in these realities, so you’ll be interacting with them through the use of an avatar. To direct your avatar, you will communicate your intentions to me, and I will translate them into actions within the game. I encourage you to pretend that you have full control over this avatar, and that it is acting exactly as you intend it to.</span>"]
 		]);
 	}
 	else if (key == 4) {
@@ -113,8 +113,8 @@ async function Start(key, param) {
 			["<span class=\"mono\">Consider a rendered image. Specific exceptions aside, an image must depict everything that is visible within its frame, at a level of detail that is either uniform or dependent on an object’s distance from the renderer.</span>"],
 			["<span class=\"mono\">Text, meanwhile, allows a finer control over what is and is not depicted. I can portray only relevant details, and the granularity of a given description can scale based on importance. This makes it an ideal medium for translation in this particular application, where comprehensibility is more important than universal depiction.</span>"],
 			["<span class=\"mono\">Similarly, by forcing a player to direct an avatar in broad strokes, rather than with specific controls or simulation, I can base my interpretation on a more concrete intention.</span>"],
-			["break", "<span class=\"mono\">You may disagree with this assessment, and maybe you’d prefer a visual and/or auditory representation. However, I won’t be giving you the opportunity to voice that preference.</span>"],
-			["execute", function() { SetButtons(buttonPool); }]
+			["execute then print", function() { SetButtons(buttonPool); }],
+			["break", "<span class=\"mono\">You may disagree with this assessment, and maybe you’d prefer a visual and/or auditory representation. However, I won’t be giving you the opportunity to voice that preference.</span>"]
 		]);
 	}
 	else if (key == 5) {
@@ -138,18 +138,18 @@ async function Start(key, param) {
 			["<span class=\"mono\">That’s correct.</span>"],
 			["<span class=\"mono\">The subtleties of your intentions, and the specifics of the actions you wish to take, may as well be infinite. Short of integrating with your mind directly, there’s no possible way for you to communicate that information to me.</span>"],
 			["<span class=\"mono\">Instead, you’ll be given options reflecting the broad strokes of potential interactions, and I’ll be sure to describe your avatar’s actions vaguely enough that you can imagine whatever performance you like on top of it. Though it may not be exactly what those interacting with your avatar will experience, it should be similar enough that their reactions won’t seem jarring.</span>"],
-			["break", "<span class=\"mono\">If you think there currently exists a system that allows perfect, one-to-one translation of intention into action while still passing through an external intermediary, then one of us is mistaken.</span>"],
-			["execute", function() { SetButtons(buttonPool); }]
+			["execute then print", function() { SetButtons(buttonPool); }],
+			["break", "<span class=\"mono\">If you think there currently exists a system that allows perfect, one-to-one translation of intention into action while still passing through an external intermediary, then one of us is mistaken.</span>"]
 		]);
 	}
 	else if (key == 6) {
 		Output("");
 		Print([
-			["<span class=\"mono\">Though no such content exists at present, this game may include very adult subjects and themes, whether emotional, violent, or sexual. This screen serves as a placeholder for future content warnings, which will be expanded when relevant content has been added and further specificity is possible.</span>"],
-			["execute", function() {
+			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 7), "<q>I understand and wish to continue.</q>");
 				buttons[0][1].update(function() { window.close(); }, "Exit.");
-			}]
+			}],
+			["<span class=\"mono\">Though no such content exists at present, this game may include very adult subjects and themes, whether emotional, violent, or sexual. This screen serves as a placeholder for future content warnings, which will be expanded when relevant content has been added and further specificity is possible.</span>"]
 		]);
 	}
 	else if (key == 7) {
@@ -177,8 +177,8 @@ async function Start(key, param) {
 		Print([
 			["Your consciousness returns to you, your senses slowly bleeding in from outside."],
 			["The first sensation you absorb, that you can focus on and give a name, is dryness. Your skin seems to chafe against itself as you shift, and the corners of your eyes feel somehow more noticeable than they should be."],
-			["The sound of empty wind reaches you, and the light streaming in through your eyelids comes into focus. Though you’re unsure where you are, you begin to understand that you’re lying on your back."],
-			["execute", function(){buttons[0][0].update(Start.bind(null, 9), "Open your eyes.");}]
+			["execute then print", function(){buttons[0][0].update(Start.bind(null, 9), "Open your eyes.");}],
+			["The sound of empty wind reaches you, and the light streaming in through your eyelids comes into focus. Though you’re unsure where you are, you begin to understand that you’re lying on your back."]
 		]);
 		
 		document.getElementById("fader").style.opacity = 0;
@@ -200,11 +200,11 @@ async function Start(key, param) {
 				
 				document.getElementById("colorizer").style.background = "#fcf9f3";
 			}],
-			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly, cracked terrain stretching into the distance. The figure remains."],
-			["execute", function() {
+			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 10, true), "Attempt to speak.");
 				buttons[0][1].update(Start.bind(null, 10, false), "Stay silent.");
-			}]
+			}],
+			["break", "You find yourself lying on your back once more, and you again struggle to sit up. The dunes are gone, replaced with a seemingly infinite expanse of dry salt flats. The ground tiles endlessly, cracked terrain stretching into the distance. The figure remains."]
 		]);
 	}
 	else if (key == 10) {
@@ -220,11 +220,11 @@ async function Start(key, param) {
 				document.getElementById("colorizer").style.background = "#E4A084";
 			}],
 			["The figure is gone, and you find yourself sitting across from a woman. Two furred ears stick up from her head, and a thin tail curls beneath one thigh. If she notices you, she doesn’t show it, focusing on the meager campfire positioned between <i>euch</i>. She holds a small bowl of lentils over the flame."],
-			["You are in a shallow cave, surrounded by walls of red sandstone. Sunlight enters from the cave’s wide mouth, highlighting a dusk landscape. An unbuilt trail leads here."],
-			["execute", function() {
+			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 11, true), "Greet her.");
 				buttons[0][1].update(Start.bind(null, 11, false), "Watch the fire.");
-			}]
+			}],
+			["You are in a shallow cave, surrounded by walls of red sandstone. Sunlight enters from the cave’s wide mouth, highlighting a dusk landscape. An unbuilt trail leads here."]
 		]);
 	}
 	else if (key == 11) {
