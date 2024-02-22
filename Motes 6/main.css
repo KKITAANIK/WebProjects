@@ -239,6 +239,10 @@ option {
 q {
 	font-weight: 600;
 }
+.fauxQuotes {
+	font-weight: 600;
+}
+
 .noBold {
 	font-weight: 400;
 }

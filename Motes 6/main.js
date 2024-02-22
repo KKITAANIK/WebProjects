@@ -52,6 +52,11 @@ function Print(queue) {
 }
 
 async function PrintFromQueue() {
+	
+	if (document.contains(document.getElementById("deleteMe"))) {
+		document.getElementById("deleteMe").remove();
+	}
+	
 	let contentChildren = document.getElementById("displaycontent").children;
 	for(let i = 0; i < contentChildren.length; i++) {
 		if (fadeStuff == true) {
