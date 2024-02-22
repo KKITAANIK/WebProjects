@@ -137,7 +137,7 @@ async function Rebecca(key, param) {
 			optionalBreak = "<br/>";
 		}
 		Print([
-			["!", optionalBreak + "<p>You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down. There are sleeping accommodations, a writing desk, and several other ammeneties, though Rebecca assures you you won't be needing them. The afternoon fades to evening, and though you get the sense that you should be tired, you don't feel any need to go to sleep, yet. It isn't time for that.</p>"],
+			["!", optionalBreak + "<p>You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down. There are sleeping accommodations, a writing desk, and several other amenities, though Rebecca assures you you won't be needing them. The afternoon fades to evening, and though you get the sense that you should be tired, you don't feel any need to go to sleep, yet. It isn't time for that.</p>"],
 			["execute then print", function() {
 				buttons[0][0].update(Rebecca.bind(null, 6), "Make a decision.");
 				buttons[0][1].update(Rebecca.bind(null, 'Ω'), "Avoid this.");
@@ -145,18 +145,32 @@ async function Rebecca(key, param) {
 			["break", "Night falls, and you find yourself back in the stairwell. Despite whatever instinct might draw you downwards, to the base of the spire, you instead begin climbing. You work past the study where you were given your lighter, and soon you've reached a landing that marks the top of the stairs. A ladder waits in front of you, leading to a door in the ceiling."]
 		]);
 	}
-	/*else if (key == 6) {              FINISH THIS NEXT TIME
+	else if (key == 6) {
 		Print([
-			[""]
+			["execute then print", function() {
+				document.getElementById("Make a decision.").innerHTML = "Enter.";
+			}],
+			["You climb up, pushing open the hatch."]
 		]);
-	}*/
+		Rebecca(7);
+	}
 	
 	
 	
 	else if (key == 'Ω') {
-		Print([[
-			"You return to your room. After some time, the game ends."
-		]])
+		Print([
+			["execute then print", function() {
+				document.getElementById("Avoid this.").innerHTML = "Exit.";
+			}],
+			["You return to the room partway down the tower. After some time, the game ends."],
+			["execute", function(){}],
+			["execute", function(){
+				document.body.style.pointerEvents = "none";
+				document.getElementById("fader").style.background = "#e0e0e0";
+				document.getElementById("fader").style.opacity = 1;
+				document.getElementById("colorizer").style.background = "#fff";
+			}]
+		]);
 	}
 	else {
 		Print([

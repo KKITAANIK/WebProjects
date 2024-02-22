@@ -147,7 +147,17 @@ async function Start(key, param) {
 		Print([
 			["execute then print", function() {
 				buttons[0][0].update(Start.bind(null, 7), "<q>I understand and wish to continue.</q>");
-				buttons[0][1].update(function() { window.close(); }, "Exit.");
+				buttons[0][1].update(function(){
+					Print([
+						["execute", function(){}],
+						["execute", function(){
+							document.body.style.pointerEvents = "none";
+							document.getElementById("fader").style.background = "#e0e0e0";
+							document.getElementById("fader").style.opacity = 1;
+							document.getElementById("colorizer").style.background = "#fff";
+						}]
+					]);
+				}, "Exit.");
 			}],
 			["<span class=\"mono\">Though no such content exists at present, this game may include very adult subjects and themes, whether emotional, violent, or sexual. This screen serves as a placeholder for future content warnings, which will be expanded when relevant content has been added and further specificity is possible.</span>"]
 		]);
