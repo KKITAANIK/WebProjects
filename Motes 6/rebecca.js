@@ -190,7 +190,7 @@ async function Rebecca(key, param) {
 				buttons[0][1].update(Rebecca.bind(null, 8, 1), "<q>I don’t think it is.</q>");
 				buttons[0][2].update(Rebecca.bind(null, 8, 2), "<q>I don’t know.</q>");
 			}],
-			["break", "She turns to face you once more. <q>That's how it ended. Do you think it’s important?</q>"]
+			["break", "She turns to face you once more. <q>That’s how it ended. Do you think it’s important?</q>"]
 		]);
 	}
 	else if (key == 8) {
@@ -201,7 +201,7 @@ async function Rebecca(key, param) {
 			Print([["She nods along thoughtfully. <q>Maybe. But then why would he tell it to me?</q>"]]);
 		}
 		else if (param == 2) {
-			Print([["She smiles lightly, lips quirked in amusement. <q>That's probably the safest answer.</q>"]]);
+			Print([["She smiles lightly, lips quirked in amusement. <q>That’s probably the safest answer.</q>"]]);
 		}
 		
 		Print([
