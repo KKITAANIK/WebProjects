@@ -137,12 +137,12 @@ async function Rebecca(key, param) {
 			optionalBreak = "<br/>";
 		}
 		Print([
-			["!", optionalBreak + "<p>You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down. There are sleeping accommodations, a writing desk, and several other amenities, though Rebecca assures you you won't be needing them. The afternoon fades to evening, and though you get the sense that you should be tired, you don't feel any need to go to sleep, yet. It isn't time for that.</p>"],
+			["!", optionalBreak + "<p>You arrive at a room roughly two-thirds of the way up the tower. In other words, you’ve descended roughly one-third of the way down. There are sleeping accommodations, a writing desk, and several other amenities, though Rebecca assures you you won’t be needing them. The afternoon fades to evening, and though you get the sense that you should be tired, you don’t feel any need to go to sleep, yet. It isn’t time for that.</p>"],
 			["execute then print", function() {
 				buttons[0][0].update(Rebecca.bind(null, 6), "Make a decision.");
 				buttons[0][1].update(Rebecca.bind(null, 'Ω'), "Avoid this.");
 			}],
-			["break", "Night falls, and you find yourself back in the stairwell. Despite whatever instinct might draw you downwards, to the base of the spire, you instead begin climbing. You work past the study where you were given your lighter, and soon you've reached a landing that marks the top of the stairs. A ladder waits in front of you, leading to a door in the ceiling."]
+			["break", "Night falls, and you find yourself back in the stairwell. Despite whatever instinct might draw you downwards, to the base of the spire, you instead begin climbing. You work past the study where you were given your lighter, and soon you’ve reached a landing that marks the top of the stairs. A ladder waits in front of you, leading to a door in the ceiling."]
 		]);
 	}
 	else if (key == 6) {
@@ -153,46 +153,50 @@ async function Rebecca(key, param) {
 			}],
 			["You move forward, pushing open the hatch. You climb out onto an open-air platform, carved out of the bell-cast conical roof that caps off the spire. The night sky is visible above you, its features uncompromisingly, monstrously clear through the unpolluted air."],
 			["You can see the stars."],
-			["break", "Rebecca is waiting on the balcony, though you can't say if it's for you. Her antlers hang over her head — it's hard to be certain, but they seem to have expanded slightly since you last saw her. You are once again struck with the curious feeling that <i>they do not belong on her head</i>."],
+			["break", "Rebecca is waiting on the balcony, though you can’t say if it’s for you. Her antlers hang over her head — it’s hard to be certain, but they seem to have expanded slightly since you last saw her. You are once again struck with the curious feeling that <i>they do not belong on her head</i>."],
 			["execute then print", function() {
 				buttons[0][0].update(Rebecca.bind(null, 7, 0), "<q>What are you talking about?</q>");
 				buttons[0][1].update(Rebecca.bind(null, 7, 1), "<q>Tell me.</q>");
 				buttons[0][2].update(Rebecca.bind(null, 7, 2), "<q>I thought his name was <q>Silas</q>.</q>");
 				buttons[0][3].update(Rebecca.bind(null, 7, 1), "Stay silent.");
 			}],
-			["<q>Cecil told it to me. I don't know where he heard it from.</q>"]
+			["<q>Cecil told it to me. I don’t know where he heard it from.</q>"]
 		]);
 	}
 	else if (key == 7) {
 		let optionalClarify = "";
 		
 		if (param == 0) {
-			Print([["<q>You came here to hear a story. Where you can see the stars,</q> she answers calmly. She isn't looking at you, focused up at the sky."]]);
+			Print([["<q>You came here to hear a story. Where you can see the stars,</q> she answers calmly. She isn’t looking at you, focused up at the sky."]]);
 		}
 		else if (param == 1) {
 			Print([["<q>You can see the stars,</q> she muses, focused up at the sky."]]);
 		}
 		else if (param == 2) {
-			optionalClarify = " The story you came here for, I mean; I already told you his name, and this isn't about him.";
-			Print([["She doesn't look at you, her focus pointed upwards. <q>I think it's both. He was <q>Cecil</q> when I met him, but he gets called <q>Silas</q> now. That one's newer, but I don't think it's important.</q>"]]);
+			optionalClarify = " The story you came here for, I mean; I already told you his name, and this isn’t about him.";
+			Print([["She doesn’t look at you, her focus pointed upwards. <q>I think it’s both. He was <q>Cecil</q> when I met him, but he gets called <q>Silas</q> now. That one’s newer, but I don’t think it’s important.</q>"]]);
 		}
 		
 		
 		
 		Print([
-			["break", "She finally turns to face you. <q>Here's how I remember it." + optionalClarify + " It might have been different, originally, but I only know my version.</q>"],
-			["She pauses, her gaze drifting as she thinks. Her lips purse just slightly against the consideration, relaxing again when she finds her start. <span class=\"fauxQuotes\">&ldquo;Once there was a great library, and its keeper. The keeper cared for the books there, and... I think it was because of that care that they were alive. Or maybe they were alive from the start, and that's why the keeper came.<span id=\"deleteMe\">&rdquo;</span></span>"],
+			["break", "She finally turns to face you. <q>Here’s how I remember it." + optionalClarify + " It might have been different, originally, but I only know my version.</q>"],
+			["She pauses, her gaze drifting as she thinks. Her lips purse just slightly against the consideration, relaxing again when she finds her start. <span class=\"fauxQuotes\">&ldquo;Once there was a great library, and its keeper. The keeper cared for the books there, and... I think it was because of that care that they were alive. Or maybe they were alive from the start, and that’s why the keeper came.<span id=\"deleteMe\">&rdquo;</span></span>"],
 			["<span class=\"fauxQuotes\">&ldquo;The books would fly through the library. Sometimes they would leave, and find someone to read them, but they would always return to the keeper, who took care of them.<span id=\"deleteMe\">&rdquo;</span></span>"],
 			["<q>One day, the keeper was gone, and a fire started to burn in the library. Maybe it was something that was brought back with one of the books, or maybe it was something that started from inside. When the keeper returned, a lot of the library had burned. The keeper rushed inside, and began saving as many of the books as they could. The keeper kept working to save them until the smoke had stolen all of their air, and they started burning with the rest of the library.</q>"],
 			["Her eyes are once again on the stars, her voice quiet as she finishes. <q>The books that had escaped watched the fire from outside. When it was over, they went back in, and they found the ashes of the library, and their keeper. They gathered a large sail, from a port town with a welcoming name, and collected all the ashes. Then they carried it across the world, letting the wind blow through until all the ashes has been spread. Cecil called it <q>The Day of Dry Snow</q>.</q>"],
 			["execute then print", function() {
 				buttons[0][0].update(Rebecca.bind(null, 8, 0), "<q>I think so.</q>");
-				buttons[0][1].update(Rebecca.bind(null, 8, 1), "<q>I don't think it is.</q>");
-				buttons[0][2].update(Rebecca.bind(null, 8, 2), "<q>I don't know.</q>");
+				buttons[0][1].update(Rebecca.bind(null, 8, 1), "<q>I don’t think it is.</q>");
+				buttons[0][2].update(Rebecca.bind(null, 8, 2), "<q>I don’t know.</q>");
 			}],
-			["break", "She turns to face you once more. <q>Do you think it's important? I'm not really sure.</q>"]
+			["break", "She turns to face you once more. <q>Do you think it’s important? I’m not really sure.</q>"]
 		]);
 	}
+	
+	
+	
+	
 	
 	
 	
