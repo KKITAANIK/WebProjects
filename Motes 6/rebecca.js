@@ -190,8 +190,64 @@ async function Rebecca(key, param) {
 				buttons[0][1].update(Rebecca.bind(null, 8, 1), "<q>I don’t think it is.</q>");
 				buttons[0][2].update(Rebecca.bind(null, 8, 2), "<q>I don’t know.</q>");
 			}],
-			["break", "She turns to face you once more. <q>Do you think it’s important? I’m not really sure.</q>"]
+			["break", "She turns to face you once more. <q>That's how it ended. Do you think it’s important?</q>"]
 		]);
+	}
+	else if (key == 8) {
+		if (param == 0) {
+			Print([["She nods along thoughtfully. <q>Maybe. I think that makes the most sense, right?</q>"]]);
+		}
+		else if (param == 1) {
+			Print([["She nods along thoughtfully. <q>Maybe. But then why would he tell it to me?</q>"]]);
+		}
+		else if (param == 2) {
+			Print([["She smiles lightly, lips quirked in amusement. <q>That's probably the safest answer.</q>"]]);
+		}
+		
+		Print([
+			["break", "You spend some time with Rebecca, looking at the stars and talking about whatever comes into either of your minds. Or perhaps you leave, saying nothing. Regardless of what happens, you return eventually to your accommodations."],
+			["execute", Rebecca.bind(null, 9)]
+		]);
+	}
+	else if (key == 9) {
+		document.getElementById("fader").style.opacity = 1;
+		
+		await timer(1000);
+		
+		locale = "The End of the Game";
+		UpdateMeters();
+		
+		document.getElementById("colorizer").style.background = "#808080";
+		
+		await timer(1000);
+		
+		Output("");
+		
+		fadeStuff = false;
+		Print([
+			["<span class=\"mono\" id=\"outroMessage\">Create a dot.</span>"],
+			["execute", function() {
+				document.getElementById("outroMessage").innerHTML += " Expand it to a line, then a square.";
+			}],
+			["execute then print", function() {
+				fadeStuff = true;
+			}],
+			["break", "<span class=\"mono\">Extend the sides of the square at each corner, reaching beyond the shape by one third of its side length, creating a <b>⌗</b> shape.</span>"],
+			["break", "<span class=\"mono\">Connect the two outermost points of each corner diagonally, creating a square with four triangles at its corners.</span>"],
+			["break", "<span class=\"mono\">Take each diagonal line as the first side of a rhombus. Draw the other three sides, creating a square with rhombuses centered around each vertex.</span>"],
+			["break", "<span class=\"mono\">For each vertex of each rhombus, connect it horizontally and vertically to the corresponding vertex on its neighboring rhombuses.</span>"],
+			["break", "<span class=\"mono\">Your final shape should have 28 distinguishable edges, though the actual count is 32. This can be seen by starting with the rhombuses, and connecting every point with its corresponding point on both adjacent rombuses. The four shortest edges overlap with the four longest edges.</span>"],
+			["break", "<span class=\"mono\">This is not a lotus.</span>"],
+			["execute", function(){}],
+			["execute", function(){
+				document.body.style.pointerEvents = "none";
+				document.getElementById("fader").style.background = "#e0e0e0";
+				document.getElementById("fader").style.opacity = 1;
+				document.getElementById("colorizer").style.background = "#fff";
+			}]
+		]);
+		
+		document.getElementById("fader").style.opacity = 0;
 	}
 	
 	
