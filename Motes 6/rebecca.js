@@ -234,7 +234,7 @@ async function Rebecca(key, param) {
 			}],
 			["break", "<span class=\"mono\">Extend the sides of the square at each corner, reaching beyond the shape by one third of its side length, creating a <b>⌗</b> shape.</span>"],
 			["break", "<span class=\"mono\">Connect the two outermost points of each corner diagonally, creating a square with four triangles at its corners.</span>"],
-			["break", "<span class=\"mono\">Take each diagonal line as the first side of a rhombus. Draw the other three sides, creating a square with rhombuses centered around each vertex.</span>"],
+			["break", "<span class=\"mono\">Take each diagonal line as the first side of a rhombus. Create the other three sides, finishing with a square with rhombuses centered around each vertex.</span>"],
 			["break", "<span class=\"mono\">For each vertex of each rhombus, connect it horizontally and vertically to the corresponding vertex on its neighboring rhombuses.</span>"],
 			["break", "<span class=\"mono\">Your final shape should have 28 distinguishable edges, though the actual count is 32. This can be seen by starting with the rhombuses, and connecting every point with its corresponding point on both adjacent rombuses. The four shortest edges overlap with the four longest edges.</span>"],
 			["break", "<span class=\"mono\">This is not a lotus.</span>"],
